@@ -220,7 +220,6 @@ tr:not(:first-child):hover div{
     overflow: hidden;
     height: 15%;
     width: 80%;
-    margin-right: 20%;
     align-items: center;
   }
 
