@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="shortcut icon" href="/images/NykeLogo.png" />
+		<meta charset="UTF-8" name="viewport"
+			content="width=device-width, initial-scale=1.0">
+		<title>NYKE</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+		<script language="javascript" type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script language="javascript" type="text/javascript"
+			src="web3.min.js"></script>
+		<script language="javascript" type="text/javascript"
+			src="getblock.config.js"></script>
+		<script language="javascript" type="text/javascript"
+			src="Connect.js"></script>
+			<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+        type="application/javascript"></script>
+		<script language="javascript" type="text/javascript" src="Abi.js"></script>
+		<link href="Nyke.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body class="body">
+		<div id="root">
+			<div class="topnav" id="myTopnav">
+				<button class="MetaMask" id="connectbutton" value="Connect Metamask">
+					Connect Metamask</button>
+				<a class="active" href="#home">Home</a>
+				<a href="#news">News</a>
+				<a href="#contact">Contact</a>
+				<a href="#about">About</a>
+				<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+					<i class="fa fa-bars"></i></a>
+				<img  href="NYKE.HTML" class="logo" src="/images/NykeLogo.png" width="70px"
+					height="70px">
+			</div>
+
+			<div style="clear: both;"></div>
+
+			<div class="maincontent">
+				<div class="flex-container">
+					
+				<div class="Markets">
+					<table id="table" class="Supply">
+						<tbody>
+							<tr>
+								<td style="text-align: center;">Assets</td>
+								<td class="tdmobile">Market Size</td>
+								<td class="tdmobile">Total Borrowed</td>
+								<td class="tdmobile">Utilization Rate</td>
+								<td>Supply APR</td>
+								<td>Borrow APR</td>
+							</tr>
+							<tr>
+								<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
+										width="25" height="25"> ETC </td>
+						<td class="tdmobile"><div id="dataOutput"></div></td>
+						<td class="tdmobile"><div id="ETCBorrowed"></div></td>
+						<td class="tdmobile"><div id="ETCUtilization"></div></td>
+						<td><div id="ETCSupplyRateOutput"></div></td>
+						<td><div id="ETCBorrowRateOutput"></div></td>
+				
+
+					</tr>
+					<tr>
+						<td><img src="Images\usc-logo.png" alt="USC Logo" width="25" height="25">
+							USC</td>
+
+					</tr>
+					<tr>
+						<td><img src="Images\sbc-logo.svg" alt="SBC Logo" width="25" height="25">
+							SBC</td>
+
+					</tr>
+					<tr>
+						<td><img src="Images\ETCPOW.png" alt="ETCPOW Logo" width="25" height="25">
+							ETCPOW</td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</div>
+		<div id="modal-container" class="modal-container">
+			<!-- Modal content -->
+			<div id="modal-supply" class="modal-content">
+				<img src="Images\ethereum-classic-etc-logo.png" class="image">
+				<div style="clear: both;"></div>
+				<div class="modalnav">
+					<a onclick="RepayModal()">Repay</a>
+					<a onclick="BorrowModal()">Borrow</a>
+					<a onclick="WithdrawlModal()">Withdrawl</a>
+					<a class="active" onclick="SupplyModal()">Supply</a>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="modalbody">
+					<div class="WalletBalance">
+						<div style="clear: both;"></div>
+						<a>Wallet Balance: <div id="ETCBalance"
+								style="display: inline-block; color:  #a6fbb2;"></div>
+							ETC</a>
+					</div>
+					<div class="input">
+						<input type="text" id="ETCDeposit" placeholder="Enter Amount Here...">
+					</div>
+					<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="ETCSupplyRateModal"></div></div>
+				</div>
+				<div class="modalButton">
+					<button id="ETCDepositButton">Supply</button>
+				</div>
+			</div>
+			<div id="modal-withdrawl" class="modal-content">
+				<img src="Images\ethereum-classic-etc-logo.png" class="image">
+				<div class="modalnav">
+					<a onclick="RepayModal()">Repay</a>
+					<a onclick="BorrowModal()">Borrow</a>
+					<a class="active" onclick="WithdrawlModal()">Withdrawl</a>
+					<a onclick="SupplyModal()">Supply</a>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="modalbody">
+					<div class="WalletBalance">
+						<div style="clear: both;"></div>
+						<a>Supplied Balance: <div id="UserETCSupply"
+								style="display: inline-block; color:  #a6fbb2;"></div>
+							ETC</a>
+					</div>
+					<div class="input">
+						<input type="value" id="ETCWithdrawl" placeholder="Enter Amount Here...">
+					</div>
+					<div class="stats-container"><div class="Stats"></div><div class="Stats-Output" id="ETCSuppliedModal"></div></div>
+				</div>
+				<div class="modalButton">
+					<button id="ETCWithdrawlButton">Withdrawl</button>
+				</div>
+				
+			</div>
+			<div id="modal-borrow" class="modal-content">
+				<img src="Images\ethereum-classic-etc-logo.png" class="image">
+				<div class="modalnav">
+					<a onclick="RepayModal()">Repay</a>
+					<a class="active" onclick="BorrowModal()">Borrow</a>
+					<a onclick="WithdrawlModal()">Withdrawl</a>
+					<a onclick="SupplyModal()">Supply</a>
+				</div>
+			</div>
+			
+			<div id="modal-repay" class="modal-content">
+				<img src="Images\ethereum-classic-etc-logo.png" class="image">
+				<div class="modalnav">
+					<a class="active" onclick="RepayModal()">Repay</a>
+					<a onclick="BorrowModal()">Borrow</a>
+					<a onclick="WithdrawlModal()">Withdrawl</a>
+					<a onclick="SupplyModal()">Supply</a>
+				</div>
+			</div>
+		</div>
+
+		<script>
+
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+
+
+			// In case you are using Node.js
+			//	const Web3 = require('web3');
+			// Setting getblock node as HTTP provider
+				const provider = new Web3.providers.HttpProvider("https://go.getblock.io/60e5a3f8fbcd4953b12b226760d7e5e1/");
+			// Creating web3 instance with given provider
+				const web3 = new Web3(provider);
+			// Initializing web3.eth method
+				var block = web3.eth.getBlockNumber().then(console.log);
+
+
+
+                //connect to MetaMask
+                document.getElementById('connectbutton').addEventListener('click', event => {
+                    let account;
+                    let button = event.target;
+                    ethereum.request({ method: 'eth_requestAccounts' }).then(accounts => {
+                        account = accounts[0];
+                        console.log(account);
+                        document.getElementById('connectbutton').innerHTML = account;
+                        ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] }).then(result => {
+                            console.log(result);
+                            let wei = parseInt(result, 16);
+                            let balance = wei / (10 ** 18);
+							balance = balance.toFixed(2);
+                            console.log(balance + "ETC");
+							const ETCBalance = document.getElementById('ETCBalance');
+							ETCBalance.innerText = `${balance}`;})
+						nETCContract.methods.balanceOf(accounts[0]).call({from: account}, function(err,result){
+ 							console.log(result);
+                        	let balance = result / (10 ** 18);
+							balance = balance.toFixed(2);
+                            console.log(balance + "ETC");
+							const ETCSupplied = document.getElementById('UserETCSupply');
+							ETCSupplied.innerText = `${balance}`;})
+ 						});
+						});
+				
+
+
+          let web3m = new Web3(window.ethereum);
+
+                const nETCAddress = '0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0';
+                const nETCContract = new web3.eth.Contract(nETCAbi, nETCAddress);
+				const nETCContractMM = new web3m.eth.Contract(nETCAbi, nETCAddress);
+
+             //   const ETCPOWAddress = '0x6c3B413C461c42a88160Ed1B1B31d6f7b02a1C83';
+               // const ETCPOWContract = new web3.eth.Contract(ETCPOWabi, ETCPOWAddress);
+
+              
+                const nETCPOWAddress = '0x7f86acFA4747B5355E5623483D8c3082c90c2e85';
+                const nETCPOWContract = new web3.eth.Contract(nETCPOWabi, nETCPOWAddress);
+
+             
+                const USCAddress = '0xDE093684c796204224BC081f937aa059D903c52a';
+                const USCContract = new web3.eth.Contract(USCabi, USCAddress);
+
+				const nUSCAddress = '0xA11d739365d469c87F3daBd922a82cfF21b71c9B';
+                const nUSCContract = new web3.eth.Contract(nETCPOWabi, nUSCAddress);
+
+	
+				const ComptrollerAddress = '0x3b4E3d9B4C9A8EbD29393E401961a5c290b9F00d';
+                const ComptrollerContract = new web3.eth.Contract(Comptrollerabi, ComptrollerAddress);
+ 
+
+				//Get Data
+
+				const dataOutput = document.getElementById('dataOutput');
+				const ETCSupplyRateOutput = document.getElementById('ETCSupplyRateOutput');
+				const ETCSupplyRateModal = document.getElementById('ETCSupplyRateModal');
+				const ETCBorrowRateOutput = document.getElementById('ETCBorrowRateOutput');
+				const ETCBorrowed = document.getElementById('ETCBorrowed');
+				const ETCUtilization = document.getElementById('ETCUtilization');
+				const UserETCSupply = document.getElementById('UserETCSupply');
+
+				// Get the modal
+				var modal = document.getElementById("modal-container");
+
+				// When the user clicks anywhere outside of the modal, close it
+				window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";}}
+
+
+
+
+				const main = async () => {
+					const BlocksPerYear = 2425790;
+					const _totalSupply = await nETCContract.methods.totalSupply().call();
+					const totalSupply = _totalSupply / (10 ** 18);
+					dataOutput.innerText = `${totalSupply.toFixed(2)} ETC`;
+					const _ETCSupplyRate = await nETCContract.methods.supplyRatePerBlock().call();
+					const ETCSupplyRate = ((_ETCSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
+					ETCSupplyRateOutput.innerText = `${ETCSupplyRate.toFixed(2)}%`;
+					ETCSupplyRateModal.innerText = `${ETCSupplyRate.toFixed(2)}%`;
+					const _ETCBorrowRate = await nETCContract.methods.borrowRatePerBlock().call();
+					const ETCBorrowRate = ((_ETCBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
+					ETCBorrowRateOutput.innerText = `${ETCBorrowRate.toFixed(2)}%`;
+					const _ETCBorrowed = await nETCContract.methods.totalBorrows().call();
+					console.log(_ETCBorrowed);
+					const ETCBorrow = _ETCBorrowed / (10 ** 18);
+					ETCBorrowed.innerText = `${ETCBorrow.toFixed(2)} ETC`;
+					const ETCUtil = (ETCBorrow /totalSupply) * 100;
+					ETCUtilization.innerText = `${ETCUtil.toFixed(2)}%`;
+				};
+
+				main();
+
+
+				//ETC
+                function sendETC() {
+					const ETCDeposit = document.getElementById('ETCDeposit').value;
+					const Value = ETCDeposit * (10 ** 18);
+					console.log(Value);
+					let account;
+                    ethereum.request({ method: 'eth_requestAccounts' }).then(accounts => {
+                        account = accounts[0];
+                        console.log(account);
+					const From = accounts[0];
+					const To = '0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0';
+                    web3m.eth.sendTransaction({from: From,to: To,value: Value});})}
+				
+
+				//Withdrawl ETC
+						function withdrawlETC() {
+							let account = document.getElementById('connectbutton').innerText;
+							console.log(account);
+							let _ETCWithdrawl = document.getElementById('ETCWithdrawl').value;
+							let num = web3.utils.toWei(_ETCWithdrawl,'ether');
+							let Value = num.toString();
+							console.log(Value);
+							const To = '0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0';
+							nETCContractMM.methods.redeemUnderlying(`${Value}`).send({from:account});};
+		
+
+
+
+                
+				function ApproveETCPOW() {
+                    ETCPOWContract.methods.approve('0x7f86acFA4747B5355E5623483D8c3082c90c2e85','1000000000000000000000000').send({from:'0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B'});}
+                
+				function DepositETCPOW() {
+                    ETCPOWContract.methods.transfer('0x7f86acFA4747B5355E5623483D8c3082c90c2e85','100000000000000000000').send({from:'0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B'});}
+                
+				function MintnETCPOW() {
+                    nETCPOWContract.methods.mint('200000000000000000000').send({from:'0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B'});}
+				
+				function ApproveUSC() {
+                    USCContract.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B','1000000000000000000000000').send({from:'0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B'});}
+                
+				function MintnUSC() {
+                    nUSCContract.methods.mint('100000000').send({from:'0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B'});}
+
+
+
+			//Create a safe max repayment amount
+			//	Here’s the formula: [ \text{Safe Withdrawal Amount} = (\text{Collateral Amount} \times \text{Collateral Price} \times \text{Collateral Factor}) - \text{Current Borrow Balance} ]
+
+
+				function openModal() {
+       				 $('#usermodal').modal('show');}
+
+				function CloseModal() {
+					document.getElementById('ETCModal').style.display = "none";
+				}
+
+				function SupplyModal() {
+					document.getElementById('modal-supply').style.display = "block";
+					document.getElementById('modal-withdrawl').style.display = "none";
+					document.getElementById('modal-borrow').style.display = "none";
+					document.getElementById('modal-repay').style.display = "none";
+					let account = document.getElementById('connectbutton').innerHTML;
+				ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] }).then(result => {
+                            let wei = parseInt(result, 16);
+                            let balance = wei / (10 ** 18);
+							balance = balance.toFixed(2);
+                            console.log(balance + "ETC");
+							const ETCBalance = document.getElementById('ETCBalance');
+							ETCBalance.innerText = `${balance}`;
+					//Get Borrowed Balance
+					})}
+
+				function WithdrawlModal() {
+					document.getElementById('modal-supply').style.display = "none";
+					document.getElementById('modal-withdrawl').style.display = "block";
+					document.getElementById('modal-borrow').style.display = "none";
+					document.getElementById('modal-repay').style.display = "none";
+				}
+
+				function BorrowModal() {
+					document.getElementById('modal-supply').style.display = "none";
+					document.getElementById('modal-withdrawl').style.display = "none";
+					document.getElementById('modal-borrow').style.display = "block";
+					document.getElementById('modal-repay').style.display = "none";
+				}
+
+				function RepayModal() {
+					document.getElementById('modal-supply').style.display = "none";
+					document.getElementById('modal-withdrawl').style.display = "none";
+					document.getElementById('modal-borrow').style.display = "none";
+					document.getElementById('modal-repay').style.display = "block";
+				}
+
+
+
+
+
+
+           //     document.getElementById("ApproveETCPOW").onclick = ApproveETCPOW;
+            //    document.getElementById("DepositETCPOW").onclick = DepositETCPOW;
+            //    document.getElementById("MintETCPOW").onclick = MintnETCPOW;
+
+				//document.getElementById("ApproveUSC").onclick = ApproveUSC;
+			//	document.getElementById("MintUSC").onclick = MintnUSC;
+
+				document.getElementById("ETCDepositButton").onclick = sendETC;
+				document.getElementById("ETCWithdrawlButton").onclick = withdrawlETC;
+
+				//make the oracle so that the comptroller calls the price
+				//document.getElementById("UpdateOracle").onclick = UpdateOracle;
+
+
+
+
+
+				//Open MODAL
+				var table = document.getElementsByTagName("table")[0];  
+ 
+					var rows = table.getElementsByTagName("tr");  
+					
+					for (var i = 1; i < rows.length; i++) {  
+					var currentRow = table.rows[i];  
+					var createClickHandler = function(row) { return function() {  
+						document.getElementById('modal-container').style.display = "block";
+						document.getElementById('modal-supply').style.display = "block";
+						SupplyModal();
+					};  
+					};  
+					currentRow.onclick = createClickHandler(currentRow);  
+					} 
+
+            </script>
+
+	</body>
+</html>

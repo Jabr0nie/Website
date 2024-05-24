@@ -1,0 +1,499 @@
+.root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+    display: flexbox;
+    width:100%;
+    height: 100%;
+    background-color: black;
+    overflow-x: hidden;
+    margin: 0px;
+  }
+
+  .logo {
+    float: left;
+  }
+
+  .logo:hover {
+    cursor: pointer;
+  }
+
+
+  
+  .maincontent {
+    display: flexbox;
+    background-color:  rgb(21, 27, 40); 
+    border-radius: 10px;
+    width: 100%;
+    height: 700px;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    overflow-x: hidden;
+    float: right;
+  }
+
+  .flex-container {
+    display: flexbox; 
+    flex-direction: row-reverse;
+    width: 60%;
+    min-width: 300px;
+    margin-top: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
+    height:70%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .Markets {
+    background-color: #1e2838; 
+    border-radius: 25px;
+    border: 2px solid #a6fbb2;
+    width: 100%;
+    height:70%;
+    padding: 1%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+
+.MetaMask {
+  border-radius: 5px; 
+  margin: 15px;float: right; 
+  width: 15%; height: 40px; 
+  min-width: 100px;
+  border: 2px solid #a6fbb2;
+  overflow: hidden;
+  background-color:#1e2838; 
+  color: #a6fbb2; 
+  font-size: 10px; 
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  }
+
+  .MetaMask:hover {
+    cursor: pointer;
+    background-color:  rgb(21, 27, 40);
+    color: #a6fbb2;
+  }
+
+  button {
+    border-radius: 5px; 
+    width: 100px; 
+    height: 30px; 
+    background-color:#a6fbb2;
+    color: rgb(21, 27, 40); 
+    font-size: 15px; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    }
+  
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 25px;
+  color: aliceblue;
+  text-align: left;
+  height: 100%;
+}
+
+tr div {
+  border: none;
+}
+
+tr:not(:first-child){
+  height: 5%;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+td:first-child {
+  text-align: left;
+}
+
+
+td:not(:first-child) {
+  text-align: center;
+}
+
+tr:first-child {
+  color: #a6fbb2;
+  font-size: 90%;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  width: 100%;
+  height: 2%;
+
+}
+ 
+tr:not(:first-child):hover {
+  background-color:  rgb(21, 27, 40);
+  color: #a6fbb2;
+  cursor: pointer;
+}
+tr:not(:first-child):hover div{
+  background-color:  rgb(21, 27, 40);
+  color: #a6fbb2;
+  border: none;
+}
+
+  /* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 100%) {
+    .flex-container {
+      flex-direction: column;
+    }
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  display: inline-flexbox;
+  background-color: black;
+  overflow: hidden;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 20%;
+  height: 15%;
+  width: 60%;
+  align-items: center;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: right;
+  color:#f0f8ff;
+  text-align: center;
+  padding: 20px 20px;
+  text-decoration: none;
+  font-size: 17px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: rgb(21, 27, 40);
+  color: #a6fbb2
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #a6fbb2;
+  color: rgb(21, 27, 40);
+} 
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 1000px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+    color: #a6fbb2;
+  }
+  .tdmobile {
+    display: none;
+  }
+}
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 400px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+    height: min-content;
+    color: #a6fbb2;
+  }
+  .tdmobile {
+    display: none;
+  }
+
+  .topnav {
+    display: inline-flexbox;
+    background-color: black;
+    overflow: hidden;
+    height: 15%;
+    width: 80%;
+    margin-right: 20%;
+    align-items: center;
+  }
+
+  .logo {
+    height: 50px;
+    width: 50px;
+  }
+
+  .flex-container {
+    display: flexbox; 
+    flex-direction: row-reverse;
+    width: 93%;
+    margin-left: 2%;
+    margin-right: 2%;
+    min-width: 300px;
+    margin-top: 10%;
+    height:70%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+}
+
+/*Enter and Exit Market Switches */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+/* The Modal (background) */
+.modal-container {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  backdrop-filter: blur(5px);
+  
+}
+
+.modalButton Button:hover {
+  background-color:#1e2838;
+  border: 3px solid #a6fbb2;
+  cursor: pointer;
+}
+/* Modal Content */
+.modal-content {
+  display: none;
+  background-color: black;
+  border-radius: 25px;
+  margin: auto;
+  border: 5px solid  #a6fbb2;
+  width: 350px;
+  height: 550px;
+  backdrop-filter: blur(10px);
+  padding: 10px;
+}
+.image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50px;
+  height: 50px; 
+}
+
+.stats-container {
+  display: inline-flex;
+  margin: 5%;
+  width: 90%;
+}
+
+.stats-container div {
+  width: 45%;
+}
+
+.Stats-Output {
+  text-align: right;
+  color: #a6fbb2;
+}
+
+.modalnav {
+  background-color: black;
+  overflow: hidden;
+  width: 100%;
+  height: 10%;
+}
+
+.modalnav a{
+  display: inline-flexbox;
+  color:aliceblue;
+  float: right;
+  text-align: center;
+  align-content: center;
+  width: 25%;
+  text-decoration: none;
+  font-size: 90%;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  height: 100%;
+}
+
+/* Change the color of links on hover */
+.modalnav a:hover {
+  background-color: rgb(21, 27, 40);
+  color: #a6fbb2
+}
+
+/* Add a color to the active/current link */
+.modalnav a.active {
+  background-color: #a6fbb2;
+  color: rgb(21, 27, 40);
+} 
+
+.modalbody {
+  display: inline-flexbox;
+  color:aliceblue;
+  background-color: rgb(21, 27, 40);
+  width: 100%;
+  float: left;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  height: 60%;
+}
+
+.WalletBalance a{
+  color: aliceblue;
+  background-color: rgb(21, 27, 40);
+  text-align: left;
+  align-items: left;
+  float: left;
+  width: 100%;
+}
+
+.WalletBalance{
+  display: flexbox;
+  color: aliceblue;
+  background-color: rgb(21, 27, 40);
+  text-align: left;
+  align-items: center;
+  align-content: center;
+  float: left;
+  width: 100%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  height: 10%;
+}
+
+.input {
+  display: flexbox;
+ width: 80%;
+ background-color: #4a5568;
+ margin-left: 5%;
+ margin-right: 5%;
+ padding-left: 5%;
+ padding-right: 5%;
+ align-items: center;
+ align-content: center;
+ margin-top: 10%;
+ border-radius: 10px;
+ height: 10%;
+ min-width: fit-content;
+}
+.input input {
+  display: flexbox;
+  background-color: #4a5568;
+  border-radius: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  border: none;
+  text-align: right;
+  color: aliceblue;
+  align-items: center; 
+  padding-top: 1%;
+  float: right;
+  outline: none;
+  box-shadow: none;
+
+  width: 100%;
+ }
+
+ input input[type=text]:focus {
+  background-color: #4a5568;
+  color: aliceblue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  font-size: 100%;
+}
+
+ .modalButton {
+  background-color: black;
+  display: flexbox;
+  border: none;
+  color: #a6fbb2;
+  font-size: 100%;
+  float: right;
+  font-weight: 400;
+  align-content: center;
+  text-align: center;
+  height: 20%;
+  width: 100%;
+  justify-content: center;
+ }
+
+
+ .modalButton Button{
+  background-color:#4a5568;
+  border-radius: 10px;
+  border: none;
+  color: #a6fbb2;
+  font-size: 100%;
+  align-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  text-align: center;
+  font-weight: 600;
+  height: 50%;
+  width: 80%;
+ }

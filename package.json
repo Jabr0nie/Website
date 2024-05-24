@@ -1,0 +1,85 @@
+{
+ 
+  "version": "1.0.0",
+ 
+  "description": "",
+ 
+  "main": "Connect.js",
+ 
+  "scripts": {
+ 
+   
+  "test": "echo \"Error: no test specified\" && exit 1"
+ 
+  },
+ 
+  "browserslist": {
+ 
+   
+  "production": [
+ 
+   
+   
+  "chrome >= 67",
+ 
+   
+   
+  "edge >= 79",
+ 
+   
+   
+  "firefox >= 68",
+ 
+   
+   
+  "opera >= 54",
+ 
+   
+   
+  "safari >= 14"
+ 
+   
+  ],
+ 
+   
+  "development": [
+ 
+   
+   
+  "last 1 chrome version",
+ 
+   
+   
+  "last 1 firefox version",
+ 
+   
+   
+  "last 1 safari version"
+ 
+   
+  ]
+ 
+  },
+ 
+  "keywords": [],
+ 
+  "author": "",
+ 
+  "license": "ISC",
+ 
+  "dependencies": {
+ 
+   
+  "bn.js": "^5.2.1",
+ 
+   
+  "bootstrap": "^5.3.3",
+ 
+   
+  "ethers": "^6.12.1",
+ 
+   
+  "web3": "^4.8.0"
+ 
+  }
+}

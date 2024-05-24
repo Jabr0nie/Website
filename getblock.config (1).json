@@ -1,0 +1,11 @@
+{
+	"shared": {
+		"etc": {
+			"mainnet": {
+				"jsonRpc": [
+					"60e5a3f8fbcd4953b12b226760d7e5e1"
+				]
+			}
+		}
+	}
+}
