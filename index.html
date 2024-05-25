@@ -143,6 +143,21 @@
 					<a onclick="WithdrawlModal()">Withdrawl</a>
 					<a onclick="SupplyModal()">Supply</a>
 				</div>
+				<div style="clear: both;"></div>
+				<div class="modalbody">
+					<div class="WalletBalance">
+						<div style="clear: both;"></div>
+						<a>Borrow ETC</a>
+					</div>
+					<div class="input">
+						<input type="value" id="ETCBorrow" placeholder="Enter Amount Here...">
+					</div>
+					<div class="stats-container"><div class="Stats">Borrow Rate</div><div class="Stats-Output" id="ETCBorrowRateModal"></div></div>
+					<div class="stats-container"><div class="Stats">Borrow Balance</div><div class="Stats-Output" id="ETCBorrowBalanceModal"> ETC</div></div>
+				</div>
+				<div class="modalButton">
+					<button id="ETCBorrowButton">Borrow</button>
+				</div>
 			</div>
 			
 			<div id="modal-repay" class="modal-content">
@@ -152,6 +167,21 @@
 					<a onclick="BorrowModal()">Borrow</a>
 					<a onclick="WithdrawlModal()">Withdrawl</a>
 					<a onclick="SupplyModal()">Supply</a>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="modalbody">
+					<div class="WalletBalance">
+						<div style="clear: both;"></div><a>Borrowed Balance: <div id="ETCBorrowBalance"
+						style="display: inline-block; color:  #a6fbb2;"></div> ETC</a>
+						
+					</div>
+					<div class="input">
+						<input type="value" id="ETCRepay" placeholder="Enter Amount Here...">
+					</div>
+					<div class="stats-container"><div class="Stats"></div><div class="Stats-Output" id="ETCSuppliedModal"></div></div>
+				</div>
+				<div class="modalButton">
+					<button id="ETCRepayButton">Repay</button>
 				</div>
 			</div>
 		</div>
@@ -167,12 +197,8 @@ function myFunction() {
   }
 }
 
-
-
-			// In case you are using Node.js
-			//	const Web3 = require('web3');
 			// Setting getblock node as HTTP provider
-				const provider = new Web3.providers.HttpProvider("https://go.getblock.io/60e5a3f8fbcd4953b12b226760d7e5e1/");
+			const provider = new Web3.providers.HttpProvider("https://go.getblock.io/60e5a3f8fbcd4953b12b226760d7e5e1/");
 			// Creating web3 instance with given provider
 				const web3 = new Web3(provider);
 			// Initializing web3.eth method
@@ -239,6 +265,7 @@ function myFunction() {
 				const ETCSupplyRateOutput = document.getElementById('ETCSupplyRateOutput');
 				const ETCSupplyRateModal = document.getElementById('ETCSupplyRateModal');
 				const ETCBorrowRateOutput = document.getElementById('ETCBorrowRateOutput');
+				const ETCBorrowRateModal = document.getElementById('ETCBorrowRateModal');
 				const ETCBorrowed = document.getElementById('ETCBorrowed');
 				const ETCUtilization = document.getElementById('ETCUtilization');
 				const UserETCSupply = document.getElementById('UserETCSupply');
@@ -256,20 +283,27 @@ function myFunction() {
 
 				const main = async () => {
 					const BlocksPerYear = 2425790;
-					const _totalSupply = await nETCContract.methods.totalSupply().call();
+					const _totalSupply = await nETCContractMM.methods.totalSupply().call();
+					const _ETCSupplyRate = await nETCContractMM.methods.supplyRatePerBlock().call();
+					const _ETCBorrowRate = await nETCContractMM.methods.borrowRatePerBlock().call();
+					const _ETCBorrowed = await nETCContractMM.methods.totalBorrows().call();
+
+
 					const totalSupply = _totalSupply / (10 ** 18);
 					dataOutput.innerText = `${totalSupply.toFixed(2)} ETC`;
-					const _ETCSupplyRate = await nETCContract.methods.supplyRatePerBlock().call();
+					UserETCSupply.innerText = `${totalSupply.toFixed(2)}`;
+					
 					const ETCSupplyRate = ((_ETCSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
 					ETCSupplyRateOutput.innerText = `${ETCSupplyRate.toFixed(2)}%`;
 					ETCSupplyRateModal.innerText = `${ETCSupplyRate.toFixed(2)}%`;
-					const _ETCBorrowRate = await nETCContract.methods.borrowRatePerBlock().call();
+					
 					const ETCBorrowRate = ((_ETCBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
 					ETCBorrowRateOutput.innerText = `${ETCBorrowRate.toFixed(2)}%`;
-					const _ETCBorrowed = await nETCContract.methods.totalBorrows().call();
-					console.log(_ETCBorrowed);
+					ETCBorrowRateModal.innerText = `${ETCBorrowRate.toFixed(2)}%`;
+					
 					const ETCBorrow = _ETCBorrowed / (10 ** 18);
 					ETCBorrowed.innerText = `${ETCBorrow.toFixed(2)} ETC`;
+
 					const ETCUtil = (ETCBorrow /totalSupply) * 100;
 					ETCUtilization.innerText = `${ETCUtil.toFixed(2)}%`;
 				};
@@ -301,7 +335,26 @@ function myFunction() {
 							console.log(Value);
 							const To = '0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0';
 							nETCContractMM.methods.redeemUnderlying(`${Value}`).send({from:account});};
-		
+				//Borrow ETC
+						function borrowETC() {
+							let account = document.getElementById('connectbutton').innerText;
+							console.log(account);
+							let _ETCBorrow = document.getElementById('ETCBorrow').value;
+							let num = web3.utils.toWei(_ETCBorrow,'ether');
+							let Value = num.toString();
+							console.log(Value);
+							const To = '0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0';
+							nETCContractMM.methods.borrow(`${Value}`).send({from:account});};
+				//Repay ETC
+						function repayETC() {
+							let account = document.getElementById('connectbutton').innerText;
+							console.log(account);
+							let _ETCRepay = document.getElementById('ETCRepay').value;
+							let num = web3.utils.toWei(_ETCRepay,'ether');
+							let Value = num.toString();
+							console.log(Value);
+							const To = '0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0';
+							nETCContractMM.methods.repayBorrow().send({from:account, value:`${Value}`});};
 
 
 
@@ -362,14 +415,31 @@ function myFunction() {
 					document.getElementById('modal-withdrawl').style.display = "none";
 					document.getElementById('modal-borrow').style.display = "block";
 					document.getElementById('modal-repay').style.display = "none";
-				}
+					let account = document.getElementById('connectbutton').innerHTML;
+					let _UserBorrowETC;
+					nETCContractMM.methods.borrowBalanceStored(`${account}`).call().then(result => {
+						_UserBorrowETC = result;
+						let UserBorrowETC = _UserBorrowETC / (10 ** 18);
+						console.log(result);
+						const ETCBorrowBalance = document.getElementById('ETCBorrowBalanceModal');
+						ETCBorrowBalance.innerText = `${UserBorrowETC.toFixed(2)} ETC`;		
+					});}
+					
 
 				function RepayModal() {
 					document.getElementById('modal-supply').style.display = "none";
 					document.getElementById('modal-withdrawl').style.display = "none";
 					document.getElementById('modal-borrow').style.display = "none";
 					document.getElementById('modal-repay').style.display = "block";
-				}
+					let account = document.getElementById('connectbutton').innerHTML;
+					let _UserBorrowETC;
+					nETCContractMM.methods.borrowBalanceStored(`${account}`).call().then(result => {
+						_UserBorrowETC = result;
+						let UserBorrowETC = _UserBorrowETC / (10 ** 18);
+						console.log(result);
+						const ETCBorrowBalance = document.getElementById('ETCBorrowBalance');
+						ETCBorrowBalance.innerText = `${UserBorrowETC.toFixed(2)}`;		
+				})}
 
 
 
@@ -385,6 +455,8 @@ function myFunction() {
 
 				document.getElementById("ETCDepositButton").onclick = sendETC;
 				document.getElementById("ETCWithdrawlButton").onclick = withdrawlETC;
+				document.getElementById("ETCBorrowButton").onclick = borrowETC;
+				document.getElementById("ETCRepayButton").onclick = repayETC;
 
 				//make the oracle so that the comptroller calls the price
 				//document.getElementById("UpdateOracle").onclick = UpdateOracle;

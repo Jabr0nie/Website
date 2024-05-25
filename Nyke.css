@@ -172,7 +172,7 @@ tr:not(:first-child):hover div{
   text-align: center;
   padding: 20px 20px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 15px;
   font-family: Verdana, Geneva, Tahoma, sans-serif ;
 }
 
@@ -348,6 +348,7 @@ input:checked + .slider:before {
   display: inline-flex;
   margin: 5%;
   width: 90%;
+  font-size: 85%;
 }
 
 .stats-container div {
@@ -374,7 +375,7 @@ input:checked + .slider:before {
   align-content: center;
   width: 25%;
   text-decoration: none;
-  font-size: 90%;
+  font-size: 80%;
   font-weight: 600;
   font-family: Verdana, Geneva, Tahoma, sans-serif ;
   height: 100%;
