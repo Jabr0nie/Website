@@ -214,6 +214,16 @@ tr:not(:first-child):hover div{
     display: none;
   }
 
+  .modalclosebutton {
+    display: block;
+    width: 10%;
+    color:#a6fbb2;
+    border: 1px solid #a6fbb2;
+    background-color: #4a5568;
+    cursor: pointer;
+    float: right;
+  }
+
   .topnav {
     display: inline-flexbox;
     background-color: black;
@@ -336,11 +346,20 @@ input:checked + .slider:before {
   padding: 10px;
 }
 .image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: inline-block;
+  margin-left: 45%;
   width: 50px;
   height: 50px; 
+}
+
+.modalclosebutton {
+  display: none;
+  width: 10%;
+  color:#a6fbb2;
+  border: 1px solid #a6fbb2;
+  background-color: #4a5568;
+  cursor: pointer;
+  float: right;
 }
 
 .stats-container {
@@ -356,7 +375,7 @@ input:checked + .slider:before {
 
 .Stats-Output {
   text-align: right;
-  color: #a6fbb2;
+  color: rgb(167, 251, 178);
 }
 
 .modalnav {
