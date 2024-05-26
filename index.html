@@ -44,6 +44,7 @@
 					<table id="table" class="Supply">
 						<tbody>
 							<tr>
+								<td></td>
 								<td style="text-align: center;">Assets</td>
 								<td class="tdmobile">Market Size</td>
 								<td class="tdmobile">Total Borrowed</td>
@@ -53,7 +54,8 @@
 							</tr>
 							<tr>
 								<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
-										width="25" height="25"> ETC </td>
+										width="30" height="30" style="display: inline-block;"></td>
+						<td>ETC</td>
 						<td class="tdmobile"><div id="dataOutput"></div></td>
 						<td class="tdmobile"><div id="ETCBorrowed"></div></td>
 						<td class="tdmobile"><div id="ETCUtilization"></div></td>
@@ -63,23 +65,13 @@
 
 					</tr>
 					<tr>
-						<td><img src="Images\usc-logo.png" alt="USC Logo" width="25" height="25">
-							USC</td>
+						<td><img src="Images\usc-logo.png" alt="USC Logo" width="30" height="30"></td>
+							<td>USC</td>
 							<td class="tdmobile"><div id="USCSupply"></div></td>
 							<td class="tdmobile"><div id="USCBorrowed"></div></td>
 							<td class="tdmobile"><div id="USCUtilization"></div></td>
 							<td><div id="USCSupplyRateOutput"></div></td>
 							<td><div id="USCBorrowRateOutput"></div></td>
-
-					</tr>
-					<tr>
-						<td><img src="Images\sbc-logo.svg" alt="SBC Logo" width="25" height="25">
-							SBC</td>
-
-					</tr>
-					<tr>
-						<td><img src="Images\ETCPOW.png" alt="ETCPOW Logo" width="25" height="25">
-							ETCPOW</td>
 
 					</tr>
 				</tbody>
@@ -118,7 +110,7 @@
 			</div>
 			<div id="modal-withdrawl" class="modal-content">
 				<img src="Images\ethereum-classic-etc-logo.png" class="image">
-				<button class="modalclosebutton">X</button>
+				<button class="modalclosebutton" onclick="closeModal()">X</button>
 				<div class="modalnav">
 					<a onclick="RepayModal()">Repay</a>
 					<a onclick="BorrowModal()">Borrow</a>
@@ -145,7 +137,7 @@
 			</div>
 			<div id="modal-borrow" class="modal-content">
 				<img src="Images\ethereum-classic-etc-logo.png" class="image">
-				<button class="modalclosebutton">X</button>
+				<button class="modalclosebutton" onclick="closeModal()">X</button>
 				<div class="modalnav">
 					<a onclick="RepayModal()">Repay</a>
 					<a class="active" onclick="BorrowModal()">Borrow</a>
@@ -171,7 +163,7 @@
 			
 			<div id="modal-repay" class="modal-content">
 				<img src="Images\ethereum-classic-etc-logo.png" class="image">
-				<button class="modalclosebutton">X</button>
+				<button class="modalclosebutton" onclick="closeModal()">X</button>
 				<div class="modalnav">
 					<a class="active" onclick="RepayModal()">Repay</a>
 					<a onclick="BorrowModal()">Borrow</a>
@@ -197,7 +189,7 @@
 <!-- USC Modal content -->
 <div id="USCmodal-supply" class="modal-content">
 	<img src="Images\usc-logo.png" class="image">
-	<button class="modalclosebutton">X</button>
+	<button class="modalclosebutton" onclick="closeModal()">X</button>
 	<div style="clear: both;"></div>
 	<div class="modalnav">
 		<a onclick="USCRepayModal()">Repay</a>
@@ -209,9 +201,9 @@
 	<div class="modalbody">
 		<div class="WalletBalance">
 			<div style="clear: both;"></div>
-			<a>Wallet Balance: <div id="ETCBalance"
+			<a>Wallet Balance: <div id="USCBalance"
 					style="display: inline-block; color:  #a6fbb2;"></div>
-				ETC</a>
+				USC</a>
 		</div>
 		<div class="input">
 			<input type="text" id="ETCDeposit" placeholder="Enter Amount Here...">
@@ -219,11 +211,11 @@
 		<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="ETCSupplyRateModal"></div></div>
 	</div>
 	<div class="modalButton">
-		<button id="ETCDepositButton">Supply</button>
+		<button id="USCDepositButton">Supply</button>
 	</div>
 </div>
 <div id="modal-withdrawl" class="modal-content">
-	<button class="modalclosebutton">X</button>
+	<button class="modalclosebutton" onclick="closeModal()">X</button>
 	<img src="Images\usc-logo.png" class="image">
 	<div class="modalnav">
 		<a onclick="USCRepayModal()">Repay</a>
@@ -251,6 +243,7 @@
 </div>
 <div id="modal-borrow" class="modal-content">
 	<img src="Images\usc-logo.png" class="image">
+	<button class="modalclosebutton" onclick="closeModal()">X</button>
 	<div class="modalnav">
 		<a onclick="USCRepayModal()">Repay</a>
 		<a class="active" onclick="USCBorrowModal()">Borrow</a>
@@ -276,6 +269,7 @@
 
 <div id="modal-repay" class="modal-content">
 	<img src="Images\usc-logo.png" class="image">
+	<button class="modalclosebutton" onclick="closeModal()">X</button>
 	<div class="modalnav">
 		<a class="active" onclick="USCRepayModal()">Repay</a>
 		<a onclick="USCBorrowModal()">Borrow</a>
@@ -402,10 +396,11 @@ function myFunction() {
              
                 const USCAddress = '0xDE093684c796204224BC081f937aa059D903c52a';
                 const USCContract = new web3.eth.Contract(USCabi, USCAddress);
+				const USCContractMM = new web3m.eth.Contract(USCabi, USCAddress);
 
 				const nUSCAddress = '0xA11d739365d469c87F3daBd922a82cfF21b71c9B';
-                const nUSCContract = new web3.eth.Contract(nETCPOWabi, nUSCAddress);
-
+                const nUSCContract = new web3.eth.Contract(nETCAbi, nUSCAddress);
+				const nUSCContractMM = new web3m.eth.Contract(nETCAbi, nUSCAddress);
 	
 				const ComptrollerAddress = '0x3b4E3d9B4C9A8EbD29393E401961a5c290b9F00d';
                 const ComptrollerContract = new web3.eth.Contract(Comptrollerabi, ComptrollerAddress);
@@ -421,6 +416,11 @@ function myFunction() {
 				const ETCBorrowed = document.getElementById('ETCBorrowed');
 				const ETCUtilization = document.getElementById('ETCUtilization');
 				const UserETCSupply = document.getElementById('UserETCSupply');
+				const USCSupply = document.getElementById('USCSupply');
+				const USCSupplyRateOutput = document.getElementById('USCSupplyRateOutput');
+				const USCBorrowRateOutput = document.getElementById('USCBorrowRateOutput');
+				const USCUtilization = document.getElementById('USCUtilization');
+				const USCBorrowed = document.getElementById('USCBorrowed');
 
 				// Get the modal
 				var modal = document.getElementById("modal-container");
@@ -439,6 +439,10 @@ function myFunction() {
 					const _ETCSupplyRate = await nETCContract.methods.supplyRatePerBlock().call();
 					const _ETCBorrowRate = await nETCContract.methods.borrowRatePerBlock().call();
 					const _ETCBorrowed = await nETCContract.methods.totalBorrows().call();
+					const _USCtotalSupply = await nUSCContract.methods.totalSupply().call();
+					const _USCSupplyRate = await nUSCContract.methods.supplyRatePerBlock().call();
+					const _USCBorrowRate = await nUSCContract.methods.borrowRatePerBlock().call();
+					const _USCBorrowed = await nUSCContract.methods.totalBorrows().call();
 
 
 					const totalSupply = _totalSupply / (10 ** 18);
@@ -458,6 +462,24 @@ function myFunction() {
 
 					const ETCUtil = (ETCBorrow /totalSupply) * 100;
 					ETCUtilization.innerText = `${ETCUtil.toFixed(2)}%`;
+
+					const USCtotalSupply = _USCtotalSupply / (10 ** 4);
+					USCSupply.innerText = `${USCtotalSupply.toFixed(2)} USC`;
+					
+					const USCSupplyRate = ((_USCSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
+					USCSupplyRateOutput.innerText = `${USCSupplyRate.toFixed(2)}%`;
+					
+					const USCBorrowRate = ((_USCBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
+					USCBorrowRateOutput.innerText = `${USCBorrowRate.toFixed(2)}%`;
+					
+					const USCBorrow = _USCBorrowed / (10 ** 6);
+					USCBorrowed.innerText = `${USCBorrow.toFixed(2)} USC`;
+
+					const USCUtil = (USCBorrow /USCtotalSupply) * 100;
+					USCUtilization.innerText = `${USCUtil.toFixed(2)}%`;
+
+
+
 				};
 
 				main();
@@ -524,7 +546,7 @@ function myFunction() {
                     USCContract.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B','1000000000000000000000000').send({from:'0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B'});}
                 
 				function MintnUSC() {
-                    nUSCContract.methods.mint('100000000').send({from:'0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B'});}
+                    USCContractMM.methods.transfer('0xA11d739365d469c87F3daBd922a82cfF21b71c9B','1000000').send({from:'0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B'});}
 
 
 
@@ -593,28 +615,67 @@ function myFunction() {
 						ETCBorrowBalance.innerText = `${UserBorrowETC.toFixed(2)}`;		
 				})}
 
+				function USCSupplyModal() {
+					document.getElementById('USCmodal-supply').style.display = "block";
+					document.getElementById('USCmodal-withdrawl').style.display = "none";
+					document.getElementById('USCmodal-borrow').style.display = "none";
+					document.getElementById('USCmodal-repay').style.display = "none";
+					let account = document.getElementById('connectbutton').innerHTML;
+				ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] }).then(result => {
+                            let wei = parseInt(result, 16);
+                            let balance = wei / (10 ** 18);
+							balance = balance.toFixed(2);
+                            console.log(balance + "ETC");
+							const ETCBalance = document.getElementById('ETCBalance');
+							ETCBalance.innerText = `${balance}`;
+					//Get Borrowed Balance
+					})}
+
+				function USCWithdrawlModal() {
+					document.getElementById('USCmodal-supply').style.display = "none";
+					document.getElementById('USCmodal-withdrawl').style.display = "block";
+					document.getElementById('USCmodal-borrow').style.display = "none";
+					document.getElementById('USCmodal-repay').style.display = "none";
+				}
+
+				function USCBorrowModal() {
+					document.getElementById('USCmodal-supply').style.display = "none";
+					document.getElementById('USCmodal-withdrawl').style.display = "none";
+					document.getElementById('USCmodal-borrow').style.display = "block";
+					document.getElementById('USCmodal-repay').style.display = "none";
+					let account = document.getElementById('connectbutton').innerHTML;
+					let _UserBorrowETC;
+					nETCContractMM.methods.borrowBalanceStored(`${account}`).call().then(result => {
+						_UserBorrowETC = result;
+						let UserBorrowETC = _UserBorrowETC / (10 ** 18);
+						console.log(result);
+						const ETCBorrowBalance = document.getElementById('ETCBorrowBalanceModal');
+						ETCBorrowBalance.innerText = `${UserBorrowETC.toFixed(2)} ETC`;		
+					});}
+					
+
+				function USCRepayModal() {
+					document.getElementById('USCmodal-supply').style.display = "none";
+					document.getElementById('USCmodal-withdrawl').style.display = "none";
+					document.getElementById('USCmodal-borrow').style.display = "none";
+					document.getElementById('USCmodal-repay').style.display = "block";
+					let account = document.getElementById('connectbutton').innerHTML;
+					let _UserBorrowETC;
+					nETCContractMM.methods.borrowBalanceStored(`${account}`).call().then(result => {
+						_UserBorrowETC = result;
+						let UserBorrowETC = _UserBorrowETC / (10 ** 18);
+						console.log(result);
+						const ETCBorrowBalance = document.getElementById('ETCBorrowBalance');
+						ETCBorrowBalance.innerText = `${UserBorrowETC.toFixed(2)}`;		
+				})}
 
 
-
-
-
-           //     document.getElementById("ApproveETCPOW").onclick = ApproveETCPOW;
-            //    document.getElementById("DepositETCPOW").onclick = DepositETCPOW;
-            //    document.getElementById("MintETCPOW").onclick = MintnETCPOW;
-
-				//document.getElementById("ApproveUSC").onclick = ApproveUSC;
-			//	document.getElementById("MintUSC").onclick = MintnUSC;
 
 				document.getElementById("ETCDepositButton").onclick = sendETC;
 				document.getElementById("ETCWithdrawlButton").onclick = withdrawlETC;
 				document.getElementById("ETCBorrowButton").onclick = borrowETC;
 				document.getElementById("ETCRepayButton").onclick = repayETC;
-
-				//make the oracle so that the comptroller calls the price
-				//document.getElementById("UpdateOracle").onclick = UpdateOracle;
-
-
-
+				document.getElementById("USCDepositButton").onclick = MintnUSC;
 
 
 				//Open MODAL
