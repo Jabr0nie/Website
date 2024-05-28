@@ -27,42 +27,108 @@ body {
     background-color:  rgb(21, 27, 40); 
     border-radius: 10px;
     width: 100%;
-    height: 600px;
-    align-content: center;
-    justify-content: center;
+    height: 700px;
     justify-items: center;
     align-items: center;
     overflow-x: hidden;
     float: right;
   }
 
+
+
   .flex-container {
-    display: flexbox; 
+    display: flexbox;
     flex-direction: row-reverse;
     width: 60%;
     min-width: 300px;
-    margin-top: 10%;
     margin-left: 20%;
     margin-right: 20%;
-    height:70%;
+    margin-top: 3%;
+    margin-bottom: 0%;
+    color: aliceblue;
+    height:80%;
+    font-size: 25px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
+  .UserDetails {
+    display: inline-flexbox;
+    width: 100%;
+  }
+
   .Markets {
+    display: flexbox;
     background-color: #1e2838; 
     border-radius: 25px;
-    border: 2px solid #a6fbb2;
+    border: 1px solid #a6fbb2;
     width: 100%;
-    height:50%;
-    padding: 1%;
+    height:30%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .supplyshell {
+    width: 50%;
+    min-width: 380px;
+    display: inline-block;
+  }
+
+  .Supplied{
+    display: inline-block;
+    background-color: #1e2838; 
+    border-radius: 25px;
+    border: 1px solid #b3e5f9;
+    width: 95%;
+    height:30%;
+    margin-right: 5%;
+    margin-left: 0%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  }
+
+.borrowshell {
+  width: 50%;
+  min-width: 380px;
+  display: block;
+  float: right;
+}
+
+  .Borrowed{
+    display: inline-block;
+    background-color: #1e2838; 
+    border-radius: 25px;
+    border: 1px solid #b3e5f9;
+    width: 95%;
+    margin-right: 0%;
+    margin-left: 5%;
+    height:30%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .borrowtable tr:first-child {
+    color: #b3e5f9;
+    font-size: 90%;
+    font-weight: 600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    width: 100%;
+    height: 2%;
+  
+  }
+
+  .UserSupplyTable tr:first-child {
+    color: #b3e5f9;
+    font-size: 90%;
+    font-weight: 600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    width: 100%;
+    height: 2%;
+  
   }
 
 
 .MetaMask {
   border-radius: 5px; 
   margin: 15px;float: right; 
-  width: 15%; height: 40px; 
+  width: 20%; height: 40px; 
   min-width: 100px;
   border: 2px solid #a6fbb2;
   overflow: hidden;
@@ -90,14 +156,16 @@ body {
     }
   
 table {
-  width: 100%;
+  width: 98%;
  border-collapse: collapse;
   border-radius: 25px;
   color: aliceblue;
   text-align: left;
   height: 95%;
   margin-bottom: 2%;
+  margin-left: 1%;
   margin-top: 0%;
+  font-size: 100%;
 }
 
 tr div {
@@ -119,9 +187,10 @@ td:first-child {
 td:not(:first-child) {
   text-align: center;
   max-width: 100px;
+  font-size: 15px;
 }
 
-tr:first-child {
+.Supply tr:first-child {
   color: #a6fbb2;
   font-size: 90%;
   font-weight: 600;
@@ -132,16 +201,42 @@ tr:first-child {
 }
  
 tr:not(:first-child):hover {
-  background-color:  rgb(21, 27, 40);
+
   color: #a6fbb2;
   cursor: pointer;
 }
 tr:not(:first-child):hover div{
-  background-color:  rgb(21, 27, 40);
+
   color: #a6fbb2;
   border: none;
   border-radius: 25px;
 }
+
+.UserSupplyTable tr:not(:first-child):hover {
+
+  color: #b3e5f9;
+  cursor: pointer;
+}
+.UserSupplyTable tr:not(:first-child):hover div{
+
+  color: #b3e5f9;
+  border: none;
+  border-radius: 25px;
+}
+
+.borrowtable tr:not(:first-child):hover {
+
+  color: #b3e5f9;
+  cursor: pointer;
+}
+.borrowtable tr:not(:first-child):hover div{
+
+  color: #b3e5f9;
+  border: none;
+  border-radius: 25px;
+}
+
+
 
   /* Responsive layout - makes a one column-layout instead of two-column layout */
 @media (max-width: 100%) {
@@ -260,8 +355,8 @@ tr:not(:first-child):hover div{
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 25px;
+  height: 15px;
 }
 
 .switch input { 
@@ -277,6 +372,7 @@ tr:not(:first-child):hover div{
   left: 0;
   right: 0;
   bottom: 0;
+  height: 15px;
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
@@ -285,10 +381,10 @@ tr:not(:first-child):hover div{
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 12px;
+  width: 12px;
+  left: 1px;
+  bottom: 1px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
@@ -303,9 +399,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(9px);
+  -ms-transform: translateX(9px);
+  transform: translateX(9px);
 }
 
 /* Rounded sliders */
