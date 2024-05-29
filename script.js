@@ -43,23 +43,28 @@ function myFunction() {
                               balance = balance.toFixed(2);
                               console.log(balance + "ETC");
                               const ETCSupplied = document.getElementById('UserETCSupply');
-                              const YourETCSupply = document.getElementById('YourETCSupplied');
                               ETCSupplied.innerText = `${balance}`;
-                              YourETCSupplied.innerText = `${balance} ETC`;
-                              ComptrollerContract.methods.checkMembership('0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B','0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
-                                document.getElementById("ETCCheckbox").Status = result;
+                              YourETCSupplied.innerText = `${balance} ETC`;});
+                        ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
+                                document.getElementById("ETCCheckbox").checked = result;});
+                                ComptrollerContract.methods.checkMembership(`${account}`,'0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(result => {
+                                    document.getElementById("USCCheckbox").checked = result;});
+                                nUSCContract.methods.balanceOf(accounts[0]).call({from: account}, function(err,result){
+                                    console.log(result);
+                                    let balance = result / (10 ** 4);
+                                    balance = balance.toFixed(2);
+                                    console.log(balance + "USC");
+                                    YourUSCSupplied.innerText = `${balance} USC`;
                               });
-                            })
-              ;
+                           
+              
            } else {
               console.log("Metamask is not connected");
            }
         }
   
   
-  
-  
-  
+
                   document.getElementById('connectbutton').addEventListener('click', event => {
                       let account;
                       let button = event.target;
@@ -75,7 +80,7 @@ function myFunction() {
                               console.log(balance + "ETC");
                               const ETCBalance = document.getElementById('ETCBalance');
                               ETCBalance.innerText = `${balance}`;})
-                          nETCContract.methods.balanceOf(accounts[0]).call({from: account}, function(err,result){
+                          nETCContract.methods.balanceOf(accounts[0]).call({from: account}), function(err,result){
                                console.log(result);
                               let balance = result / (10 ** 18);
                               balance = balance.toFixed(2);
@@ -83,14 +88,20 @@ function myFunction() {
                               const ETCSupplied = document.getElementById('UserETCSupply');
                               const YourETCSupply = document.getElementById('YourETCSupplied');
                               ETCSupplied.innerText = `${balance}`;
-                              YourETCSupplied.innerText = `${balance} ETC`;
-                              ComptrollerContract.methods.checkMembership('0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B','0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
-                                document.getElementById("ETCCheckbox").checked = result;
-                              });
-                              document.getElementById('ETCSupplyRateOutputSupply').innerText = document.getElementById('ETCSupplyRateOutput').innerText;
-                            })
-                           });
-                          });
+                              YourETCSupplied.innerText = `${balance} ETC`;}
+                              ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
+                                document.getElementById("ETCCheckbox").checked = result;});
+                                ComptrollerContract.methods.checkMembership(`${account}`,'0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(result => {
+                                    document.getElementById("USCCheckbox").checked = result;});
+                              nUSCContract.methods.balanceOf(accounts[0]).call({from: account}).then(result => {
+                                console.log(result);
+                                let balance = result / (10 ** 4);
+                                balance = balance.toFixed(2);
+                                console.log(balance + "USC");
+                                YourUSCSupplied.innerText = `${balance} USC`;
+                            });
+                        });});
+                         
                   
   
   
@@ -124,6 +135,8 @@ function myFunction() {
                   //Get Data
   
                   const dataOutput = document.getElementById('dataOutput');
+                  const YourETCSupplied = document.getElementById('YourETCSupplied');
+                  const YourUSCSupplied = document.getElementById('YourUSCSupplied');
                   const ETCSupplyRateOutput = document.getElementById('ETCSupplyRateOutput');
                   const ETCSupplyRateModal = document.getElementById('ETCSupplyRateModal');
                   const ETCSupplierSupplyRate = document.getElementById('ETCSupplyRateOutputSupply');
@@ -134,10 +147,11 @@ function myFunction() {
                   const UserETCSupply = document.getElementById('UserETCSupply');
                   const USCSupply = document.getElementById('USCSupply');
                   const USCSupplyRateOutput = document.getElementById('USCSupplyRateOutput');
+                  const USCSupplyRateOutputSupply = document.getElementById('USCSupplyRateOutputSupply')
                   const USCBorrowRateOutput = document.getElementById('USCBorrowRateOutput');
                   const USCUtilization = document.getElementById('USCUtilization');
                   const USCBorrowed = document.getElementById('USCBorrowed');
-  
+                  const ETCCheckBox = document.getElementById("ETCCheckbox");
                   // Get the modal
                   var modal = document.getElementById("modal-container");
   
@@ -159,7 +173,8 @@ function myFunction() {
                       const _USCSupplyRate = await nUSCContract.methods.supplyRatePerBlock().call();
                       const _USCBorrowRate = await nUSCContract.methods.borrowRatePerBlock().call();
                       const _USCBorrowed = await nUSCContract.methods.totalBorrows().call();
-  
+
+                    
   
                       const totalSupply = _totalSupply / (10 ** 18);
                       dataOutput.innerText = `${totalSupply.toFixed(2)} ETC`;
@@ -185,6 +200,7 @@ function myFunction() {
                       
                       const USCSupplyRate = ((_USCSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
                       USCSupplyRateOutput.innerText = `${USCSupplyRate.toFixed(2)}%`;
+                      USCSupplyRateOutputSupply.innerText = `${USCSupplyRate.toFixed(2)}%`;
                       
                       const USCBorrowRate = ((_USCBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
                       USCBorrowRateOutput.innerText = `${USCBorrowRate.toFixed(2)}%`;
@@ -195,11 +211,7 @@ function myFunction() {
                       const USCUtil = (USCBorrow /USCtotalSupply) * 100;
                       USCUtilization.innerText = `${USCUtil.toFixed(2)}%`;
 
-                    document.getElementById("ETCCheckbox").checked = await ComptrollerContract.methods.checkMembership('0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B','0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call();
-
-  
-  
-  
+                    
                   };
   
                   main();
@@ -473,3 +485,4 @@ function myFunction() {
                           document.getElementById('USCmodal-borrow').style.display = "none";
                           document.getElementById('USCmodal-repay').style.display = "none";
                       }
+                    

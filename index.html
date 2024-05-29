@@ -56,8 +56,8 @@
 									<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
 											width="25" height="25" style="display: inline-block;"></td>
 							<td>ETC</td>
-							<td class="tdmobile"><div id="YourETCSupplied"></div></td>
-							<td class="tdmobile"><label class="switch">
+							<td><div id="YourETCSupplied"></div></td>
+							<td><label class="switch">
 								<input type="checkbox" id="ETCCheckbox" onclick="CollateralStatus()">
 								<span class="slider round"></span>
 							  </label></td>
@@ -66,11 +66,12 @@
 						<tr>
 							<td><img src="Images\usc-logo.png" alt="USC Logo" width="25" height="25"></td>
 								<td>USC</td>
-								<td class="tdmobile"><div id="USCSupply-"></div></td>
-								<td class="tdmobile"><div id="USCBorrowed-"></div></td>
-								<td class="tdmobile"><div id="USCUtilization-"></div></td>
-								<td><div id="USCSupplyRateOutput-"></div></td>
-								<td><div id="USCBorrowRateOutput-"></div></td>
+								<td><div id="YourUSCSupplied"></div></td>
+								<td><label class="switch">
+									<input type="checkbox" id="USCCheckbox" onclick="CollateralStatus()">
+									<span class="slider round"></span>
+								  </label></td></td>
+								<td><div id="USCSupplyRateOutputSupply"></div></td>
 	
 						</tr>
 					</tbody>
@@ -78,7 +79,7 @@
 				</div>
 			</div>
 			<div class="borrowshell">
-				<p style="margin-left: 5%;">Your Borrowed Balance</p>
+				<p class="BorrowText">Your Borrowed Balance</p>
 				<div class="Borrowed">	
 					<table class="borrowtable">
 						<tbody>
@@ -93,18 +94,16 @@
 								<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
 										width="25" height="25" style="display: inline-block;"></td>
 						<td>ETC</td>
-						<td class="tdmobile"><div id="dataOutput-"></div></td>
-						<td class="tdmobile"><div id="ETCBorrowed-"></div></td>
+						<td><div id="dataOutput-"></div></td>
+						<td><div id="ETCBorrowed-"></div></td>
 						<td><div id="ETCSupplyRateOutput-"></div></td>
 					</tr>
 					<tr>
 						<td><img src="Images\usc-logo.png" alt="USC Logo" width="25" height="25"></td>
 							<td>USC</td>
-							<td class="tdmobile"><div id="USCSupply-"></div></td>
-							<td class="tdmobile"><div id="USCBorrowed-"></div></td>
-							<td class="tdmobile"><div id="USCUtilization-"></div></td>
-							<td><div id="USCSupplyRateOutput-"></div></td>
+							<td><div id="USCBorrowed-"></div></td>
 							<td><div id="USCBorrowRateOutput-"></div></td>
+							<td><div id="borrowlimit?"></div></td>
 
 					</tr>
 				</tbody>
@@ -112,8 +111,8 @@
 		</div>
 	</div>
 			</div>
-				<div>
-					<p style="min-width: 768px;">Markets</p>
+				<div class="MarketDetails">
+					<p class="MarketsText">Markets</p>
 				<div class="Markets">
 					<table id="table" class="Supply">
 						<tbody>
