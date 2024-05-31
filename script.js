@@ -86,7 +86,7 @@ function myFunction() {
                               balance = balance.toFixed(2);
                               console.log(balance + "ETC");
                               const ETCSupplied = document.getElementById('UserETCSupply');
-                              const YourETCSupply = document.getElementById('YourETCSupplied');
+                              const YourETCSupplied = document.getElementById('YourETCSupplied');
                               ETCSupplied.innerText = `${balance}`;
                               YourETCSupplied.innerText = `${balance} ETC`;}
                               ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
