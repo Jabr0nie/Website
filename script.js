@@ -26,6 +26,7 @@ function myFunction() {
            const accounts = await ethereum.request({method: 'eth_accounts'});       
            if (accounts.length) {
               let account;
+              const BlocksPerYear = 2425790;
               console.log(`You're connected to: ${accounts[0]}`)
               account = accounts[0];
               document.getElementById('connectbutton').innerHTML = account;
@@ -37,14 +38,24 @@ function myFunction() {
                               console.log(balance + "ETC");
                               const ETCBalance = document.getElementById('ETCBalance');
                               ETCBalance.innerText = `${balance}`;})
-                          nETCContract.methods.balanceOf(accounts[0]).call({from: account}, function(err,result){
-                               console.log(result);
-                              let balance = result / (10 ** 18);
-                              balance = balance.toFixed(2);
-                              console.log(balance + "ETC");
-                              const ETCSupplied = document.getElementById('UserETCSupply');
-                              ETCSupplied.innerText = `${balance}`;
-                              YourETCSupplied.innerText = `${balance} ETC`;});
+                            //ETC Supplied
+                              nETCContract.methods.balanceOf(accounts[0]).call({from: account}, function(err,result){
+                                console.log(result);
+                               let balance = result / (10 ** 18);
+                               balance = balance.toFixed(2);
+                               console.log(balance + "ETC");
+                               const ETCSupplied = document.getElementById('UserETCSupply');
+                               ETCSupplied.innerText = `${balance}`;
+                               YourETCSupplied.innerText = `${balance} ETC`;});
+
+                          //ETC Borrowed
+                               nETCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}, function(err,result){
+                                console.log(result);
+                               let balance = result / (10 ** 18);
+                               balance = balance.toFixed(2);
+                               console.log(balance + "ETC");
+                               ETCBorrowedUser.innerText = `${balance} ETC`;});
+
                         ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
                                 document.getElementById("ETCCheckbox").checked = result;});
                                 ComptrollerContract.methods.checkMembership(`${account}`,'0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(result => {
@@ -56,12 +67,18 @@ function myFunction() {
                                     console.log(balance + "USC");
                                     YourUSCSupplied.innerText = `${balance} USC`;
                               });
-                           
+                            //USC Borrowed Amount
+                            nUSCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}).then(result => {
+                                console.log(result);
+                                let balance = result / (10 ** 6);
+                                balance = balance.toFixed(2);
+                                console.log(balance + "USC");
+                                document.getElementById('USCBorrowedUser').innerText = `${balance} USC`;});
               
            } else {
               console.log("Metamask is not connected");
            }
-        }
+        };
   
   
 
@@ -79,27 +96,42 @@ function myFunction() {
                               balance = balance.toFixed(2);
                               console.log(balance + "ETC");
                               const ETCBalance = document.getElementById('ETCBalance');
-                              ETCBalance.innerText = `${balance}`;})
-                          nETCContract.methods.balanceOf(accounts[0]).call({from: account}), function(err,result){
-                               console.log(result);
-                              let balance = result / (10 ** 18);
-                              balance = balance.toFixed(2);
-                              console.log(balance + "ETC");
-                              const ETCSupplied = document.getElementById('UserETCSupply');
-                              const YourETCSupplied = document.getElementById('YourETCSupplied');
-                              ETCSupplied.innerText = `${balance}`;
-                              YourETCSupplied.innerText = `${balance} ETC`;}
+                              ETCBalance.innerText = `${balance}`;});
+                              nETCContract.methods.balanceOf(accounts[0]).call({from: account}, function(err,result){
+                                console.log(result);
+                               let balance = result / (10 ** 18);
+                               balance = balance.toFixed(2);
+                               console.log(balance + "ETC");
+                               const ETCSupplied = document.getElementById('UserETCSupply');
+                               ETCSupplied.innerText = `${balance}`;
+                               YourETCSupplied.innerText = `${balance} ETC`;});
+                               //ETC Borrowed
+                               nETCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}, function(err,result){
+                                console.log(result);
+                               let balance = result / (10 ** 18);
+                               balance = balance.toFixed(2);
+                               console.log(balance + "ETC");
+                               ETCBorrowedUser.innerText = `${balance} ETC`;});
+                             
+                               //In market?
                               ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
                                 document.getElementById("ETCCheckbox").checked = result;});
                                 ComptrollerContract.methods.checkMembership(`${account}`,'0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(result => {
                                     document.getElementById("USCCheckbox").checked = result;});
+                                //USC Supplied Amount
                               nUSCContract.methods.balanceOf(accounts[0]).call({from: account}).then(result => {
                                 console.log(result);
                                 let balance = result / (10 ** 4);
                                 balance = balance.toFixed(2);
                                 console.log(balance + "USC");
-                                YourUSCSupplied.innerText = `${balance} USC`;
-                            });
+                                YourUSCSupplied.innerText = `${balance} USC`;});
+                                //USC Borrowed Amount
+                                nUSCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}).then(result => {
+                                    console.log(result);
+                                    let balance = result / (10 ** 6);
+                                    balance = balance.toFixed(2);
+                                    console.log(balance + "USC");
+                                    document.getElementById('USCBorrowedUser').innerText = `${balance} USC`;});
                         });});
                          
                   
@@ -141,14 +173,17 @@ function myFunction() {
                   const ETCSupplyRateModal = document.getElementById('ETCSupplyRateModal');
                   const ETCSupplierSupplyRate = document.getElementById('ETCSupplyRateOutputSupply');
                   const ETCBorrowRateOutput = document.getElementById('ETCBorrowRateOutput');
+                  const ETCBorrowedRate1 = document.getElementById('ETCBorrowedRate1');
                   const ETCBorrowRateModal = document.getElementById('ETCBorrowRateModal');
                   const ETCBorrowed = document.getElementById('ETCBorrowed');
+                  const ETCBorrowedUser = document.getElementById('UserETCBorrowed');
                   const ETCUtilization = document.getElementById('ETCUtilization');
                   const UserETCSupply = document.getElementById('UserETCSupply');
                   const USCSupply = document.getElementById('USCSupply');
                   const USCSupplyRateOutput = document.getElementById('USCSupplyRateOutput');
                   const USCSupplyRateOutputSupply = document.getElementById('USCSupplyRateOutputSupply')
                   const USCBorrowRateOutput = document.getElementById('USCBorrowRateOutput');
+                  const USCBorrowedRate1 = document.getElementById('USCBorrowRate1');
                   const USCUtilization = document.getElementById('USCUtilization');
                   const USCBorrowed = document.getElementById('USCBorrowed');
                   const ETCCheckBox = document.getElementById("ETCCheckbox");
@@ -188,6 +223,7 @@ function myFunction() {
                       const ETCBorrowRate = ((_ETCBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
                       ETCBorrowRateOutput.innerText = `${ETCBorrowRate.toFixed(2)}%`;
                       ETCBorrowRateModal.innerText = `${ETCBorrowRate.toFixed(2)}%`;
+                      ETCBorrowedRate1.innerText = `${ETCBorrowRate.toFixed(2)}%`;
                       
                       const ETCBorrow = _ETCBorrowed / (10 ** 18);
                       ETCBorrowed.innerText = `${ETCBorrow.toFixed(2)} ETC`;
@@ -204,7 +240,8 @@ function myFunction() {
                       
                       const USCBorrowRate = ((_USCBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
                       USCBorrowRateOutput.innerText = `${USCBorrowRate.toFixed(2)}%`;
-                      
+                      USCBorrowedRate1.innerText = `${USCBorrowRate.toFixed(2)}%`;
+
                       const USCBorrow = _USCBorrowed / (10 ** 6);
                       USCBorrowed.innerText = `${USCBorrow.toFixed(2)} USC`;
   
