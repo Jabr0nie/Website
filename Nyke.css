@@ -51,7 +51,7 @@ body {
     height:100%;
     font-size: 25px;
     font-weight: 500;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: arial black, sans-serif;
   }
 
   .UserDetails {
@@ -75,7 +75,7 @@ body {
     border-radius: 5px;
     width: 100%;
     height:70%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: arial black, sans-serif;
   }
 
   .MarketsText {
@@ -96,7 +96,7 @@ body {
     height:70%;
     margin-right: 5%;
     margin-left: 0%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: arial black, sans-serif;
 
   }
 
@@ -123,7 +123,7 @@ float: right;
     margin-right: 0%;
     margin-left: 5%;
     height:70%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: arial black, sans-serif;
   }
 
   @media screen and (max-width: 1300px) {
@@ -155,7 +155,7 @@ float: right;
         border-radius: 5px;
         width: 100%;
         height:75%;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: arial black, sans-serif;
       }
       .borrowshell {
         font-size: 80%;
@@ -172,7 +172,7 @@ float: right;
         border-radius: 5px;
         width: 100%;
         height:75%;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: arial black, sans-serif;
       }
   }
 
@@ -420,7 +420,7 @@ tr:not(:first-child):hover div{
     min-width: 300px;
     margin-top: 0%;
     height:70%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: arial black, sans-serif;
   }
 }
 
