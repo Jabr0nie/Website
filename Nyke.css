@@ -71,7 +71,7 @@ body {
   .Markets {
     display: block;
     background-color: #1e2838; 
-    border-radius: 25px;
+    border-radius: 5px;
     width: 100%;
     height:70%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -90,7 +90,7 @@ body {
   .Supplied{
     display: inline-block;
     background-color: #1e2838; 
-    border-radius: 25px;
+    border-radius: 5px;
     width: 95%;
     height:70%;
     margin-right: 5%;
@@ -116,7 +116,7 @@ float: right;
   .Borrowed{
     display: flexbox;
     background-color: #1e2838; 
-    border-radius: 25px;
+    border-radius: 5px;
     float: right;
     width: 95%;
     margin-right: 0%;
