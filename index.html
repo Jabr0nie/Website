@@ -25,10 +25,7 @@
 			<div class="topnav" id="myTopnav">
 				<button class="MetaMask" id="connectbutton" value="Connect Metamask">
 					Connect Metamask</button>
-				<a class="active" href="#home">Home</a>
-				<a href="#news">News</a>
-				<a href="#contact">Contact</a>
-				<a href="#about">About</a>
+				
 				<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 					<i class="fa fa-bars"></i></a>
 				<img  href="NYKE.HTML" class="logo" src="Images\NYKEGreenandBlue.svg" width="300px"
@@ -41,7 +38,7 @@
 				<div class="flex-container">
 					<div class = "UserDetails">
 					<div class = "supplyshell">
-						<p>Your Supplied Balance</p>
+						<div class="UseBalanceText">Your Supplied Balance:</div><div class="UserBalanceOutput" id="UserAssetBalance"> </div>
 					<div class="Supplied">
 						<table class="UserSupplyTable">
 							<tbody>
@@ -79,7 +76,7 @@
 				</div>
 			</div>
 			<div class="borrowshell">
-				<p class="BorrowText">Your Borrowed Balance</p>
+				<div class="UseBalanceTextB">Your Borrowed Balance: </div><div class="UserBalanceOutput" id="UserLiabilityBalance"> </div>
 				<div class="Borrowed">	
 					<table class="borrowtable">
 						<tbody>

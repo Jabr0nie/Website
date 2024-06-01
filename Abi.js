@@ -6327,3 +6327,38 @@ const Comptrollerabi = [
 		"type": "function"
 	}
 ];
+
+const Oracleabi = [
+	{
+		"inputs": [],
+		"name": "ETCswapV3Pool",
+		"outputs": [
+			{
+				"internalType": "contract IETCswapV3PoolDerivedState",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "cToken",
+				"type": "address"
+			}
+		],
+		"name": "GetUnderlyingPrice",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+];

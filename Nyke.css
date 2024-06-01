@@ -11,7 +11,7 @@ body {
     display: flexbox;
     width:100%;
     height: 100%;
-    background-color: rgb(0, 0, 0);
+    background-color: #0D131A;
     overflow-x: hidden;
     margin: 0px;
   }
@@ -28,7 +28,7 @@ body {
   
   .maincontent {
     display: flexbox;
-    background-color:  rgb(21, 27, 40); 
+    background-color:  #0D131A;
     width: 100%;
     height: 500px;
     align-items: center;
@@ -50,8 +50,27 @@ body {
     color: aliceblue;
     height:100%;
     font-size: 25px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family:  'Segoe UI', Tahoma, Geneva, sans-serif;
   }
+
+.UseBalanceText {
+  display: inline-block;
+  margin-bottom: 2%;
+}
+
+.UseBalanceTextB {
+  display: inline-block;
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+
+.UserBalanceOutput {
+  display: inline-block;
+  color: #a6fbb2;
+  font-weight: 600;
+  margin-bottom: 2%;
+  margin-left: 5px;
+}
 
   .UserDetails {
     margin-top: 1%;
@@ -70,11 +89,11 @@ body {
 
   .Markets {
     display: block;
-    background-color: #1e2838; 
-    border-radius: 25px;
+    background-color:#1D2833;
+    border-radius: 5px;
     width: 100%;
     height:70%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
   }
 
   .MarketsText {
@@ -89,13 +108,13 @@ body {
 
   .Supplied{
     display: inline-block;
-    background-color: #1e2838; 
-    border-radius: 25px;
+    background-color: #1D2833;
+    border-radius: 5px;
     width: 95%;
     height:70%;
     margin-right: 5%;
     margin-left: 0%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   }
 
@@ -115,21 +134,20 @@ float: right;
 
   .Borrowed{
     display: flexbox;
-    background-color: #1e2838; 
-    border-radius: 25px;
+    background-color: #1D2833;
+    border-radius: 5px;
     float: right;
     width: 95%;
     margin-right: 0%;
     margin-left: 5%;
     height:70%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
   @media screen and (max-width: 1300px) {
     .maincontent {
       display: flexbox;
-      background-color:  rgb(21, 27, 40); 
-      border-radius: 10px;
+      background-color:  #0D131A;
       width: 100%;
       height: 1000px;
       justify-items: center;
@@ -150,11 +168,11 @@ float: right;
       }
       .Supplied{
         display: inline-block;
-        background-color: #1e2838; 
-        border-radius: 25px;
+        background-color: #1D2833;
+        border-radius: 5px;
         width: 100%;
         height:75%;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
       .borrowshell {
         font-size: 80%;
@@ -167,16 +185,16 @@ float: right;
       }
       .Borrowed{
         display: flexbox;
-        background-color: #1e2838; 
-        border-radius: 25px;
+        background-color: #1D2833;
+        border-radius: 5px;
         width: 100%;
         height:75%;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
   }
 
   .borrowtable tr:first-child {
-    color: #b3e5f9;
+    color: #7a8a99;
     font-size: 90%;
     font-weight: 600;
     font-family: Verdana, Geneva, Tahoma, sans-serif ;
@@ -186,7 +204,7 @@ float: right;
   }
 
   .UserSupplyTable tr:first-child {
-    color: #b3e5f9;
+    color: #7a8a99;
     font-size: 90%;
     font-weight: 600;
     font-family: Verdana, Geneva, Tahoma, sans-serif ;
@@ -203,7 +221,7 @@ float: right;
   min-width: 100px;
   border: 2px solid #a6fbb2;
   overflow: hidden;
-  background-color:#1e2838; 
+  background-color:#1D2833;
   color: #a6fbb2; 
   font-size: 10px; 
   font-weight: 600;
@@ -212,7 +230,7 @@ float: right;
 
   .MetaMask:hover {
     cursor: pointer;
-    background-color:  rgb(21, 27, 40);
+    background-color:  #0D131A;
     color: #a6fbb2;
   }
 
@@ -221,7 +239,7 @@ float: right;
     width: 100px; 
     height: 30px; 
     background-color:#a6fbb2;
-    color: rgb(21, 27, 40); 
+    color: #0D131A;
     font-size: 15px; 
     font-family: Verdana, Geneva, Tahoma, sans-serif ;
     }
@@ -262,7 +280,7 @@ td:not(:first-child) {
 }
 
 .Supply tr:first-child {
-  color: #a6fbb2;
+  color: #7a8a99;
   font-size: 90%;
   font-weight: 600;
   font-family: Verdana, Geneva, Tahoma, sans-serif ;
@@ -285,24 +303,24 @@ tr:not(:first-child):hover div{
 
 .UserSupplyTable tr:not(:first-child):hover {
 
-  color: #b3e5f9;
+  color: #a6fbb2;
   cursor: pointer;
 }
 .UserSupplyTable tr:not(:first-child):hover div{
 
-  color: #b3e5f9;
+  color: #a6fbb2;
   border: none;
   border-radius: 25px;
 }
 
 .borrowtable tr:not(:first-child):hover {
 
-  color: #b3e5f9;
+  color: #a6fbb2;
   cursor: pointer;
 }
 .borrowtable tr:not(:first-child):hover div{
 
-  color: #b3e5f9;
+  color: #a6fbb2;
   border: none;
   border-radius: 25px;
 }
@@ -319,7 +337,7 @@ tr:not(:first-child):hover div{
 /* Add a black background color to the top navigation */
 .topnav {
   display: inline-flexbox;
-  background-color: black;
+  background-color: #0D131A;
   overflow: hidden;
   margin-top: 1%;
   margin-bottom: 1%;
@@ -349,14 +367,14 @@ tr:not(:first-child):hover div{
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: rgb(21, 27, 40);
+  background-color: #0D131A;
   color: #a6fbb2
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
   background-color: #a6fbb2;
-  color: rgb(21, 27, 40);
+  color: #0D131A;
 } 
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
@@ -397,7 +415,7 @@ tr:not(:first-child):hover div{
 
   .topnav {
     display: inline-flexbox;
-    background-color: black;
+    background-color: #0D131A;
     overflow: hidden;
     height: 15%;
     width: 100%;
@@ -419,7 +437,7 @@ tr:not(:first-child):hover div{
     min-width: 300px;
     margin-top: 0%;
     height:70%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 }
 
@@ -509,7 +527,7 @@ input:checked + .slider:before {
 /* Modal Content */
 .modal-content {
   display: none;
-  background-color: black;
+  background-color:#0D131A;
   border-radius: 25px;
   margin: auto;
   border: 5px solid  #a6fbb2;
@@ -552,7 +570,7 @@ input:checked + .slider:before {
 }
 
 .modalnav {
-  background-color: black;
+  background-color:#0D131A;
   overflow: hidden;
   width: 100%;
   height: 10%;
@@ -661,7 +679,7 @@ input:checked + .slider:before {
 }
 
  .modalButton {
-  background-color: black;
+  background-color:#0D131A;
   display: flexbox;
   border: none;
   color: #a6fbb2;
