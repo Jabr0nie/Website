@@ -38,7 +38,12 @@
 				<div class="flex-container">
 					<div class = "UserDetails">
 					<div class = "supplyshell">
-						<div class="UseBalanceText">Your Supplied Balance:</div><div class="UserBalanceOutput" id="UserAssetBalance"> </div>
+						<div class="supplytextleft">
+						<div class="UseBalanceText">Your Supplied Balance</div><div class="UserBalanceOutput" id="UserAssetBalance"> </div>
+						</div>
+						<div class="supplytextright">
+						<div class="UserMaxBorrowText">Net APR</div><div class="UserBorrowLimit" id="UserAPR"> 0%</div>
+						</div>
 					<div class="Supplied">
 						<table class="UserSupplyTable">
 							<tbody>
@@ -46,37 +51,41 @@
 									<td></td>
 									<td style="text-align: center;">Assets</td>
 									<td>Supplied</td>
-									<td>Collateral</td>
 									<td>APR</td>
+									<td>Collateral</td>
 								</tr>
 								<tr>
 									<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
 											width="25" height="25" style="display: inline-block;"></td>
 							<td>ETC</td>
 							<td><div id="YourETCSupplied"></div></td>
+							<td><div id="ETCSupplyRateOutputSupply"></div></td>
 							<td><label class="switch">
 								<input type="checkbox" id="ETCCheckbox" onclick="CollateralStatus()">
 								<span class="slider round"></span>
-							  </label></td>
-							<td><div id="ETCSupplyRateOutputSupply"></div></td>
+							  </label></td>		
 						</tr>
 						<tr>
 							<td><img src="Images\usc-logo.png" alt="USC Logo" width="25" height="25"></td>
 								<td>USC</td>
 								<td><div id="YourUSCSupplied"></div></td>
+								<td><div id="USCSupplyRateOutputSupply"></div></td>
 								<td><label class="switch">
-									<input type="checkbox" id="USCCheckbox" onclick="CollateralStatus()">
+									<input type="checkbox" id="USCCheckbox" onclick="CollateralStatusUSC()">
 									<span class="slider round"></span>
 								  </label></td></td>
-								<td><div id="USCSupplyRateOutputSupply"></div></td>
-	
 						</tr>
 					</tbody>
 				</table>
 				</div>
 			</div>
 			<div class="borrowshell">
-				<div class="UseBalanceTextB">Your Borrowed Balance: </div><div class="UserBalanceOutput" id="UserLiabilityBalance"> </div>
+				<div class="borrowtextleft">
+				<div class="UserBalanceTextB">Your Borrowed Balance </div><div class="UserBalanceOutputB" id="UserLiabilityBalance">$0.00 </div>
+				</div>
+				<div class="borrowtextright">
+				<div class="UserMaxBorrowText">Your Borrow Limit</div><div class="UserBorrowLimit" id="UserBorrowLimit"> 0%</div>
+				</div>
 				<div class="Borrowed">	
 					<table class="borrowtable">
 						<tbody>

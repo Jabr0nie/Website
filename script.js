@@ -38,51 +38,61 @@ function myFunction() {
                               console.log(balance + "ETC");
                               const ETCBalance = document.getElementById('ETCBalance');
                               ETCBalance.innerText = `${balance}`;});
-                          //ETC Borrowed
-                               nETCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}, function(err,result){
-                                console.log(result);
-                               let balance = result / (10 ** 18);
-                               balance = balance.toFixed(2);
-                               console.log(balance + "ETC");
-                               document.getElementById('UserETCBorrowed').innerText = `${balance} ETC`;});
-                            //Check Market Status
-                        ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
-                                document.getElementById("ETCCheckbox").checked = result;});
-                                ComptrollerContract.methods.checkMembership(`${account}`,'0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(result => {
-                                    document.getElementById("USCCheckbox").checked = result;});
+                          //In market?
+                          ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
+                            document.getElementById("ETCCheckbox").checked = result;});
+                            ComptrollerContract.methods.checkMembership(`${account}`,'0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(result => {
+                                document.getElementById("USCCheckbox").checked = result;});
+                            //ETC Borrowed
+                                nETCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}, function(err,ETCBorrow){
+                                ETCBorrow = ETCBorrow / (10 ** 18);
+                                ETCBorrow = ETCBorrow.toFixed(2);
+                                document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow} ETC`;
                             //USC Borrowed Amount
-                            nUSCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}).then(result => {
-                                console.log(result);
-                                let balance = result / (10 ** 6);
-                                balance = balance.toFixed(2);
-                                console.log(balance + "USC");
-                                document.getElementById('USCBorrowedUser').innerText = `${balance} USC`;});
-                                // Oracle Price Update
-                                OracleContract.methods.GetUnderlyingPrice('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(USCPrice => {
-                                    USCPrice = USCPrice / (10 ** 18);
-                                    USCPrice = (USCPrice.toFixed(2));
-                                 //USC Supplied Amount
-                              nUSCContract.methods.balanceOf(accounts[0]).call({from: account}).then(USCSup => {
-                                USCSup = USCSup / (10 ** 4);
-                                USCSup = USCSup.toFixed(2);
-                                document.getElementById('YourUSCSupplied').innerText = `${USCSup} USC`;
-                                //ETC Supplied
-                              nETCContract.methods.balanceOf(accounts[0]).call({from: account}, function(err,ETCSupplied){
-                                console.log(ETCSupplied);
-                               ETCSupplied = ETCSupplied / (10 ** 18);
-                               ETCSupplied = ETCSupplied.toFixed(2);
-                               document.getElementById('YourETCSupplied').innerText = `${ETCSupplied} ETC`;
-                                OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(ETCPrice => {
-                                    ETCPrice = ETCPrice / (10 ** 18);
-                                    ETCPrice = (ETCPrice.toFixed(2));
-                                    ETCPrice = (ETCPrice * ETCSupplied);
-                                    USCPrice = (USCPrice * USCSup);
-                                    let Assets = ((USCPrice + ETCPrice).toFixed(2));
-                                    document.getElementById('UserAssetBalance').innerText = `$${Assets}`;});
-                                });
+                            nUSCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}).then(USCBorrow => {
+                                USCBorrow = USCBorrow / (10 ** 6);
+                                USCBorrow = USCBorrow.toFixed(2);
+                                document.getElementById('USCBorrowedUser').innerText = `${USCBorrow} USC`;
+
+                            // Oracle Price Update
+                            OracleContract.methods.GetUnderlyingPrice('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(USCPrice => {
+                                USCPrice = USCPrice / (10 ** 18);
+                                USCPrice = (USCPrice.toFixed(2));
+                             //USC Supplied Amount
+                          nUSCContract.methods.balanceOf(accounts[0]).call({from: account}).then(USCSup => {
+                            USCSup = USCSup / (10 ** 4);
+                            USCSup = USCSup.toFixed(2);
+                            document.getElementById('YourUSCSupplied').innerText = `${USCSup} USC`;
+                            //ETC Supplied
+                          nETCContract.methods.balanceOf(accounts[0]).call({from: account}, function(err,ETCSupplied){
+                            console.log(ETCSupplied);
+                           ETCSupplied = ETCSupplied / (10 ** 18);
+                           ETCSupplied = ETCSupplied.toFixed(2);
+                           document.getElementById('YourETCSupplied').innerText = `${ETCSupplied} ETC`;
+                            OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(ETCPrice => {
+                                ETCPrice = ETCPrice / (10 ** 18);
+                                ETCPrice = (ETCPrice.toFixed(2));
+                                let ETCAsset = (ETCPrice * ETCSupplied);
+                                let USCAsset = (USCPrice * USCSup);
+                                let Assets = ((USCAsset + ETCAsset).toFixed(2));
+                                document.getElementById('UserAssetBalance').innerText = `$${Assets}`;
+                                let ETCLiability = (ETCPrice * ETCBorrow);
+                                let USCLiability = (USCPrice * USCBorrow);
+                                let Liabilities = ((USCLiability + ETCLiability).toFixed(2));
+                                document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
+                            //User APR
+                            let UserAPR
+                            //Collateral Factor
+                                const USCStatus = document.getElementById("USCCheckbox");
+                                const ETCStatus = document.getElementById("ETCCheckbox");
+                                    let MaxBorrow =((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)).toFixed(2);
+                                    document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow}%`;
+                                
+                            });
                             });
                         });
-
+                    });
+                });});
               
            } else {
               console.log("Metamask is not connected");
@@ -105,27 +115,24 @@ function myFunction() {
                               const ETCBalance = document.getElementById('ETCBalance');
                               ETCBalance.innerText = `${balance}`;});
 
-                               //ETC Borrowed
-                               nETCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}, function(err,result){
-                                console.log(result);
-                               let balance = result / (10 ** 18);
-                               balance = balance.toFixed(2);
-                               console.log(balance + "ETC");
-                               document.getElementById('UserETCBorrowed').innerText = `${balance} ETC`;});
                              
                                //In market?
                               ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
                                 document.getElementById("ETCCheckbox").checked = result;});
                                 ComptrollerContract.methods.checkMembership(`${account}`,'0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(result => {
                                     document.getElementById("USCCheckbox").checked = result;});
-                              
+
+                                //ETC Borrowed
+                                    nETCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}, function(err,ETCBorrow){
+                                    ETCBorrow = ETCBorrow / (10 ** 18);
+                                    ETCBorrow = ETCBorrow.toFixed(2);
+                                    document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow} ETC`;
                                 //USC Borrowed Amount
-                                nUSCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}).then(result => {
-                                    console.log(result);
-                                    let balance = result / (10 ** 6);
-                                    balance = balance.toFixed(2);
-                                    console.log(balance);
-                                    document.getElementById('USCBorrowedUser').innerText = `${balance} USC`;});
+                                nUSCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}).then(USCBorrow => {
+                                    USCBorrow = USCBorrow / (10 ** 6);
+                                    USCBorrow = USCBorrow.toFixed(2);
+                                    document.getElementById('USCBorrowedUser').innerText = `${USCBorrow} USC`;
+
                                 // Oracle Price Update
                                 OracleContract.methods.GetUnderlyingPrice('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(USCPrice => {
                                     USCPrice = USCPrice / (10 ** 18);
@@ -144,13 +151,27 @@ function myFunction() {
                                 OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(ETCPrice => {
                                     ETCPrice = ETCPrice / (10 ** 18);
                                     ETCPrice = (ETCPrice.toFixed(2));
-                                    ETCPrice = (ETCPrice * ETCSupplied);
-                                    USCPrice = (USCPrice * USCSup);
-                                    let Assets = ((USCPrice + ETCPrice).toFixed(2));
-                                    document.getElementById('UserAssetBalance').innerText = `${Assets}`;});
+                                    let ETCAsset = (ETCPrice * ETCSupplied);
+                                    let USCAsset = (USCPrice * USCSup);
+                                    let Assets = ((USCAsset + ETCAsset).toFixed(2));
+                                    document.getElementById('UserAssetBalance').innerText = `$${Assets}`;
+                                    let ETCLiability = (ETCPrice * ETCBorrow);
+                                    let USCLiability = (USCPrice * USCBorrow);
+                                    let Liabilities = ((USCLiability + ETCLiability).toFixed(2));
+                                    document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
+                                //User APR
+                                    let UserAPR
+                                //Collateral Factor
+                                    const USCStatus = document.getElementById("USCCheckbox");
+                                    const ETCStatus = document.getElementById("ETCCheckbox");
+                                        let MaxBorrow =((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)).toFixed(2);
+                                        document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow}%`;
+                                });
                                 });
                             });
                         });
+                    });});
+
                         });});
                          
                   
@@ -178,7 +199,7 @@ function myFunction() {
                   const nUSCContract = new web3.eth.Contract(nETCPOWabi, nUSCAddress);
                   const nUSCContractMM = new web3m.eth.Contract(nETCPOWabi, nUSCAddress);
       
-                  const ComptrollerAddress = '0xf9fFa1705dD7A7517c41Bc673f5b8726cD982362';
+                  const ComptrollerAddress = '0xBF8455ACae4741b7e8C37bD8fd6AF147ba293536';
                   const ComptrollerContract = new web3.eth.Contract(Comptrollerabi, ComptrollerAddress);
                   const ComptrollerContractMM = new web3m.eth.Contract(Comptrollerabi, ComptrollerAddress);
 
@@ -276,7 +297,7 @@ function myFunction() {
   
                   main();
   
-                //Enter and Exit a market
+                //Enter and Exit a market - ETC
 				function CollateralStatus() {
                     let account = document.getElementById('connectbutton').innerText;
 					const Status = document.getElementById("ETCCheckbox");
@@ -331,6 +352,17 @@ function myFunction() {
                               console.log(Value);
                               const To = '0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0';
                               nETCContractMM.methods.repayBorrow().send({from:account, value:`${Value}`});};
+
+                //Enter and Exit a market - USC
+				function CollateralStatusUSC() {
+                    let account = document.getElementById('connectbutton').innerText;
+					const Status = document.getElementById("USCCheckbox");
+					if (Status.checked == true){
+						ComptrollerContractMM.methods.enterMarkets(["0xA11d739365d469c87F3daBd922a82cfF21b71c9B"]).send({from:account});
+					} else {
+						ComptrollerContractMM.methods.exitMarket("0xA11d739365d469c87F3daBd922a82cfF21b71c9B").send({from:account});
+					}
+					}
   
   
   

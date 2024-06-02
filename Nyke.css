@@ -55,28 +55,78 @@ body {
 
 .UseBalanceText {
   display: inline-block;
-  margin-bottom: 2%;
+  font-size: 100%;
 }
 
-.UseBalanceTextB {
+.UserBalanceTextB {
   display: inline-block;
-  margin-left: 5%;
-  margin-bottom: 2%;
+  font-size: 100%;
+}
+
+.UserBorrowLimit {
+  color: #a6fbb2;
+  font-weight: 600;
+  font-size: 30px;
+  margin-right: 5%;
+  text-align: right;
 }
 
 .UserBalanceOutput {
-  display: inline-block;
+
   color: #a6fbb2;
   font-weight: 600;
+  font-size: 30px;
+}
+
+.UserBalanceOutputB {
+
+  color: #a6fbb2;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.UserMaxBorrowText {
+  text-align: right;
+  font-size: 100%;
+}
+
+.borrowtextleft {
+  width: 45%;
+  display: inline-block;
+  margin-left: 10%;
+  margin-right: 0%;
   margin-bottom: 2%;
-  margin-left: 5px;
+}
+
+.borrowtextright {
+  float: right;
+  margin-right: 5%;
+  margin-left: 0%;
+  margin-bottom: 2%;
+  width: 35%;
+}
+
+.supplytextleft {
+  width: 45%;
+  display: inline-block;
+  margin-left: 5%;
+  margin-right: 0%;
+  margin-bottom: 2%;
+}
+
+.supplytextright {
+  float: right;
+  margin-right: 10%;
+  margin-left: 0%;
+  margin-bottom: 2%;
+  width: 35%;
 }
 
   .UserDetails {
-    margin-top: 1%;
     display: inline-flex;
-  height: 40%;
+    height: 50%;
     width: 100%;
+    margin-top: 2%;
   }
 
   .MarketDetails {
@@ -230,8 +280,8 @@ float: right;
 
   .MetaMask:hover {
     cursor: pointer;
-    background-color:  #0D131A;
-    color: #a6fbb2;
+    background-color:  #a6fbb2;
+    color: #1D2833;
   }
 
   button {
