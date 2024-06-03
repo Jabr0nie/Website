@@ -81,7 +81,19 @@ function myFunction() {
                                 let Liabilities = ((USCLiability + ETCLiability).toFixed(2));
                                 document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
                             //User APR
-                            let UserAPR
+                            const BlocksPerYear = 2425790;
+                            nETCContract.methods.supplyRatePerBlock().call().then(ETCSupplyRate1 => {
+                                ETCSupplyRate1 = ((ETCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
+                            nETCContract.methods.borrowRatePerBlock().call().then(ETCBorrowRate1 => { 
+                                ETCBorrowRate1 = ((ETCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
+                            nUSCContract.methods.supplyRatePerBlock().call().then(USCSupplyRate1 => {
+                                USCSupplyRate1 = ((USCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
+                            nUSCContract.methods.borrowRatePerBlock().call().then(USCBorrowRate1 => {
+                                USCBorrowRate1 = ((USCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
+                            const UserRate = document.getElementById('UserAPR');
+                            let Weight = ((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1)).toFixed(2);
+                            UserRate.innerText = `${Weight}%`;
+                                });});});});
                             //Collateral Factor
                                 const USCStatus = document.getElementById("USCCheckbox");
                                 const ETCStatus = document.getElementById("ETCCheckbox");
@@ -160,7 +172,19 @@ function myFunction() {
                                     let Liabilities = ((USCLiability + ETCLiability).toFixed(2));
                                     document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
                                 //User APR
-                                    let UserAPR
+                                const BlocksPerYear = 2425790;
+                                nETCContract.methods.supplyRatePerBlock().call().then(ETCSupplyRate1 => {
+                                    ETCSupplyRate1 = ((ETCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
+                                nETCContract.methods.borrowRatePerBlock().call().then(ETCBorrowRate1 => { 
+                                    ETCBorrowRate1 = ((ETCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
+                                nUSCContract.methods.supplyRatePerBlock().call().then(USCSupplyRate1 => {
+                                    USCSupplyRate1 = ((USCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
+                                nUSCContract.methods.borrowRatePerBlock().call().then(USCBorrowRate1 => {
+                                    USCBorrowRate1 = ((USCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
+                                const UserRate = document.getElementById('UserAPR');
+                                let Weight = ((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1)).toFixed(2);
+                                UserRate.innerText = `${Weight}%`;
+                                    });});});});
                                 //Collateral Factor
                                     const USCStatus = document.getElementById("USCCheckbox");
                                     const ETCStatus = document.getElementById("ETCCheckbox");
@@ -206,7 +230,6 @@ function myFunction() {
                   const OracleAddress = '0xAE1682fD22D10BDF5285dff6FE0026de5Aa12b32';
                   const OracleContract = new web3.eth.Contract(Oracleabi, OracleAddress);
                   const OracleContractMM = new web3m.eth.Contract(Oracleabi, OracleAddress);
-   
   
                   //Get Data
   
