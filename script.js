@@ -97,7 +97,7 @@ function myFunction() {
                             //Collateral Factor
                                 const USCStatus = document.getElementById("USCCheckbox");
                                 const ETCStatus = document.getElementById("ETCCheckbox");
-                                    let MaxBorrow =((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)).toFixed(2);
+                                    let MaxBorrow =((Liabilities/((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)))*100).toFixed(2);
                                     document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow}%`;
                                 
                             });

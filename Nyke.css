@@ -308,6 +308,17 @@ table {
   font-size: 100%;
 }
 
+.UserSupplyTable {
+  margin-left: 5%;
+  width: 95%;
+}
+
+.borrowtable {
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+}
+
 tr div {
   border: none;
 }
