@@ -640,7 +640,7 @@ input:checked + .slider:before {
 
 .modalnav a{
   display: inline-flexbox;
-  color:aliceblue;
+  color:#f0f8ff;
   float: right;
   text-align: center;
   align-content: center;
@@ -666,7 +666,7 @@ input:checked + .slider:before {
 
 .modalbody {
   display: inline-flexbox;
-  color:aliceblue;
+  color:#f0f8ff;
   background-color: rgb(21, 27, 40);
   width: 100%;
   float: left;
@@ -689,7 +689,7 @@ input:checked + .slider:before {
 
 .WalletBalance{
   display: flexbox;
-  color: aliceblue;
+  color: rgb(240, 248, 255);
   background-color: rgb(21, 27, 40);
   text-align: left;
   align-items: center;
