@@ -24,8 +24,13 @@ body {
     cursor: pointer;
   }
 
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+    color: #a6fbb2;
+  }
 
-  
   .maincontent {
     display: flexbox;
     background-color:  #0D131A;
@@ -206,6 +211,47 @@ float: right;
       overflow-x: hidden;
       float: right;
     }
+
+    .borrowtextleft {
+      width: 45%;
+      display: inline-block;
+      margin-left: 5%;
+      margin-right: 0%;
+      margin-bottom: 3%;
+      margin-top: 2%;
+    }
+    
+    .borrowtextright {
+      float: right;
+      margin-right: 5%;
+      margin-left: 0%;
+      margin-bottom: 2%;
+      margin-top: 3%;
+      width: 35%;
+    }
+
+    .supplytextright {
+      float: right;
+      margin-right: 5%;
+      margin-left: 0%;
+      margin-bottom: 2%;
+      width: 35%;
+    }    
+
+    .MarketDetails {
+      display: block;
+      margin-top: 6%;
+      height: 40%;
+      width: 100%;
+      font-size: 80%;
+    }
+
+    .MarketsText {
+      height: 5%;
+      margin-left: 5%;
+    }
+  
+
     .UserDetails {
       flex-wrap: wrap;
       height: 60%;
@@ -222,7 +268,7 @@ float: right;
         background-color: #1D2833;
         border-radius: 5px;
         width: 100%;
-        height:75%;
+        height:70%;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
       .borrowshell {
@@ -239,7 +285,7 @@ float: right;
         background-color: #1D2833;
         border-radius: 5px;
         width: 100%;
-        height:75%;
+        height:70%;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
   }
@@ -440,30 +486,19 @@ tr:not(:first-child):hover div{
 } 
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-@media screen and (max-width: 1000px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    color: #a6fbb2;
-  }
-  .tdmobile {
-    display: none;
-  }
+@media screen and (max-width: 850px) {
+.logo {
+  width: 150px;
+  height: 40px;
+  margin: 15px;
+
 }
+}
+
+
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 500px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    height: min-content;
-    color: #a6fbb2;
-  }
-  .tdmobile {
-    display: none;
-  }
 
   .modalclosebutton {
     display: block;
@@ -485,10 +520,13 @@ tr:not(:first-child):hover div{
     align-items: center;
   }
 
-  .logo {
-    height: 50px;
-    width: 50px;
-  }
+
+    .logo {
+      width: 150px;
+      height: 40px;
+      margin: 15px;
+    
+    }
 
   .flex-container {
     display: flexbox; 
@@ -499,9 +537,71 @@ tr:not(:first-child):hover div{
     min-width: 300px;
     margin-top: 0%;
     height:70%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+
+    .borrowtextleft {
+      width: 45%;
+      display: inline-block;
+      margin-left: 5%;
+      margin-right: 0%;
+      margin-bottom: 3%;
+      margin-top: 12%;
+    }
+    
+    .borrowtextright {
+      float: right;
+      margin-right: 5%;
+      margin-left: 0%;
+      margin-bottom: 2%;
+      margin-top: 12%;
+      width: 35%;
+    }
+
+    .supplytextright {
+      float: right;
+      margin-right: 5%;
+      margin-left: 0%;
+      margin-bottom: 2%;
+      width: 20%;
+    }    
+
+    .MarketDetails {
+      display: block;
+      margin-top: 26%;
+      height: 40%;
+      width: 100%;
+      font-size: 80%;
+    }
+
+    .MarketsText {
+      height: 5%;
+      margin-left: 5%;
+    }
+
+  
+    .Supplied{
+      display: inline-block;
+      background-color: #1D2833;
+      border-radius: 5px;
+      width: 100%;
+      height:60%;
+      margin-right: 5%;
+      margin-left: 0%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+    }
+    .Borrowed{
+      display: flexbox;
+      background-color: #1D2833;
+      border-radius: 5px;
+      float: right;
+      width: 100%;
+      margin-right: 0%;
+      margin-left: 5%;
+      height:60%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
   }
-}
 
 /*Enter and Exit Market Switches */
 .switch {
@@ -565,6 +665,13 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.RewardRate {
+  display: inline-block;
+  justify-content: center;
+  margin-left: 3px;
+  font-weight: 400;
+  font-size: 90%;
+}
 
 /* The Modal (background) */
 .modal-container {
