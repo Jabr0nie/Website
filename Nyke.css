@@ -24,11 +24,14 @@ body {
     cursor: pointer;
   }
 
-  .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
     float: right;
-    display: block;
+    display: none;
     color: #a6fbb2;
+  }
+
+  .myLinks {
+    display: block;
   }
 
   .maincontent {
@@ -52,6 +55,7 @@ body {
     margin-right: 20%;
     margin-top: 0%;
     margin-bottom: 0%;
+    overflow: hidden;
     color: aliceblue;
     height:100%;
     font-size: 25px;
@@ -199,6 +203,18 @@ float: right;
     height:60%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
+
+  /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 1000px) {
+  .topnav a.icon {
+    float: right;
+    display: block;
+    color: #a6fbb2;
+  }
+  .tdmobile {
+    display: none;
+  }
+}
 
   @media screen and (max-width: 1300px) {
     .maincontent {
@@ -485,6 +501,12 @@ tr:not(:first-child):hover div{
   color: #0D131A;
 } 
 
+/* Hide the links inside the navigation menu (except for logo/home) */
+.topnav #myLinks {
+  display: none;
+}
+
+
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 850px) {
 .logo {
@@ -528,24 +550,38 @@ tr:not(:first-child):hover div{
     
     }
 
+
   .flex-container {
     display: flexbox; 
     flex-direction: row-reverse;
-    width: 96%;
-    margin-left: 2%;
-    margin-right: 2%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
     min-width: 300px;
     margin-top: 0%;
-    height:70%;
+    height:100%;
+    overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
 
+    .UserBalanceOutput {
+      font-size: 100%;
+    }
+    .UserBalanceOutputB {
+      font-size: 100%;
+    }
+    .UserBorrowLimit {
+      font-size: 100%;
+    }
+    .UserBorrowLimit{
+      font-size: 100%;
+    }
     .borrowtextleft {
       width: 45%;
       display: inline-block;
       margin-left: 5%;
       margin-right: 0%;
       margin-bottom: 3%;
-      margin-top: 12%;
+      margin-top: 0%;
     }
     
     .borrowtextright {
@@ -553,7 +589,7 @@ tr:not(:first-child):hover div{
       margin-right: 5%;
       margin-left: 0%;
       margin-bottom: 2%;
-      margin-top: 12%;
+      margin-top: 0%;
       width: 35%;
     }
 
@@ -567,8 +603,8 @@ tr:not(:first-child):hover div{
 
     .MarketDetails {
       display: block;
-      margin-top: 26%;
-      height: 40%;
+      margin-top: 0%;
+      height: 30%;
       width: 100%;
       font-size: 80%;
     }
@@ -694,6 +730,7 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 /* Modal Content */
+
 .modal-content {
   display: none;
   background-color:#0D131A;

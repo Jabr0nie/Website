@@ -1,12 +1,15 @@
 function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
+    var x = document.getElementById("myLinks");
+    var Logo = document.getElementById("logo");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+      Logo.style.display = "block";
+
     } else {
-      x.className = "topnav";
+      x.style.display = "block";
+      Logo.style.display = "none";
     }
   }
-  
               // Setting getblock node as HTTP provider
               const provider = new Web3.providers.HttpProvider("https://go.getblock.io/60e5a3f8fbcd4953b12b226760d7e5e1/");
               // Creating web3 instance with given provider
