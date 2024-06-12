@@ -915,7 +915,7 @@ input:checked + .slider:before {
  }
 
     .header__mobile-overlay {
-        background: var(--ui--background);
+        background: #0D131A;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -926,7 +926,7 @@ input:checked + .slider:before {
         left: 0;
         height: 100vh;
         width: 100vw;
-        opacity: 0;
+        opacity: 100;
         transition: all .3s linear;
         z-index: 1000
     }
