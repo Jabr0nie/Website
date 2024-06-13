@@ -17,7 +17,9 @@ body {
   }
 
   .logo {
-    float: left;
+    width: 150px;
+    height: 40px;
+    margin: 15px;
   }
 
   .logo:hover {
@@ -28,11 +30,13 @@ body {
     float: right;
     display: none;
     color: #a6fbb2;
+    font-size: 225%;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    padding-right: 20px;
+    padding-left: 5px;
   }
 
-  .myLinks {
-    display: block;
-  }
 
   .maincontent {
     display: flexbox;
@@ -40,7 +44,7 @@ body {
     width: 100%;
     height: 600px;
     align-items: center;
-    overflow-x: hidden;
+    overflow: hidden;
     float: right;
   }
 
@@ -59,7 +63,7 @@ body {
     color: aliceblue;
     height:100%;
     font-size: 25px;
-    font-family:  Haas Grot Text R, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
 .UseBalanceText {
@@ -152,7 +156,7 @@ body {
     border-radius: 5px;
     width: 100%;
     height:70%;
-    font-family: Haas Grot Text R, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
   .MarketsText {
@@ -174,7 +178,7 @@ body {
     height:60%;
     margin-right: 5%;
     margin-left: 0%;
-    font-family: Haas Grot Text R, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   }
 
@@ -191,6 +195,11 @@ float: right;
   margin-left: 5%;
 }
 
+.header__mobile-overlay {
+
+  display: none;
+
+}
 
   .Borrowed{
     display: flexbox;
@@ -205,15 +214,66 @@ float: right;
   }
 
   /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1150px) {
   .topnav a.icon {
     float: right;
     display: block;
     color: #a6fbb2;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
   }
   .tdmobile {
     display: none;
   }
+
+  .headermenu {
+    display: none;
+  }
+  .header__mobile-overlay {
+    background: #0D131A;
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin-left: 20%;
+    overflow: hidden;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+.header__mobile-overlay--active {
+    opacity: 1;
+    pointer-events: unset;
+    top: 0;
+
+}
+
+.headermobilemenu{
+  display: flex;
+  flex-direction: column;
+  text-align: unset;
+  margin-top: 5%;
+}
+
+.headermobilemenu a {
+  color: aliceblue;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+  font-size: 200%;
+  line-height: 1.5;
+  text-decoration: none;}
+
+  .headermobilemenu a:hover {
+  background-color: #0D131A;
+  color: #a6fbb2
+}
+
+
+.headermobilemenu a.active {
+  background-color: #a6fbb2;
+  color: #0D131A;
+} 
 }
 
   @media screen and (max-width: 1300px) {
@@ -310,7 +370,7 @@ float: right;
     color: #7a8a99;
     font-size: 90%;
     font-weight: 600;
-    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
     width: 100%;
     height: 2%;
   
@@ -320,7 +380,7 @@ float: right;
     color: #7a8a99;
     font-size: 90%;
     font-weight: 600;
-    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
     width: 100%;
     height: 2%;
   
@@ -336,9 +396,9 @@ float: right;
   overflow: hidden;
   background-color:#1D2833;
   color: #a6fbb2; 
-  font-size: 10px; 
+  font-size: 15px; 
   font-weight: 600;
-  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   }
 
   .MetaMask:hover {
@@ -354,7 +414,7 @@ float: right;
     background-color:#a6fbb2;
     color: #0D131A;
     font-size: 15px; 
-    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
     }
   
 table {
@@ -407,7 +467,7 @@ td:not(:first-child) {
   color: #7a8a99;
   font-size: 90%;
   font-weight: 600;
-  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   width: 100%;
   height: 2%;
 
@@ -486,7 +546,7 @@ tr:not(:first-child):hover div{
   padding: 20px 20px;
   text-decoration: none;
   font-size: 15px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
 }
 
 /* Change the color of links on hover */
@@ -507,15 +567,6 @@ tr:not(:first-child):hover div{
 }
 
 
-/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-@media screen and (max-width: 850px) {
-.logo {
-  width: 150px;
-  height: 40px;
-  margin: 15px;
-
-}
-}
 
 
 
@@ -542,11 +593,22 @@ tr:not(:first-child):hover div{
     align-items: center;
   }
 
+  .header__mobile-overlay {
+    background: #0D131A;
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin-left: 10%;
+
+
+}
+
 
     .logo {
-      width: 150px;
-      height: 40px;
-      margin: 15px;
+      width: 120px;
+      height: 50px;
+      margin: 10px;
     
     }
 
@@ -792,7 +854,7 @@ input:checked + .slider:before {
   text-decoration: none;
   font-size: 80%;
   font-weight: 600;
-  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   height: 100%;
 }
 
@@ -818,7 +880,7 @@ input:checked + .slider:before {
   font-size: 17px;
   font-weight: 600;
   border-radius: 5px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   height: 60%;
 }
 
@@ -864,7 +926,7 @@ input:checked + .slider:before {
   display: flexbox;
   background-color: #4a5568;
   border-radius: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   border: none;
   text-align: right;
   color: aliceblue;
@@ -880,7 +942,7 @@ input:checked + .slider:before {
  input input[type=text]:focus {
   background-color: #4a5568;
   color: aliceblue;
-  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   font-size: 100%;
 }
 
@@ -907,34 +969,10 @@ input:checked + .slider:before {
   color: #a6fbb2;
   font-size: 100%;
   align-content: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   text-align: center;
   font-weight: 600;
   height: 50%;
   width: 80%;
  }
 
-    .header__mobile-overlay {
-        background: #0D131A;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 2.5rem;
-        position: absolute;
-        pointer-events: none;
-        top: 2rem;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-        opacity: 100;
-        transition: all .3s linear;
-        z-index: 1000
-    }
-
-    .header__mobile-overlay--active {
-        opacity: 1;
-        pointer-events: unset;
-        top: 0;
-        z-index: 1500
-    }
-}

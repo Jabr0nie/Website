@@ -1,10 +1,12 @@
 function myFunction() {
     var x = document.getElementById("myLinks");
-    var Logo = document.getElementById("logo");
-    if (x.style.display === "block") {
+    var m = document.getElementById("connectbutton");
+    if (x.style.display === "flex") {
       x.style.display = "none";
+      m.style.display = "flex";
     } else {
-      x.style.display = "block";
+      x.style.display = "flex";
+      m.style.display = "none";
     }
   }
               // Setting getblock node as HTTP provider

@@ -23,24 +23,31 @@
 	<body class="body">
 		<div id="root">
 			<div class="topnav" id="myTopnav">
+				<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+					<i class="fa fa-bars"></i>
+				</a>
 				<button class="MetaMask" id="connectbutton" value="Connect Metamask">
 					Connect Metamask</button>
-					<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-						<i class="fa fa-bars"></i>
-					</a>
-					<div class="header__mobile-overlay" id="myLinks">
+					  <div class="headermenu">
 						<a href="#news">News</a>
 						<a href="#contact">Contact</a>
 						<a href="#about">About</a>
+						<a href="#about">Home</a>
 					  </div>
 				<img id="logo" href="NYKE.HTML" class="logo" src="Images\NykeGreenNBanner.svg" width="300px"
 					height="80px">
 			</div>
 
-			<div style="clear: both;"></div>
-
 			<div class="maincontent">
-				<div class="flex-container">
+				<div style="clear: both;"></div>
+				<div class="header__mobile-overlay" id="myLinks">
+					<div class="headermobilemenu">
+					<a href="#news">Dashboard</a>
+					<a href="#contact">Rewards</a>
+					<a href="#about">Markets</a>
+					</div>
+				  </div>
+				<div class="flex-container" id="flexcontainer">
 					<div class = "UserDetails">
 					<div class = "supplyshell">
 						<div class="supplytextleft">
