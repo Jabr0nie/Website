@@ -17,10 +17,18 @@ body {
   }
 
   .footer {
-    position: absolute;
+    display: inline-block;
     bottom: 0;
-    margin-left: 45%;
-    margin-right: 45%;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .footerwrapper {
+    margin-left: 5px;
+    margin-right: 5px;
+    text-decoration: none;
   }
 
   .footericon:hover {
@@ -569,10 +577,9 @@ tr:not(:first-child):hover div{
 
 /* Style the links inside the navigation bar */
 .topnav a {
-  float: right;
+  float: left;
   color:#f0f8ff;
   text-align: center;
-  padding: 20px 20px;
   text-decoration: none;
   font-size: 15px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
