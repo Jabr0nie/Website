@@ -432,9 +432,15 @@ function myFunction() {
                               balance = balance.toFixed(2);
                               console.log(balance + "ETC");
                               const ETCBalance = document.getElementById('ETCBalance');
-                              ETCBalance.innerText = `${balance}`;
-                      //Get Borrowed Balance
-                      })}
+                              ETCBalance.innerText = `${balance}`;});
+                      let _UserETCSupplied;
+                    nETCContractMM.methods.balanceOf(`${account}`).call().then(result => {
+                      _UserETCSupplied = result;
+                      let UserETCSupply2 = _UserETCSupplied / (10 ** 18);
+                      console.log(result);
+                      const UserSuppliedETC2 = document.getElementById('UserETCSupply2');
+                        UserSuppliedETC2.innerText = `${UserETCSupply2.toFixed(2)} ETC`;	
+                  })}
   
                   function WithdrawlModal() {
                       document.getElementById('modal-supply').style.display = "none";
@@ -448,8 +454,8 @@ function myFunction() {
                         let UserETCSupply = _UserETCSupplied / (10 ** 18);
                         console.log(result);
                         const UserSuppliedETC = document.getElementById('UserETCSupply');
-                          UserSuppliedETC.innerText = `${UserETCSupply.toFixed(2)} ETC`;	
-                  })}
+                          UserSuppliedETC.innerText = `${UserETCSupply.toFixed(2)} ETC`;});	
+                  }
   
                   function BorrowModal() {
                       document.getElementById('modal-supply').style.display = "none";
@@ -552,20 +558,10 @@ function myFunction() {
                       
                       for (var i = 1; i < rows.length; i++) {  
                       var currentRow = table.rows[i];  
-                      var createClickHandler = function(currentRow) { return function() {
-                          var row = element.getAttribute('data-row'); 
-                          if (row = 1) {
-                          document.getElementById('modal-container').style.display = "block";
-                          document.getElementById('modal-supply').style.display = "block";
-                          SupplyModal();}
-                          else {
-                              document.getElementById('modal-container').style.display = "block";
-                              document.getElementById('USCmodal-supply').style.display = "block";
-                          }
-                      };  
-                      };  
+                     
   
                       function ETCrow() {
+
                           document.getElementById('modal-container').style.display = "block";
                           document.getElementById('modal-supply').style.display = "block";
                           document.getElementById('modal-withdrawl').style.display = "none";
@@ -575,6 +571,7 @@ function myFunction() {
                           document.getElementById('USCmodal-withdrawl').style.display = "none";
                           document.getElementById('USCmodal-borrow').style.display = "none";
                           document.getElementById('USCmodal-repay').style.display = "none";
+                        SupplyModal();
                       }
                       function USCrow() {
                           document.getElementById('modal-container').style.display = "block";
@@ -588,9 +585,11 @@ function myFunction() {
                           document.getElementById('USCmodal-repay').style.display = "none";
                       }
       
-                      table.rows[1].onclick = ETCrow;  
+                      table.rows[1].onclick = ETCrow;    
                       table.rows[2].onclick = USCrow;
                   }
+
+
       function closeModal(){
                           document.getElementById('modal-container').style.display = "none";
                           document.getElementById('modal-supply').style.display = "none";

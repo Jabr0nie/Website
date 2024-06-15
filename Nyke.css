@@ -485,7 +485,7 @@ table {
   width: 90%;
  border-collapse: collapse;
   border-radius: 25px;
-  color: #f0f8ff;
+  color: #D8D7DB;
   text-align: left;
   height: 95%;
   margin-bottom: 2%;
@@ -606,7 +606,7 @@ tr:not(:first-child):hover div{
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
-  color:#f0f8ff;
+  color:#D8D7DB;
   text-align: center;
   text-decoration: none;
   font-size: 15px;
@@ -637,15 +637,6 @@ tr:not(:first-child):hover div{
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 500px) {
 
-  .modalclosebutton {
-    display: block;
-    width: 10%;
-    color:#1eeadb;
-    border: 1px solid #1eeadb;
-    background-color: #4a5568;
-    cursor: pointer;
-    float: right;
-  }
 
   .topnav {
     display: inline-flexbox;
@@ -829,7 +820,7 @@ input:checked + .slider {
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #f0f8ff;
+  box-shadow: 0 0 1px #D8D7DB;
 }
 
 input:checked + .slider:before {
@@ -871,8 +862,9 @@ input:checked + .slider:before {
 }
 
 .modalButton Button:hover {
-  background-color:#1e2838;
+  background-color:#1eeadb;
   border: 3px solid #1eeadb;
+  color: #070e52;;
   cursor: pointer;
 }
 /* Modal Content */
@@ -883,7 +875,7 @@ input:checked + .slider:before {
   border-radius: 25px;
   margin: auto;
   border: 5px solid  #1eeadb;
-  width: 350px;
+  width: 340px;
   height: 480px;
   backdrop-filter: blur(10px);
   padding: 10px;
@@ -897,14 +889,11 @@ input:checked + .slider:before {
 
 .modalclosebutton {
   display: block;
-  width: 10%;
-  color:#1eeadb;
-  border: 1px solid #1eeadb;
-  background-color: #4a5568;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   float: right;
 }
-
 .stats-container {
   display: inline-flex;
   margin: 5%;
@@ -918,7 +907,7 @@ input:checked + .slider:before {
 
 .Stats-Output {
   text-align: right;
-  color: rgb(167, 251, 178);
+  color:#1eeadb;
 }
 
 .modalnav {
@@ -930,11 +919,11 @@ input:checked + .slider:before {
 
 .modalnav a{
   display: inline-flexbox;
-  color:#f0f8ff;
+  color:#D8D7DB;
   float: right;
   text-align: center;
   width: 25%;
-  padding-top: 18px;
+  padding-top: 16px;
   text-decoration: none;
   font-size: 80%;
   font-weight: 600;
@@ -951,13 +940,13 @@ input:checked + .slider:before {
 /* Add a color to the active/current link */
 .modalnav a.active {
   background-color: #1eeadb;
-  color: rgb(21, 27, 40);
+  color:#03032c;
 } 
 
 .modalbody {
   display: inline-flexbox;
-  color:#f0f8ff;
-  background-color: rgb(21, 27, 40);
+  color:#D8D7DB;
+  background-color: #03032c;
   width: 100%;
   float: left;
   text-decoration: none;
@@ -970,7 +959,7 @@ input:checked + .slider:before {
 
 .WalletBalance a{
   color: #D8D7DB;
-  background-color: rgb(21, 27, 40);
+  background-color:#03032c;
   text-align: left;
   align-items: left;
   float: left;
@@ -979,8 +968,8 @@ input:checked + .slider:before {
 
 .WalletBalance{
   display: flexbox;
-  color: rgb(240, 248, 255);
-  background-color: rgb(21, 27, 40);
+  color: #D8D7DB;
+  background-color: #03032c;
   text-align: left;
   align-items: center;
   align-content: center;
@@ -1033,7 +1022,6 @@ input:checked + .slider:before {
  .modalButton {
   background-color:#03032c;
   display: flexbox;
-  border: none;
   color: #1eeadb;
   font-size: 100%;
   float: right;
@@ -1047,9 +1035,9 @@ input:checked + .slider:before {
 
 
  .modalButton Button{
-  background-color:#4a5568;
-  border-radius: 10px;
-  border: none;
+  background-color:#070e52;
+  border-radius: 25px;
+  border: 2px solid #1eeadb;
   color: #1eeadb;
   font-size: 100%;
   align-content: center;

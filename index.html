@@ -166,7 +166,9 @@
 			<!-- Modal content -->
 			<div id="modal-supply" class="modal-content">
 				<img src="Images\ethereum-classic-etc-logo.png" class="image">
-				<button class="modalclosebutton" onclick="closeModal()">X</button>
+				<a class="modalclosebutton" onclick="closeModal()">
+					<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
+				</a>
 				<div style="clear: both;"></div>
 				<div class="modalnav">
 					<a onclick="RepayModal()">Repay</a>
@@ -179,13 +181,15 @@
 					<div class="WalletBalance">
 						<div style="clear: both;"></div>
 						<a>Wallet Balance: <div id="ETCBalance"
-								style="display: inline-block; color:  #a6fbb2;"></div>
+								style="display: inline-block; color:  #1eeadb;"></div>
 							ETC</a>
 					</div>
 					<div class="input">
 						<input type="text" id="ETCDeposit" placeholder="Enter Amount Here...">
 					</div>
 					<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="ETCSupplyRateModal"></div></div>
+					<div class="stats-container"><div class="Stats">Supply Balance</div><div class="Stats-Output" id="UserETCSupply2"></div></div>
+					<div class="stats-container"><div class="Stats">Collateral Factor</div><div class="Stats-Output"> 70%</div></div>
 				</div>
 				<div class="modalButton">
 					<button id="ETCDepositButton">Supply</button>
@@ -193,7 +197,9 @@
 			</div>
 			<div id="modal-withdrawl" class="modal-content">
 				<img src="Images\ethereum-classic-etc-logo.png" class="image">
-				<button class="modalclosebutton" onclick="closeModal()">X</button>
+				<a class="modalclosebutton" onclick="closeModal()">
+					<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
+				</a>
 				<div class="modalnav">
 					<a onclick="RepayModal()">Repay</a>
 					<a onclick="BorrowModal()">Borrow</a>
@@ -205,7 +211,7 @@
 					<div class="WalletBalance">
 						<div style="clear: both;"></div>
 						<a>Supplied Balance: <div id="UserETCSupply"
-								style="display: inline-block; color:  #a6fbb2;"></div>
+								style="display: inline-block; color:  #1eeadb;"></div>
 							ETC</a>
 					</div>
 					<div class="input">
@@ -220,7 +226,9 @@
 			</div>
 			<div id="modal-borrow" class="modal-content">
 				<img src="Images\ethereum-classic-etc-logo.png" class="image">
-				<button class="modalclosebutton" onclick="closeModal()">X</button>
+				<a class="modalclosebutton" onclick="closeModal()">
+					<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
+				</a>
 				<div class="modalnav">
 					<a onclick="RepayModal()">Repay</a>
 					<a class="active" onclick="BorrowModal()">Borrow</a>
@@ -246,7 +254,9 @@
 			
 			<div id="modal-repay" class="modal-content">
 				<img src="Images\ethereum-classic-etc-logo.png" class="image">
-				<button class="modalclosebutton" onclick="closeModal()">X</button>
+				<a class="modalclosebutton" onclick="closeModal()">
+					<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
+				</a>
 				<div class="modalnav">
 					<a class="active" onclick="RepayModal()">Repay</a>
 					<a onclick="BorrowModal()">Borrow</a>
@@ -257,7 +267,7 @@
 				<div class="modalbody">
 					<div class="WalletBalance">
 						<div style="clear: both;"></div><a>Borrowed Balance: <div id="ETCBorrowBalance"
-						style="display: inline-block; color:  #a6fbb2;"></div> ETC</a>
+						style="display: inline-block; color:  #1eeadb;"></div> ETC</a>
 						
 					</div>
 					<div class="input">
@@ -272,7 +282,9 @@
 <!-- USC Modal content -->
 <div id="USCmodal-supply" class="modal-content">
 	<img src="Images\usc-logo.png" class="image">
-	<button class="modalclosebutton" onclick="closeModal()">X</button>
+	<a class="modalclosebutton" onclick="closeModal()">
+		<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
+	</a>
 	<div style="clear: both;"></div>
 	<div class="modalnav">
 		<a onclick="USCRepayModal()">Repay</a>
@@ -285,7 +297,7 @@
 		<div class="WalletBalance">
 			<div style="clear: both;"></div>
 			<a>Wallet Balance: <div id="USCBalance"
-					style="display: inline-block; color:  #a6fbb2;"></div>
+					style="display: inline-block; color:  #1eeadb;"></div>
 				USC</a>
 		</div>
 		<div class="input">
@@ -297,8 +309,10 @@
 		<button id="USCDepositButton">Supply</button>
 	</div>
 </div>
-<div id="modal-withdrawl" class="modal-content">
-	<button class="modalclosebutton" onclick="closeModal()">X</button>
+<div id="USCmodal-withdrawl" class="modal-content">
+	<a class="modalclosebutton" onclick="closeModal()">
+		<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
+	</a>
 	<img src="Images\usc-logo.png" class="image">
 	<div class="modalnav">
 		<a onclick="USCRepayModal()">Repay</a>
@@ -311,7 +325,7 @@
 		<div class="WalletBalance">
 			<div style="clear: both;"></div>
 			<a>Supplied Balance: <div id="UserETCSupply"
-					style="display: inline-block; color:  #a6fbb2;"></div>
+					style="display: inline-block; color:  #1eeadb;"></div>
 				ETC</a>
 		</div>
 		<div class="input">
@@ -324,9 +338,11 @@
 	</div>
 	
 </div>
-<div id="modal-borrow" class="modal-content">
+<div id="USCmodal-borrow" class="modal-content">
 	<img src="Images\usc-logo.png" class="image">
-	<button class="modalclosebutton" onclick="closeModal()">X</button>
+				<a class="modalclosebutton" onclick="closeModal()">
+		<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
+	</a>
 	<div class="modalnav">
 		<a onclick="USCRepayModal()">Repay</a>
 		<a class="active" onclick="USCBorrowModal()">Borrow</a>
@@ -350,9 +366,11 @@
 	</div>
 </div>
 
-<div id="modal-repay" class="modal-content">
+<div id="USCmodal-repay" class="modal-content">
 	<img src="Images\usc-logo.png" class="image">
-	<button class="modalclosebutton" onclick="closeModal()">X</button>
+	<a class="modalclosebutton" onclick="closeModal()">
+		<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
+	</a>
 	<div class="modalnav">
 		<a class="active" onclick="USCRepayModal()">Repay</a>
 		<a onclick="USCBorrowModal()">Borrow</a>
@@ -363,7 +381,7 @@
 	<div class="modalbody">
 		<div class="WalletBalance">
 			<div style="clear: both;"></div><a>Borrowed Balance: <div id="ETCBorrowBalance"
-			style="display: inline-block; color:  #a6fbb2;"></div> ETC</a>
+			style="display: inline-block; color:  #1eeadb;"></div> ETC</a>
 			
 		</div>
 		<div class="input">
