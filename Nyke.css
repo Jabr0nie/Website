@@ -19,8 +19,7 @@ body {
   .footer {
     display: inline-block;
     bottom: 0;
-    padding-top: 50px;
-    padding-bottom: 10px;
+    padding-top: 10%;
     width: 100%;
     text-align: center;
   }
@@ -253,6 +252,15 @@ float: right;
   .tdmobile {
     display: none;
   }
+  
+  .Markets {
+    display: block;
+    background-color:#070e52;
+    border-radius: 5px;
+    width: 100%;
+    height:60%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
 
   .headermenu {
     display: none;
@@ -309,10 +317,20 @@ float: right;
       background-color:  #03032c;
       width: 100%;
       height: 800px;
+      margin-top: 4%;
       justify-items: center;
       align-items: center;
       overflow-x: hidden;
       float: right;
+    }
+
+    .footer {
+      display: inline-block;
+      bottom: 0;
+      padding-top: 2%;
+      padding-bottom: 1%;
+      width: 100%;
+      text-align: center;
     }
 
     .borrowtextleft {
@@ -350,14 +368,23 @@ float: right;
 
     .MarketDetails {
       display: block;
-      margin-top: 6%;
+      margin-top: 5%;
       height: 33%;
       width: 100%;
       font-size: 80%;
     }
 
+    .Markets {
+      display: block;
+      background-color:#070e52;
+      border-radius: 5px;
+      width: 100%;
+      height:60%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
     .MarketsText {
-      height: 5%;
+      height: 8%;
       margin-left: 5%;
     }
   
@@ -365,6 +392,7 @@ float: right;
     .UserDetails {
       flex-wrap: wrap;
       height: 66%;
+      margin-top: 0%;
       min-width: 300px;}
 
       .supplyshell {
@@ -379,7 +407,7 @@ float: right;
         background-color: #070e52;
         border-radius: 5px;
         width: 100%;
-        height:70%;
+        height:60%;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
       .borrowshell {
@@ -396,7 +424,7 @@ float: right;
         background-color: #070e52;
         border-radius: 5px;
         width: 100%;
-        height:70%;
+        height:60%;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
   }
@@ -711,7 +739,7 @@ tr:not(:first-child):hover div{
     }    
     .MarketDetails {
       display: block;
-      margin-top: 0%;
+      margin-top: 4%;
       height: 33%;
       width: 100%;
       font-size: 80%;
@@ -746,6 +774,15 @@ tr:not(:first-child):hover div{
       height:60%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+    .footer {
+      display: inline-block;
+      bottom: 0;
+      padding-top: 8%;
+      padding-bottom: 3%;
+      width: 100%;
+      text-align: center;
+    }
+
   }
 
 /*Enter and Exit Market Switches */
@@ -847,7 +884,7 @@ input:checked + .slider:before {
   margin: auto;
   border: 5px solid  #1eeadb;
   width: 350px;
-  height: 550px;
+  height: 480px;
   backdrop-filter: blur(10px);
   padding: 10px;
 }
@@ -896,8 +933,8 @@ input:checked + .slider:before {
   color:#f0f8ff;
   float: right;
   text-align: center;
-  align-content: center;
   width: 25%;
+  padding-top: 18px;
   text-decoration: none;
   font-size: 80%;
   font-weight: 600;
