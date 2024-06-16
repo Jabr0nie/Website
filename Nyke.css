@@ -867,6 +867,14 @@ input:checked + .slider:before {
   color: #070e52;;
   cursor: pointer;
 }
+
+.input Button:hover {
+  background-color:#1eeadb;
+  border: 2px solid #1eeadb;
+  color: #070e52;;
+  cursor: pointer;
+}
+
 /* Modal Content */
 
 .modal-content {
@@ -896,13 +904,13 @@ input:checked + .slider:before {
 }
 .stats-container {
   display: inline-flex;
-  margin: 5%;
+  margin: 2%;
   width: 90%;
   font-size: 85%;
 }
 
 .stats-container div {
-  width: 45%;
+  width: 50%;
 }
 
 .Stats-Output {
@@ -975,13 +983,13 @@ input:checked + .slider:before {
   align-content: center;
   float: left;
   width: 100%;
-  margin-top: 2%;
+  margin-top: 5%;
   margin-bottom: 2%;
   height: 10%;
 }
 
 .input {
-  display: flexbox;
+  display: inline-flexbox;
  width: 80%;
  background-color: #4a5568;
  margin-left: 5%;
@@ -990,13 +998,14 @@ input:checked + .slider:before {
  padding-right: 5%;
  align-items: center;
  align-content: center;
- margin-top: 10%;
+ margin-top: 15%;
+ margin-bottom: 2%;
  border-radius: 10px;
- height: 10%;
+ height: 15%;
  min-width: fit-content;
 }
+
 .input input {
-  display: flexbox;
   background-color: #4a5568;
   border-radius: 10px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
@@ -1008,16 +1017,30 @@ input:checked + .slider:before {
   float: right;
   outline: none;
   box-shadow: none;
+  font-size: 100%;
+  font-weight: 600;
+  width: 60%;
+  margin-right: 5px;
+ }
+ .input button {
+  background-color: #070e52;
+  border-radius: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
 
-  width: 100%;
+  border: 2px solid #1eeadb;
+  color: #1eeadb;
+  text-align: center;
+  float: right;
+  outline: none;
+  box-shadow: none;
+  font-size: 80%;
+  font-weight: 400;
+  width: 20%;
+  height: 55%;
+  margin-top: 2px;
+  margin-left: 2%;
  }
 
- input input[type=text]:focus {
-  background-color: #4a5568;
-  color: #D8D7DB;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
-  font-size: 100%;
-}
 
  .modalButton {
   background-color:#03032c;

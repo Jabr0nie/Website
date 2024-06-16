@@ -99,9 +99,9 @@ function myFunction() {
                             //Collateral Factor
                                 const USCStatus = document.getElementById("USCCheckbox");
                                 const ETCStatus = document.getElementById("ETCCheckbox");
-                                    let MaxBorrow =((Liabilities/((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)))*100).toFixed(2);
-                                    document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow}%`;
-                                
+                                    let borrowlimit = ((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)).toFixed(2);
+                                    let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)))*100).toFixed(2);
+                                    document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow}%`;                           
                             });
                             });
                         });
@@ -190,7 +190,7 @@ function myFunction() {
                                 //Collateral Factor
                                     const USCStatus = document.getElementById("USCCheckbox");
                                     const ETCStatus = document.getElementById("ETCCheckbox");
-                                        let MaxBorrow =((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)).toFixed(2);
+                                    let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)))*100).toFixed(2);
                                         document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow}%`;
                                 });
                                 });
@@ -240,6 +240,7 @@ function myFunction() {
                   const YourUSCSupplied = document.getElementById('YourUSCSupplied');
                   const ETCSupplyRateOutput = document.getElementById('ETCSupplyRateOutput');
                   const ETCSupplyRateModal = document.getElementById('ETCSupplyRateModal');
+                  const ETCSupplyRateModal2 = document.getElementById('ETCSupplyRateModal2');
                   const ETCSupplierSupplyRate = document.getElementById('ETCSupplyRateOutputSupply');
                   const ETCBorrowRateOutput = document.getElementById('ETCBorrowRateOutput');
                   const ETCBorrowedRate1 = document.getElementById('ETCBorrowedRate1');
@@ -286,6 +287,7 @@ function myFunction() {
                       const ETCSupplyRate = ((_ETCSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
                       ETCSupplyRateOutput.innerText = `${ETCSupplyRate.toFixed(2)}%`;
                       ETCSupplyRateModal.innerText = `${ETCSupplyRate.toFixed(2)}%`;
+                      ETCSupplyRateModal2.innerText = `${ETCSupplyRate.toFixed(2)}%`;
                       ETCSupplierSupplyRate.innerText = `${ETCSupplyRate.toFixed(2)}%`;
                     
                       
@@ -389,8 +391,147 @@ function myFunction() {
 					}
 					}
   
+   //Update BorrowLimit and Borrow Amount Used
+   function UpdateBorrowLimit() {
+    let account = document.getElementById('connectbutton').innerHTML;
+    //ETC Borrowed
+        nETCContract.methods.borrowBalanceCurrent(account).call({from: account}, function(err,ETCBorrow){
+        ETCBorrow = ETCBorrow / (10 ** 18);
+        ETCBorrow = ETCBorrow.toFixed(2);
+        document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow} ETC`;
+    //USC Borrowed Amount
+    nUSCContract.methods.borrowBalanceCurrent(account).call({from: account}).then(USCBorrow => {
+        USCBorrow = USCBorrow / (10 ** 6);
+        USCBorrow = USCBorrow.toFixed(2);
+        document.getElementById('USCBorrowedUser').innerText = `${USCBorrow} USC`;
+
+    // Oracle Price Update
+    OracleContract.methods.GetUnderlyingPrice('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(USCPrice => {
+        USCPrice = USCPrice / (10 ** 18);
+        USCPrice = (USCPrice.toFixed(2));
+     //USC Supplied Amount
+  nUSCContract.methods.balanceOf(account).call({from: account}).then(USCSup => {
+    USCSup = USCSup / (10 ** 4);
+    USCSup = USCSup.toFixed(2);
+    document.getElementById('YourUSCSupplied').innerText = `${USCSup} USC`;
+    //ETC Supplied
+  nETCContract.methods.balanceOf(account).call({from: account}, function(err,ETCSupplied){
+    console.log(ETCSupplied);
+   ETCSupplied = ETCSupplied / (10 ** 18);
+   ETCSupplied = ETCSupplied.toFixed(2);
+   document.getElementById('YourETCSupplied').innerText = `${ETCSupplied} ETC`;
+    OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(ETCPrice => {
+        ETCPrice = ETCPrice / (10 ** 18);
+        ETCPrice = (ETCPrice.toFixed(2));
+        let ETCAsset = (ETCPrice * ETCSupplied);
+        let USCAsset = (USCPrice * USCSup);
+        let Assets = ((USCAsset + ETCAsset).toFixed(2));
+        document.getElementById('UserAssetBalance').innerText = `$${Assets}`;
+        let ETCLiability = (ETCPrice * ETCBorrow);
+        let USCLiability = (USCPrice * USCBorrow);
+        let Liabilities = ((USCLiability + ETCLiability).toFixed(2));
+        document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
+    //User APR
+    const BlocksPerYear = 2425790;
+    nETCContract.methods.supplyRatePerBlock().call().then(ETCSupplyRate1 => {
+        ETCSupplyRate1 = ((ETCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
+    nETCContract.methods.borrowRatePerBlock().call().then(ETCBorrowRate1 => { 
+        ETCBorrowRate1 = ((ETCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
+    nUSCContract.methods.supplyRatePerBlock().call().then(USCSupplyRate1 => {
+        USCSupplyRate1 = ((USCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
+    nUSCContract.methods.borrowRatePerBlock().call().then(USCBorrowRate1 => {
+        USCBorrowRate1 = ((USCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
+    const UserRate = document.getElementById('UserAPR');
+    let Weight = ((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1)).toFixed(2);
+    UserRate.innerText = `${Weight}%`;
+        });});});});
+    //Collateral Factor
+        const USCStatus = document.getElementById("USCCheckbox");
+        const ETCStatus = document.getElementById("ETCCheckbox");
+            let BorrowLimit = ((ETCAsset * 0.7 * ETCStatus.checked) + (USCAsset * 0.7 * USCStatus.checked)).toFixed(2);
+            document.getElementById('BorrowLimit1').innerText = `$${BorrowLimit}`;
+            let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)))*100).toFixed(2);
+            document.getElementById('BorrowLimitUsed1').innerText = `${MaxBorrow}%`;
+    });
+    });
+});
+});
+});});};
   
-  
+
+   //SafeMax Calculation
+   function SafeMaxValue() {
+    let account = document.getElementById('connectbutton').innerHTML;
+    //ETC Borrowed
+        nETCContract.methods.borrowBalanceCurrent(account).call({from: account}, function(err,ETCBorrow){
+        ETCBorrow = ETCBorrow / (10 ** 18);
+        ETCBorrow = ETCBorrow.toFixed(2);
+        document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow} ETC`;
+    //USC Borrowed Amount
+    nUSCContract.methods.borrowBalanceCurrent(account).call({from: account}).then(USCBorrow => {
+        USCBorrow = USCBorrow / (10 ** 6);
+        USCBorrow = USCBorrow.toFixed(2);
+        document.getElementById('USCBorrowedUser').innerText = `${USCBorrow} USC`;
+
+    // Oracle Price Update
+    OracleContract.methods.GetUnderlyingPrice('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(USCPrice => {
+        USCPrice = USCPrice / (10 ** 18);
+        USCPrice = (USCPrice.toFixed(2));
+     //USC Supplied Amount
+  nUSCContract.methods.balanceOf(account).call({from: account}).then(USCSup => {
+    USCSup = USCSup / (10 ** 4);
+    USCSup = USCSup.toFixed(2);
+    document.getElementById('YourUSCSupplied').innerText = `${USCSup} USC`;
+    //ETC Supplied
+  nETCContract.methods.balanceOf(account).call({from: account}, function(err,ETCSupplied){
+    console.log(ETCSupplied);
+   ETCSupplied = ETCSupplied / (10 ** 18);
+   ETCSupplied = ETCSupplied.toFixed(2);
+   document.getElementById('YourETCSupplied').innerText = `${ETCSupplied} ETC`;
+    OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(ETCPrice => {
+        ETCPrice = ETCPrice / (10 ** 18);
+        ETCPrice = (ETCPrice.toFixed(2));
+        let ETCAsset = (ETCPrice * ETCSupplied);
+        let USCAsset = (USCPrice * USCSup);
+        let Assets = ((USCAsset + ETCAsset).toFixed(2));
+        document.getElementById('UserAssetBalance').innerText = `$${Assets}`;
+        let ETCLiability = (ETCPrice * ETCBorrow);
+        let USCLiability = (USCPrice * USCBorrow);
+        let Liabilities = ((USCLiability + ETCLiability).toFixed(2));
+        document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
+    //User APR
+    const BlocksPerYear = 2425790;
+    nETCContract.methods.supplyRatePerBlock().call().then(ETCSupplyRate1 => {
+        ETCSupplyRate1 = ((ETCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
+    nETCContract.methods.borrowRatePerBlock().call().then(ETCBorrowRate1 => { 
+        ETCBorrowRate1 = ((ETCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
+    nUSCContract.methods.supplyRatePerBlock().call().then(USCSupplyRate1 => {
+        USCSupplyRate1 = ((USCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
+    nUSCContract.methods.borrowRatePerBlock().call().then(USCBorrowRate1 => {
+        USCBorrowRate1 = ((USCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
+    const UserRate = document.getElementById('UserAPR');
+    let Weight = ((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1)).toFixed(2);
+    UserRate.innerText = `${Weight}%`;
+        });});});});
+    //Collateral Factor
+        const USCStatus = document.getElementById("USCCheckbox");
+        const ETCStatus = document.getElementById("ETCCheckbox");
+            let BorrowLimit = ((ETCAsset * 0.7 * ETCStatus.checked) + (USCAsset * 0.7 * USCStatus.checked)).toFixed(2);
+            document.getElementById('BorrowLimit1').innerText = `$${BorrowLimit}`;
+            let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)))*100).toFixed(2);
+            document.getElementById('BorrowLimitUsed1').innerText = `${MaxBorrow}%`;
+            let SafeWithdrawlETC = (((((BorrowLimit * 0.90) - Liabilities)/0.7)/0.9).toFixed(2)/ETCPrice).toFixed(2);
+            console.log(SafeWithdrawlETC);
+            if (SafeWithdrawlETC > 0) {
+            document.getElementById('ETCWithdrawl').value = SafeWithdrawlETC;}
+            else {document.getElementById('ETCWithdrawl').value = 'Safe Borrow Limit Exceeded';}
+    });
+    });
+});
+});
+});});};
+
+
                   
                   function ApproveETCPOW() {
                       ETCPOWContract.methods.approve('0x7f86acFA4747B5355E5623483D8c3082c90c2e85','1000000000000000000000000').send({from:'0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B'});}
@@ -412,6 +553,9 @@ function myFunction() {
               //Create a safe max repayment amount
               //	Here’s the formula: [ \text{Safe Withdrawal Amount} = (\text{Collateral Amount} \times \text{Collateral Price} \times \text{Collateral Factor}) - \text{Current Borrow Balance} ]
   
+
+
+              
   
                   function openModal() {
                           $('#usermodal').modal('show');}
@@ -454,7 +598,8 @@ function myFunction() {
                         let UserETCSupply = _UserETCSupplied / (10 ** 18);
                         console.log(result);
                         const UserSuppliedETC = document.getElementById('UserETCSupply');
-                          UserSuppliedETC.innerText = `${UserETCSupply.toFixed(2)} ETC`;});	
+                          UserSuppliedETC.innerText = `${UserETCSupply.toFixed(2)} ETC`;});
+                    UpdateBorrowLimit();	
                   }
   
                   function BorrowModal() {
@@ -549,6 +694,7 @@ function myFunction() {
                   document.getElementById("ETCBorrowButton").onclick = borrowETC;
                   document.getElementById("ETCRepayButton").onclick = repayETC;
                   document.getElementById("USCDepositButton").onclick = MintnUSC;
+                  document.getElementById("SafeMax").onclick = SafeMaxValue;
   
   
                   //Open MODAL
@@ -558,6 +704,8 @@ function myFunction() {
                       
                       for (var i = 1; i < rows.length; i++) {  
                       var currentRow = table.rows[i];  
+
+                      
                      
   
                       function ETCrow() {
