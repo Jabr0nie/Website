@@ -11,14 +11,17 @@ body {
     display: flexbox;
     width:100%;
     height: 100%;
-    background-color: #03032c;
+    background-color: #0d114a;
     overflow-x: hidden;
     margin: 0px;
   }
 
   .footer {
     display: inline-block;
+    position: sticky;
+    position: -webkit-sticky;
     bottom: 0;
+    background-color: #0d114a;
     padding-top: 10%;
     width: 100%;
     text-align: center;
@@ -57,7 +60,7 @@ body {
 
   .maincontent {
     display: flexbox;
-    background-color:  #03032c;
+    background-color:  #0d114a;
     width: 100%;
     height: 600px;
     align-items: center;
@@ -168,7 +171,7 @@ body {
 
   .Markets {
     display: block;
-    background-color:#070e52;
+    background-color:#102869;
     border-radius: 5px;
     width: 100%;
     height:60%;
@@ -188,7 +191,7 @@ body {
 
   .Supplied{
     display: inline-block;
-    background-color: #070e52;
+    background-color: #102869;
     border-radius: 5px;
     width: 95%;
     height:60%;
@@ -219,7 +222,7 @@ float: right;
 
   .Borrowed{
     display: flexbox;
-    background-color: #070e52;
+    background-color: #102869;
     border-radius: 5px;
     float: right;
     width: 95%;
@@ -241,7 +244,7 @@ float: right;
   }
   .maincontent {
     display: flexbox;
-    background-color:  #03032c;
+    background-color:  #0d114a;
     width: 100%;
     height: 600px;
     margin-top: 5%;
@@ -255,7 +258,7 @@ float: right;
   
   .Markets {
     display: block;
-    background-color:#070e52;
+    background-color:#102869;
     border-radius: 5px;
     width: 100%;
     height:60%;
@@ -266,7 +269,7 @@ float: right;
     display: none;
   }
   .header__mobile-overlay {
-    background: #03032c;
+    background: #0d114a;
     display: none;
     flex-direction: column;
     height: 100%;
@@ -300,21 +303,21 @@ float: right;
   text-decoration: none;}
 
   .headermobilemenu a:hover {
-  background-color: #03032c;
+  background-color: #0d114a;
   color: #1eeadb
 }
 
 
 .headermobilemenu a.active {
   background-color: #1eeadb;
-  color: #03032c;
+  color: #0d114a;
 } 
 }
 
   @media screen and (max-width: 1300px) {
     .maincontent {
       display: flexbox;
-      background-color:  #03032c;
+      background-color:  #0d114a;
       width: 100%;
       height: 800px;
       margin-top: 4%;
@@ -376,7 +379,7 @@ float: right;
 
     .Markets {
       display: block;
-      background-color:#070e52;
+      background-color:#102869;
       border-radius: 5px;
       width: 100%;
       height:60%;
@@ -404,7 +407,7 @@ float: right;
       }
       .Supplied{
         display: inline-block;
-        background-color: #070e52;
+        background-color: #102869;
         border-radius: 5px;
         width: 100%;
         height:60%;
@@ -421,7 +424,7 @@ float: right;
       }
       .Borrowed{
         display: flexbox;
-        background-color: #070e52;
+        background-color: #102869;
         border-radius: 5px;
         width: 100%;
         height:60%;
@@ -457,7 +460,7 @@ float: right;
   min-width: 120px;
   border: 2px solid #1eeadb;
   overflow: hidden;
-  background-color:#070e52;
+  background-color:#102869;
   color: #1eeadb; 
   font-size: 13px; 
   font-weight: 500;
@@ -468,7 +471,7 @@ float: right;
   .MetaMask:hover {
     cursor: pointer;
     background-color:  #1eeadb;
-    color: #070e52;
+    color: #102869;
   }
 
   button {
@@ -476,7 +479,7 @@ float: right;
     width: 100px; 
     height: 30px; 
     background-color:#1eeadb;
-    color: #03032c;
+    color: #0d114a;
     font-size: 15px; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
     }
@@ -586,7 +589,7 @@ tr:not(:first-child):hover div{
 /* Add a black background color to the top navigation */
 .topnav {
   display: inline-flexbox;
-  background-color: #03032c;
+  background-color: #0d114a;
   overflow: hidden;
   margin-top: 1%;
   margin-bottom: 1%;
@@ -615,14 +618,14 @@ tr:not(:first-child):hover div{
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #03032c;
+  background-color: #0d114a;
   color: #1eeadb
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
   background-color: #1eeadb;
-  color: #03032c;
+  color: #0d114a;
 } 
 
 /* Hide the links inside the navigation menu (except for logo/home) */
@@ -640,7 +643,7 @@ tr:not(:first-child):hover div{
 
   .topnav {
     display: inline-flexbox;
-    background-color: #03032c;
+    background-color: #0d114a;
     overflow: hidden;
     height: 15%;
     width: 100%;
@@ -649,7 +652,7 @@ tr:not(:first-child):hover div{
   }
 
   .header__mobile-overlay {
-    background: #03032c;
+    background: #0d114a;
     display: none;
     flex-direction: column;
     height: 100%;
@@ -745,7 +748,7 @@ tr:not(:first-child):hover div{
 
     .Supplied{
       display: inline-block;
-      background-color: #070e52;
+      background-color: #102869;
       border-radius: 5px;
       width: 100%;
       height:60%;
@@ -756,7 +759,7 @@ tr:not(:first-child):hover div{
     }
     .Borrowed{
       display: flexbox;
-      background-color: #070e52;
+      background-color: #102869;
       border-radius: 5px;
       float: right;
       width: 100%;
@@ -864,14 +867,14 @@ input:checked + .slider:before {
 .modalButton Button:hover {
   background-color:#1eeadb;
   border: 3px solid #1eeadb;
-  color: #070e52;;
+  color: #102869;;
   cursor: pointer;
 }
 
 .input Button:hover {
   background-color:#1eeadb;
   border: 2px solid #1eeadb;
-  color: #070e52;;
+  color: #102869;;
   cursor: pointer;
 }
 
@@ -879,7 +882,7 @@ input:checked + .slider:before {
 
 .modal-content {
   display: none;
-  background-color:#03032c;
+  background-color:#0d114a;
   border-radius: 25px;
   margin: auto;
   border: 5px solid  #1eeadb;
@@ -919,7 +922,7 @@ input:checked + .slider:before {
 }
 
 .modalnav {
-  background-color:#03032c;
+  background-color:#0d114a;
   overflow: hidden;
   width: 100%;
   height: 10%;
@@ -941,20 +944,20 @@ input:checked + .slider:before {
 
 /* Change the color of links on hover */
 .modalnav a:hover {
-  background-color: rgb(21, 27, 40);
+  background-color: #102869;
   color: #1eeadb
 }
 
 /* Add a color to the active/current link */
 .modalnav a.active {
   background-color: #1eeadb;
-  color:#03032c;
+  color:#0d114a;
 } 
 
 .modalbody {
   display: inline-flexbox;
   color:#D8D7DB;
-  background-color: #03032c;
+  background-color: #0d114a;
   width: 100%;
   float: left;
   text-decoration: none;
@@ -967,7 +970,7 @@ input:checked + .slider:before {
 
 .WalletBalance a{
   color: #D8D7DB;
-  background-color:#03032c;
+  background-color:#0d114a;
   text-align: left;
   align-items: left;
   float: left;
@@ -977,7 +980,7 @@ input:checked + .slider:before {
 .WalletBalance{
   display: flexbox;
   color: #D8D7DB;
-  background-color: #03032c;
+  background-color: #0d114a;
   text-align: left;
   align-items: center;
   align-content: center;
@@ -1017,13 +1020,13 @@ input:checked + .slider:before {
   float: right;
   outline: none;
   box-shadow: none;
-  font-size: 100%;
+  font-size: 80%;
   font-weight: 600;
-  width: 60%;
+  width: 70%;
   margin-right: 5px;
  }
  .input button {
-  background-color: #070e52;
+  background-color: #102869;
   border-radius: 10px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
 
@@ -1043,7 +1046,7 @@ input:checked + .slider:before {
 
 
  .modalButton {
-  background-color:#03032c;
+  background-color:#0d114a;
   display: flexbox;
   color: #1eeadb;
   font-size: 100%;
@@ -1058,7 +1061,7 @@ input:checked + .slider:before {
 
 
  .modalButton Button{
-  background-color:#070e52;
+  background-color:#102869;
   border-radius: 25px;
   border: 2px solid #1eeadb;
   color: #1eeadb;

@@ -294,6 +294,7 @@ function myFunction() {
                       const ETCBorrowRate = ((_ETCBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
                       ETCBorrowRateOutput.innerText = `${ETCBorrowRate.toFixed(2)}%`;
                       ETCBorrowRateModal.innerText = `${ETCBorrowRate.toFixed(2)}%`;
+                      document.getElementById('ETCBorrowRateModal1').innerText = `${ETCBorrowRate.toFixed(2)}%`;
                       ETCBorrowedRate1.innerText = `${ETCBorrowRate.toFixed(2)}%`;
                       
                       const ETCBorrow = _ETCBorrowed / (10 ** 18);
@@ -319,7 +320,7 @@ function myFunction() {
                       const USCUtil = (USCBorrow /USCtotalSupply) * 100;
                       USCUtilization.innerText = `${USCUtil.toFixed(2)}%`;
 
-                    
+                      UpdateBorrowLimit();
                   };
   
                   main();
@@ -431,27 +432,17 @@ function myFunction() {
         let USCLiability = (USCPrice * USCBorrow);
         let Liabilities = ((USCLiability + ETCLiability).toFixed(2));
         document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
-    //User APR
-    const BlocksPerYear = 2425790;
-    nETCContract.methods.supplyRatePerBlock().call().then(ETCSupplyRate1 => {
-        ETCSupplyRate1 = ((ETCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
-    nETCContract.methods.borrowRatePerBlock().call().then(ETCBorrowRate1 => { 
-        ETCBorrowRate1 = ((ETCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
-    nUSCContract.methods.supplyRatePerBlock().call().then(USCSupplyRate1 => {
-        USCSupplyRate1 = ((USCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
-    nUSCContract.methods.borrowRatePerBlock().call().then(USCBorrowRate1 => {
-        USCBorrowRate1 = ((USCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
-    const UserRate = document.getElementById('UserAPR');
-    let Weight = ((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1)).toFixed(2);
-    UserRate.innerText = `${Weight}%`;
-        });});});});
     //Collateral Factor
         const USCStatus = document.getElementById("USCCheckbox");
         const ETCStatus = document.getElementById("ETCCheckbox");
             let BorrowLimit = ((ETCAsset * 0.7 * ETCStatus.checked) + (USCAsset * 0.7 * USCStatus.checked)).toFixed(2);
             document.getElementById('BorrowLimit1').innerText = `$${BorrowLimit}`;
+            document.getElementById('BorrowLimit2').innerText = `$${BorrowLimit}`;
+            document.getElementById('BorrowLimit3').innerText = `$${BorrowLimit}`;
             let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)))*100).toFixed(2);
             document.getElementById('BorrowLimitUsed1').innerText = `${MaxBorrow}%`;
+            document.getElementById('BorrowLimitUsed2').innerText = `${MaxBorrow}%`;
+            document.getElementById('BorrowLimitUsed3').innerText = `${MaxBorrow}%`;
     });
     });
 });
@@ -464,9 +455,10 @@ function myFunction() {
     let account = document.getElementById('connectbutton').innerHTML;
     //ETC Borrowed
         nETCContract.methods.borrowBalanceCurrent(account).call({from: account}, function(err,ETCBorrow){
-        ETCBorrow = ETCBorrow / (10 ** 18);
-        ETCBorrow = ETCBorrow.toFixed(2);
+        ETCBorrowMax = ETCBorrow / (10 ** 18);
+        ETCBorrow = ETCBorrowMax.toFixed(2);
         document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow} ETC`;
+        document.getElementById('ETCRepay').value = ETCBorrowMax;
     //USC Borrowed Amount
     nUSCContract.methods.borrowBalanceCurrent(account).call({from: account}).then(USCBorrow => {
         USCBorrow = USCBorrow / (10 ** 6);
@@ -499,32 +491,24 @@ function myFunction() {
         let USCLiability = (USCPrice * USCBorrow);
         let Liabilities = ((USCLiability + ETCLiability).toFixed(2));
         document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
-    //User APR
-    const BlocksPerYear = 2425790;
-    nETCContract.methods.supplyRatePerBlock().call().then(ETCSupplyRate1 => {
-        ETCSupplyRate1 = ((ETCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
-    nETCContract.methods.borrowRatePerBlock().call().then(ETCBorrowRate1 => { 
-        ETCBorrowRate1 = ((ETCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
-    nUSCContract.methods.supplyRatePerBlock().call().then(USCSupplyRate1 => {
-        USCSupplyRate1 = ((USCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
-    nUSCContract.methods.borrowRatePerBlock().call().then(USCBorrowRate1 => {
-        USCBorrowRate1 = ((USCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
-    const UserRate = document.getElementById('UserAPR');
-    let Weight = ((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1)).toFixed(2);
-    UserRate.innerText = `${Weight}%`;
-        });});});});
     //Collateral Factor
         const USCStatus = document.getElementById("USCCheckbox");
         const ETCStatus = document.getElementById("ETCCheckbox");
             let BorrowLimit = ((ETCAsset * 0.7 * ETCStatus.checked) + (USCAsset * 0.7 * USCStatus.checked)).toFixed(2);
             document.getElementById('BorrowLimit1').innerText = `$${BorrowLimit}`;
+            document.getElementById('BorrowLimit2').innerText = `$${BorrowLimit}`;
             let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)))*100).toFixed(2);
             document.getElementById('BorrowLimitUsed1').innerText = `${MaxBorrow}%`;
+            document.getElementById('BorrowLimitUsed2').innerText = `${MaxBorrow}%`;
             let SafeWithdrawlETC = (((((BorrowLimit * 0.90) - Liabilities)/0.7)/0.9).toFixed(2)/ETCPrice).toFixed(2);
             console.log(SafeWithdrawlETC);
             if (SafeWithdrawlETC > 0) {
-            document.getElementById('ETCWithdrawl').value = SafeWithdrawlETC;}
-            else {document.getElementById('ETCWithdrawl').value = 'Safe Borrow Limit Exceeded';}
+            document.getElementById('ETCWithdrawl').value = SafeWithdrawlETC;
+            document.getElementById('ETCBorrow').value = SafeWithdrawlETC;
+        }
+            else {document.getElementById('ETCWithdrawl').value = 'Safe Borrow Limit Exceeded';
+                document.getElementById('ETCBorrow').value = 'Safe Borrow Limit Exceeded';
+            }
     });
     });
 });
@@ -614,7 +598,8 @@ function myFunction() {
                           let UserBorrowETC = _UserBorrowETC / (10 ** 18);
                           console.log(result);
                           const ETCBorrowBalance = document.getElementById('ETCBorrowBalanceModal');
-                          ETCBorrowBalance.innerText = `${UserBorrowETC.toFixed(2)} ETC`;		
+                          ETCBorrowBalance.innerText = `${UserBorrowETC.toFixed(2)} ETC`;
+                          UpdateBorrowLimit();		
                       });}
                       
   
@@ -630,7 +615,8 @@ function myFunction() {
                           let UserBorrowETC = _UserBorrowETC / (10 ** 18);
                           console.log(result);
                           const ETCBorrowBalance = document.getElementById('ETCBorrowBalance');
-                          ETCBorrowBalance.innerText = `${UserBorrowETC.toFixed(2)}`;		
+                          ETCBorrowBalance.innerText = `${UserBorrowETC.toFixed(2)}`;
+                          UpdateBorrowLimit();		
                   })}
   
                   function USCSupplyModal() {
@@ -695,7 +681,8 @@ function myFunction() {
                   document.getElementById("ETCRepayButton").onclick = repayETC;
                   document.getElementById("USCDepositButton").onclick = MintnUSC;
                   document.getElementById("SafeMax").onclick = SafeMaxValue;
-  
+                  document.getElementById("SafeMaxRepay").onclick = SafeMaxValue;
+                  document.getElementById("SafeMaxBorrow").onclick = SafeMaxValue;
   
                   //Open MODAL
                   var table = document.getElementsByTagName("table")[2];  
