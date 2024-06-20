@@ -1061,16 +1061,28 @@ input:checked + .slider:before {
 
 
  .modalButton Button{
+  display: flex;
   background-color:#102869;
   border-radius: 25px;
   border: 2px solid #1eeadb;
   color: #1eeadb;
   font-size: 100%;
   align-content: center;
+  align-items: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   text-align: center;
   font-weight: 600;
   height: 50%;
   width: 80%;
+  justify-content: center;
  }
+
+ .ApproveImgs{
+  height: 25px;
+  width: 25px;
+  margin-left: 5%;
+  margin-right: 5%;
+ }
+
+
 

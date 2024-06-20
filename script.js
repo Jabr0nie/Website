@@ -33,13 +33,13 @@ function myFunction() {
               account = accounts[0];
               document.getElementById('connectbutton').innerHTML = account;
               ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] }).then(result => {
-                              console.log(result);
-                              let wei = parseInt(result, 16);
-                              let balance = wei / (10 ** 18);
-                              balance = balance.toFixed(2);
-                              console.log(balance + "ETC");
-                              const ETCBalance = document.getElementById('ETCBalance');
-                              ETCBalance.innerText = `${balance}`;});
+                console.log(result);
+                let wei = parseInt(result, 16);
+                let balance = wei / (10 ** 18);
+                balance = balance.toFixed(2);
+                console.log(balance + "ETC");
+                const ETCBalance = document.getElementById('ETCBalance');
+                ETCBalance.innerText = `${balance}`;});
                           //In market?
                           ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
                             document.getElementById("ETCCheckbox").checked = result;});
@@ -533,13 +533,7 @@ function myFunction() {
                       nUSCContractMM.methods.mint('1000000').send({from:'0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B',});}
   
   
-  
-              //Create a safe max repayment amount
-              //	Here’s the formula: [ \text{Safe Withdrawal Amount} = (\text{Collateral Amount} \times \text{Collateral Price} \times \text{Collateral Factor}) - \text{Current Borrow Balance} ]
-  
 
-
-              
   
                   function openModal() {
                           $('#usermodal').modal('show');}
@@ -625,16 +619,15 @@ function myFunction() {
                       document.getElementById('USCmodal-borrow').style.display = "none";
                       document.getElementById('USCmodal-repay').style.display = "none";
                       let account = document.getElementById('connectbutton').innerHTML;
-                  ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] }).then(result => {
-                              let wei = parseInt(result, 16);
-                              let balance = wei / (10 ** 18);
-                              balance = balance.toFixed(2);
-                              console.log(balance + "ETC");
-                              const ETCBalance = document.getElementById('ETCBalance');
-                              ETCBalance.innerText = `${balance}`;
+                      let USCBalanceOf;
+                        USCContract.methods.balanceOf(`${account}`).call().then(result => {
+                            USCBalanceOf = (result / (10 ** 6)).toFixed(2);
+                            console.log(USCBalanceOf);
+                            document.getElementById('USCBalanceWallet').innerText = USCBalanceOf;
+                        });
                       //Get Borrowed Balance
-                      })}
-  
+                      }
+
                   function USCWithdrawlModal() {
                       document.getElementById('USCmodal-supply').style.display = "none";
                       document.getElementById('USCmodal-withdrawl').style.display = "block";
@@ -718,6 +711,7 @@ function myFunction() {
                           document.getElementById('USCmodal-withdrawl').style.display = "none";
                           document.getElementById('USCmodal-borrow').style.display = "none";
                           document.getElementById('USCmodal-repay').style.display = "none";
+                          USCSupplyModal();
                       }
       
                       table.rows[1].onclick = ETCrow;    

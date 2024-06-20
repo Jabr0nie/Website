@@ -306,17 +306,19 @@
 	<div class="modalbody">
 		<div class="WalletBalance">
 			<div style="clear: both;"></div>
-			<a>Wallet Balance: <div id="USCBalance"
+			<a>Wallet Balance: <div id="USCBalanceWallet"
 					style="display: inline-block; color:  #1eeadb;"></div>
 				USC</a>
 		</div>
 		<div class="input">
-			<input type="text" id="ETCDeposit" placeholder="Enter Amount Here...">
+			<input type="text" id="USCDeposit" placeholder="Enter Amount Here...">
 		</div>
 		<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="ETCSupplyRateModal"></div></div>
 	</div>
 	<div class="modalButton">
-		<button id="USCDepositButton">Supply</button>
+		<button class="ApproveButtons" id="USCApproveButton" style="display:inline-block; width: 43%; margin-left: 0%; margin-right: 2%;">
+			<img class="ApproveImgs" src="Images\1.svg">Approve</button>
+		<button class="ApproveButtons" id="USCDepositButton" style="display:inline-block; width: 43%; margin-left: 2%; margin-right: 0%;">Supply</button>
 	</div>
 </div>
 <div id="USCmodal-withdrawl" class="modal-content">
