@@ -1084,5 +1084,16 @@ input:checked + .slider:before {
   margin-right: 5%;
  }
 
+.Approve1 {
+        height: 18px;
+        width: 18px;
+        border-radius: 9px;
+        line-height: 18px;
+        font-size: 11px;
+        background-color: rgb(30, 39, 56);
+        margin-right: 12px;
+        color: white;
+    }
+
 
 
