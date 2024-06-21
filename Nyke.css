@@ -18,11 +18,11 @@ body {
 
   .footer {
     display: inline-block;
-    position: sticky;
+    position: absolute;
     position: -webkit-sticky;
     bottom: 0;
     background-color: #0d114a;
-    padding-top: 1%;
+    margin-bottom: 1%;
     width: 100%;
     text-align: center;
   }
@@ -329,9 +329,11 @@ float: right;
 
     .footer {
       display: inline-block;
+      position: sticky;
+      position: -webkit-sticky;
       bottom: 0;
-      padding-top: 2%;
-      padding-bottom: 1%;
+      background-color: #0d114a;
+      padding-top: 1%;
       width: 100%;
       text-align: center;
     }
@@ -1061,7 +1063,6 @@ input:checked + .slider:before {
 
 
  .modalButton Button{
-  display: flex;
   background-color:#102869;
   border-radius: 25px;
   border: 2px solid #1eeadb;
@@ -1077,23 +1078,27 @@ input:checked + .slider:before {
   justify-content: center;
  }
 
- .ApproveImgs{
-  height: 25px;
-  width: 25px;
-  margin-left: 5%;
-  margin-right: 5%;
+ .ApproveButtons{
+  display: inline-block;
  }
 
 .Approve1 {
-        height: 18px;
-        width: 18px;
-        border-radius: 9px;
-        line-height: 18px;
-        font-size: 11px;
-        background-color: rgb(30, 39, 56);
-        margin-right: 12px;
-        color: white;
+  display: inline-block;
+        height: 21px;
+        width: 21px;
+        border-radius: 11px;
+        font-size: 16px;
+        text-align: center;
+        text-justify: center;
+        background-color: #1eeadb;
+        line-height: 21px;
+        color: #102869;
     }
+    .ApproveText {
+display: inline-block;
+width: 60%;
+font-size: 16px;
+  }
 
 
 
