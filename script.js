@@ -587,7 +587,7 @@ function myFunction() {
                             let USCAmount = document.getElementById('USCBorrow').value;
                             USCAmount = USCAmount * (10 ** 6);
                             let account = document.getElementById('connectbutton').innerHTML;
-                            nUSCContractMM.methods.redeemUnderlying(`${USCAmount}`).send({from:`${account}`});}
+                            nUSCContractMM.methods.borrow(`${USCAmount}`).send({from:`${account}`});}
 
                             function RepayUSC() {
                                 let USCAmount = document.getElementById('USCRepay').value;
