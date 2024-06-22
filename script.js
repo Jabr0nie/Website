@@ -329,6 +329,8 @@ function myFunction() {
   
                   main();
   
+
+
                 //Enter and Exit a market - ETC
 				function CollateralStatus() {
                     let account = document.getElementById('connectbutton').innerText;
@@ -472,10 +474,10 @@ function myFunction() {
         ETCBorrowMax = ETCBorrow / (10 ** 18);
         ETCBorrow = ETCBorrowMax.toFixed(2);
         document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow} ETC`;
-        document.getElementById('ETCRepay').value = ETCBorrowMax;
     //USC Borrowed Amount
     nUSCContract.methods.borrowBalanceCurrent(account).call({from: account}).then(USCBorrow => {
         USCBorrow = USCBorrow / (10 ** 6);
+        let USCBorrowMax = USCBorrow;
         USCBorrow = USCBorrow.toFixed(2);
         document.getElementById('USCBorrowedUser').innerText = `${USCBorrow} USC`;
 
@@ -486,12 +488,14 @@ function myFunction() {
      //USC Supplied Amount
   nUSCContract.methods.balanceOf(account).call({from: account}).then(USCSup => {
     USCSup = USCSup / (10 ** 4);
+    USCSuppliedMax = USCSup;
     USCSup = USCSup.toFixed(2);
     document.getElementById('YourUSCSupplied').innerText = `${USCSup} USC`;
     //ETC Supplied
   nETCContract.methods.balanceOf(account).call({from: account}, function(err,ETCSupplied){
     console.log(ETCSupplied);
    ETCSupplied = ETCSupplied / (10 ** 18);
+   ETCSuppliedMax = ETCSupplied;
    ETCSupplied = ETCSupplied.toFixed(2);
    document.getElementById('YourETCSupplied').innerText = `${ETCSupplied} ETC`;
     OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(ETCPrice => {
@@ -505,6 +509,8 @@ function myFunction() {
         let USCLiability = (USCPrice * USCBorrow);
         let Liabilities = ((USCLiability + ETCLiability).toFixed(2));
         document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
+    //Utilization
+
     //Collateral Factor
         const USCStatus = document.getElementById("USCCheckbox");
         const ETCStatus = document.getElementById("ETCCheckbox");
@@ -516,6 +522,7 @@ function myFunction() {
             document.getElementById('BorrowLimitUsed2').innerText = `${MaxBorrow}%`;
             let SafeWithdrawlETC = (((((BorrowLimit * 0.90) - Liabilities)/0.7)/0.9).toFixed(2)/ETCPrice).toFixed(2);
             let SafeWithdrawlUSC = (((((BorrowLimit * 0.90) - Liabilities)/0.7)/0.9).toFixed(2)/USCPrice).toFixed(2);
+            
             console.log(SafeWithdrawlETC);
             if (SafeWithdrawlETC > 0) {
             document.getElementById('ETCWithdrawl').value = SafeWithdrawlETC;
@@ -531,7 +538,18 @@ function myFunction() {
                 else {document.getElementById('USCWithdrawl').value = 'Safe Borrow Limit Exceeded';
                     document.getElementById('USCBorrow').value = 'Safe Borrow Limit Exceeded';
                 }
-    });
+            if (ETCSuppliedMax > ETCBorrowMax) {
+                document.getElementById('ETCRepay').value = ETCBorrowMax;
+            }
+                else {document.getElementById('ETCRepay').value = ETCSuppliedMax;
+                }
+            if (USCSuppliedMax > USCBorrowMax) {
+                document.getElementById('USCRepay').value = USCBorrowMax;
+                console.log(USCBorrowMax);
+            }
+                else {document.getElementById('USCRepay').value = USCSuppliedMax;
+                }
+});
     });
 });
 });
@@ -566,7 +584,7 @@ function myFunction() {
                         nUSCContractMM.methods.borrow(`${USCAmount}`).send({from:`${account}`});}
 
                         function BorrowUSC() {
-                            let USCAmount = document.getElementById('USCWithdrawl').value;
+                            let USCAmount = document.getElementById('USCBorrow').value;
                             USCAmount = USCAmount * (10 ** 6);
                             let account = document.getElementById('connectbutton').innerHTML;
                             nUSCContractMM.methods.redeemUnderlying(`${USCAmount}`).send({from:`${account}`});}
@@ -605,7 +623,8 @@ function myFunction() {
                       let UserETCSupply2 = _UserETCSupplied / (10 ** 18);
                       console.log(result);
                       const UserSuppliedETC2 = document.getElementById('UserETCSupply2');
-                        UserSuppliedETC2.innerText = `${UserETCSupply2.toFixed(2)} ETC`;	
+                        UserSuppliedETC2.innerText = `${UserETCSupply2.toFixed(2)} ETC`;
+                        UpdateBorrowLimit();	
                   })}
   
                   function WithdrawlModal() {
@@ -613,6 +632,9 @@ function myFunction() {
                       document.getElementById('modal-withdrawl').style.display = "block";
                       document.getElementById('modal-borrow').style.display = "none";
                       document.getElementById('modal-repay').style.display = "none";
+                      document.getElementById('ETCWithdrawl').value = '';
+                      document.getElementById('ETCBorrow').value = '';
+                      document.getElementById('ETCRepay').value = '';
                         let account = document.getElementById('connectbutton').innerHTML;
                         let _UserETCSupplied;
                       nETCContractMM.methods.balanceOf(`${account}`).call().then(result => {
@@ -629,6 +651,9 @@ function myFunction() {
                       document.getElementById('modal-withdrawl').style.display = "none";
                       document.getElementById('modal-borrow').style.display = "block";
                       document.getElementById('modal-repay').style.display = "none";
+                      document.getElementById('ETCWithdrawl').value = '';
+                      document.getElementById('ETCBorrow').value = '';
+                      document.getElementById('ETCRepay').value = '';
                       let account = document.getElementById('connectbutton').innerHTML;
                       let _UserBorrowETC;
                       nETCContractMM.methods.borrowBalanceStored(`${account}`).call().then(result => {
@@ -646,6 +671,9 @@ function myFunction() {
                       document.getElementById('modal-withdrawl').style.display = "none";
                       document.getElementById('modal-borrow').style.display = "none";
                       document.getElementById('modal-repay').style.display = "block";
+                      document.getElementById('ETCWithdrawl').value = '';
+                      document.getElementById('ETCBorrow').value = '';
+                      document.getElementById('ETCRepay').value = '';
                       let account = document.getElementById('connectbutton').innerHTML;
                       let _UserBorrowETC;
                       nETCContractMM.methods.borrowBalanceStored(`${account}`).call().then(result => {
@@ -678,9 +706,10 @@ function myFunction() {
                             USCSupRate = (((USCSupRate / (10 ** 18)) * 2425790) * 100).toFixed(2);
                             document.getElementById('USCSupplyRateModal1').innerText = `${USCSupRate}%`;
                             document.getElementById('USCSupplyRateModal2').innerText = `${USCSupRate}%`;
+                
                         });
                         
-
+                        UpdateBorrowLimit();
                       //Get Borrowed Balance
                       }
 
@@ -692,6 +721,7 @@ function myFunction() {
                       document.getElementById('USCWithdrawl').value = '';
                       document.getElementById('USCBorrow').value = '';
                       document.getElementById('USCRepay').value = '';
+                      UpdateBorrowLimit();
                   }
   
                   function USCBorrowModal() {
@@ -710,7 +740,8 @@ function myFunction() {
                           console.log(result);
                           const ETCBorrowBalance = document.getElementById('ETCBorrowBalanceModal');
                           ETCBorrowBalance.innerText = `${UserBorrowETC.toFixed(2)} ETC`;		
-                      });}
+                      });
+                      UpdateBorrowLimit();}
                       
   
                   function USCRepayModal() {
@@ -729,7 +760,8 @@ function myFunction() {
                           console.log(result);
                           const ETCBorrowBalance = document.getElementById('ETCBorrowBalance');
                           ETCBorrowBalance.innerText = `${UserBorrowETC.toFixed(2)}`;		
-                  })}
+                  })
+                  UpdateBorrowLimit();}
   
   
   
@@ -748,17 +780,14 @@ function myFunction() {
                   document.getElementById("USCBorrowButton").onclick = BorrowUSC;
                   document.getElementById("USCApproveRepayButton").onclick = ApproveUSCRepay;
                   document.getElementById("USCRepayButton").onclick = RepayUSC;
+                  document.getElementById("SafeMaxRepayUSC").onclick = SafeMaxValue;
 
                   //Open MODAL
-                  var table = document.getElementsByTagName("table")[2];  
-   
-                      var rows = table.getElementsByTagName("tr");  
-                      
-                      for (var i = 1; i < rows.length; i++) {  
-                      var currentRow = table.rows[i];  
 
-                      
-                     
+                    var table = document.getElementsByTagName("table")[2];
+                    var table1 = document.getElementsByTagName("table")[0];  
+                    var table2 = document.getElementsByTagName("table")[1];  
+                    var rows = table.getElementsByTagName("tr");
   
                       function ETCrow() {
 
@@ -785,10 +814,16 @@ function myFunction() {
                           document.getElementById('USCmodal-repay').style.display = "none";
                           USCSupplyModal();
                       }
+
+
       
                       table.rows[1].onclick = ETCrow;    
                       table.rows[2].onclick = USCrow;
-                  }
+                      table1.rows[1].onclick = ETCrow;
+                      table1.rows[2].onclick = USCrow;
+                      table2.rows[1].onclick = ETCrow;
+                      table2.rows[2].onclick = USCrow;
+                  
 
 
       function closeModal(){
