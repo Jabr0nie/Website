@@ -225,7 +225,7 @@ function myFunction() {
                   const nUSCContract = new web3.eth.Contract(nETCPOWabi, nUSCAddress);
                   const nUSCContractMM = new web3m.eth.Contract(nETCPOWabi, nUSCAddress);
       
-                  const ComptrollerAddress = '0xBF8455ACae4741b7e8C37bD8fd6AF147ba293536';
+                  const ComptrollerAddress = '0x0040DCf62C380833dE60a502649567e939635fdB';
                   const ComptrollerContract = new web3.eth.Contract(Comptrollerabi, ComptrollerAddress);
                   const ComptrollerContractMM = new web3m.eth.Contract(Comptrollerabi, ComptrollerAddress);
 
@@ -323,6 +323,8 @@ function myFunction() {
   
                       const USCUtil = (USCBorrow /USCtotalSupply) * 100;
                       USCUtilization.innerText = `${USCUtil.toFixed(2)}%`;
+
+                      console.log('refreshed');
 
                       UpdateBorrowLimit();
                   };
