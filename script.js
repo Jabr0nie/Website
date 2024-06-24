@@ -579,16 +579,16 @@ function myFunction() {
                           USCContractMM.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${USCAmount}`).send({from:`${account}`});}
                   
                   function MintnUSC() {
-                    let USCAmount = document.getElementById('USCWithdrawl').value;
+                    let USCAmount = document.getElementById('USCDeposit').value;
                     USCAmount = USCAmount * (10 ** 6);
                     let account = document.getElementById('connectbutton').innerHTML;
                     nUSCContractMM.methods.mint(`${USCAmount}`).send({from:`${account}`});}
 
                     function WithdrawlUSC() {
-                        let USCAmount = document.getElementById('USCBorrow').value;
+                        let USCAmount = document.getElementById('USCWithdrawl').value;
                         USCAmount = USCAmount * (10 ** 6);
                         let account = document.getElementById('connectbutton').innerHTML;
-                        nUSCContractMM.methods.borrow(`${USCAmount}`).send({from:`${account}`});}
+                        nUSCContractMM.methods.redeemUnderlying(`${USCAmount}`).send({from:`${account}`});}
 
                         function BorrowUSC() {
                             let USCAmount = document.getElementById('USCBorrow').value;
