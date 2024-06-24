@@ -229,7 +229,7 @@ function myFunction() {
                   const ComptrollerContract = new web3.eth.Contract(Comptrollerabi, ComptrollerAddress);
                   const ComptrollerContractMM = new web3m.eth.Contract(Comptrollerabi, ComptrollerAddress);
 
-                  const OracleAddress = '0xAE1682fD22D10BDF5285dff6FE0026de5Aa12b32';
+                  const OracleAddress = '0x82152D053C8851365715bd533D46615126C8bc30';
                   const OracleContract = new web3.eth.Contract(Oracleabi, OracleAddress);
                   const OracleContractMM = new web3m.eth.Contract(Oracleabi, OracleAddress);
   
@@ -265,7 +265,7 @@ function myFunction() {
                   window.onclick = function(event) {
                   if (event.target == modal) {
                       modal.style.display = "none";}}
-  
+
   
   
   
@@ -331,6 +331,11 @@ function myFunction() {
   
                   main();
   
+         //         $(function () {
+         //           setInterval(main, 000);
+        //            setInterval(isConnected, 60000);
+        //        });
+
 
 
                 //Enter and Exit a market - ETC
