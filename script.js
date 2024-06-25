@@ -40,6 +40,13 @@ function myFunction() {
                 console.log(balance + "ETC");
                 const ETCBalance = document.getElementById('ETCBalance');
                 ETCBalance.innerText = `${balance}`;});
+
+                    //rewards accrued
+                    ComptrollerContract.methods.compAccrued(`${account}`).call().then(accruedRewards => {
+                    accruedRewards = accruedRewards / (10 ** 18);
+                    accruedRewards = accruedRewards.toFixed(2);
+                        document.getElementById('accruedRewards').innerText = `${accruedRewards} NYKE`;
+                    })
                           //In market?
                           ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
                             document.getElementById("ETCCheckbox").checked = result;});
@@ -129,7 +136,12 @@ function myFunction() {
                               const ETCBalance = document.getElementById('ETCBalance');
                               ETCBalance.innerText = `${balance}`;});
 
-                             
+                             //rewards accrued
+                             ComptrollerContract.methods.compAccrued(`${account}`).call().then(accruedRewards => {
+                                accruedRewards = accruedRewards / (10 ** 18);
+                                accruedRewards = accruedRewards.toFixed(2);
+                                    document.getElementById('accruedRewards').innerText = `${accruedRewards} NYKE`;
+                             })
                                //In market?
                               ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
                                 document.getElementById("ETCCheckbox").checked = result;});
@@ -232,6 +244,10 @@ function myFunction() {
                   const OracleAddress = '0x82152D053C8851365715bd533D46615126C8bc30';
                   const OracleContract = new web3.eth.Contract(Oracleabi, OracleAddress);
                   const OracleContractMM = new web3m.eth.Contract(Oracleabi, OracleAddress);
+
+                  const NykeAddress = '0x9aa2901007fCE996e35305FD9bA196e17fCd2605';
+                  const NykeContract = new web3.eth.Contract(Nykeabi, NykeAddress);
+                  const NykeContractMM = new web3m.eth.Contract(Nykeabi, NykeAddress);
   
                   //Get Data
   
@@ -564,7 +580,11 @@ function myFunction() {
 
 
                   
-           
+           //claim Nyke Rewards
+           function claimNykeRewards() {
+            let account = document.getElementById('connectbutton').innerHTML;
+            ComptrollerContractMM.methods.claimComp(`${account}`).send({from:`${account}`});
+           }
                   
                   function ApproveUSC() {
                     let USCAmount = document.getElementById('USCDeposit').value;
@@ -788,6 +808,7 @@ function myFunction() {
                   document.getElementById("USCApproveRepayButton").onclick = ApproveUSCRepay;
                   document.getElementById("USCRepayButton").onclick = RepayUSC;
                   document.getElementById("SafeMaxRepayUSC").onclick = SafeMaxValue;
+                  document.getElementById("claimRewards").onclick = claimNykeRewards;
 
                   //Open MODAL
 

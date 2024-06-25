@@ -7,6 +7,7 @@
   color: #FFBCE8;
 }
 
+
 body {
     display: flexbox;
     width:100%;
@@ -17,12 +18,13 @@ body {
   }
 
   .footer {
-    display: inline-block;
+
     position: absolute;
     position: -webkit-sticky;
     bottom: 0;
     background-color: #0d114a;
-    margin-bottom: 1%;
+    padding-top: 1%;
+    padding-bottom: 0.5%;
     width: 100%;
     text-align: center;
   }
@@ -67,6 +69,42 @@ body {
     overflow: hidden;
     float: right;
   }
+
+
+  .rewardcontainer {
+    display: inline-flex;
+    height: 10%;
+    width: 60%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 20%;
+    margin-right: 20%;
+    overflow: hidden;
+    align-items: center;
+  }
+
+  .rewardsinfo {
+    height: 100%;
+    width: 168px;
+    overflow: hidden;
+    color: #1eeadb;
+    height:100%;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .accruedRewards {
+    height: 100%;
+    width: 120px;
+    overflow: hidden;
+    color: #D8D7DB;
+    height:100%;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+ 
 
 
 
@@ -247,7 +285,7 @@ float: right;
     background-color:  #0d114a;
     width: 100%;
     height: 600px;
-    margin-top: 5%;
+    margin-top: 1%;
     align-items: center;
     overflow: hidden;
     float: right;
@@ -320,7 +358,7 @@ float: right;
       background-color:  #0d114a;
       width: 100%;
       height: 800px;
-      margin-top: 4%;
+      margin-top: 1%;
       justify-items: center;
       align-items: center;
       overflow-x: hidden;
@@ -471,6 +509,27 @@ float: right;
   }
 
   .MetaMask:hover {
+    cursor: pointer;
+    background-color:  #1eeadb;
+    color: #102869;
+  }
+
+  .claimRewards {
+    float: right;
+    border-radius: 16px; 
+    width: 65px; height: 80%; 
+    border: 2px solid #1eeadb;
+    overflow: hidden;
+    background-color:#102869;
+    color: #1eeadb; 
+    font-size: 13px; 
+    text-align: center;
+    font-weight: 500;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+  }
+
+  .claimRewards:hover {
     cursor: pointer;
     background-color:  #1eeadb;
     color: #102869;
@@ -642,7 +701,40 @@ tr:not(:first-child):hover div{
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 500px) {
 
+  .rewardcontainer {
+    display: inline-flex;
+    height: 10%;
+    width: 90%;
+    margin-top: 1%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    overflow: hidden;
+    align-items: center;
+  }
 
+  .rewardsinfo {
+    height: 100%;
+    width: 168px;
+    overflow: hidden;
+    color: #1eeadb;
+    height:100%;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .accruedRewards {
+    height: 100%;
+    width: 120px;
+    overflow: hidden;
+    color: #D8D7DB;
+    height:100%;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+ 
   .topnav {
     display: inline-flexbox;
     background-color: #0d114a;
@@ -1099,6 +1191,31 @@ display: inline-block;
 width: 60%;
 font-size: 16px;
   }
+
+  .rewards {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+  }
+
+  .wrewards {
+    width: 57%;
+    text-align: right;
+  }
+
+  .rrewards {
+    width: 43%;
+    padding-left: 3px;
+    height: 20px;
+    text-align: left;
+    font-size: 20;
+  }
+
+  .rrewards img{
+    margin-bottom: -5px;
+  }
+
+
 
 
 
