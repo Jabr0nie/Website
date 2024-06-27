@@ -196,7 +196,7 @@ function myFunction() {
                                 nUSCContract.methods.borrowRatePerBlock().call().then(USCBorrowRate1 => {
                                     USCBorrowRate1 = ((USCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
                                 const UserRate = document.getElementById('UserAPR');
-                                let Weight = ((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1)).toFixed(2);
+                                let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100).toFixed(2);
                                 UserRate.innerText = `${Weight}%`;
                                     });});});});
                                 //Collateral Factor
