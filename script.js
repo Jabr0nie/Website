@@ -106,8 +106,8 @@ function myFunction() {
                             //Collateral Factor
                                 const USCStatus = document.getElementById("USCCheckbox");
                                 const ETCStatus = document.getElementById("ETCCheckbox");
-                                    let borrowlimit = ((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                                    let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                                    let borrowlimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                                    let MaxBorrow =((Liabilities/((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
                                     document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow}%`;                           
                             });
                             });
@@ -202,7 +202,7 @@ function myFunction() {
                                 //Collateral Factor
                                     const USCStatus = document.getElementById("USCCheckbox");
                                     const ETCStatus = document.getElementById("ETCCheckbox");
-                                    let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                                    let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
                                         document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow}%`;
                                 });
                                 });
@@ -468,14 +468,14 @@ function myFunction() {
     //Collateral Factor
         const USCStatus = document.getElementById("USCCheckbox");
         const ETCStatus = document.getElementById("ETCCheckbox");
-            let BorrowLimit = ((ETCAsset * 0.7 * ETCStatus.checked) + (USCAsset * 0.7 * USCStatus.checked)).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            let BorrowLimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             document.getElementById('BorrowLimit1').innerText = `$${BorrowLimit}`;
             document.getElementById('BorrowLimit2').innerText = `$${BorrowLimit}`;
             document.getElementById('BorrowLimit3').innerText = `$${BorrowLimit}`;
             document.getElementById('BorrowLimit4').innerText = `$${BorrowLimit}`;
             document.getElementById('BorrowLimit5').innerText = `$${BorrowLimit}`;
             document.getElementById('BorrowLimit6').innerText = `$${BorrowLimit}`;
-            let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            let MaxBorrow =((Liabilities/((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             document.getElementById('BorrowLimitUsed1').innerText = `${MaxBorrow}%`;
             document.getElementById('BorrowLimitUsed2').innerText = `${MaxBorrow}%`;
             document.getElementById('BorrowLimitUsed3').innerText = `${MaxBorrow}%`;
@@ -537,14 +537,14 @@ function myFunction() {
     //Collateral Factor
         const USCStatus = document.getElementById("USCCheckbox");
         const ETCStatus = document.getElementById("ETCCheckbox");
-            let BorrowLimit = ((ETCAsset * 0.7 * ETCStatus.checked) + (USCAsset * 0.7 * USCStatus.checked)).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            let BorrowLimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             document.getElementById('BorrowLimit1').innerText = `$${BorrowLimit}`;
             document.getElementById('BorrowLimit2').innerText = `$${BorrowLimit}`;
             let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             document.getElementById('BorrowLimitUsed1').innerText = `${MaxBorrow}%`;
             document.getElementById('BorrowLimitUsed2').innerText = `${MaxBorrow}%`;
-            let SafeWithdrawlETC = (((((BorrowLimit * 0.90) - Liabilities)/0.7)/0.9).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})/ETCPrice).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-            let SafeWithdrawlUSC = (((((BorrowLimit * 0.90) - Liabilities)/0.7)/0.9).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})/USCPrice).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            let SafeWithdrawlETC = (((((BorrowLimit * 0.90) - Liabilities)/0.75)/0.9).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})/ETCPrice).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            let SafeWithdrawlUSC = (((((BorrowLimit * 0.90) - Liabilities)/0.75)/0.9).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})/USCPrice).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             
             console.log(SafeWithdrawlETC);
             if (SafeWithdrawlETC > 0) {
