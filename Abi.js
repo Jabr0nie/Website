@@ -6854,3 +6854,33 @@ const Nykeabi = [
 		"type": "function"
 	}
 ];
+
+
+const V2Reservesabi = [
+	{
+		"inputs": [],
+		"name": "getLiquidityETC",
+		"outputs": [
+			{
+				"internalType": "uint112",
+				"name": "reserve0",
+				"type": "uint112"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getLiquidityNYKE",
+		"outputs": [
+			{
+				"internalType": "uint112",
+				"name": "reserve1",
+				"type": "uint112"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

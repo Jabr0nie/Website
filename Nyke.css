@@ -83,14 +83,54 @@ body {
     align-items: center;
   }
 
-  .rewardsinfo {
+  .rewardcontainer2 {
+    display: inline-flex;
+    height: 5%;
+    width: 60%;
+    margin-bottom: 1%;
+    margin-left: 20%;
+    margin-right: 20%;
+    overflow: hidden;
+    align-items: center;
+  }
+
+  
+  .RewardsAPR {
+    display: inline-flex;
     height: 100%;
+    width: 40%;
+    overflow: hidden;
+    align-items: right;
+  }
+
+  .rewardsinfo {
     width: fit-content;
     overflow: hidden;
     color: #1eeadb;
     height:100%;
     font-weight: 500;
     font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .rewardsAPRText {
+    width: fit-content;
+    overflow: hidden;
+    color: #1eeadb;
+    height:100%;
+    font-weight: 500;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .rewardsAPRText p {
+    display: inline-block;
+    width: 50%;
+    overflow: hidden;
+    color: #1eeadb;
+    height:100%;
+    font-weight: 500;
+    font-size: 12px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
@@ -186,6 +226,8 @@ body {
   margin-bottom: 2%;
 }
 
+
+
 .supplytextright {
   float: right;
   margin-right: 10%;
@@ -216,6 +258,8 @@ body {
     height:60%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
+
+
 
   .MarketsText {
     height: 10%;
@@ -509,6 +553,22 @@ float: right;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   }
 
+  .RewardAPRTopNav {
+    border-radius: 16px; 
+    display: block;
+    margin: 15px;float: right; 
+    width: 20%; height: 40px; 
+    min-width: 120px;
+    border: 2px solid #1eeadb;
+    overflow: hidden;
+    background-color:#102869;
+    color: #1eeadb; 
+    font-size: 13px; 
+    font-weight: 500;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    }
+
   .MetaMask:hover {
     cursor: pointer;
     background-color:  #1eeadb;
@@ -523,10 +583,10 @@ float: right;
     overflow: hidden;
     background-color:#102869;
     color: #1eeadb; 
-    font-size: 12px; 
+    font-size: 11px; 
     text-align: center;
     margin-left: 15px;
-    font-weight: 500;
+    font-weight: 400;
     align-items: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   }
@@ -546,10 +606,10 @@ float: right;
     overflow: hidden;
     background-color:#102869;
     color: #1eeadb; 
-    font-size: 12px; 
+    font-size: 11px; 
     text-align: center;
     margin-left: 15px;
-    font-weight: 500;
+    font-weight: 400;
     align-items: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   }
@@ -737,6 +797,18 @@ tr:not(:first-child):hover div{
     overflow: hidden;
     align-items: center;
   }
+  .rewardcontainer {
+    display: inline-flex;
+    height: 5%;
+    width: 90%;
+    margin-top: 1%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    overflow: hidden;
+    align-items: center;
+  }
+
 
   .rewardsinfo {
     height: 100%;
@@ -912,6 +984,22 @@ tr:not(:first-child):hover div{
   width: 0;
   height: 0;
 }
+
+
+/*Enter and Exit Market Switches */
+.APRswitch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 15px;
+}
+
+.APRswitch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
 
 .slider {
   position: absolute;

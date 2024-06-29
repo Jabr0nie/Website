@@ -34,6 +34,7 @@
 			<div class="topnav" id="myTopnav">
 				<button class="MetaMask" id="connectbutton" value="Connect Metamask">
 					Connect Metamask</button>
+
 				<a href="https://nyke.finance/" class="logowrapper">
 				<img id="logo" class="logo" src="Images\NykeTealBanner.svg" width="300px"
 					height="80px">
@@ -45,11 +46,11 @@
 				<div class="accruedRewards" id="accruedRewards">0.00 NYKE</div>
 				<button class="claimRewards" id="claimRewards">Claim</button>
 				<a href="https://app.hebeswap.com/#/swap?outputCurrency=0x9aa2901007fCE996e35305FD9bA196e17fCd2605" class="linkwrapper">
-				<button class="swapnyke" id="swapnyke">Swap <img id="hebeswap" class="hebeswap" src="Images\LinkIcon.png" width="10px"
-					height="10px"></button>
+				<button class="swapnyke" id="swapnyke">Swap <img id="hebeswap" class="hebeswap" src="Images\LinkIcon.png" width="8px"
+					height="8px"></button>
 					</a>
-
 			</div>
+
 
 			<div class="maincontent">
 				<div style="clear: both;"></div>
@@ -60,24 +61,26 @@
 						<div class="UseBalanceText">Supplied Balance</div><div class="UserBalanceOutput" id="UserAssetBalance">$0.00</div>
 						</div>
 						<div class="supplytextright">
-						<div class="UserMaxBorrowText">Net APR</div><div class="UserBorrowLimit" id="UserAPR"> 0%</div>
+						<div class="UserMaxBorrowText">Net Base APR</div><div class="UserBorrowLimit" id="UserAPR"> 0%</div>
 						</div>
 					<div class="Supplied">
 						<table class="UserSupplyTable">
 							<tbody>
 								<tr>
 									<td></td>
-									<td style="text-align: center;">Assets</td>
+									<td class="tdmobile" style="text-align: center;">Assets</td>
 									<td>Supplied</td>
-									<td>APR</td>
+									<td>Base APR</td>
+									<td>Reward APR</td>
 									<td>Collateral</td>
 								</tr>
 								<tr>
 									<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
 											width="25" height="25" style="display: inline-block;"></td>
-							<td>ETC</td>
+							<td class="tdmobile">ETC</td>
 							<td><div id="YourETCSupplied"></div></td>
 							<td><div id="ETCSupplyRateOutputSupply"></div></td>
+							<td><div id="ETCSupplyRateOutputSupply1"></div></td>
 							<td><label class="switch">
 								<input type="checkbox" id="ETCCheckbox" onclick="CollateralStatus()">
 								<span class="slider round"></span>
@@ -85,9 +88,10 @@
 						</tr>
 						<tr>
 							<td><img src="Images\usc-logo.png" alt="USC Logo" width="25" height="25"></td>
-								<td>USC</td>
+								<td class="tdmobile">USC</td>
 								<td><div id="YourUSCSupplied"></div></td>
 								<td><div id="USCSupplyRateOutputSupply"></div></td>
+								<td><div id="USCSupplyRateOutputSupply1"></div></td>
 								<td><label class="switch">
 									<input type="checkbox" id="USCCheckbox" onclick="CollateralStatusUSC()">
 									<span class="slider round"></span>
@@ -109,25 +113,27 @@
 						<tbody>
 							<tr class="userchildrow">
 								<td></td>
-								<td style="text-align: center;">Assets</td>
+								<td class="tdmobile" style="text-align: center;">Assets</td>
 								<td>Borrowed</td>
-								<td>APR</td>
+								<td>Base APR</td>
+								<td>Reward APR</td>
 								
 							</tr>
 							<tr>
 								<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
 										width="25" height="25" style="display: inline-block;"></td>
-						<td>ETC</td>
+						<td class="tdmobile">ETC</td>
 						<td><div id="UserETCBorrowed"> </div></td>
 						<td><div id="ETCBorrowedRate1"> </div></td>
+						<td><div id="ETCBorrowedRate2"> </div></td>
 				
 					</tr>
 					<tr>
 						<td><img src="Images\usc-logo.png" alt="USC Logo" width="25" height="25"></td>
-							<td>USC</td>
+							<td class="tdmobile">USC</td>
 							<td><div id="USCBorrowedUser"> </div></td>
 							<td><div id="USCBorrowRate1"> </div></td>
-						
+							<td><div id="USCBorrowRate2"> </div></td>
 
 					</tr>
 				</tbody>
@@ -136,7 +142,10 @@
 	</div>
 			</div>
 				<div class="MarketDetails">
+
+
 					<p class="MarketsText">Markets</p>
+
 				<div class="Markets">
 					<table id="table" class="Supply">
 						<tbody>
@@ -156,10 +165,10 @@
 						<td><div id="dataOutput"></div></td>
 						<td><div id="ETCBorrowed"></div></td>
 						<td class="tdmobile"><div id="ETCUtilization"></div></td>
-						<td class="tdmobile"><div class="rewards"><div class="wrewards" id="ETCSupplyRateOutput"></div><div class="rrewards">+<img src="Images\DarkTealLogo.png" height="20px" width="20px"> </div></div>
+						<td class="tdmobile"><div id="rewards"><div id="ETCSupplyRateOutput"></div></div>
 							</td>
 						<td class="tdmobile">
-							<div class="rewards"><div class="wrewards" id="ETCBorrowRateOutput"></div><div class="rrewards">+<img src="Images\DarkTealLogo.png" height="20px" width="20px"> </div></div>
+							<div id="rewards"><div id="ETCBorrowRateOutput"></div></div>
 
 							</td>
 				
@@ -172,11 +181,10 @@
 							<td><div id="USCBorrowed"></div></td>
 							<td class="tdmobile"><div id="USCUtilization"></div></td>
 							<td class="tdmobile">
-								<div class="rewards"><div class="wrewards" id="USCSupplyRateOutput"></div><div class="rrewards">+<img src="Images\DarkTealLogo.png" height="20px" width="20px"> </div></div>
-
+								<div id="rewards"><div id="USCSupplyRateOutput"></div></div>
 								</td>
 							<td class="tdmobile">
-								<div class="rewards"><div class="wrewards" id="USCBorrowRateOutput"></div><div class="rrewards">+<img src="Images\DarkTealLogo.png" height="20px" width="20px"> </div></div>
+								<div id="rewards"><div id="USCBorrowRateOutput"></div></div>
 
 								</td>
 
@@ -305,7 +313,8 @@
 					</div>
 					<div class="input">
 						<button type="SafeMax" id="SafeMaxRepay">MAX</button>
-						<input type="value" id="ETCRepay" placeholder="Enter Amount Here...">
+						<input type="value" id="
+						ETCRepay" placeholder="Enter Amount Here...">
 					</div>
 					<div class="stats-container"><div class="Stats">Borrow Rate</div><div class="Stats-Output" id="ETCBorrowRateModal1"></div></div>
 					<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit3"></div></div>
