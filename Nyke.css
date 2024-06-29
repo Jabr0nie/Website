@@ -167,6 +167,7 @@ body {
   }
 
 .UseBalanceText {
+  color: #D8D7DB;
   display: inline-block;
   font-size: 100%;
 }
@@ -198,12 +199,14 @@ body {
 }
 
 .UserMaxBorrowText {
+  color: #D8D7DB;
   text-align: right;
   font-size: 100%;
 }
 
 .borrowtextleft {
   width: 45%;
+  color: #D8D7DB;
   display: inline-block;
   margin-left: 10%;
   margin-right: 0%;
@@ -262,6 +265,7 @@ body {
 
 
   .MarketsText {
+    color: #D8D7DB;
     height: 10%;
     margin-left: 2.5%;
   }
@@ -579,10 +583,10 @@ float: right;
     float: right;
     border-radius: 16px; 
     width: 70px; height: 80%; 
-    border: 2px solid #1eeadb;
+    border: 2px solid #D8D7DB;
     overflow: hidden;
     background-color:#102869;
-    color: #1eeadb; 
+    color: #D8D7DB; 
     font-size: 11px; 
     text-align: center;
     margin-left: 15px;
