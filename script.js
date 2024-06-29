@@ -717,7 +717,7 @@ function myFunction() {
                       document.getElementById('modal-repay').style.display = "none";
                       document.getElementById('ETCWithdrawl').value = '';
                       document.getElementById('ETCBorrow').value = '';
-                      document.getElementById('ETCRepay').value = '';
+                      document.getElementById('ETCRepay').value = 0;
                         let account = document.getElementById('connectbutton').innerHTML;
                         let _UserETCSupplied;
                       nETCContractMM.methods.balanceOf(`${account}`).call().then(result => {
@@ -759,7 +759,6 @@ function myFunction() {
                       document.getElementById('modal-repay').style.display = "block";
                       document.getElementById('ETCWithdrawl').value = '';
                       document.getElementById('ETCBorrow').value = '';
-                      document.getElementById('ETCRepay').value = '';
                       let account = document.getElementById('connectbutton').innerHTML;
                       let _UserBorrowETC;
                       nETCContractMM.methods.borrowBalanceStored(`${account}`).call().then(result => {
