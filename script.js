@@ -84,8 +84,8 @@
                                 document.getElementById('UserAssetBalance').innerText = `$${Assets}`;
                                 let ETCLiability = (ETCPrice * ETCBorrow);
                                 let USCLiability = (USCPrice * USCBorrow);
-                                let Liabilities = ((USCLiability + ETCLiability).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
-                                document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
+                                let Liabilities = ((USCLiability + ETCLiability));
+                                document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                             //User APR
                             const BlocksPerYear = 2425790;
                             nETCContract.methods.supplyRatePerBlock().call().then(ETCSupplyRate1 => {
@@ -103,8 +103,11 @@
                             //Collateral Factor
                                 const USCStatus = document.getElementById("USCCheckbox");
                                 const ETCStatus = document.getElementById("ETCCheckbox");
-                                    let borrowlimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                                    let MaxBorrow =((Liabilities/((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                                    let borrowlimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked));
+                                    let MaxBorrow =((Liabilities/(borrowlimit))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                                    console.log(MaxBorrow);
+                                    console.log(borrowlimit);
+
                                     document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow}%`;                           
                             });
                             });});
@@ -186,8 +189,8 @@
                                     document.getElementById('UserAssetBalance').innerText = `$${Assets}`;
                                     let ETCLiability = (ETCPrice * ETCBorrow);
                                     let USCLiability = (USCPrice * USCBorrow);
-                                    let Liabilities = ((USCLiability + ETCLiability).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
-                                    document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
+                                    let Liabilities = ((USCLiability + ETCLiability));
+                                    document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                 //User APR
                                 const BlocksPerYear = 2425790;
                                 nETCContract.methods.supplyRatePerBlock().call().then(ETCSupplyRate1 => {
@@ -205,7 +208,8 @@
                                 //Collateral Factor
                                     const USCStatus = document.getElementById("USCCheckbox");
                                     const ETCStatus = document.getElementById("ETCCheckbox");
-                                    let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                                    let borrowlimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked));
+                                    let MaxBorrow =((Liabilities/((borrowlimit)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
                                         document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow}%`;
                                 });
                                 });});
@@ -500,8 +504,8 @@
         document.getElementById('UserAssetBalance').innerText = `$${Assets}`;
         let ETCLiability = (ETCPrice * ETCBorrow);
         let USCLiability = (USCPrice * USCBorrow);
-        let Liabilities = ((USCLiability + ETCLiability).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
-        document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
+        let Liabilities = ((USCLiability + ETCLiability));
+        document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
     //Collateral Factor
         const USCStatus = document.getElementById("USCCheckbox");
         const ETCStatus = document.getElementById("ETCCheckbox");
