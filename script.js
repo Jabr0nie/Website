@@ -1,14 +1,4 @@
-function myFunction() {
-    var x = document.getElementById("myLinks");
-    var m = document.getElementById("connectbutton");
-    if (x.style.display === "flex") {
-      x.style.display = "none";
-      m.style.display = "flex";
-    } else {
-      x.style.display = "flex";
-      m.style.display = "none";
-    }
-  }
+
               // Setting getblock node as HTTP provider
               const provider = new Web3.providers.HttpProvider("https://go.getblock.io/60e5a3f8fbcd4953b12b226760d7e5e1/");
               // Creating web3 instance with given provider
@@ -863,7 +853,7 @@ function myFunction() {
                   document.getElementById("USCApproveRepayButton").onclick = ApproveUSCRepay;
                   document.getElementById("USCRepayButton").onclick = RepayUSC;
                   document.getElementById("SafeMaxRepayUSC").onclick = SafeMaxValue;
-                  document.getElementById("claimRewards").onclick = claimNykeRewards;
+                    document.getElementById("claimRewards").onclick = claimNykeRewards;
 
                   //Open MODAL
 

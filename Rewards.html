@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VFJK8YLJ8C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VFJK8YLJ8C');
+</script>
+		<link rel="icon" type="image/png" sizes="32x32" href="Images\DarkTealLogo.png">
+		<meta charset="UTF-8" name="viewport"
+			content="width=device-width, initial-scale=1.0">
+		<title>NYKE</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+		<script language="javascript" type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script language="javascript" type="text/javascript"
+			src="web3.min.js"></script>
+		<script language="javascript" type="text/javascript"
+			src="getblock.config.js"></script>
+		<script language="javascript" type="text/javascript"
+			src="Connect.js"></script>
+			<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+        type="application/javascript"></script>
+		<script language="javascript" type="text/javascript" src="Abi.js"></script>
+		<link href="Nykerewards.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body class="body">
+		<div class="root" id="root">
+			<div class="topnav" id="myTopnav">
+				<button class="MetaMask" id="connectbutton" value="Connect Metamask">
+					Connect Metamask</button>
+					<nav class="nav" id="nav">
+						<a href="index.html">Dashboard</a>
+					</nav>
+
+				<a href="https://nyke.finance/" class="logowrapper">
+				<img id="logo" class="logo" src="Images\NykeTealBanner.svg" width="300px"
+					height="80px">
+				</a>
+			</div>
+
+			<div class="rewardcontainer">
+				<div class="rewardsinfo">Accrued Rewards</div>
+				<div class="accruedRewards" id="accruedRewards">0.00 NYKE</div>
+				<button class="claimRewards" id="claimRewards">Claim</button>
+
+			</div>
+			<div class="rewardcontainer">
+				<a href="https://app.hebeswap.com/#/swap?outputCurrency=0x9aa2901007fCE996e35305FD9bA196e17fCd2605" class="hebeswap" id="claimRewards">Trade NYKE on Hebeswap</a>
+			</div>
+
+
+			<div class="maincontent">
+				<div style="clear: both;"></div>
+				<div class="flex-container" id="flexcontainer">
+					<div class="MarketDetails">
+
+
+						<p class="MarketsText">Markets</p>
+	
+					<div class="Markets">
+						<table id="table" class="Supply">
+							<tbody>
+								<tr>
+									<td></td>
+									<td class="tdmobile" style="text-align: center;">Asset</td>
+									<td class=>Market Size</td>
+									<td class=>Total Borrowed</td>
+									<td class="tdmobile">Utilization Rate</td>
+									<td class="tdmobile">Supply APR</td>
+									<td class="tdmobile">Borrow APR</td>
+								</tr>
+								<tr>
+									<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
+											width="30" height="30" style="display: inline-block;"></td>
+							<td class="tdmobile">ETC</td>
+							<td><div id="dataOutput"></div></td>
+							<td><div id="ETCBorrowed"></div></td>
+							<td class="tdmobile"><div id="ETCUtilization"></div></td>
+							<td class="tdmobile"><div id="rewards"><div id="ETCSupplyRateOutput"></div></div>
+								</td>
+							<td class="tdmobile">
+								<div id="rewards"><div id="ETCBorrowRateOutput"></div></div>
+	
+								</td>
+					
+	
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+				
+			<div class="footer">
+				<a href="https://discord.gg/AjBX4KFMKN" class="footerwrapper">
+				<img class="footericon" src="Images\DiscordTeal.svg" width="30px"
+					height="30px">
+				</a>
+				<a href="https://github.com/Jabr0nie" class="footerwrapper">
+					<img class="footericon" src="Images\GithubTeal.svg" width="30px"
+						height="30px">
+					</a>
+					<a href="https://nyke.gitbook.io/nyke-finance/" class="footerwrapper">
+						<img class="footericon" src="Images\GitbookTeal.svg" width="30px"
+							height="30px">
+						</a>
+			</div>
+
+
+		<script language="javascript" type="text/javascript"
+			src="Rewards.js"></script>
+
+	</body>
+</html>
