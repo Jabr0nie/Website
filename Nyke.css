@@ -12,7 +12,7 @@ body {
     display: flexbox;
     width:100%;
     height: 100%;
-    background-color: #0d114a;
+    background-color: #10171f;
     overflow-x: hidden;
     margin: 0px;
   }
@@ -22,7 +22,7 @@ body {
     position: absolute;
     position: -webkit-sticky;
     bottom: 0;
-    background-color: #0d114a;
+    background-color: #10171f;
     padding-top: 1%;
     padding-bottom: 0.5%;
     width: 100%;
@@ -62,7 +62,7 @@ body {
 
   .maincontent {
     display: flexbox;
-    background-color:  #0d114a;
+    background-color:  #10171f;
     width: 100%;
     height: 600px;
     align-items: center;
@@ -255,7 +255,7 @@ body {
 
   .Markets {
     display: block;
-    background-color:#102869;
+    background-color:#1D2833;
     border-radius: 5px;
     width: 100%;
     height:60%;
@@ -278,7 +278,7 @@ body {
 
   .Supplied{
     display: inline-block;
-    background-color: #102869;
+    background-color: #1D2833;
     border-radius: 5px;
     width: 95%;
     height:60%;
@@ -309,7 +309,7 @@ float: right;
 
   .Borrowed{
     display: flexbox;
-    background-color: #102869;
+    background-color: #1D2833;
     border-radius: 5px;
     float: right;
     width: 95%;
@@ -331,7 +331,7 @@ float: right;
   }
   .maincontent {
     display: flexbox;
-    background-color:  #0d114a;
+    background-color:  #10171f;
     width: 100%;
     height: 600px;
     margin-top: 1%;
@@ -345,7 +345,7 @@ float: right;
   
   .Markets {
     display: block;
-    background-color:#102869;
+    background-color:#1D2833;
     border-radius: 5px;
     width: 100%;
     height:60%;
@@ -356,7 +356,7 @@ float: right;
     display: none;
   }
   .header__mobile-overlay {
-    background: #0d114a;
+    background: #10171f;
     display: none;
     flex-direction: column;
     height: 100%;
@@ -390,21 +390,21 @@ float: right;
   text-decoration: none;}
 
   .headermobilemenu a:hover {
-  background-color: #0d114a;
+  background-color: #10171f;
   color: #1eeadb
 }
 
 
 .headermobilemenu a.active {
   background-color: #1eeadb;
-  color: #0d114a;
+  color: #10171f;
 } 
 }
 
   @media screen and (max-width: 1300px) {
     .maincontent {
       display: flexbox;
-      background-color:  #0d114a;
+      background-color:  #10171f;
       width: 100%;
       height: 800px;
       margin-top: 1%;
@@ -419,7 +419,7 @@ float: right;
       position: sticky;
       position: -webkit-sticky;
       bottom: 0;
-      background-color: #0d114a;
+      background-color: #10171f;
       padding-top: 1%;
       width: 100%;
       text-align: center;
@@ -468,7 +468,7 @@ float: right;
 
     .Markets {
       display: block;
-      background-color:#102869;
+      background-color:#1D2833;
       border-radius: 5px;
       width: 100%;
       height:60%;
@@ -496,7 +496,7 @@ float: right;
       }
       .Supplied{
         display: inline-block;
-        background-color: #102869;
+        background-color: #1D2833;
         border-radius: 5px;
         width: 100%;
         height:60%;
@@ -513,7 +513,7 @@ float: right;
       }
       .Borrowed{
         display: flexbox;
-        background-color: #102869;
+        background-color: #1D2833;
         border-radius: 5px;
         width: 100%;
         height:60%;
@@ -549,7 +549,7 @@ float: right;
   min-width: 120px;
   border: 2px solid #1eeadb;
   overflow: hidden;
-  background-color:#102869;
+  background-color:#1D2833;
   color: #1eeadb; 
   font-size: 13px; 
   font-weight: 500;
@@ -565,7 +565,7 @@ float: right;
     min-width: 120px;
     border: 2px solid #1eeadb;
     overflow: hidden;
-    background-color:#102869;
+    background-color:#1D2833;
     color: #1eeadb; 
     font-size: 13px; 
     font-weight: 500;
@@ -576,7 +576,7 @@ float: right;
   .MetaMask:hover {
     cursor: pointer;
     background-color:  #1eeadb;
-    color: #102869;
+    color: #1D2833;
   }
 
   .claimRewards {
@@ -585,7 +585,7 @@ float: right;
     width: 70px; height: 30px; 
     border: 2px solid #D8D7DB;
     overflow: hidden;
-    background-color:#102869;
+    background-color:#1D2833;
     color: #D8D7DB; 
     font-size: 11px; 
     text-align: center;
@@ -598,7 +598,7 @@ float: right;
   .claimRewards:hover {
     cursor: pointer;
     background-color:  #1eeadb;
-    color: #102869;
+    color: #1D2833;
   }
 
   .swapnyke {
@@ -608,7 +608,7 @@ float: right;
     width: 70px; height: 80%; 
     border: 2px solid #1eeadb;
     overflow: hidden;
-    background-color:#102869;
+    background-color:#1D2833;
     color: #1eeadb; 
     font-size: 11px; 
     text-align: center;
@@ -621,7 +621,7 @@ float: right;
   .swapnyke:hover {
     cursor: pointer;
     background-color:  #1eeadb;
-    color: #102869;
+    color: #1D2833;
   }
 
   button {
@@ -629,7 +629,7 @@ float: right;
     width: 100px; 
     height: 30px; 
     background-color:#1eeadb;
-    color: #0d114a;
+    color: #10171f;
     font-size: 15px; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
     }
@@ -678,8 +678,8 @@ td:first-child {
 td:not(:first-child) {
   text-align: center;
   max-width: 100px;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .Supply tr:first-child {
@@ -740,7 +740,7 @@ tr:not(:first-child):hover div{
 /* Add a black background color to the top navigation */
 .topnav {
   display: inline-flexbox;
-  background-color: #0d114a;
+  background-color: #10171f;
   overflow: hidden;
   margin-top: 1%;
   margin-bottom: 1%;
@@ -768,14 +768,14 @@ tr:not(:first-child):hover div{
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #0d114a;
+  background-color: #10171f;
   color: #1eeadb
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
   background-color: #1eeadb;
-  color: #0d114a;
+  color: #10171f;
 } 
 
 /* Hide the links inside the navigation menu (except for logo/home) */
@@ -802,6 +802,14 @@ tr:not(:first-child):hover div{
     overflow: hidden;
     align-items: center;
   }
+
+  td:not(:first-child) {
+    text-align: center;
+    max-width: 100px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
 
 
 
@@ -830,7 +838,7 @@ tr:not(:first-child):hover div{
  
   .topnav {
     display: inline-flexbox;
-    background-color: #0d114a;
+    background-color: #10171f;
     overflow: hidden;
     height: 15%;
     width: 100%;
@@ -839,7 +847,7 @@ tr:not(:first-child):hover div{
   }
 
   .header__mobile-overlay {
-    background: #0d114a;
+    background: #10171f;
     display: none;
     flex-direction: column;
     height: 100%;
@@ -939,7 +947,7 @@ tr:not(:first-child):hover div{
 
     .Supplied{
       display: inline-block;
-      background-color: #102869;
+      background-color: #1D2833;
       border-radius: 5px;
       width: 100%;
       height:60%;
@@ -950,7 +958,7 @@ tr:not(:first-child):hover div{
     }
     .Borrowed{
       display: flexbox;
-      background-color: #102869;
+      background-color: #1D2833;
       border-radius: 5px;
       float: right;
       width: 100%;
@@ -1074,14 +1082,14 @@ input:checked + .slider:before {
 .modalButton Button:hover {
   background-color:#1eeadb;
   border: 3px solid #1eeadb;
-  color: #102869;;
+  color: #1D2833;;
   cursor: pointer;
 }
 
 .input Button:hover {
   background-color:#1eeadb;
   border: 2px solid #1eeadb;
-  color: #102869;;
+  color: #1D2833;;
   cursor: pointer;
 }
 
@@ -1089,7 +1097,7 @@ input:checked + .slider:before {
 
 .modal-content {
   display: none;
-  background-color:#0d114a;
+  background-color:#10171f;
   border-radius: 25px;
   margin: auto;
   border: 5px solid  #1eeadb;
@@ -1129,7 +1137,7 @@ input:checked + .slider:before {
 }
 
 .modalnav {
-  background-color:#0d114a;
+  background-color:#10171f;
   overflow: hidden;
   width: 100%;
   height: 10%;
@@ -1151,20 +1159,20 @@ input:checked + .slider:before {
 
 /* Change the color of links on hover */
 .modalnav a:hover {
-  background-color: #102869;
+  background-color: #1D2833;
   color: #1eeadb
 }
 
 /* Add a color to the active/current link */
 .modalnav a.active {
   background-color: #1eeadb;
-  color:#0d114a;
+  color:#10171f;
 } 
 
 .modalbody {
   display: inline-flexbox;
   color:#D8D7DB;
-  background-color: #0d114a;
+  background-color: #10171f;
   width: 100%;
   float: left;
   text-decoration: none;
@@ -1177,7 +1185,7 @@ input:checked + .slider:before {
 
 .WalletBalance a{
   color: #D8D7DB;
-  background-color:#0d114a;
+  background-color:#10171f;
   text-align: left;
   align-items: left;
   float: left;
@@ -1187,7 +1195,7 @@ input:checked + .slider:before {
 .WalletBalance{
   display: flexbox;
   color: #D8D7DB;
-  background-color: #0d114a;
+  background-color: #10171f;
   text-align: left;
   align-items: center;
   align-content: center;
@@ -1233,7 +1241,7 @@ input:checked + .slider:before {
   margin-right: 5px;
  }
  .input button {
-  background-color: #102869;
+  background-color: #1D2833;
   border-radius: 10px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
 
@@ -1253,7 +1261,7 @@ input:checked + .slider:before {
 
 
  .modalButton {
-  background-color:#0d114a;
+  background-color:#10171f;
   display: flexbox;
   color: #1eeadb;
   font-size: 100%;
@@ -1268,7 +1276,7 @@ input:checked + .slider:before {
 
 
  .modalButton Button{
-  background-color:#102869;
+  background-color:#1D2833;
   border-radius: 25px;
   border: 2px solid #1eeadb;
   color: #1eeadb;
@@ -1297,7 +1305,7 @@ input:checked + .slider:before {
         text-justify: center;
         background-color: #1eeadb;
         line-height: 21px;
-        color: #102869;
+        color: #1D2833;
     }
     .ApproveText {
 display: inline-block;

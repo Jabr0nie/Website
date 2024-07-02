@@ -58,44 +58,55 @@
 			<div class="maincontent">
 				<div style="clear: both;"></div>
 				<div class="flex-container" id="flexcontainer">
-					<div class="MarketDetails">
+					<div class = "UserDetails">
+						<div class = "supplyshell">
+							<div class="supplytextleft">
+							<div class="UseBalanceText">Circulating Supply</div><div class="UserBalanceOutput" id="NykeSupplyBalance"></div>
+							</div>
+							<div class="supplytextright">
+							<div class="UserMaxBorrowText">Net Base APR</div><div class="UserBorrowLimit" id="UserAPR"> 0%</div>
+							</div>
+						<div class="Supplied">
+							<table class="UserSupplyTable">
+								<tbody>
+									<tr>
+										<td></td>
+										<td class="tdmobile" style="text-align: center;">Assets</td>
+										<td>Supplied</td>
+										<td>Base APR</td>
+										<td>Reward APR</td>
+										<td>Collateral</td>
+									</tr>
+									<tr>
+										<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
+												width="25" height="25" style="display: inline-block;"></td>
+								<td class="tdmobile">ETC</td>
+								<td><div id="YourETCSupplied"></div></td>
+								<td><div id="ETCSupplyRateOutputSupply"></div></td>
+								<td><div id="ETCSupplyRateOutputSupply1"></div></td>
+								<td><label class="switch">
+									<input type="checkbox" id="ETCCheckbox" onclick="CollateralStatus()">
+									<span class="slider round"></span>
+								  </label></td>		
+							</tr>
+							<tr>
+								<td><img src="Images\usc-logo.png" alt="USC Logo" width="25" height="25"></td>
+									<td class="tdmobile">USC</td>
+									<td><div id="YourUSCSupplied"></div></td>
+									<td><div id="USCSupplyRateOutputSupply"></div></td>
+									<td><div id="USCSupplyRateOutputSupply1"></div></td>
+									<td><label class="switch">
+										<input type="checkbox" id="USCCheckbox" onclick="CollateralStatusUSC()">
+										<span class="slider round"></span>
+									  </label></td></td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+				</div></div></div>
+				
 
-
-						<p class="MarketsText">Markets</p>
-	
-					<div class="Markets">
-						<table id="table" class="Supply">
-							<tbody>
-								<tr>
-									<td></td>
-									<td class="tdmobile" style="text-align: center;">Asset</td>
-									<td class=>Market Size</td>
-									<td class=>Total Borrowed</td>
-									<td class="tdmobile">Utilization Rate</td>
-									<td class="tdmobile">Supply APR</td>
-									<td class="tdmobile">Borrow APR</td>
-								</tr>
-								<tr>
-									<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
-											width="30" height="30" style="display: inline-block;"></td>
-							<td class="tdmobile">ETC</td>
-							<td><div id="dataOutput"></div></td>
-							<td><div id="ETCBorrowed"></div></td>
-							<td class="tdmobile"><div id="ETCUtilization"></div></td>
-							<td class="tdmobile"><div id="rewards"><div id="ETCSupplyRateOutput"></div></div>
-								</td>
-							<td class="tdmobile">
-								<div id="rewards"><div id="ETCBorrowRateOutput"></div></div>
-	
-								</td>
-					
-	
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+		
 	<div style="clear: both;"></div>
 				
 			<div class="footer">

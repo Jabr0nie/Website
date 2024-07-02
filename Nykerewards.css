@@ -272,6 +272,8 @@ body {
 
   .supplyshell {
     width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
     min-width: 380px;
     font-size: 80%;
   }
