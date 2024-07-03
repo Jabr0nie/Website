@@ -490,8 +490,8 @@
         ETCPrice = (ETCPrice.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
         let ETCAsset = (ETCPrice * ETCSupplied);
         let USCAsset = (USCPrice * USCSup);
-        let Assets = ((USCAsset + ETCAsset).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
-        document.getElementById('UserAssetBalance').innerText = `$${Assets}`;
+        let Assets = (USCAsset + ETCAsset);
+        document.getElementById('UserAssetBalance').innerText = `$${Assets.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
         let ETCLiability = (ETCPrice * ETCBorrow);
         let USCLiability = (USCPrice * USCBorrow);
         let Liabilities = ((USCLiability + ETCLiability));
@@ -561,11 +561,11 @@
         let ETCAsset = (ETCPrice * ETCSupplied);
         let USCAsset = (USCPrice * USCSup);
         let Assets = (USCAsset + ETCAsset);
-        document.getElementById('UserAssetBalance').innerText = `$${Assets}`;
+        document.getElementById('UserAssetBalance').innerText = `$${Assets.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
         let ETCLiability = (ETCPrice * ETCBorrow);
         let USCLiability = (USCPrice * USCBorrow);
         let Liabilities = (USCLiability + ETCLiability);
-        document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
+        document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
     //Utilization
 
     //Collateral Factor
