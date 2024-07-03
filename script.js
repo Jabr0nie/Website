@@ -46,26 +46,23 @@
                             //ETC Borrowed
                                 nETCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}, function(err,ETCBorrow){
                                 ETCBorrow = ETCBorrow / (10 ** 18);
-                                ETCBorrow = ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                                document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow} ETC`;
+                                document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} ETC`;
                             //USC Borrowed Amount
                             nUSCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}).then(USCBorrow => {
                                 USCBorrow = USCBorrow / (10 ** 6);
-                                USCBorrow = USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                                document.getElementById('USCBorrowedUser').innerText = `${USCBorrow} USC`;
+                                document.getElementById('USCBorrowedUser').innerText = `${USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} USC`;
 
                             // Oracle Price Update
                             OracleContract.methods.GetUnderlyingPrice('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(USCPrice => {
                                 USCPrice = USCPrice / (10 ** 18);
-                                USCPrice = (USCPrice.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
                              //USC Supplied Amount
                           nUSCContract.methods.balanceOf(accounts[0]).call({from: account}).then(USCSup => {
                             nUSCContract.methods.exchangeRateStored().call({from: account}).then(USCExchangeMantissa => {
                                 USCExchangeMantissa = USCExchangeMantissa / (10 ** 20);
                                 console.log(USCExchangeMantissa);
                             USCSup = (USCSup / (10 ** 4))*USCExchangeMantissa;
-                            USCSup = USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                            document.getElementById('YourUSCSupplied').innerText = `${USCSup} USC`;
+                            USCSup = USCSup;
+                            document.getElementById('YourUSCSupplied').innerText = `${USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} USC`;
                             //ETC Supplied
                           nETCContract.methods.balanceOf(accounts[0]).call({from: account}, function(err,ETCSupplied){
                            nETCContract.methods.exchangeRateStored().call({from: account}).then(ETCExchangeMantissa => {
@@ -80,8 +77,8 @@
                                 ETCPrice = (ETCPrice.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
                                 let ETCAsset = (ETCPrice * ETCSupplied);
                                 let USCAsset = (USCPrice * USCSup);
-                                let Assets = ((USCAsset + ETCAsset).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
-                                document.getElementById('UserAssetBalance').innerText = `$${Assets}`;
+                                let Assets = (USCAsset + ETCAsset);
+                                document.getElementById('UserAssetBalance').innerText = `$${Assets.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                 let ETCLiability = (ETCPrice * ETCBorrow);
                                 let USCLiability = (USCPrice * USCBorrow);
                                 let Liabilities = ((USCLiability + ETCLiability));
@@ -139,8 +136,7 @@
                              //rewards accrued
                              ComptrollerContract.methods.compAccrued(`${account}`).call().then(accruedRewards => {
                                 accruedRewards = accruedRewards / (10 ** 18);
-                                accruedRewards = accruedRewards.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                                    document.getElementById('accruedRewards').innerText = `${accruedRewards} NYKE`;
+                                    document.getElementById('accruedRewards').innerText = `${accruedRewards.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} NYKE`;
                              })
                                //In market?
                               ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
@@ -151,26 +147,23 @@
                                 //ETC Borrowed
                                     nETCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}, function(err,ETCBorrow){
                                     ETCBorrow = ETCBorrow / (10 ** 18);
-                                    ETCBorrow = ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                                    document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow} ETC`;
+                                    document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} ETC`;
                                 //USC Borrowed Amount
                                 nUSCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}).then(USCBorrow => {
                                     USCBorrow = USCBorrow / (10 ** 6);
-                                    USCBorrow = USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                                    document.getElementById('USCBorrowedUser').innerText = `${USCBorrow} USC`;
+                                    document.getElementById('USCBorrowedUser').innerText = `${USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} USC`;
 
                                 // Oracle Price Update
                                 OracleContract.methods.GetUnderlyingPrice('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(USCPrice => {
                                     USCPrice = USCPrice / (10 ** 18);
-                                    USCPrice = (USCPrice.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
                                  //USC Supplied Amount
                               nUSCContract.methods.balanceOf(accounts[0]).call({from: account}).then(USCSup => {
                             nUSCContract.methods.exchangeRateStored().call({from: account}).then(USCExchangeMantissa => {
                                 USCExchangeMantissa = USCExchangeMantissa / (10 ** 20);
                                 console.log(USCExchangeMantissa);
                                 USCSup = (USCSup / (10 ** 4))*USCExchangeMantissa;
-                                USCSup = USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                                document.getElementById('YourUSCSupplied').innerText = `${USCSup} USC`;
+                                USCSup = USCSup;
+                                document.getElementById('YourUSCSupplied').innerText = `${USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} USC`;
                                 //ETC Supplied
                               nETCContract.methods.balanceOf(accounts[0]).call({from: account}, function(err,ETCSupplied){
                                 nETCContract.methods.exchangeRateStored().call({from: account}).then(ETCExchangeMantissa => {
@@ -185,8 +178,8 @@
                                     ETCPrice = (ETCPrice.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
                                     let ETCAsset = (ETCPrice * ETCSupplied);
                                     let USCAsset = (USCPrice * USCSup);
-                                    let Assets = ((USCAsset + ETCAsset).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
-                                    document.getElementById('UserAssetBalance').innerText = `$${Assets}`;
+                                    let Assets = (USCAsset + ETCAsset);
+                                    document.getElementById('UserAssetBalance').innerText = `$${Assets.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let ETCLiability = (ETCPrice * ETCBorrow);
                                     let USCLiability = (USCPrice * USCBorrow);
                                     let Liabilities = ((USCLiability + ETCLiability));
@@ -382,10 +375,9 @@
   
                   main();
   
-         //         $(function () {
-         //           setInterval(main, 000);
-        //            setInterval(isConnected, 60000);
-        //        });
+                  $(function () {
+                    setInterval(main, 60000);
+                   });
 
 
 
@@ -482,9 +474,8 @@
         USCExchangeMantissa = USCExchangeMantissa / (10 ** 20);
         console.log(USCExchangeMantissa);
         USCSup = (USCSup / (10 ** 4))*USCExchangeMantissa;
-    USCSup = USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-    document.getElementById('YourUSCSupplied').innerText = `${USCSup} USC`;
-    document.getElementById('UserUSCSupply').innerText = `${USCSup}`;
+    document.getElementById('YourUSCSupplied').innerText = `${USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} USC`;
+    document.getElementById('UserUSCSupply').innerText = `${USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
 
     //ETC Supplied
   nETCContract.methods.balanceOf(account).call({from: account}, function(err,ETCSupplied){
@@ -493,8 +484,7 @@
         console.log(ETCExchangeMantissa);
     console.log(ETCSupplied);
    ETCSupplied = (ETCSupplied / (10 ** 18))*ETCExchangeMantissa;
-   ETCSupplied = ETCSupplied.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-   document.getElementById('YourETCSupplied').innerText = `${ETCSupplied} ETC`;
+   document.getElementById('YourETCSupplied').innerText = `${ETCSupplied.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} ETC`;
     OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(ETCPrice => {
         ETCPrice = ETCPrice / (10 ** 18);
         ETCPrice = (ETCPrice.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
@@ -556,8 +546,7 @@
         console.log(USCExchangeMantissa);
         USCSup = (USCSup / (10 ** 4))*USCExchangeMantissa;
     USCSuppliedMax = USCSup;
-    USCSup = USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-    document.getElementById('YourUSCSupplied').innerText = `${USCSup} USC`;
+    document.getElementById('YourUSCSupplied').innerText = `${USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} USC`;
     //ETC Supplied
   nETCContract.methods.balanceOf(account).call({from: account}, function(err,ETCSupplied){
     nETCContract.methods.exchangeRateStored().call({from: account}).then(ETCExchangeMantissa => {
@@ -566,58 +555,56 @@
     console.log(ETCSupplied);
    ETCSupplied = (ETCSupplied / (10 ** 18))*ETCExchangeMantissa;
    ETCSuppliedMax = ETCSupplied;
-   ETCSupplied = ETCSupplied.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-   document.getElementById('YourETCSupplied').innerText = `${ETCSupplied} ETC`;
+   document.getElementById('YourETCSupplied').innerText = `${ETCSupplied.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} ETC`;
     OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(ETCPrice => {
         ETCPrice = ETCPrice / (10 ** 18);
-        ETCPrice = (ETCPrice.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
         let ETCAsset = (ETCPrice * ETCSupplied);
         let USCAsset = (USCPrice * USCSup);
-        let Assets = ((USCAsset + ETCAsset).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
+        let Assets = (USCAsset + ETCAsset);
         document.getElementById('UserAssetBalance').innerText = `$${Assets}`;
         let ETCLiability = (ETCPrice * ETCBorrow);
         let USCLiability = (USCPrice * USCBorrow);
-        let Liabilities = ((USCLiability + ETCLiability).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
+        let Liabilities = (USCLiability + ETCLiability);
         document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities}`;
     //Utilization
 
     //Collateral Factor
         const USCStatus = document.getElementById("USCCheckbox");
         const ETCStatus = document.getElementById("ETCCheckbox");
-            let BorrowLimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-            document.getElementById('BorrowLimit1').innerText = `$${BorrowLimit}`;
-            document.getElementById('BorrowLimit2').innerText = `$${BorrowLimit}`;
-            let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-            document.getElementById('BorrowLimitUsed1').innerText = `${MaxBorrow}%`;
-            document.getElementById('BorrowLimitUsed2').innerText = `${MaxBorrow}%`;
-            let SafeWithdrawlETC = (((((BorrowLimit * 0.90) - Liabilities)/0.75)/0.9).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})/ETCPrice).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-            let SafeWithdrawlUSC = (((((BorrowLimit * 0.90) - Liabilities)/0.75)/0.9).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})/USCPrice).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            let BorrowLimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked));
+            document.getElementById('BorrowLimit1').innerText = `$${BorrowLimit.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+            document.getElementById('BorrowLimit2').innerText = `$${BorrowLimit.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+            let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)))*100);
+            document.getElementById('BorrowLimitUsed1').innerText = `${MaxBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+            document.getElementById('BorrowLimitUsed2').innerText = `${MaxBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+            let SafeWithdrawlETC = (((((BorrowLimit * 0.90) - Liabilities)/0.75)/0.9)/ETCPrice);
+            let SafeWithdrawlUSC = (((((BorrowLimit * 0.90) - Liabilities)/0.75)/0.9)/USCPrice);
             
             console.log(SafeWithdrawlETC);
             if (SafeWithdrawlETC > 0) {
-            document.getElementById('ETCWithdrawl').value = SafeWithdrawlETC;
-            document.getElementById('ETCBorrow').value = SafeWithdrawlETC;
+            document.getElementById('ETCWithdrawl').value = SafeWithdrawlETC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            document.getElementById('ETCBorrow').value = SafeWithdrawlETC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
         }
             else {document.getElementById('ETCWithdrawl').value = 'Safe Borrow Limit Exceeded';
                 document.getElementById('ETCBorrow').value = 'Safe Borrow Limit Exceeded';
             }
             if (SafeWithdrawlUSC > 0) {
-                document.getElementById('USCWithdrawl').value = SafeWithdrawlUSC;
-                document.getElementById('USCBorrow').value = SafeWithdrawlUSC;
+                document.getElementById('USCWithdrawl').value = SafeWithdrawlUSC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                document.getElementById('USCBorrow').value = SafeWithdrawlUSC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             }
                 else {document.getElementById('USCWithdrawl').value = 'Safe Borrow Limit Exceeded';
                     document.getElementById('USCBorrow').value = 'Safe Borrow Limit Exceeded';
                 }
             if (ETCSuppliedMax > ETCBorrowMax) {
-                document.getElementById('ETCRepay').value = ETCBorrowMax;
+                document.getElementById('ETCRepay').value = ETCBorrowMax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             }
-                else {document.getElementById('ETCRepay').value = ETCSuppliedMax;
+                else {document.getElementById('ETCRepay').value = ETCSuppliedMax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
                 }
             if (USCSuppliedMax > USCBorrowMax) {
-                document.getElementById('USCRepay').value = USCBorrowMax;
+                document.getElementById('USCRepay').value = USCBorrowMax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
                 console.log(USCBorrowMax);
             }
-                else {document.getElementById('USCRepay').value = USCSuppliedMax;
+                else {document.getElementById('USCRepay').value = USCSuppliedMax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
                 }
 });});
     });});
@@ -781,8 +768,7 @@
                                 USCExchangeMantissa = USCExchangeMantissa / (10 ** 20);
                                 console.log(USCExchangeMantissa);
                                 USCSup = (USCSup / (10 ** 4))*USCExchangeMantissa;
-                            USCSup = USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                            document.getElementById('UserUSCSupply2').innerText = `${USCSup} USC`;
+                            document.getElementById('UserUSCSupply2').innerText = `${USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} USC`;
                         });});
 
                         UpdateBorrowLimit();
