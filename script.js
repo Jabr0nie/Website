@@ -375,9 +375,9 @@
   
                   main();
   
-                  $(function () {
-                    setInterval(main, 60000);
-                   });
+            //      $(function () {
+             //       setInterval(main, 60000);
+              //     });
 
 
 
