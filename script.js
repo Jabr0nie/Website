@@ -525,15 +525,12 @@
     let account = document.getElementById('connectbutton').innerHTML;
     //ETC Borrowed
         nETCContract.methods.borrowBalanceCurrent(account).call({from: account}, function(err,ETCBorrow){
-        ETCBorrowMax = ETCBorrow / (10 ** 18);
-        ETCBorrow = ETCBorrowMax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-        document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow} ETC`;
+        ETCBorrow = ETCBorrow / (10 ** 18);
+        document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} ETC`;
     //USC Borrowed Amount
     nUSCContract.methods.borrowBalanceCurrent(account).call({from: account}).then(USCBorrow => {
         USCBorrow = USCBorrow / (10 ** 6);
-        let USCBorrowMax = USCBorrow;
-        USCBorrow = USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-        document.getElementById('USCBorrowedUser').innerText = `${USCBorrow} USC`;
+        document.getElementById('USCBorrowedUser').innerText = `${USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} USC`;
 
     // Oracle Price Update
     OracleContract.methods.GetUnderlyingPrice('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(USCPrice => {
@@ -545,7 +542,6 @@
         USCExchangeMantissa = USCExchangeMantissa / (10 ** 20);
         console.log(USCExchangeMantissa);
         USCSup = (USCSup / (10 ** 4))*USCExchangeMantissa;
-    USCSuppliedMax = USCSup;
     document.getElementById('YourUSCSupplied').innerText = `${USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} USC`;
     //ETC Supplied
   nETCContract.methods.balanceOf(account).call({from: account}, function(err,ETCSupplied){
@@ -554,7 +550,6 @@
         console.log(ETCExchangeMantissa);
     console.log(ETCSupplied);
    ETCSupplied = (ETCSupplied / (10 ** 18))*ETCExchangeMantissa;
-   ETCSuppliedMax = ETCSupplied;
    document.getElementById('YourETCSupplied').innerText = `${ETCSupplied.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} ETC`;
     OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(ETCPrice => {
         ETCPrice = ETCPrice / (10 ** 18);
@@ -571,91 +566,98 @@
     //Collateral Factor
         const USCStatus = document.getElementById("USCCheckbox");
         const ETCStatus = document.getElementById("ETCCheckbox");
+        //ETC Wallet Balance
+        ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] }).then(result => {
+            let wei = parseInt(result, 16);
+            let ETCWallet = wei / (10 ** 18);
+        //USC Wallet Balance
+        USCContract.methods.balanceOf(`${account}`).call().then(result => {
+            USCWallet = (result / (10 ** 6));
             let BorrowLimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked));
             document.getElementById('BorrowLimit1').innerText = `$${BorrowLimit.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
             document.getElementById('BorrowLimit2').innerText = `$${BorrowLimit.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
-            let MaxBorrow =((Liabilities/((ETCAsset * 0.70 * ETCStatus.checked) + (USCAsset * 0.70 * USCStatus.checked)))*100);
+            let MaxBorrow =((Liabilities/((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)))*100);
             document.getElementById('BorrowLimitUsed1').innerText = `${MaxBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
             document.getElementById('BorrowLimitUsed2').innerText = `${MaxBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
-            let SafeWithdrawlETC = (((((BorrowLimit * 0.90) - Liabilities)/0.75)/0.9)/ETCPrice);
-            let SafeWithdrawlUSC = (((((BorrowLimit * 0.90) - Liabilities)/0.75)/0.9)/USCPrice);
-            
+            let SafeBorrowETC = (((((BorrowLimit * 0.90) - Liabilities)))/ETCPrice);
+            let SafeWithdrawlETC = (SafeBorrowETC / 0.75);
+            let SafeBorrowUSC = (((((BorrowLimit * 0.90) - Liabilities)))/USCPrice);
+            let SafeWithdrawlUSC = (SafeBorrowUSC / 0.75);
+
             console.log(SafeWithdrawlETC);
             if (SafeWithdrawlETC > 0) {
-            document.getElementById('ETCWithdrawl').value = SafeWithdrawlETC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-            document.getElementById('ETCBorrow').value = SafeWithdrawlETC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            document.getElementById('ETCWithdrawl').value = SafeWithdrawlETC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:18});
+            document.getElementById('ETCBorrow').value = SafeBorrowETC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:18});
         }
             else {document.getElementById('ETCWithdrawl').value = 'Safe Borrow Limit Exceeded';
                 document.getElementById('ETCBorrow').value = 'Safe Borrow Limit Exceeded';
             }
             if (SafeWithdrawlUSC > 0) {
-                document.getElementById('USCWithdrawl').value = SafeWithdrawlUSC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                document.getElementById('USCBorrow').value = SafeWithdrawlUSC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                document.getElementById('USCWithdrawl').value = SafeWithdrawlUSC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:6});
+                document.getElementById('USCBorrow').value = SafeBorrowUSC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:6});
             }
                 else {document.getElementById('USCWithdrawl').value = 'Safe Borrow Limit Exceeded';
                     document.getElementById('USCBorrow').value = 'Safe Borrow Limit Exceeded';
                 }
-            if (ETCSuppliedMax > ETCBorrowMax) {
-                document.getElementById('ETCRepay').value = ETCBorrowMax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            if (ETCWallet > ETCBorrow) {
+                document.getElementById('ETCRepay').value = ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:18});
             }
-                else {document.getElementById('ETCRepay').value = ETCSuppliedMax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                else {document.getElementById('ETCRepay').value = ETCWallet.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:18});
                 }
-            if (USCSuppliedMax > USCBorrowMax) {
-                document.getElementById('USCRepay').value = USCBorrowMax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                console.log(USCBorrowMax);
+            if (USCWallet > USCBorrow) {
+                document.getElementById('USCRepay').value = USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:6});
             }
-                else {document.getElementById('USCRepay').value = USCSuppliedMax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                else {document.getElementById('USCRepay').value = USCWallet.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:6});
                 }
 });});
     });});
+});});
 });
-});
-});});};
+});});});};
 
 
                   
            //claim Nyke Rewards
            function claimNykeRewards() {
             let account = document.getElementById('connectbutton').innerHTML;
-            ComptrollerContractMM.methods.claimComp(`${account}`).send({from:`${account}`});
-           }
+            ComptrollerContractMM.methods.claimComp(`${account}`).send({from:`${account}`});}
                   
-                  function ApproveUSC() {
-                    let USCAmount = document.getElementById('USCDeposit').value;
-                    USCAmount = USCAmount * (10 ** 6);
-                    let account = document.getElementById('connectbutton').innerHTML;
-                      USCContractMM.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${USCAmount}`).send({from:`${account}`});}
+            function ApproveUSC() {
+            let USCAmount = document.getElementById('USCDeposit').value;
+            USCAmount = USCAmount * (10 ** 6);
+            let account = document.getElementById('connectbutton').innerHTML;
+            USCContractMM.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${USCAmount}`).send({from:`${account}`});}
 
-                      function ApproveUSCRepay() {
-                        let USCAmount = document.getElementById('USCRepay').value;
-                        USCAmount = USCAmount * (10 ** 6);
-                        let account = document.getElementById('connectbutton').innerHTML;
-                          USCContractMM.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${USCAmount}`).send({from:`${account}`});}
+            function ApproveUSCRepay() {
+            let USCAmount = document.getElementById('USCRepay').value;
+            USCAmount = USCAmount * (10 ** 6);
+            let account = document.getElementById('connectbutton').innerHTML;
+            USCContractMM.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${USCAmount}`).send({from:`${account}`});}
                   
-                  function MintnUSC() {
-                    let USCAmount = document.getElementById('USCDeposit').value;
-                    USCAmount = USCAmount * (10 ** 6);
-                    let account = document.getElementById('connectbutton').innerHTML;
-                    nUSCContractMM.methods.mint(`${USCAmount}`).send({from:`${account}`});}
+            function MintnUSC() {
+            let USCAmount = document.getElementById('USCDeposit').value;
+            USCAmount = USCAmount * (10 ** 6);
+            let account = document.getElementById('connectbutton').innerHTML;
+            nUSCContractMM.methods.mint(`${USCAmount}`).send({from:`${account}`});}
 
-                    function WithdrawlUSC() {
-                        let USCAmount = document.getElementById('USCWithdrawl').value;
-                        USCAmount = USCAmount * (10 ** 6);
-                        let account = document.getElementById('connectbutton').innerHTML;
-                        nUSCContractMM.methods.redeemUnderlying(`${USCAmount}`).send({from:`${account}`});}
+            function WithdrawlUSC() {
+            let USCAmount = document.getElementById('USCWithdrawl').value;
+            USCAmount = USCAmount * (10 ** 6);
+            let account = document.getElementById('connectbutton').innerHTML;
+            nUSCContractMM.methods.redeemUnderlying(`${USCAmount}`).send({from:`${account}`});}
 
-                        function BorrowUSC() {
-                            let USCAmount = document.getElementById('USCBorrow').value;
-                            USCAmount = USCAmount * (10 ** 6);
-                            let account = document.getElementById('connectbutton').innerHTML;
-                            nUSCContractMM.methods.borrow(`${USCAmount}`).send({from:`${account}`});}
+            function BorrowUSC() {
+            let USCAmount = document.getElementById('USCBorrow').value;
+            USCAmount = USCAmount * (10 ** 6);
+            let account = document.getElementById('connectbutton').innerHTML;
+            nUSCContractMM.methods.borrow(`${USCAmount}`).send({from:`${account}`});}
 
-                            function RepayUSC() {
-                                let USCAmount = document.getElementById('USCRepay').value;
-                                USCAmount = USCAmount * (10 ** 6);
-                                let account = document.getElementById('connectbutton').innerHTML;
-                                nUSCContractMM.methods.repayBorrow(`${USCAmount}`).send({from:`${account}`});}
-  
+            function RepayUSC() {
+            let USCAmount = document.getElementById('USCRepay').value;
+            USCAmount = USCAmount * (10 ** 6);
+            let account = document.getElementById('connectbutton').innerHTML;
+            nUSCContractMM.methods.repayBorrow(`${USCAmount}`).send({from:`${account}`});}
+
 
   
                   function openModal() {
