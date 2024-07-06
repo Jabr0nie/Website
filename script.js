@@ -245,6 +245,10 @@
                   const OracleContract = new web3.eth.Contract(Oracleabi, OracleAddress);
                   const OracleContractMM = new web3m.eth.Contract(Oracleabi, OracleAddress);
 
+                  const NykeOracleAddress = '0x261bAa91c19F94050AABcd62A1D24C649fC3bA39';
+                  const NykeOracleContract = new web3.eth.Contract(NykeOracleabi, NykeOracleAddress);
+                  const NykeOracleContractMM = new web3m.eth.Contract(NykeOracleabi, NykeOracleAddress);
+
                   const NykeAddress = '0x9aa2901007fCE996e35305FD9bA196e17fCd2605';
                   const NykeContract = new web3.eth.Contract(Nykeabi, NykeAddress);
                   const NykeContractMM = new web3m.eth.Contract(Nykeabi, NykeAddress);
@@ -301,14 +305,15 @@
                       const _USCBorrowed = await nUSCContract.methods.totalBorrows().call();
                       const _ETCExMant = await nETCContract.methods.exchangeRateStored().call();
                       const _USCExMant = await nUSCContract.methods.exchangeRateStored().call();
-                      const _ETCReserves = await V2ReservesContract.methods.getLiquidityETC().call();
                       const _ETCPrice = await OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call();
-                      const _NYKEReserves = await V2ReservesContract.methods.getLiquidityNYKE().call();
                       const _USCPrice = await OracleContract.methods.GetUnderlyingPrice('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call();
+                      const _NykePrice = await NykeOracleContract.methods.GetUnderlyingPrice().call();
                       
-                      let ETCReserves = ((_ETCReserves / (10 ** 18))*(_ETCPrice / (10 ** 18)));
-                      let NYKEPrice = (ETCReserves/(_NYKEReserves / (10 ** 18)));
+                      //NYKE PRICE
+                      let NYKEPrice = (_NykePrice / (10 ** 18));
                       console.log(NYKEPrice);
+                      document.getElementById('nykePrice').innerText = `$${NYKEPrice.toLocaleString('en-US', {minimumFractionDigits:5, maximumFractionDigits:5})}`;
+
   
                       const totalSupply = (_totalSupply / (10 ** 18) * (_ETCExMant / (10 ** 18)));
                       dataOutput.innerText = `${totalSupply.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} ETC`;

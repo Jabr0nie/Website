@@ -47,6 +47,7 @@ body {
   .logo:hover {
     cursor: pointer;
   }
+  
 
   .topnav a.icon {
     float: right;
@@ -545,7 +546,8 @@ float: right;
 .MetaMask {
   border-radius: 16px; 
   margin: 15px;float: right; 
-  width: 20%; height: 40px; 
+  margin-left: 10px;
+  width: 30%; height: 40px; 
   min-width: 120px;
   border: 2px solid #1eeadb;
   overflow: hidden;
@@ -557,6 +559,43 @@ float: right;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   }
 
+  .topNavRight {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 50%;
+    align-items: center;
+  }
+
+  .nykeInfo {
+    display: flex;
+    margin-right: 10px;
+    margin-left: 15px;
+    float: right; 
+    width: 20%; height: 20px; 
+    line-height: 20px;
+    vertical-align: middle;
+    min-width: 120px;
+    overflow: hidden;
+    color: #D8D7DB; 
+    font-size: 13px; 
+    justify-content: center;
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    }
+
+    .nykeInfo .ETCSwapLink {
+      vertical-align: middle;
+      margin-bottom: 3px;
+    }
+
+    .nykeInfo .nNykeLogo {
+      vertical-align: middle;
+      margin-right: 4px;
+    }
+
+    .nykeInfo .ETClogowrapper {
+      margin-left: 4px;
+    }
   .RewardAPRTopNav {
     border-radius: 16px; 
     display: block;
@@ -739,15 +778,15 @@ tr:not(:first-child):hover div{
 
 /* Add a black background color to the top navigation */
 .topnav {
-  display: inline-flexbox;
-  background-color: #10171f;
-  overflow: hidden;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  vertical-align: center;
   margin-top: 1%;
   margin-bottom: 1%;
   margin-left: 20%;
   height: 15%;
   width: 60%;
-  align-items: center;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
@@ -810,6 +849,9 @@ tr:not(:first-child):hover div{
     font-weight: 500;
   }
   
+  .nykeInfo {
+    display: none;
+  }
 
 
 
