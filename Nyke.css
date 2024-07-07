@@ -1373,6 +1373,7 @@ input:checked + .slider:before {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   
 }
 
