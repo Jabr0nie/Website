@@ -95,18 +95,20 @@
                             nUSCContract.methods.borrowRatePerBlock().call().then(USCBorrowRate1 => {
                                 USCBorrowRate1 = ((USCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
                             const UserRate = document.getElementById('UserAPR');
-                            let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                            UserRate.innerText = `${Weight}%`;
+                            let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100);
+                        
+                            if (Weight > 0){
+                                UserRate.innerText = `${Weight}%`;
+                            } 
                                 });});});});
                             //Collateral Factor
                                 const USCStatus = document.getElementById("USCCheckbox");
                                 const ETCStatus = document.getElementById("ETCCheckbox");
                                     let borrowlimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked));
-                                    let MaxBorrow =((Liabilities/(borrowlimit))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                                    console.log(MaxBorrow);
-                                    console.log(borrowlimit);
-
-                                    document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow}%`;                           
+                                    let MaxBorrow =((Liabilities/(borrowlimit))*100);
+                                    if (Liabilities > 0){
+                                        document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;   
+                                    }                                                     
                             });
                             });});
                         });});
@@ -197,7 +199,12 @@
                                     USCBorrowRate1 = ((USCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
                                 const UserRate = document.getElementById('UserAPR');
                                 let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                                UserRate.innerText = `${Weight}%`;
+
+                                if (Assets = 0){
+                                    UserRate.innerText = `0.00%`;
+                                } else {
+                                    UserRate.innerText = `${Weight}%`;
+                                }
                                     });});});});
                                 //Collateral Factor
                                     const USCStatus = document.getElementById("USCCheckbox");
