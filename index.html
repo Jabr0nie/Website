@@ -28,31 +28,50 @@
 		<script language="javascript" type="text/javascript" src="Abi.js"></script>
 		<link href="Nyke.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/fonts/fontawesome-free-5.3.1-web/css/all.css">
 	</head>
 	<body class="body">
 		<div class="root" id="root">
 			<div style="clear: both;"></div>
 			<div class="topnav" id="myTopnav">
 				<div class="topNavRight">
-				<button class="MetaMask" id="connectbutton" value="Connect Metamask">
-					Connect Metamask</button>
+				<!---	<div class="mobileMenu" id="mobileMenu1">
+						<a id="mobileMenu">
+							<img class="mobileMenuimg" src="Images\Icon.png" width="25px"height="25px">
+						</a>
+					</div>
+					<div class="mobileMenuClose" id="mobileMenuClose1">
+						<a id="mobileMenuClose">
+							<img class="mobileMenuimg" src="Images\CloseTeal.svg" width="25px"height="25px">
+						</a>
+					</div> -->
+					<button class="MetaMask" id="connectbutton" value="Connect Metamask">
+						Connect Metamask</button>
 					<div class="nykeInfo">
 						<img id="ETCSwapLink" class="nNykeLogo" src="Images\NykeLogo.svg" width="20px"height="20px">
 						<div class="nykePrice" id="nykePrice">$0.0000</div>
 						<a href="https://swap.ethereumclassic.com/#/swap" class="ETClogowrapper">
-						<img id="ETCSwapLink" class="ETCSwapLink" src="Images\LinkIcon.png" width="14px"height="14px">
-					</a>
+							<img class="mobileMenuimg" src="Images\LinkIcon.png" width="15px"height="15px">
+							</a>
 					</div>
 						</div>
-			<!--		<nav class="nav" id="nav">
-					<a href="Rewards.html">Rewards</a>
-					</nav>>
-		 -->
+					<div class="topNavLeft">
+						<a href="https://nyke.finance/" class="logowrapper">
+							<img id="logo" class="logo" src="Images\NykeTealBanner.svg" width="300px"
+								height="80px">
+							</a>
+							<a href="https://nyke.finance/" class="mobilelogowrapper">
+								<img id="logo" src="Images\DarkTealLogo.png" width="40px"
+									height="40px">
+								</a>
+							
+								<!--	<a class="TopNavLink" href="https://nyke.finance/">Dashboard</a>
+							
+							
+									<a class="TopNavLink" href="rewards.html">Rewards</a>  -->
+							
 
-				<a href="https://nyke.finance/" class="logowrapper">
-				<img id="logo" class="logo" src="Images\NykeTealBanner.svg" width="300px"
-					height="80px">
-				</a>
+				</div>
 			</div>
 
 			<div class="rewardcontainer">
@@ -91,8 +110,8 @@
 											width="25" height="25" style="display: inline-block;"></td>
 							<td class="tdmobile">ETC</td>
 							<td><div id="YourETCSupplied">-</div></td>
-							<td><div id="ETCSupplyRateOutputSupply"></div></td>
-							<td><div id="ETCSupplyRateOutputSupply1"></div></td>
+							<td><div id="ETCSupplyRateOutputSupply"><i class="fa fa-spinner fa-pulse"></i></div></td>
+							<td><div id="ETCSupplyRateOutputSupply1"><i class="fa fa-spinner fa-pulse"></i></div></td>
 							<td><label class="switch">
 								<input type="checkbox" id="ETCCheckbox" onclick="CollateralStatus()">
 								<span class="slider round"></span>
@@ -102,8 +121,8 @@
 							<td><img src="Images\usc-logo.png" alt="USC Logo" width="25" height="25"></td>
 								<td class="tdmobile">USC</td>
 								<td><div id="YourUSCSupplied">-</div></td>
-								<td><div id="USCSupplyRateOutputSupply"></div></td>
-								<td><div id="USCSupplyRateOutputSupply1"></div></td>
+								<td><div id="USCSupplyRateOutputSupply"><i class="fa fa-spinner fa-pulse"></i></div></td>
+								<td><div id="USCSupplyRateOutputSupply1"><i class="fa fa-spinner fa-pulse"></i></div></td>
 								<td><label class="switch">
 									<input type="checkbox" id="USCCheckbox" onclick="CollateralStatusUSC()">
 									<span class="slider round"></span>
@@ -136,16 +155,16 @@
 										width="25" height="25" style="display: inline-block;"></td>
 						<td class="tdmobile">ETC</td>
 						<td><div id="UserETCBorrowed">-</div></td>
-						<td><div id="ETCBorrowedRate1"> </div></td>
-						<td><div id="ETCBorrowedRate2"> </div></td>
+						<td><div id="ETCBorrowedRate1"><i class="fa fa-spinner fa-pulse"></i></div></td>
+						<td><div id="ETCBorrowedRate2"><i class="fa fa-spinner fa-pulse"></i></div></td>
 				
 					</tr>
 					<tr>
 						<td><img src="Images\usc-logo.png" alt="USC Logo" width="25" height="25"></td>
 							<td class="tdmobile">USC</td>
 							<td><div id="USCBorrowedUser">-</div></td>
-							<td><div id="USCBorrowRate1"> </div></td>
-							<td><div id="USCBorrowRate2"> </div></td>
+							<td><div id="USCBorrowRate1"><i class="fa fa-spinner fa-pulse"></i></div></td>
+							<td><div id="USCBorrowRate2"><i class="fa fa-spinner fa-pulse"></i></div></td>
 
 					</tr>
 				</tbody>
@@ -174,13 +193,13 @@
 								<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
 										width="30" height="30" style="display: inline-block;"></td>
 						<td class="tdmobile">ETC</td>
-						<td><div id="dataOutput"></div></td>
-						<td><div id="ETCBorrowed"></div></td>
-						<td class="tdmobile"><div id="ETCUtilization"></div></td>
-						<td class="tdmobile"><div id="rewards"><div id="ETCSupplyRateOutput"></div></div>
+						<td><div id="dataOutput"><i class="fa fa-spinner fa-pulse"></i></div></td>
+						<td><div id="ETCBorrowed"><i class="fa fa-spinner fa-pulse"></i></div></td>
+						<td class="tdmobile"><div id="ETCUtilization"><i class="fa fa-spinner fa-pulse"></i></div></td>
+						<td class="tdmobile"><div id="rewards"><div id="ETCSupplyRateOutput"><i class="fa fa-spinner fa-pulse"></i></div></div>
 							</td>
 						<td class="tdmobile">
-							<div id="rewards"><div id="ETCBorrowRateOutput"></div></div>
+							<div id="rewards"><div id="ETCBorrowRateOutput"><i class="fa fa-spinner fa-pulse"></i></div></div>
 
 							</td>
 				
@@ -189,14 +208,14 @@
 					<tr>
 						<td><img src="Images\usc-logo.png" alt="USC Logo" width="30" height="30"></td>
 							<td class="tdmobile">USC</td>
-							<td><div id="USCSupply"></div></td>
-							<td><div id="USCBorrowed"></div></td>
-							<td class="tdmobile"><div id="USCUtilization"></div></td>
+							<td><div id="USCSupply"><i class="fa fa-spinner fa-pulse"></i></div></td>
+							<td><div id="USCBorrowed"><i class="fa fa-spinner fa-pulse"></i></div></td>
+							<td class="tdmobile"><div id="USCUtilization"><i class="fa fa-spinner fa-pulse"></i></div></td>
 							<td class="tdmobile">
-								<div id="rewards"><div id="USCSupplyRateOutput"></div></div>
+								<div id="rewards"><div id="USCSupplyRateOutput"><i class="fa fa-spinner fa-pulse"></i></div></div>
 								</td>
 							<td class="tdmobile">
-								<div id="rewards"><div id="USCBorrowRateOutput"></div></div>
+								<div id="rewards"><div id="USCBorrowRateOutput"><i class="fa fa-spinner fa-pulse"></i></div></div>
 
 								</td>
 
@@ -227,14 +246,14 @@
 					<div class="WalletBalance">
 						<div style="clear: both;"></div>
 						<a>Wallet Balance: <div id="ETCBalance"
-								style="display: inline-block; color:  #1eeadb;"></div>
+								style="display: inline-block; color:  #1eeadb;"><i class="fa fa-spinner fa-pulse"></i></div>
 							ETC</a>
 					</div>
 					<div class="input">
 						<input type="text" id="ETCDeposit" placeholder="Enter Amount Here...">
 					</div>
-					<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="ETCSupplyRateModal"></div></div>
-					<div class="stats-container"><div class="Stats">Supply Balance</div><div class="Stats-Output" id="UserETCSupply2"></div></div>
+					<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="ETCSupplyRateModal"><i class="fa fa-spinner fa-pulse"></i></div></div>
+					<div class="stats-container"><div class="Stats">Supply Balance</div><div class="Stats-Output" id="UserETCSupply2"><i class="fa fa-spinner fa-pulse"></i></div></div>
 					<div class="stats-container"><div class="Stats">Collateral Factor</div><div class="Stats-Output"> 75%</div></div>
 				</div>
 				<div class="modalButton">
@@ -265,9 +284,9 @@
 						<input type="value" id="ETCWithdrawl" placeholder="Enter Amount Here...">
 
 					</div>
-					<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="ETCSupplyRateModal2"></div></div>
-					<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit1"></div></div>
-					<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed1"></div></div>
+					<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="ETCSupplyRateModal2"><i class="fa fa-spinner fa-pulse"></i></div></div>
+					<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit1"><i class="fa fa-spinner fa-pulse"></i></div></div>
+					<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed1"><i class="fa fa-spinner fa-pulse"></i></div></div>
 				</div>
 				<div class="modalButton">
 					<button id="ETCWithdrawlButton">Withdrawl</button>
@@ -295,9 +314,9 @@
 						<button type="SafeMax" id="SafeMaxBorrow">MAX</button>
 						<input type="value" id="ETCBorrow" placeholder="Enter Amount Here...">
 					</div>
-					<div class="stats-container"><div class="Stats">Borrow Rate</div><div class="Stats-Output" id="ETCBorrowRateModal"></div></div>
-					<div class="stats-container"><div class="Stats">Borrow Balance</div><div class="Stats-Output" id="ETCBorrowBalanceModal"></div></div>
-					<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit2"></div></div>
+					<div class="stats-container"><div class="Stats">Borrow Rate</div><div class="Stats-Output" id="ETCBorrowRateModal"><i class="fa fa-spinner fa-pulse"></i></div></div>
+					<div class="stats-container"><div class="Stats">Borrow Balance</div><div class="Stats-Output" id="ETCBorrowBalanceModal"><i class="fa fa-spinner fa-pulse"></i></div></div>
+					<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit2"><i class="fa fa-spinner fa-pulse"></i></div></div>
 					<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed2"> 75%</div></div>
 				</div>
 				<div class="modalButton">
@@ -320,16 +339,16 @@
 				<div class="modalbody">
 					<div class="WalletBalance">
 						<div style="clear: both;"></div><a>Borrowed Balance: <div id="ETCBorrowBalance"
-						style="display: inline-block; color:  #1eeadb;"></div> ETC</a>
+						style="display: inline-block; color:  #1eeadb;"><i class="fa fa-spinner fa-pulse"></i></div> ETC</a>
 						
 					</div>
 					<div class="input">
 						<button type="SafeMax" id="SafeMaxRepay">MAX</button>
 						<input type="value" id="ETCRepay" placeholder="Enter Amount Here...">
 					</div>
-					<div class="stats-container"><div class="Stats">Borrow Rate</div><div class="Stats-Output" id="ETCBorrowRateModal1"></div></div>
-					<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit3"></div></div>
-					<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed3"></div></div>
+					<div class="stats-container"><div class="Stats">Borrow Rate</div><div class="Stats-Output" id="ETCBorrowRateModal1"><i class="fa fa-spinner fa-pulse"></i></div></div>
+					<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit3"><i class="fa fa-spinner fa-pulse"></i></div></div>
+					<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed3"><i class="fa fa-spinner fa-pulse"></i></div></div>
 				</div>
 				<div class="modalButton">
 					<button id="ETCRepayButton">Repay</button>
@@ -353,14 +372,14 @@
 		<div class="WalletBalance">
 			<div style="clear: both;"></div>
 			<a>Wallet Balance: <div id="USCBalanceWallet"
-					style="display: inline-block; color:  #1eeadb;"></div>
+					style="display: inline-block; color:  #1eeadb;"><i class="fa fa-spinner fa-pulse"></i></div>
 				USC</a>
 		</div>
 		<div class="input">
 			<input type="text" id="USCDeposit" placeholder="Enter Amount Here...">
 		</div>
-		<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="USCSupplyRateModal1"></div></div>
-		<div class="stats-container"><div class="Stats">Supply Balance</div><div class="Stats-Output" id="UserUSCSupply2"></div></div>
+		<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="USCSupplyRateModal1"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Supply Balance</div><div class="Stats-Output" id="UserUSCSupply2"><i class="fa fa-spinner fa-pulse"></i></div></div>
 		<div class="stats-container"><div class="Stats">Collateral Factor</div><div class="Stats-Output"> 75%</div></div>
 	</div>
 	<div class="modalButton">
@@ -389,16 +408,16 @@
 		<div class="WalletBalance">
 			<div style="clear: both;"></div>
 			<a>Supplied Balance: <div id="UserUSCSupply"
-					style="display: inline-block; color:  #1eeadb;"></div>
+					style="display: inline-block; color:  #1eeadb;"><i class="fa fa-spinner fa-pulse"></i></div>
 				USC</a>
 		</div>
 		<div class="input">
 			<button type="SafeMax" id="SafeMaxUSC">MAX</button>
 			<input type="value" id="USCWithdrawl" placeholder="Enter Amount Here...">
 		</div>
-		<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="USCSupplyRateModal2"></div></div>
-		<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit4"></div></div>
-		<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed4"></div></div>
+		<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="USCSupplyRateModal2"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit4"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed4"><i class="fa fa-spinner fa-pulse"></i></div></div>
 	</div>
 	<div class="modalButton">
 		<button id="USCWithdrawlButton">Withdrawl</button>
@@ -426,9 +445,9 @@
 			<button type="SafeMax" id="SafeMaxBorrowUSC">MAX</button>
 			<input type="value" id="USCBorrow" placeholder="Enter Amount Here...">
 		</div>
-		<div class="stats-container"><div class="Stats">Borrow Rate</div><div class="Stats-Output" id="USCBorrowRateModal"></div></div>
-		<div class="stats-container"><div class="Stats">Borrow Balance</div><div class="Stats-Output" id="USCBorrowBalanceModal"></div></div>
-		<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit5"></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Rate</div><div class="Stats-Output" id="USCBorrowRateModal"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Balance</div><div class="Stats-Output" id="USCBorrowBalanceModal"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit5"><i class="fa fa-spinner fa-pulse"></i></div></div>
 		<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed5"> 75%</div></div>
 	</div>
 	<div class="modalButton">
@@ -451,16 +470,16 @@
 	<div class="modalbody">
 		<div class="WalletBalance">
 			<div style="clear: both;"></div><a>Borrowed Balance: <div id="USCBorrowBalance"
-			style="display: inline-block; color:  #1eeadb;"></div> USC</a>
+			style="display: inline-block; color:  #1eeadb;"><i class="fa fa-spinner fa-pulse"></i></div> USC</a>
 			
 		</div>
 		<div class="input">
 			<button type="SafeMax" id="SafeMaxRepayUSC">MAX</button>
 			<input type="value" id="USCRepay" placeholder="Enter Amount Here...">
 		</div>
-		<div class="stats-container"><div class="Stats">Borrow Rate</div><div class="Stats-Output" id="USCBorrowRateModal2"></div></div>
-		<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit6"></div></div>
-		<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed6"></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Rate</div><div class="Stats-Output" id="USCBorrowRateModal2"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit6"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed6"><i class="fa fa-spinner fa-pulse"></i></div></div>
 	</div>
 	<div class="modalButton">
 			<button class="ApproveButtons" id="USCApproveRepayButton" style="display:inline-block; width: 43%; margin-left: 0%; margin-right: 2%;">
@@ -470,6 +489,21 @@
 				<div class="Approve1">2</div>
 				<div class="ApproveText">Repay</div></button>
 	</div>
+</div>
+
+		</div>
+
+		<div id="Mobilemodal-container" class="Mobilemodal-container">
+
+			<!-- Modal content -->
+			<div id="Mobilemodal-menu" class="Mobilemodal-menu">
+				<div style="clear: both;"></div>
+				<div class="mobilemodalnav">
+					<a onclick="RepayModal()">Dashboard</a>
+					<a onclick="BorrowModal()">Rewards</a>
+				</div>
+			</div>
+
 </div>
 
 		</div>

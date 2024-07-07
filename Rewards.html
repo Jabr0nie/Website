@@ -26,22 +26,51 @@
 			<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
         type="application/javascript"></script>
 		<script language="javascript" type="text/javascript" src="Abi.js"></script>
+		<link href="Nyke.css" rel="stylesheet">
 		<link href="Nykerewards.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body class="body">
 		<div class="root" id="root">
 			<div class="topnav" id="myTopnav">
-				<button class="MetaMask" id="connectbutton" value="Connect Metamask">
-					Connect Metamask</button>
-					<nav class="nav" id="nav">
-						<a href="index.html">Dashboard</a>
-					</nav>
+				<div class="topNavRight">
+					<div class="mobileMenu" id="mobileMenu1">
+						<a id="mobileMenu">
+							<img class="mobileMenuimg" src="Images\Icon.png" width="25px"height="25px">
+						</a>
+					</div>
+					<div class="mobileMenuClose" id="mobileMenuClose1">
+						<a id="mobileMenuClose">
+							<img class="mobileMenuimg" src="Images\CloseTeal.svg" width="25px"height="25px">
+						</a>
+					</div>
+					<button class="MetaMask" id="connectbutton" value="Connect Metamask">
+						Connect Metamask</button>
+					<div class="nykeInfo">
+						<img id="ETCSwapLink" class="nNykeLogo" src="Images\NykeLogo.svg" width="20px"height="20px">
+						<div class="nykePrice" id="nykePrice">$0.0000</div>
+						<a href="https://swap.ethereumclassic.com/#/swap" class="ETClogowrapper">
+							<img class="mobileMenuimg" src="Images\LinkIcon.png" width="15px"height="15px">
+							</a>
+					</div>
+						</div>
+					<div class="topNavLeft">
+						<a href="https://nyke.finance/" class="logowrapper">
+							<img id="logo" class="logo" src="Images\NykeTealBanner.svg" width="300px"
+								height="80px">
+							</a>
+							<a href="https://nyke.finance/" class="mobilelogowrapper">
+								<img id="logo" src="Images\DarkTealLogo.png" width="40px"
+									height="40px">
+								</a>
+							
+									<a class="TopNavLink" href="https://nyke.finance/">Dashboard</a>
+							
+							
+									<a class="TopNavLink" href="rewards.html">Rewards</a>
+							
 
-				<a href="https://nyke.finance/" class="logowrapper">
-				<img id="logo" class="logo" src="Images\NykeTealBanner.svg" width="300px"
-					height="80px">
-				</a>
+				</div>
 			</div>
 
 			<div class="rewardcontainer">
@@ -50,60 +79,24 @@
 				<button class="claimRewards" id="claimRewards">Claim</button>
 
 			</div>
-			<div class="rewardcontainer">
-				<a href="https://app.hebeswap.com/#/swap?outputCurrency=0x9aa2901007fCE996e35305FD9bA196e17fCd2605" class="hebeswap" id="claimRewards">Trade NYKE on Hebeswap</a>
-			</div>
+
 
 
 			<div class="maincontent">
 				<div style="clear: both;"></div>
-				<div class="flex-container" id="flexcontainer">
-					<div class = "UserDetails">
-						<div class = "supplyshell">
+			
+					<div class = "NykeDetails">
+						<div class = "nykeshell">
 							<div class="supplytextleft">
 							<div class="UseBalanceText">NYKE Statistics</div><div class="UserBalanceOutput" id="NykeSupplyBalance"></div>
 							</div>
 							<div class="supplytextright">
-							<div class="UserMaxBorrowText">Net Base APR</div><div class="UserBorrowLimit" id="UserAPR"> 0%</div>
+							<div class="UserMaxBorrowText"></div><div class="UserBorrowLimit" id="UserAPR"></div>
 							</div>
-						<div class="Supplied">
-							<table class="UserSupplyTable">
-								<tbody>
-									<tr>
-										<td></td>
-										<td class="tdmobile" style="text-align: center;">Assets</td>
-										<td>Supplied</td>
-										<td>Base APR</td>
-										<td>Reward APR</td>
-										<td>Collateral</td>
-									</tr>
-									<tr>
-										<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
-												width="25" height="25" style="display: inline-block;"></td>
-								<td class="tdmobile">ETC</td>
-								<td><div id="YourETCSupplied"></div></td>
-								<td><div id="ETCSupplyRateOutputSupply"></div></td>
-								<td><div id="ETCSupplyRateOutputSupply1"></div></td>
-								<td><label class="switch">
-									<input type="checkbox" id="ETCCheckbox" onclick="CollateralStatus()">
-									<span class="slider round"></span>
-								  </label></td>		
-							</tr>
-							<tr>
-								<td><img src="Images\usc-logo.png" alt="USC Logo" width="25" height="25"></td>
-									<td class="tdmobile">USC</td>
-									<td><div id="YourUSCSupplied"></div></td>
-									<td><div id="USCSupplyRateOutputSupply"></div></td>
-									<td><div id="USCSupplyRateOutputSupply1"></div></td>
-									<td><label class="switch">
-										<input type="checkbox" id="USCCheckbox" onclick="CollateralStatusUSC()">
-										<span class="slider round"></span>
-									  </label></td></td>
-							</tr>
-						</tbody>
-					</table>
+						<div class="NykeInfo">
+							
 
-					</div>
+				
 				</div></div></div>
 				
 
@@ -115,6 +108,10 @@
 				<img class="footericon" src="Images\DiscordTeal.svg" width="30px"
 					height="30px">
 				</a>
+				<a href="https://x.com/NykeFinance" class="footerwrapper">
+					<img class="footericon" src="Images\twitterlogo.svg" width="30px"
+						height="30px">
+					</a>
 				<a href="https://github.com/Jabr0nie" class="footerwrapper">
 					<img class="footericon" src="Images\GithubTeal.svg" width="30px"
 						height="30px">

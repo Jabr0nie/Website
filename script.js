@@ -10,9 +10,10 @@
   
                   //connect to MetaMask
   
-                  window.onload = (event) => {
-          isConnected();
-       };
+                  window.onload = async function() {
+                    isConnected();
+                 };
+                        
               
         async function isConnected() {
            const accounts = await ethereum.request({method: 'eth_accounts'});       
@@ -663,8 +664,25 @@
             let account = document.getElementById('connectbutton').innerHTML;
             nUSCContractMM.methods.repayBorrow(`${USCAmount}`).send({from:`${account}`});}
 
+//Mobile Menu Modal
+
+function openMobileMenu() {
+    document.getElementById('Mobilemodal-container').style.display = "block";
+    document.getElementById('mobileMenuClose1').style.display = "block";
+    document.getElementById('mobileMenu1').style.display = "none";
+}
+
+function closeMobileMenu() {
+    document.getElementById('Mobilemodal-container').style.display = "none";
+    document.getElementById('mobileMenuClose1').style.display = "none";
+    document.getElementById('mobileMenu1').style.display = "block";
+}
+
+//document.getElementById('mobileMenu1').onclick = openMobileMenu;
+//document.getElementById('mobileMenuClose1').onclick = closeMobileMenu;
 
   
+//Lending Modals
                   function openModal() {
                           $('#usermodal').modal('show');}
   
