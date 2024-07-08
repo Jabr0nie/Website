@@ -155,8 +155,9 @@ body {
 
 
   .rewardcontainer {
-    display: inline-flex;
-    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    float: left;
     height: 10%;
     width: 60%;
     margin-top: 1%;

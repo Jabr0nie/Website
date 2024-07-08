@@ -35,16 +35,6 @@
 			<div style="clear: both;"></div>
 			<div class="topnav" id="myTopnav">
 				<div class="topNavRight">
-					<div class="mobileMenu" id="mobileMenu1">
-						<a id="mobileMenu">
-							<img class="mobileMenuimg" src="Images\Icon.png" width="25px"height="25px">
-						</a>
-					</div>
-					<div class="mobileMenuClose" id="mobileMenuClose1">
-						<a id="mobileMenuClose">
-							<img class="mobileMenuimg" src="Images\CloseTeal.svg" width="25px"height="25px">
-						</a>
-					</div> 
 					<button class="MetaMask" id="connectbutton" value="Connect Metamask">
 						Connect Metamask</button>
 					<div class="nykeInfo">
@@ -65,15 +55,17 @@
 									height="40px">
 								</a>
 							
-									<a class="TopNavLink" href="https://nyke.finance/">Dashboard</a>
-							
-							
-									<a class="TopNavLink" href="rewards.html">Rewards</a>  
+
 							
 
 				</div>
 			</div>
+			<div class="rewardcontainer">
+				<div class="rewardsinfo">Accrued Rewards</div>
+				<div class="accruedRewards" id="accruedRewards">0.00 NYKE</div>
+				<button class="claimRewards" id="claimRewards">Claim</button>
 
+			</div>
 
 
 			<div class="maincontent">
@@ -473,16 +465,7 @@
 
 		</div>
 
-		<div id="Mobilemodal-container" class="Mobilemodal-container">
 
-			<!-- Modal content -->
-			<div id="Mobilemodal-menu" class="Mobilemodal-menu">
-				<div style="clear: both;"></div>
-				<div class="mobilemodalnav">
-					<a href="index.html" onclick="RepayModal()">Dashboard</a>
-					<a href="rewards.html" onclick="BorrowModal()">Rewards</a>
-				</div>
-			</div>
 
 </div>
 
