@@ -560,6 +560,18 @@ float: right;
       float: right;
     }
 
+        .footer {
+      display: inline-block;
+      position: sticky;
+      position: -webkit-sticky;
+      bottom: 0;
+      background-color: #0d114a;
+      padding-top: 1%;
+      width: 100%;
+      text-align: center;
+    }
+
+
 
     .borrowtextleft {
       font-size: 80%;
