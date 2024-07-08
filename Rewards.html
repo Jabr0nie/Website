@@ -72,25 +72,39 @@
 
 			</div>
 
-
-
-			<div class="maincontent">
 				<div style="clear: both;"></div>
-			
+				<div class = "NykeDetails1">
 					<div class = "NykeDetails">
-						<div class = "nykeshell">
-							<div class="supplytextleft">
-							<div class="UseBalanceText">NYKE Statistics</div><div class="UserBalanceOutput" id="NykeSupplyBalance"></div>
-							</div>
-							<div class="supplytextright">
-							<div class="UserMaxBorrowText"></div><div class="UserBorrowLimit" id="UserAPR"></div>
-							</div>
+						<div class="NykeStatisticsText">NYKE Statistics</div>
 						<div class="NykeInfo">
-							
+							<div class="NykeStats">NYKE Price ($)</div><div class="NykeStatsOutput" id="nykePrice1"><i class="fa fa-spinner fa-pulse"></i></div>
+						</div>
+						<div class="NykeInfo">
+							<div class="NykeStats">Max Supply</div><div class="NykeStatsOutput">100,000,000</div>
+						</div>
+						<div class="NykeInfo">
+							<div class="NykeStats">Circulating Supply</div><div class="NykeStatsOutput" id="nykeCirculating"><i class="fa fa-spinner fa-pulse"></i></div>
+						</div>
+						<div class="NykeInfo">
+							<div class="NykeStats">NYKE Burned</div><div class="NykeStatsOutput" id="NykeBurned"><i class="fa fa-spinner fa-pulse"></i></div>
+						</div>
+					</div>
+				
+				</div>
+				
 
-				
-				</div></div></div>
-				
+				<div id="Mobilemodal-container" class="Mobilemodal-container">
+
+					<!-- Modal content -->
+					<div id="Mobilemodal-menu" class="Mobilemodal-menu">
+						<div style="clear: both;"></div>
+						<div class="mobilemodalnav">
+							<a href="index.html" onclick="RepayModal()">Dashboard</a>
+							<a href="rewards.html" onclick="BorrowModal()">Rewards</a>
+						</div>
+					</div>
+		
+		</div>
 
 		
 	<div style="clear: both;"></div>

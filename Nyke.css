@@ -23,7 +23,15 @@ body {
     display: none;
   }
 
-  .mobileMenuClose {
+  .mobileMenuimg:hover {
+    cursor: pointer;
+  }
+
+  .mobileMenuClose:hover {
+    cursor: pointer;
+  }
+
+  .mobileMenuClose{
     display: none;
   }
 
@@ -148,6 +156,7 @@ body {
 
   .rewardcontainer {
     display: inline-flex;
+    justify-content: center;
     height: 10%;
     width: 60%;
     margin-top: 1%;
@@ -338,12 +347,20 @@ body {
     margin-top: 2%;
   }
 
+  .NykeDetails1 {
+    display: flex;
+    justify-content: center;
+  }
+
   .NykeDetails {
     display: inline-flex;
+    flex-direction: column;
+    background-color: #1D2833;
+    border-radius: 20px;
     height: 50%;
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
+    width: 20%;
+    min-width: 360px;
+
     margin-top: 2%;
   }
 
@@ -443,7 +460,8 @@ float: right;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    overflow: hideen; /* Enable scroll if needed */
+    overflow: -moz-hidden-unscrollable;
     
   }
   
@@ -541,16 +559,6 @@ float: right;
       float: right;
     }
 
-    .footer {
-      display: inline-block;
-      position: sticky;
-      position: -webkit-sticky;
-      bottom: 0;
-      background-color: #10171f;
-      padding-top: 1%;
-      width: 100%;
-      text-align: center;
-    }
 
     .borrowtextleft {
       font-size: 80%;
@@ -618,14 +626,7 @@ float: right;
         width: 100%;
       }
 
-      .NykeDetails {
-        flex-wrap: wrap;
-        height: 66%;
-        margin-top: 0%;
-        margin-left: 0;
-        margin-right: 0;
-        width: 95%;
-        }
+
 
       .supplyshell {
         width: 100%;
@@ -1226,6 +1227,22 @@ tr:not(:first-child):hover div{
       height:60%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
+
+
+    .NykeInfo{
+      display: flexbox;
+      background-color: #1D2833;
+      border-radius: 5px;
+      float: right;
+      width: 100%;
+
+      margin-right: 0%;
+      margin-left: 5%;
+      height:60%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
     .footer {
       display: inline-block;
       bottom: 0;
@@ -1373,7 +1390,7 @@ input:checked + .slider:before {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(10px);
   
 }
 
@@ -1389,6 +1406,62 @@ input:checked + .slider:before {
   border: 3px solid #1eeadb;
   color: #1D2833;;
   cursor: pointer;
+}
+
+.NykeStatisticsText {
+  color: #D8D7DB;
+  font-size: 25px;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  margin-bottom: 3%;
+  text-align: center;
+}
+
+.NykeStats {
+  color: #1eeadb;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: left;
+  margin-left: 10%;
+  width: 40%;
+  margin-bottom: 4%;
+}
+
+.NykeStatsOutput {
+  color: #D8D7DB;
+  font-size: 15px;
+  font-weight: 400;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: right;
+  margin-right: 10%;
+  width: 40%;
+  margin-bottom: 4%;
+
+}
+
+
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 620px) {
+  .NykeInfo {
+   
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color:#1D2833;
+    border-radius: 20px;
+    padding-top: 10px;
+  }
+
+  .NykeStatisticsText {
+    font-size: 20px;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+
 }
 
 .input Button:hover {

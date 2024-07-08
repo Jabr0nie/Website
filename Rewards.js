@@ -1,4 +1,21 @@
+                  //Mobile Menu Modal
 
+                  function openMobileMenu() {
+                    document.getElementById('Mobilemodal-container').style.display = "block";
+                    document.getElementById('mobileMenuClose1').style.display = "block";
+                    document.getElementById('mobileMenu1').style.display = "none";
+                }
+                
+                function closeMobileMenu() {
+                    document.getElementById('Mobilemodal-container').style.display = "none";
+                    document.getElementById('mobileMenuClose1').style.display = "none";
+                    document.getElementById('mobileMenu1').style.display = "block";
+                }
+                
+                document.getElementById('mobileMenu1').onclick = openMobileMenu;
+                document.getElementById('mobileMenuClose1').onclick = closeMobileMenu;
+
+                
               // Setting getblock node as HTTP provider
               const provider = new Web3.providers.HttpProvider("https://go.getblock.io/60e5a3f8fbcd4953b12b226760d7e5e1/");
               // Creating web3 instance with given provider
@@ -104,13 +121,25 @@
                   
                     //NYKE PRICE
                     let NYKEPrice = (_NykePrice / (10 ** 18));
-                    console.log(NYKEPrice);
                     document.getElementById('nykePrice').innerText = `$${NYKEPrice.toLocaleString('en-US', {minimumFractionDigits:5, maximumFractionDigits:5})}`;
+                    document.getElementById('nykePrice1').innerText = `$${NYKEPrice.toLocaleString('en-US', {minimumFractionDigits:5, maximumFractionDigits:5})}`;
+                    let comprolleraddress = '0x0040DCf62C380833dE60a502649567e939635fdB';
+                    let vestingaddress = '0x5790cA87eb0E6D5d73d5450Ba1864342FCA0DD72';
+                    let burnwallet = '0x000000000000000000000000000000000000dEaD';
+                    let _ComptrollerBalance = await NykeContract.methods.balanceOf(`${comprolleraddress}`).call();
+                    let _VestingBalance = await NykeContract.methods.balanceOf(`${vestingaddress}`).call();
+                    let _BurnedNyke = await NykeContract.methods.balanceOf(`${burnwallet}`).call();
+                    _ComptrollerBalance = _ComptrollerBalance / (10 ** 18);
+                    _VestingBalance = _VestingBalance / (10 ** 18);
+                    _BurnedNyke = _BurnedNyke / (10 ** 18);
+                    let CirculatingNyke = (100000000 - _ComptrollerBalance - _VestingBalance - _BurnedNyke);
+                    document.getElementById('nykeCirculating').innerText = `${CirculatingNyke.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0})}`;
+                    document.getElementById('NykeBurned').innerText = `${_BurnedNyke.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0})}`;
                 };
 
                 main();
    
-    
+
                   
            //claim Nyke Rewards
            function claimNykeRewards() {
@@ -121,3 +150,4 @@
                
 
                   document.getElementById("claimRewards").onclick = claimNykeRewards;
+

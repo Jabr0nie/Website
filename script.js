@@ -12,8 +12,12 @@
   
                   window.onload = async function() {
                     isConnected();
+                    const chainId = Number(await web3.eth.getChainId());
+                    console.log(chainId);
                  };
-                        
+
+
+
               
         async function isConnected() {
            const accounts = await ethereum.request({method: 'eth_accounts'});       
@@ -33,12 +37,7 @@
                 const ETCBalance = document.getElementById('ETCBalance');
                 ETCBalance.innerText = `${balance}`;});
 
-                    //rewards accrued
-                    ComptrollerContract.methods.compAccrued(`${account}`).call().then(accruedRewards => {
-                    accruedRewards = accruedRewards / (10 ** 18);
-                    accruedRewards = accruedRewards.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                        document.getElementById('accruedRewards').innerText = `${accruedRewards} NYKE`;
-                    })
+
                           //In market?
                           ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
                             document.getElementById("ETCCheckbox").checked = result;});
@@ -136,11 +135,7 @@
                               const ETCBalance = document.getElementById('ETCBalance');
                               ETCBalance.innerText = `${balance}`;});
 
-                             //rewards accrued
-                             ComptrollerContract.methods.compAccrued(`${account}`).call().then(accruedRewards => {
-                                accruedRewards = accruedRewards / (10 ** 18);
-                                    document.getElementById('accruedRewards').innerText = `${accruedRewards.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} NYKE`;
-                             })
+
                                //In market?
                               ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
                                 document.getElementById("ETCCheckbox").checked = result;});
@@ -317,10 +312,13 @@
                       const _USCPrice = await OracleContract.methods.GetUnderlyingPrice('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call();
                       const _NykePrice = await NykeOracleContract.methods.GetUnderlyingPrice().call();
                       
-                      //NYKE PRICE
-                      let NYKEPrice = (_NykePrice / (10 ** 18));
-                      console.log(NYKEPrice);
-                      document.getElementById('nykePrice').innerText = `$${NYKEPrice.toLocaleString('en-US', {minimumFractionDigits:5, maximumFractionDigits:5})}`;
+
+
+                    //NYKE PRICE
+                    let NYKEPrice = (_NykePrice / (10 ** 18));
+                    console.log(NYKEPrice);
+                    document.getElementById('nykePrice').innerText = `$${NYKEPrice.toLocaleString('en-US', {minimumFractionDigits:5, maximumFractionDigits:5})}`;
+                  
 
   
                       const totalSupply = (_totalSupply / (10 ** 18) * (_ETCExMant / (10 ** 18)));
@@ -685,8 +683,8 @@ function closeMobileMenu() {
     document.getElementById('mobileMenu1').style.display = "block";
 }
 
-//document.getElementById('mobileMenu1').onclick = openMobileMenu;
-//document.getElementById('mobileMenuClose1').onclick = closeMobileMenu;
+document.getElementById('mobileMenu1').onclick = openMobileMenu;
+document.getElementById('mobileMenuClose1').onclick = closeMobileMenu;
 
   
 //Lending Modals
@@ -875,7 +873,7 @@ function closeMobileMenu() {
                   document.getElementById("USCApproveRepayButton").onclick = ApproveUSCRepay;
                   document.getElementById("USCRepayButton").onclick = RepayUSC;
                   document.getElementById("SafeMaxRepayUSC").onclick = SafeMaxValue;
-                    document.getElementById("claimRewards").onclick = claimNykeRewards;
+
 
                   //Open MODAL
 

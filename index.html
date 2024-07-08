@@ -35,7 +35,7 @@
 			<div style="clear: both;"></div>
 			<div class="topnav" id="myTopnav">
 				<div class="topNavRight">
-				<!---	<div class="mobileMenu" id="mobileMenu1">
+					<div class="mobileMenu" id="mobileMenu1">
 						<a id="mobileMenu">
 							<img class="mobileMenuimg" src="Images\Icon.png" width="25px"height="25px">
 						</a>
@@ -44,7 +44,7 @@
 						<a id="mobileMenuClose">
 							<img class="mobileMenuimg" src="Images\CloseTeal.svg" width="25px"height="25px">
 						</a>
-					</div> -->
+					</div> 
 					<button class="MetaMask" id="connectbutton" value="Connect Metamask">
 						Connect Metamask</button>
 					<div class="nykeInfo">
@@ -65,21 +65,15 @@
 									height="40px">
 								</a>
 							
-								<!--	<a class="TopNavLink" href="https://nyke.finance/">Dashboard</a>
+									<a class="TopNavLink" href="https://nyke.finance/">Dashboard</a>
 							
 							
-									<a class="TopNavLink" href="rewards.html">Rewards</a>  -->
+									<a class="TopNavLink" href="rewards.html">Rewards</a>  
 							
 
 				</div>
 			</div>
 
-			<div class="rewardcontainer">
-				<div class="rewardsinfo">Accrued Rewards</div>
-				<div class="accruedRewards" id="accruedRewards">0.00 NYKE</div>
-				<button class="claimRewards" id="claimRewards">Claim</button>
-
-			</div>
 
 
 			<div class="maincontent">
@@ -231,9 +225,9 @@
 			<!-- Modal content -->
 			<div id="modal-supply" class="modal-content">
 				<img src="Images\ethereum-classic-etc-logo.png" class="image">
-				<a class="modalclosebutton" onclick="closeModal()">
+			<!--	<a class="modalclosebutton" onclick="closeModal()">
 					<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
-				</a>
+				</a> -->
 				<div style="clear: both;"></div>
 				<div class="modalnav">
 					<a onclick="RepayModal()">Repay</a>
@@ -262,9 +256,7 @@
 			</div>
 			<div id="modal-withdrawl" class="modal-content">
 				<img src="Images\ethereum-classic-etc-logo.png" class="image">
-				<a class="modalclosebutton" onclick="closeModal()">
-					<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
-				</a>
+			
 				<div class="modalnav">
 					<a onclick="RepayModal()">Repay</a>
 					<a onclick="BorrowModal()">Borrow</a>
@@ -295,9 +287,7 @@
 			</div>
 			<div id="modal-borrow" class="modal-content">
 				<img src="Images\ethereum-classic-etc-logo.png" class="image">
-				<a class="modalclosebutton" onclick="closeModal()">
-					<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
-				</a>
+			
 				<div class="modalnav">
 					<a onclick="RepayModal()">Repay</a>
 					<a class="active" onclick="BorrowModal()">Borrow</a>
@@ -326,9 +316,7 @@
 			
 			<div id="modal-repay" class="modal-content">
 				<img src="Images\ethereum-classic-etc-logo.png" class="image">
-				<a class="modalclosebutton" onclick="closeModal()">
-					<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
-				</a>
+				
 				<div class="modalnav">
 					<a class="active" onclick="RepayModal()">Repay</a>
 					<a onclick="BorrowModal()">Borrow</a>
@@ -357,9 +345,7 @@
 <!-- USC Modal content -->
 <div id="USCmodal-supply" class="modal-content">
 	<img src="Images\usc-logo.png" class="image">
-	<a class="modalclosebutton" onclick="closeModal()">
-		<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
-	</a>
+	
 	<div style="clear: both;"></div>
 	<div class="modalnav">
 		<a onclick="USCRepayModal()">Repay</a>
@@ -393,9 +379,7 @@
 	</div>
 </div>
 <div id="USCmodal-withdrawl" class="modal-content">
-	<a class="modalclosebutton" onclick="closeModal()">
-		<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
-	</a>
+	
 	<img src="Images\usc-logo.png" class="image">
 	<div class="modalnav">
 		<a onclick="USCRepayModal()">Repay</a>
@@ -426,9 +410,7 @@
 </div>
 <div id="USCmodal-borrow" class="modal-content">
 	<img src="Images\usc-logo.png" class="image">
-				<a class="modalclosebutton" onclick="closeModal()">
-		<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
-	</a>
+		
 	<div class="modalnav">
 		<a onclick="USCRepayModal()">Repay</a>
 		<a class="active" onclick="USCBorrowModal()">Borrow</a>
@@ -457,9 +439,7 @@
 
 <div id="USCmodal-repay" class="modal-content">
 	<img src="Images\usc-logo.png" class="image">
-	<a class="modalclosebutton" onclick="closeModal()">
-		<img class="modalclosebutton" src="Images\CloseTeal.svg" alt="close">
-	</a>
+	
 	<div class="modalnav">
 		<a class="active" onclick="USCRepayModal()">Repay</a>
 		<a onclick="USCBorrowModal()">Borrow</a>
@@ -499,8 +479,8 @@
 			<div id="Mobilemodal-menu" class="Mobilemodal-menu">
 				<div style="clear: both;"></div>
 				<div class="mobilemodalnav">
-					<a onclick="RepayModal()">Dashboard</a>
-					<a onclick="BorrowModal()">Rewards</a>
+					<a href="index.html" onclick="RepayModal()">Dashboard</a>
+					<a href="rewards.html" onclick="BorrowModal()">Rewards</a>
 				</div>
 			</div>
 
