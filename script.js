@@ -632,6 +632,14 @@
            function claimNykeRewards() {
             let account = document.getElementById('connectbutton').innerHTML;
             ComptrollerContractMM.methods.claimComp(`${account}`).send({from:`${account}`});}
+
+           //claim Nyke Rewards
+           function claimNykeRewards() {
+            let account = document.getElementById('connectbutton').innerHTML;
+            ComptrollerContractMM.methods.claimComp(`${account}`).send({from:`${account}`});
+           }
+
+                  document.getElementById("claimRewards").onclick = claimNykeRewards;
                   
             function ApproveUSC() {
             let USCAmount = document.getElementById('USCDeposit').value;
