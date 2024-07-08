@@ -37,6 +37,13 @@
                 const ETCBalance = document.getElementById('ETCBalance');
                 ETCBalance.innerText = `${balance}`;});
 
+		                       //rewards accrued
+                    ComptrollerContract.methods.compAccrued(`${account}`).call().then(accruedRewards => {
+                    accruedRewards = accruedRewards / (10 ** 18);
+                    accruedRewards = accruedRewards.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                        document.getElementById('accruedRewards').innerText = `${accruedRewards} NYKE`;
+                    })
+
 
                           //In market?
                           ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
@@ -134,6 +141,12 @@
                               console.log(balance + "ETC");
                               const ETCBalance = document.getElementById('ETCBalance');
                               ETCBalance.innerText = `${balance}`;});
+			                          //rewards accrued
+                    ComptrollerContract.methods.compAccrued(`${account}`).call().then(accruedRewards => {
+                    accruedRewards = accruedRewards / (10 ** 18);
+                    accruedRewards = accruedRewards.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                        document.getElementById('accruedRewards').innerText = `${accruedRewards} NYKE`;
+                    })
 
 
                                //In market?
