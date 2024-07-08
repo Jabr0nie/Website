@@ -97,7 +97,7 @@
                             let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100);
                         
                             if (Weight > 0){
-                                UserRate.innerText = `${Weight}%`;
+                                UserRate.innerText = `${Weight.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                             } 
                                 });});});});
                             //Collateral Factor
@@ -193,12 +193,12 @@
                                 nUSCContract.methods.borrowRatePerBlock().call().then(USCBorrowRate1 => {
                                     USCBorrowRate1 = ((USCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
                                 const UserRate = document.getElementById('UserAPR');
-                                let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                                let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100);
 
                                 if (Assets = 0){
                                     UserRate.innerText = `0.00%`;
                                 } else {
-                                    UserRate.innerText = `${Weight}%`;
+                                    UserRate.innerText = `${Weight.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                                 }
                                     });});});});
                                 //Collateral Factor
