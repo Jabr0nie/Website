@@ -637,7 +637,17 @@
             let USCAmount = document.getElementById('USCDeposit').value;
             USCAmount = USCAmount * (10 ** 6);
             let account = document.getElementById('connectbutton').innerHTML;
-            USCContractMM.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${USCAmount}`).send({from:`${account}`});}
+            USCContractMM.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${USCAmount}`).send({from:`${account}`}), function(error, confirmationNumber) {
+                error = error;
+                confirmationNumber = confirmationNumber;
+                if (error = true) {
+                    console.log(error1);
+                }
+                console.log(confirmationNumber);
+            };}
+
+
+            
 
             function ApproveUSCRepay() {
             let USCAmount = document.getElementById('USCRepay').value;
