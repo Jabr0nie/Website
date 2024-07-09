@@ -743,7 +743,7 @@
                 document.getElementById('USCApproveSpin1').style.display = 'none';
                 }})}
 
-
+                document.getElementById("USCSupplySubmit").onclick = USCMint;
 
 
 
