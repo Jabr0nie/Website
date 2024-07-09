@@ -5,6 +5,8 @@
 
 
 
+
+
 .mobilelogowrapper {
   display: none;
 }
@@ -153,6 +155,18 @@ body {
     float: right;
   }
 
+  .USCRepay {
+    background-color: #0cfa07;
+    color: #000000;
+  }
+
+  .USCRepay2 {
+    display: none;
+  }
+
+  .modalButton div {
+    height: 100%;
+  }
 
   .rewardcontainer {
     display: flex;
@@ -695,6 +709,14 @@ float: right;
   
   }
 
+  .WrongNetwork{
+    display: none;
+  
+  }
+
+  .ETCNetwork {
+    display: none;
+  }
 
 .MetaMask {
   border-radius: 16px; 
@@ -1658,7 +1680,7 @@ input:checked + .slider:before {
   font-size: 100%;
   float: right;
   font-weight: 400;
-  align-content: center;
+
   text-align: center;
   height: 20%;
   width: 100%;
@@ -1799,6 +1821,18 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ; }
       display: block;
     }
 
+    .USCRepay2 Button {
+      background-color: #0cfa07;
+      color: #000000;
+      border-color: #0cfa07;
+    }
 
+    .USCApproveSpin {
+      display: none;
+    }
+
+    .USCApproveSpin1 {
+      display: none;
+    }
 
 

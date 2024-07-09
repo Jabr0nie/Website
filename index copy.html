@@ -37,8 +37,6 @@
 				<div class="topNavRight">
 					<button class="MetaMask" id="connectbutton" value="Connect Metamask">
 						Connect Metamask</button>
-
-						
 					<div class="nykeInfo">
 						<img id="ETCSwapLink" class="nNykeLogo" src="Images\NykeLogo.svg" width="20px"height="20px">
 						<div class="nykePrice" id="nykePrice">$0.0000</div>
@@ -363,12 +361,13 @@
 		<div class="stats-container"><div class="Stats">Collateral Factor</div><div class="Stats-Output"> 75%</div></div>
 	</div>
 	<div class="modalButton">
-		<div class="USCRepay1" id="USCSupplyApprove">
-			<button id="USCApproveSup">Approve <div class="USCApproveSpin" id="USCApproveSpin1"><i class="fa fa-spinner fa-pulse"></i></div></button>
-		</div>
-		<div class="USCRepay2" id="USCSupplySubmit">
-		<button class="submit" id="USCRepaySubmit">Submit</button>
-		</div>
+		<button class="ApproveButtons" id="USCApproveButton" style="display:inline-block; width: 43%; margin-left: 0%; margin-right: 2%;">
+			<div class="Approve1">1</div>
+			<div class="ApproveText">Approve</div></button>
+		<button class="ApproveButtons" id="USCDepositButton" style="display:inline-block; width: 43%; margin-left: 2%; margin-right: 0%;">
+			<div class="Approve1">2</div>
+			<div class="ApproveText">Supply</div></button>
+		</button>	
 	</div>
 </div>
 <div id="USCmodal-withdrawl" class="modal-content">
@@ -453,17 +452,14 @@
 		<div class="stats-container"><div class="Stats">Borrow Rate</div><div class="Stats-Output" id="USCBorrowRateModal2"><i class="fa fa-spinner fa-pulse"></i></div></div>
 		<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit6"><i class="fa fa-spinner fa-pulse"></i></div></div>
 		<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed6"><i class="fa fa-spinner fa-pulse"></i></div></div>
-		<div class="ApproveAmount" style="display: none;"><div class="Stats">Borrow Limit Used</div><input type="value" class="Stats-Output" id="USCApproved"></div>
 	</div>
 	<div class="modalButton">
-		<div class="USCRepay1" id="USCRepay1">
-			<button id="ApproveOrSubmit">Approve <div class="USCApproveSpin" id="USCApproveSpin"><i class="fa fa-spinner fa-pulse"></i></div></button>
-		</div>
-		<div class="USCRepay2" id="USCRepay2">
-		<button class="submit" id="USCRepaySubmit">Submit</button>
-		</div>
-	</div>
-
+			<button class="ApproveButtons" id="USCApproveRepayButton" style="display:inline-block; width: 43%; margin-left: 0%; margin-right: 2%;">
+				<div class="Approve1">1</div>
+				<div class="ApproveText">Approve</div></button>
+			<button class="ApproveButtons" id="USCRepayButton" style="display:inline-block; width: 43%; margin-left: 2%; margin-right: 0%;">
+				<div class="Approve1">2</div>
+				<div class="ApproveText">Repay</div></button>
 	</div>
 </div>
 

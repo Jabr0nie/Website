@@ -1,4 +1,5 @@
 
+
               // Setting getblock node as HTTP provider
               const provider = new Web3.providers.HttpProvider("https://go.getblock.io/60e5a3f8fbcd4953b12b226760d7e5e1/");
               // Creating web3 instance with given provider
@@ -6,20 +7,36 @@
               // Initializing web3.eth method
                   var block = web3.eth.getBlockNumber().then(console.log);
   
-  
+                  let web3m = new Web3(window.ethereum);
   
                   //connect to MetaMask
   
                   window.onload = async function() {
                     isConnected();
-                    const chainId = Number(await web3.eth.getChainId());
-                    console.log(chainId);
+
                  };
 
+         //        async function Chain() {
+       //             let chain;
+        //            await web3m.eth.getChainId().then(chain => {
+       //                 console.log(chain); 
+         //               if (chain == 61) {
+        //                    console.log('ETC NETWORK');
+       //                     document.getElementById('connectbutton').style.background = '#cc0606';
+       //                 } else
+      //                  console.log('WRONG NETWORK');
+     ///                   document.getElementById('connectbutton').innerHTML = 'WRONG NETWORK';
+      //                  document.getElementById('connectbutton').style.background = '#cc0606';
+////
+     //               })}
 
+
+                    
+                
 
               
         async function isConnected() {
+         
            const accounts = await ethereum.request({method: 'eth_accounts'});       
            if (accounts.length) {
               let account;
@@ -114,7 +131,8 @@
                                     let MaxBorrow =((Liabilities/(borrowlimit))*100);
                                     if (Liabilities > 0){
                                         document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;   
-                                    }                                                     
+                                    } 
+                                                                                     
                             });
                             });});
                         });});
@@ -123,10 +141,12 @@
               
            } else {
               console.log("Metamask is not connected");
+           
            }
         };
 
                   document.getElementById('connectbutton').addEventListener('click', event => {
+                
                       let account;
                       let button = event.target;
                       ethereum.request({ method: 'eth_requestAccounts' }).then(accounts => {
@@ -141,6 +161,7 @@
                               console.log(balance + "ETC");
                               const ETCBalance = document.getElementById('ETCBalance');
                               ETCBalance.innerText = `${balance}`;});
+                             
 			                          //rewards accrued
                     ComptrollerContract.methods.compAccrued(`${account}`).call().then(accruedRewards => {
                     accruedRewards = accruedRewards / (10 ** 18);
@@ -229,7 +250,7 @@
                   
   
   
-            let web3m = new Web3(window.ethereum);
+ 
   
                   const nETCAddress = '0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0';
                   const nETCContract = new web3.eth.Contract(nETCAbi, nETCAddress);
@@ -638,11 +659,7 @@
 });});});};
 
 
-                  
-           //claim Nyke Rewards
-           function claimNykeRewards() {
-            let account = document.getElementById('connectbutton').innerHTML;
-            ComptrollerContractMM.methods.claimComp(`${account}`).send({from:`${account}`});}
+
 
            //claim Nyke Rewards
            function claimNykeRewards() {
@@ -652,27 +669,86 @@
 
                   document.getElementById("claimRewards").onclick = claimNykeRewards;
                   
-            function ApproveUSC() {
-            let USCAmount = document.getElementById('USCDeposit').value;
-            USCAmount = USCAmount * (10 ** 6);
-            let account = document.getElementById('connectbutton').innerHTML;
-            USCContractMM.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${USCAmount}`).send({from:`${account}`})
-            };
 
 
-            
 
-            function ApproveUSCRepay() {
+            const ApproveUSCRepay = async () => {
+            console.log("Clicked Send Tx")
+            document.getElementById('USCApproveSpin').style.display = 'block';
             let USCAmount = document.getElementById('USCRepay').value;
             USCAmount = USCAmount * (10 ** 6);
             let account = document.getElementById('connectbutton').innerHTML;
-            USCContractMM.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${USCAmount}`).send({from:`${account}`});}
-                  
-            function MintnUSC() {
+                USCContractMM.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${USCAmount}`).send({from:`${account}`}).then((tx) => {
+                    if (tx = true) {
+                        console.log("Approval Successful!");
+                        document.getElementById('USCRepay1').style.display = 'none';
+                        document.getElementById('USCRepay2').style.display = 'block';
+                        document.getElementById('USCApproveSpin').style.display = 'none';
+                    }
+                        else {
+                            console.log("Approval Failed!");
+                            document.getElementById('USCApproveSpin').style.display = 'none'; }})}
+
+
+                const RepayUSC = async () => {
+                console.log("Clicked Send Tx")
+                let USCAmount = document.getElementById('USCRepay').value;
+                USCAmount = USCAmount * (10 ** 6);
+                let account = document.getElementById('connectbutton').innerHTML;
+                await nUSCContractMM.methods.repayBorrow(`${USCAmount}`).send({from:`${account}`}).then((tx) => {
+                if (tx = true) {
+                console.log("Approval Successful!");
+                document.getElementById('USCRepay1').style.display = 'block';
+                document.getElementById('USCRepay2').style.display = 'none';
+                document.getElementById('USCApproveSpin').style.display = 'none';
+                }
+                else {
+                console.log("Approval Failed!");}})}
+
+       
+            const USCApprove = async () => {
+            console.log("Clicked Send Tx")
+            document.getElementById('USCApproveSpin1').style.display = 'block';
             let USCAmount = document.getElementById('USCDeposit').value;
             USCAmount = USCAmount * (10 ** 6);
             let account = document.getElementById('connectbutton').innerHTML;
-            nUSCContractMM.methods.mint(`${USCAmount}`).send({from:`${account}`});}
+            await USCContractMM.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${USCAmount}`).send({from:`${account}`}).then((tx) => {
+            if (tx = true) {
+            console.log("Approval Successful!");
+            document.getElementById('USCSupplySubmit').style.display = 'block';
+            document.getElementById('USCSupplyApprove').style.display = 'none';
+            document.getElementById('USCApproveSpin1').style.display = 'none';
+            }
+            else {
+            console.log("Approval Failed!");
+            document.getElementById('USCApproveSpin1').style.display = 'none';
+            }})}
+
+            document.getElementById("USCApproveSup").onclick = USCApprove;
+
+            const USCMint = async () => {
+                console.log("Clicked Send Tx")
+                let USCAmount = document.getElementById('USCDeposit').value;
+                USCAmount = USCAmount * (10 ** 6);
+                let account = document.getElementById('connectbutton').innerHTML;
+                await nUSCContractMM.methods.mint(`${USCAmount}`).send({from:`${account}`}).then((tx) => {
+                if (tx = true) {
+                console.log("Approval Successful!");
+                document.getElementById('USCSupplySubmit').style.display = 'none';
+                document.getElementById('USCSupplyApprove').style.display = 'block';
+                document.getElementById('USCApproveSpin1').style.display = 'none';
+                }
+                else {
+                console.log("Approval Failed!");
+                document.getElementById('USCApproveSpin1').style.display = 'none';
+                }})}
+
+
+
+
+
+
+
 
             function WithdrawlUSC() {
             let USCAmount = document.getElementById('USCWithdrawl').value;
@@ -686,11 +762,6 @@
             let account = document.getElementById('connectbutton').innerHTML;
             nUSCContractMM.methods.borrow(`${USCAmount}`).send({from:`${account}`});}
 
-            function RepayUSC() {
-            let USCAmount = document.getElementById('USCRepay').value;
-            USCAmount = USCAmount * (10 ** 6);
-            let account = document.getElementById('connectbutton').innerHTML;
-            nUSCContractMM.methods.repayBorrow(`${USCAmount}`).send({from:`${account}`});}
 
 
   
@@ -715,16 +786,13 @@
                               console.log(balance + "ETC");
                               const ETCBalance = document.getElementById('ETCBalance');
                               ETCBalance.innerText = `${balance}`;});
-                      let _UserETCSupplied;
-                    nETCContractMM.methods.balanceOf(`${account}`).call().then(result => {
+                      nETCContract.methods.balanceOf(account).call({from: account}, function(err,ETCSupplied){
                         nETCContract.methods.exchangeRateStored().call({from: account}).then(ETCExchangeMantissa => {
                             ETCExchangeMantissa = ETCExchangeMantissa / (10 ** 18);
                             console.log(ETCExchangeMantissa);
-                      _UserETCSupplied = result;
-                      let UserETCSupply2 = ((_UserETCSupplied / (10 ** 18))*ETCExchangeMantissa);
-                      console.log(result);
-                      const UserSuppliedETC2 = document.getElementById('UserETCSupply2');
-                        UserSuppliedETC2.innerText = `${UserETCSupply2.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} ETC`;
+                        console.log(ETCSupplied);
+                       ETCSupplied = (ETCSupplied / (10 ** 18))*ETCExchangeMantissa;
+                       document.getElementById('UserETCSupply2').innerText = `${ETCSupplied.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} ETC`;
                         UpdateBorrowLimit();	
                   })})}
   
@@ -789,6 +857,9 @@
                   })}
   
                   function USCSupplyModal() {
+                    document.getElementById('USCSupplySubmit').style.display = 'none';
+                    document.getElementById('USCSupplyApprove').style.display = 'block';
+                    document.getElementById('USCApproveSpin1').style.display = 'none';
                       document.getElementById('USCmodal-supply').style.display = "block";
                       document.getElementById('USCmodal-withdrawl').style.display = "none";
                       document.getElementById('USCmodal-borrow').style.display = "none";
@@ -843,7 +914,7 @@
                       UpdateBorrowLimit();}
                       
   
-                  function USCRepayModal() {
+                 async function USCRepayModal() {
                       document.getElementById('USCmodal-supply').style.display = "none";
                       document.getElementById('USCmodal-withdrawl').style.display = "none";
                       document.getElementById('USCmodal-borrow').style.display = "none";
@@ -851,34 +922,32 @@
                       document.getElementById('USCWithdrawl').value = '';
                       document.getElementById('USCBorrow').value = '';
                       document.getElementById('USCRepay').value = '';
-                      let account = document.getElementById('connectbutton').innerHTML;
-                      let _UserBorrowETC;
-                      nETCContractMM.methods.borrowBalanceStored(`${account}`).call().then(result => {
-                          _UserBorrowETC = result;
-                          let UserBorrowETC = _UserBorrowETC / (10 ** 18);
-                          console.log(result);
-                          const ETCBorrowBalance = document.getElementById('ETCBorrowBalance');
-                          ETCBorrowBalance.innerText = `${UserBorrowETC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;		
-                  })
+                      document.getElementById('USCRepay1').display = 'block';
+                      document.getElementById('USCRepay2').display = 'none';
+                      document.getElementById('USCRepay1').style.display = 'block';
+                      document.getElementById('USCRepay2').style.display = 'none';
+                      document.getElementById('USCApproveSpin').style.display = 'none';
+                     
                   UpdateBorrowLimit();}
-  
-  
+                
+                  //0xA11d739365d469c87F3daBd922a82cfF21b71c9B
+                  //0x0B9BC785fd2Bea7bf9CB81065cfAbA2fC5d0286B
   
                   document.getElementById("ETCDepositButton").onclick = sendETC;
                   document.getElementById("ETCWithdrawlButton").onclick = withdrawlETC;
                   document.getElementById("ETCBorrowButton").onclick = borrowETC;
                   document.getElementById("ETCRepayButton").onclick = repayETC;
-                  document.getElementById("USCDepositButton").onclick = MintnUSC;
+               //   document.getElementById("USCDepositButton").onclick = MintnUSC;
                   document.getElementById("SafeMax").onclick = SafeMaxValue;
                   document.getElementById("SafeMaxRepay").onclick = SafeMaxValue;
                   document.getElementById("SafeMaxBorrow").onclick = SafeMaxValue;
-                  document.getElementById("USCApproveButton").onclick = ApproveUSC;
+                  document.getElementById("ApproveOrSubmit").onclick = ApproveUSCRepay;
                   document.getElementById("USCWithdrawlButton").onclick = WithdrawlUSC;
                   document.getElementById("SafeMaxUSC").onclick = SafeMaxValue;
                   document.getElementById("SafeMaxBorrowUSC").onclick = SafeMaxValue;
                   document.getElementById("USCBorrowButton").onclick = BorrowUSC;
-                  document.getElementById("USCApproveRepayButton").onclick = ApproveUSCRepay;
-                  document.getElementById("USCRepayButton").onclick = RepayUSC;
+                //  document.getElementById("USCRepayButton").onclick = ApproveUSCRepay;
+                   document.getElementById("USCRepaySubmit").onclick = RepayUSC;
                   document.getElementById("SafeMaxRepayUSC").onclick = SafeMaxValue;
 
 
