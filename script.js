@@ -37,6 +37,13 @@
                 const ETCBalance = document.getElementById('ETCBalance');
                 ETCBalance.innerText = `${balance}`;});
 
+		                       //rewards accrued
+                    ComptrollerContract.methods.compAccrued(`${account}`).call().then(accruedRewards => {
+                    accruedRewards = accruedRewards / (10 ** 18);
+                    accruedRewards = accruedRewards.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                        document.getElementById('accruedRewards').innerText = `${accruedRewards} NYKE`;
+                    })
+
 
                           //In market?
                           ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
@@ -96,9 +103,9 @@
                             const UserRate = document.getElementById('UserAPR');
                             let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100);
                         
-                            if (Weight > 0){
-                                UserRate.innerText = `${Weight}%`;
-                            } 
+                                if (Assets > 0){
+                                    document.getElementById('UserAPR').innerText = `${Weight.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                                } 
                                 });});});});
                             //Collateral Factor
                                 const USCStatus = document.getElementById("USCCheckbox");
@@ -134,6 +141,12 @@
                               console.log(balance + "ETC");
                               const ETCBalance = document.getElementById('ETCBalance');
                               ETCBalance.innerText = `${balance}`;});
+			                          //rewards accrued
+                    ComptrollerContract.methods.compAccrued(`${account}`).call().then(accruedRewards => {
+                    accruedRewards = accruedRewards / (10 ** 18);
+                    accruedRewards = accruedRewards.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                        document.getElementById('accruedRewards').innerText = `${accruedRewards} NYKE`;
+                    })
 
 
                                //In market?
@@ -193,13 +206,11 @@
                                 nUSCContract.methods.borrowRatePerBlock().call().then(USCBorrowRate1 => {
                                     USCBorrowRate1 = ((USCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
                                 const UserRate = document.getElementById('UserAPR');
-                                let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                                let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100);
 
-                                if (Assets = 0){
-                                    UserRate.innerText = `0.00%`;
-                                } else {
-                                    UserRate.innerText = `${Weight}%`;
-                                }
+                                if (Assets > 0){
+                                    document.getElementById('UserAPR').innerText = `${Weight.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                                } 
                                     });});});});
                                 //Collateral Factor
                                     const USCStatus = document.getElementById("USCCheckbox");
@@ -632,6 +643,14 @@
            function claimNykeRewards() {
             let account = document.getElementById('connectbutton').innerHTML;
             ComptrollerContractMM.methods.claimComp(`${account}`).send({from:`${account}`});}
+
+           //claim Nyke Rewards
+           function claimNykeRewards() {
+            let account = document.getElementById('connectbutton').innerHTML;
+            ComptrollerContractMM.methods.claimComp(`${account}`).send({from:`${account}`});
+           }
+
+                  document.getElementById("claimRewards").onclick = claimNykeRewards;
                   
             function ApproveUSC() {
             let USCAmount = document.getElementById('USCDeposit').value;
