@@ -12,27 +12,59 @@
                   //connect to MetaMask
   
                   window.onload = async function() {
+                    
                     isConnected();
-
+                    Chain();
                  };
 
-         //        async function Chain() {
-       //             let chain;
-        //            await web3m.eth.getChainId().then(chain => {
-       //                 console.log(chain); 
-         //               if (chain == 61) {
-        //                    console.log('ETC NETWORK');
-       //                     document.getElementById('connectbutton').style.background = '#cc0606';
-       //                 } else
-      //                  console.log('WRONG NETWORK');
-     ///                   document.getElementById('connectbutton').innerHTML = 'WRONG NETWORK';
-      //                  document.getElementById('connectbutton').style.background = '#cc0606';
-////
-     //               })}
+                 window.ethereum.on('networkChanged', function (networkId) {
+                    ChainSwitch();
+                        });
+                  
+
+                        async function ChainSwitch() {
+                            let chain;
+                            await web3m.eth.getChainId().then(chain => {
+                            console.log(chain); 
+                            if (chain == 61) {
+                            console.log('ETC NETWORK');
+                            document.getElementById('connectbutton').style.background = '#1D2833';
+                            document.getElementById('ETCChain').style.display = 'inline-block';
+                            document.getElementById('WrongChain').style.display = 'none';
+                            isConnected();
+                            } else {
+                                console.log('WRONG NETWORK');
+                                document.getElementById('connectbutton').innerHTML = 'WRONG NETWORK';
+                                document.getElementById('connectbutton').style.background = '#cc0606';
+                                document.getElementById('ETCChain').style.display = 'none';
+                                document.getElementById('WrongChain').style.display = 'inline-block';
+                            }
+                            })}
+
+                async function Chain() {
+                let chain;
+                await web3m.eth.getChainId().then(chain => {
+                console.log(chain); 
+                if (chain == 61) {
+                console.log('ETC NETWORK');
+                document.getElementById('connectbutton').style.background = '#1D2833';
+                document.getElementById('ETCChain').style.display = 'inline-block';
+                document.getElementById('WrongChain').style.display = 'none';
+                } else {
+                    console.log('WRONG NETWORK');
+                    document.getElementById('connectbutton').innerHTML = 'WRONG NETWORK';
+                    document.getElementById('connectbutton').style.background = '#cc0606';
+                    document.getElementById('ETCChain').style.display = 'none';
+                    document.getElementById('WrongChain').style.display = 'inline-block';
+                }
+                })}
+
 
 
                     
-                
+     window.ethereum.on('accountsChanged', function (accounts) {
+        isConnected();
+      })
 
               
         async function isConnected() {
