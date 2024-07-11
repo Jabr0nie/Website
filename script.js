@@ -1,8 +1,7 @@
 
 
               // Setting getblock node as HTTP provider
-		const provider = new Web3.providers.HttpProvider("https://go.getblock.io/60e5a3f8fbcd4953b12b226760d7e5e1/");
-
+		const provider = new Web3.providers.HttpProvider("https://go.getblock.io/bf14708a4a4f476b99a3c6db485c6634/");
               // Creating web3 instance with given provider
                   const web3 = new Web3(provider);
               // Initializing web3.eth method
@@ -286,7 +285,7 @@
  
   
                   const nETCAddress = '0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0';
-                  const nETCContract = new web3.eth.Contract(nETCAbi, nETCAddress);
+                  const nETCContract = new web3m.eth.Contract(nETCAbi, nETCAddress);
                   const nETCContractMM = new web3m.eth.Contract(nETCAbi, nETCAddress);
   
                //   const ETCPOWAddress = '0x6c3B413C461c42a88160Ed1B1B31d6f7b02a1C83';
