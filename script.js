@@ -285,43 +285,43 @@
  
   
                   const nETCAddress = '0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0';
-                  const nETCContract = new web3m.eth.Contract(nETCAbi, nETCAddress);
+                  const nETCContract = new web3.eth.Contract(nETCAbi, nETCAddress);
                   const nETCContractMM = new web3m.eth.Contract(nETCAbi, nETCAddress);
   
                //   const ETCPOWAddress = '0x6c3B413C461c42a88160Ed1B1B31d6f7b02a1C83';
                  // const ETCPOWContract = new web3.eth.Contract(ETCPOWabi, ETCPOWAddress);
   
                 
-                  const nETCPOWAddress = '0x7f86acFA4747B5355E5623483D8c3082c90c2e85';
-                 const nETCPOWContract = new web3m.eth.Contract(nETCPOWabi, nETCPOWAddress);
+                //  const nETCPOWAddress = '0x7f86acFA4747B5355E5623483D8c3082c90c2e85';
+               //  const nETCPOWContract = new web3m.eth.Contract(nETCPOWabi, nETCPOWAddress);
   
                
                   const USCAddress = '0xDE093684c796204224BC081f937aa059D903c52a';
-                  const USCContract = new web3m.eth.Contract(USCabi, USCAddress);
+                  const USCContract = new web3.eth.Contract(USCabi, USCAddress);
                   const USCContractMM = new web3m.eth.Contract(USCabi, USCAddress);
   
                   const nUSCAddress = '0xA11d739365d469c87F3daBd922a82cfF21b71c9B';
-                  const nUSCContract = new web3m.eth.Contract(nETCPOWabi, nUSCAddress);
+                  const nUSCContract = new web3.eth.Contract(nETCPOWabi, nUSCAddress);
                   const nUSCContractMM = new web3m.eth.Contract(nETCPOWabi, nUSCAddress);
       
                   const ComptrollerAddress = '0x0040DCf62C380833dE60a502649567e939635fdB';
-                  const ComptrollerContract = new web3m.eth.Contract(Comptrollerabi, ComptrollerAddress);
+                  const ComptrollerContract = new web3.eth.Contract(Comptrollerabi, ComptrollerAddress);
                   const ComptrollerContractMM = new web3m.eth.Contract(Comptrollerabi, ComptrollerAddress);
 
                   const OracleAddress = '0x82152D053C8851365715bd533D46615126C8bc30';
-                  const OracleContract = new web3m.eth.Contract(Oracleabi, OracleAddress);
+                  const OracleContract = new web3.eth.Contract(Oracleabi, OracleAddress);
                   const OracleContractMM = new web3m.eth.Contract(Oracleabi, OracleAddress);
 
                   const NykeOracleAddress = '0x261bAa91c19F94050AABcd62A1D24C649fC3bA39';
-                  const NykeOracleContract = new web3m.eth.Contract(NykeOracleabi, NykeOracleAddress);
+                  const NykeOracleContract = new web3.eth.Contract(NykeOracleabi, NykeOracleAddress);
                   const NykeOracleContractMM = new web3m.eth.Contract(NykeOracleabi, NykeOracleAddress);
 
                   const NykeAddress = '0x9aa2901007fCE996e35305FD9bA196e17fCd2605';
-                  const NykeContract = new web3m.eth.Contract(Nykeabi, NykeAddress);
+                  const NykeContract = new web3.eth.Contract(Nykeabi, NykeAddress);
                   const NykeContractMM = new web3m.eth.Contract(Nykeabi, NykeAddress);
 
                   const V2ReservesAddress = '0x67ad140f5536Bc4921dBC0498922aaad6f595a1E';
-                  const V2ReservesContract = new web3m.eth.Contract(V2Reservesabi, V2ReservesAddress);
+                  const V2ReservesContract = new web3.eth.Contract(V2Reservesabi, V2ReservesAddress);
                   const V2ReservesContractMM = new web3m.eth.Contract(V2Reservesabi, V2ReservesAddress);
   
                   //Get Data
