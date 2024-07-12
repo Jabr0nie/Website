@@ -292,8 +292,8 @@
                  // const ETCPOWContract = new web3.eth.Contract(ETCPOWabi, ETCPOWAddress);
   
                 
-                  const nETCPOWAddress = '0x7f86acFA4747B5355E5623483D8c3082c90c2e85';
-                 const nETCPOWContract = new web3m.eth.Contract(nETCPOWabi, nETCPOWAddress);
+                //  const nETCPOWAddress = '0x7f86acFA4747B5355E5623483D8c3082c90c2e85';
+               //  const nETCPOWContract = new web3m.eth.Contract(nETCPOWabi, nETCPOWAddress);
   
                
                   const USCAddress = '0xDE093684c796204224BC081f937aa059D903c52a';
