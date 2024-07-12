@@ -1,7 +1,7 @@
 
 
               // Setting getblock node as HTTP provider
-		const provider = new Web3.providers.HttpProvider("https://go.getblock.io/bf14708a4a4f476b99a3c6db485c6634/");
+              const provider = new Web3.providers.HttpProvider("https://go.getblock.io/bf14708a4a4f476b99a3c6db485c6634/");
               // Creating web3 instance with given provider
                   const web3 = new Web3(provider);
               // Initializing web3.eth method
