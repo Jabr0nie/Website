@@ -12,11 +12,11 @@
   
                   //connect to MetaMask
   
-                  window.onload = async function() {
-                    
-                    isConnected();
-                    Chain();
-                 };
+   //               window.onload = async function() {
+  //                  
+   //                 isConnected();
+  //                  Chain();
+  //               };
 
                  window.ethereum.on('networkChanged', function (networkId) {
                     ChainSwitch();
@@ -70,7 +70,7 @@
               
         async function isConnected() {
          
-           const accounts = await ethereum.request({method: 'eth_accounts'});       
+           const accounts = await windows.ethereum.request({method: 'eth_accounts'});       
            if (accounts.length) {
               let account;
               const BlocksPerYear = 2425790;
