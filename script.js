@@ -15,7 +15,6 @@
                  window.onload = async function() {
                     
                     isConnected();
-                    Chain();
                  };
 
                  window.ethereum.on('networkChanged', function (networkId) {
@@ -72,6 +71,7 @@
          
            const accounts = await ethereum.request({method: 'eth_accounts'});       
            if (accounts.length) {
+		    Chain();
               let account;
               const BlocksPerYear = 2425790;
               console.log(`You're connected to: ${accounts[0]}`)
