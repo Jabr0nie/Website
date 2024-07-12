@@ -1,8 +1,8 @@
 
 
               // Setting getblock node as HTTP provider
-              const provider = new Web3.providers.HttpProvider("https://go.getblock.io/bf14708a4a4f476b99a3c6db485c6634");
-// const provider = new Web3.providers.HttpProvider("https://etc.rivet.link/12cdcb57f43048b6940f5c797db87088");
+             // const provider = new Web3.providers.HttpProvider("https://go.getblock.io/bf14708a4a4f476b99a3c6db485c6634");
+		 const provider = new Web3.providers.HttpProvider("https://etc.rivet.link/12cdcb57f43048b6940f5c797db87088");
               // Creating web3 instance with given provider
                   const web3 = new Web3(provider);
               // Initializing web3.eth method
@@ -12,11 +12,11 @@
   
                   //connect to MetaMask
   
-   //               window.onload = async function() {
-  //                  
-   //                 isConnected();
-  //                  Chain();
-  //               };
+                 window.onload = async function() {
+                    
+                    isConnected();
+                    Chain();
+                 };
 
                  window.ethereum.on('networkChanged', function (networkId) {
                     ChainSwitch();
@@ -70,7 +70,7 @@
               
         async function isConnected() {
          
-           const accounts = await windows.ethereum.request({method: 'eth_accounts'});       
+           const accounts = await ethereum.request({method: 'eth_accounts'});       
            if (accounts.length) {
               let account;
               const BlocksPerYear = 2425790;
