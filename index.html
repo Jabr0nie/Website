@@ -10,14 +10,6 @@
 
   gtag('config', 'G-VFJK8YLJ8C');
 </script>
-<!-- Twitter conversion tracking base code -->
-<script>
-	!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
-	},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
-	a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
-	twq('config','omvkj');
-	</script>
-	<!-- End Twitter conversion tracking base code -->
 		<link rel="icon" type="image/png" sizes="32x32" href="Images\DarkTealLogo.png">
 		<meta charset="UTF-8" name="viewport"
 			content="width=device-width, initial-scale=1.0">
@@ -93,41 +85,71 @@
 						<div class="UserMaxBorrowText">Net Base APR</div><div class="UserBorrowLimit" id="UserAPR"> 0%</div>
 						</div>
 					<div class="Supplied">
+					
 						<table class="UserSupplyTable">
 							<tbody>
 								<tr>
 									<td></td>
-									<td class="tdmobile" style="text-align: center;">Assets</td>
+									<td class="tdmobile" style="text-align: left;">Assets</td>
 									<td>Supplied</td>
 									<td>Base APR</td>
 									<td>Reward APR</td>
-									<td>Collateral</td>
+									
 								</tr>
 								<tr>
 									<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
 											width="25" height="25" style="display: inline-block;"></td>
-							<td class="tdmobile">ETC</td>
+							<td class="tdmobile" style="text-align: left;">ETC</td>
 							<td><div id="YourETCSupplied">-</div></td>
 							<td><div id="ETCSupplyRateOutputSupply"><i class="fa fa-spinner fa-pulse"></i></div></td>
 							<td><div id="ETCSupplyRateOutputSupply1"><i class="fa fa-spinner fa-pulse"></i></div></td>
-							<td><label class="switch">
-								<input type="checkbox" id="ETCCheckbox" onclick="CollateralStatus()">
-								<span class="slider round"></span>
-							  </label></td>		
+					
 						</tr>
 						<tr>
 							<td><img src="Images\usc-logo.png" alt="USC Logo" width="25" height="25"></td>
-								<td class="tdmobile">USC</td>
+								<td class="tdmobile" style="text-align: left;">USC</td>
 								<td><div id="YourUSCSupplied">-</div></td>
 								<td><div id="USCSupplyRateOutputSupply"><i class="fa fa-spinner fa-pulse"></i></div></td>
 								<td><div id="USCSupplyRateOutputSupply1"><i class="fa fa-spinner fa-pulse"></i></div></td>
-								<td><label class="switch">
-									<input type="checkbox" id="USCCheckbox" onclick="CollateralStatusUSC()">
-									<span class="slider round"></span>
-								  </label></td></td>
+					
+						</tr>
+						<tr>
+							<td><img src="Images\ETCPOW.png" alt="ETCPOW Logo" width="25" height="25"></td>
+								<td class="tdmobile" style="text-align: left;">ETCPOW</td>
+								<td><div id="YourETCPOWSupplied">-</div></td>
+								<td><div id="ETCPOWSupplyRateOutputSupply"><i class="fa fa-spinner fa-pulse"></i></div></td>
+								<td><div id="ETCPOWUSCSupplyRateOutputSupply1"><i class="fa fa-spinner fa-pulse"></i></div></td>
+						
 						</tr>
 					</tbody>
 				</table>
+						
+				<div class="Collateral">
+					<div class="Colswitch">
+							<div class="tooltip">Collateral
+								<span class="tooltiptext">Tooltip text</span>
+							  </div>
+						</div>
+					<div class="Colswitch">
+					<label class="switch">
+						<input type="checkbox" id="ETCCheckbox" onclick="CollateralStatus()">
+						<span class="slider round"></span>
+					  </label>
+					 </div>
+					 <div class="Colswitch">
+					 <label class="switch">
+						 <input type="checkbox" id="USCCheckbox" onclick="CollateralStatusUSC()">
+						 <span class="slider round"></span>
+					   </label>
+					  </div>
+					  <div class="Colswitch">
+					  <label class="switch">
+						  <input type="checkbox" id="ETCPOWCheckbox" onclick="CollateralStatusETCPOW()">
+						  <span class="slider round"></span>
+						</label>
+					   </div>
+					</div>
+					
 				</div>
 			</div>
 			<div class="borrowshell">
@@ -142,7 +164,7 @@
 						<tbody>
 							<tr class="userchildrow">
 								<td></td>
-								<td class="tdmobile" style="text-align: center;">Assets</td>
+								<td class="tdmobile" style="text-align: left;">Assets</td>
 								<td>Borrowed</td>
 								<td>Base APR</td>
 								<td>Reward APR</td>
@@ -151,7 +173,7 @@
 							<tr>
 								<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
 										width="25" height="25" style="display: inline-block;"></td>
-						<td class="tdmobile">ETC</td>
+						<td class="tdmobile"  style="text-align: left;">ETC</td>
 						<td><div id="UserETCBorrowed">-</div></td>
 						<td><div id="ETCBorrowedRate1"><i class="fa fa-spinner fa-pulse"></i></div></td>
 						<td><div id="ETCBorrowedRate2"><i class="fa fa-spinner fa-pulse"></i></div></td>
@@ -159,10 +181,18 @@
 					</tr>
 					<tr>
 						<td><img src="Images\usc-logo.png" alt="USC Logo" width="25" height="25"></td>
-							<td class="tdmobile">USC</td>
+							<td class="tdmobile" style="text-align: left;">USC</td>
 							<td><div id="USCBorrowedUser">-</div></td>
 							<td><div id="USCBorrowRate1"><i class="fa fa-spinner fa-pulse"></i></div></td>
 							<td><div id="USCBorrowRate2"><i class="fa fa-spinner fa-pulse"></i></div></td>
+
+					</tr>
+					<tr>
+						<td><img src="Images\ETCPOW.png" alt="ETCPOW Logo" width="25" height="25"></td>
+							<td class="tdmobile" style="text-align: left;">ETCPOW</td>
+							<td><div id="ETCPOWBorrowedUser">-</div></td>
+							<td><div id="ETCPOWBorrowRate1"><i class="fa fa-spinner fa-pulse"></i></div></td>
+							<td><div id="ETCPOWBorrowRate2"><i class="fa fa-spinner fa-pulse"></i></div></td>
 
 					</tr>
 				</tbody>
@@ -180,7 +210,7 @@
 						<tbody>
 							<tr>
 								<td></td>
-								<td class="tdmobile" style="text-align: center;">Assets</td>
+								<td class="tdmobile" style="text-align: left;">Assets</td>
 								<td class=>Market Size</td>
 								<td class=>Total Borrowed</td>
 								<td class="tdmobile">Utilization Rate</td>
@@ -190,7 +220,7 @@
 							<tr>
 								<td><img src="Images\ethereum-classic-etc-logo.png" alt="ETC Logo"
 										width="30" height="30" style="display: inline-block;"></td>
-						<td class="tdmobile">ETC</td>
+						<td class="tdmobile" style="text-align: left;">ETC</td>
 						<td><div id="dataOutput"><i class="fa fa-spinner fa-pulse"></i></div></td>
 						<td><div id="ETCBorrowed"><i class="fa fa-spinner fa-pulse"></i></div></td>
 						<td class="tdmobile"><div id="ETCUtilization"><i class="fa fa-spinner fa-pulse"></i></div></td>
@@ -205,7 +235,7 @@
 					</tr>
 					<tr>
 						<td><img src="Images\usc-logo.png" alt="USC Logo" width="30" height="30"></td>
-							<td class="tdmobile">USC</td>
+							<td class="tdmobile" style="text-align: left;">USC</td>
 							<td><div id="USCSupply"><i class="fa fa-spinner fa-pulse"></i></div></td>
 							<td><div id="USCBorrowed"><i class="fa fa-spinner fa-pulse"></i></div></td>
 							<td class="tdmobile"><div id="USCUtilization"><i class="fa fa-spinner fa-pulse"></i></div></td>
@@ -214,6 +244,21 @@
 								</td>
 							<td class="tdmobile">
 								<div id="rewards"><div id="USCBorrowRateOutput"><i class="fa fa-spinner fa-pulse"></i></div></div>
+
+								</td>
+
+					</tr>
+					<tr>
+						<td><img src="Images\ETCPOW.png" alt="ETCPOW Logo" width="30" height="30"></td>
+							<td class="tdmobile" style="text-align: left;">ETCPOW</td>
+							<td><div id="ETCPOWSupply"><i class="fa fa-spinner fa-pulse"></i></div></td>
+							<td><div id="ETCPOWBorrowed"><i class="fa fa-spinner fa-pulse"></i></div></td>
+							<td class="tdmobile"><div id="ETCPOWUtilization"><i class="fa fa-spinner fa-pulse"></i></div></td>
+							<td class="tdmobile">
+								<div id="rewards"><div id="ETCPOWSupplyRateOutput"><i class="fa fa-spinner fa-pulse"></i></div></div>
+								</td>
+							<td class="tdmobile">
+								<div id="rewards"><div id="ETCPOWBorrowRateOutput"><i class="fa fa-spinner fa-pulse"></i></div></div>
 
 								</td>
 
@@ -473,6 +518,135 @@
 		<button class="submit" id="USCRepaySubmit">Submit</button>
 		</div>
 	</div>
+</div>
+	<!-- USC Modal content -->
+<div id="ETCPOWmodal-supply" class="modal-content">
+	<img src="Images\ETCPOW.png" class="image">
+	
+	<div style="clear: both;"></div>
+	<div class="modalnav">
+		<a onclick="ETCPOWRepayModal()">Repay</a>
+		<a onclick="ETCPOWBorrowModal()">Borrow</a>
+		<a onclick="ETCPOWWithdrawlModal()">Withdraw</a>
+		<a class="active" onclick="ETCPOWSupplyModal()">Supply</a>
+	</div>
+	<div style="clear: both;"></div>
+	<div class="modalbody">
+		<div class="WalletBalance">
+			<div style="clear: both;"></div>
+			<a>Wallet Balance: <div id="ETCPOWBalanceWallet"
+					style="display: inline-block; color:  #1eeadb;"><i class="fa fa-spinner fa-pulse"></i></div>
+				ETCPOW</a>
+		</div>
+		<div class="input">
+			<input type="text" id="ETCPOWDeposit" placeholder="Enter Amount Here...">
+		</div>
+		<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="ETCPOWSupplyRateModal1"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Supply Balance</div><div class="Stats-Output" id="UserETCPOWSupply2"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Collateral Factor</div><div class="Stats-Output"> 50%</div></div>
+	</div>
+	<div class="modalButton">
+		<div class="ETCPOWRepay1" id="ETCPOWSupplyApprove">
+			<button id="ETCPOWApproveSup">Approve <div class="ETCPOWApproveSpin" id="ETCPOWApproveSpin1"><i class="fa fa-spinner fa-pulse"></i></div></button>
+		</div>
+		<div class="ETCPOWRepay2" id="ETCPOWSupplySubmit">
+		<button class="submit" id="ETCPOWSupplySubmit">Submit</button>
+		</div>
+	</div>
+</div>
+<div id="ETCPOWmodal-withdrawl" class="modal-content">
+	
+	<img src="Images\ETCPOW.png" class="image">
+	<div class="modalnav">
+		<a onclick="ETCPOWRepayModal()">Repay</a>
+		<a onclick="ETCPOWBorrowModal()">Borrow</a>
+		<a class="active" onclick="ETCPOWWithdrawlModal()">Withdraw</a>
+		<a onclick="ETCPOWSupplyModal()">Supply</a>
+	</div>
+	<div style="clear: both;"></div>
+	<div class="modalbody">
+		<div class="WalletBalance">
+			<div style="clear: both;"></div>
+			<a>Supplied Balance: <div id="UserETCPOWSupply"
+					style="display: inline-block; color:  #1eeadb;"><i class="fa fa-spinner fa-pulse"></i></div>
+				ETCPOW</a>
+		</div>
+		<div class="input">
+			<button type="SafeMax" id="SafeMaxETCPOW">MAX</button>
+			<input type="value" id="ETCPOWWithdrawl" placeholder="Enter Amount Here...">
+		</div>
+		<div class="stats-container"><div class="Stats">Supply Rate</div><div class="Stats-Output" id="ETCPOWSupplyRateModal2"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit7"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed7"><i class="fa fa-spinner fa-pulse"></i></div></div>
+	</div>
+	<div class="modalButton">
+		<button id="ETCPOWWithdrawlButton">Withdrawl</button>
+	</div>
+	
+</div>
+<div id="ETCPOWmodal-borrow" class="modal-content">
+	<img src="Images\ETCPOW.png" class="image">
+		
+	<div class="modalnav">
+		<a onclick="ETCPOWRepayModal()">Repay</a>
+		<a class="active" onclick="ETCPOWBorrowModal()">Borrow</a>
+		<a onclick="ETCPOWWithdrawlModal()">Withdraw</a>
+		<a onclick="ETCPOWSupplyModal()">Supply</a>
+	</div>
+	<div style="clear: both;"></div>
+	<div class="modalbody">
+		<div class="WalletBalance">
+			<div style="clear: both;"></div>
+			<a>Borrow ETCPOW</a>
+		</div>
+		<div class="input">
+			<button type="SafeMax" id="SafeMaxBorrowETCPOW">MAX</button>
+			<input type="value" id="ETCPOWBorrow" placeholder="Enter Amount Here...">
+		</div>
+		<div class="stats-container"><div class="Stats">Borrow Rate</div><div class="Stats-Output" id="ETCPOWBorrowRateModal"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Balance</div><div class="Stats-Output" id="ETCPOWBorrowBalanceModal"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit8"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed8"> 50%</div></div>
+	</div>
+	<div class="modalButton">
+		<button id="ETCPOWBorrowButton">Borrow</button>
+	</div>
+</div>
+
+<div id="ETCPOWmodal-repay" class="modal-content">
+	<img src="Images\ETCPOW.png" class="image">
+	
+	<div class="modalnav">
+		<a class="active" onclick="ETCPOWRepayModal()">Repay</a>
+		<a onclick="ETCPOWBorrowModal()">Borrow</a>
+		<a onclick="ETCPOWWithdrawlModal()">Withdraw</a>
+		<a onclick="ETCPOWSupplyModal()">Supply</a>
+	</div>
+	<div style="clear: both;"></div>
+	<div class="modalbody">
+		<div class="WalletBalance">
+			<div style="clear: both;"></div><a>Borrowed Balance: <div id="ETCPOWBorrowBalance"
+			style="display: inline-block; color:  #1eeadb;"><i class="fa fa-spinner fa-pulse"></i></div> ETCPOW</a>
+			
+		</div>
+		<div class="input">
+			<button type="SafeMax" id="SafeMaxRepayETCPOW">MAX</button>
+			<input type="value" id="ETCPOWRepay" placeholder="Enter Amount Here...">
+		</div>
+		<div class="stats-container"><div class="Stats">Borrow Rate</div><div class="Stats-Output" id="ETCPOWBorrowRateModal2"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Limit</div><div class="Stats-Output" id="BorrowLimit9"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="stats-container"><div class="Stats">Borrow Limit Used</div><div class="Stats-Output" id="BorrowLimitUsed9"><i class="fa fa-spinner fa-pulse"></i></div></div>
+		<div class="ApproveAmount" style="display: none;"><div class="Stats">Borrow Limit Used</div><input type="value" class="Stats-Output" id="ETCPOWApproved"></div>
+	</div>
+	<div class="modalButton">
+		<div class="ETCPOWRepay1" id="ETCPOWRepay1">
+			<button id="ETCPOWApproveOrSubmit">Approve <div class="ETCPOWApproveSpin" id="ETCPOWApproveSpin"><i class="fa fa-spinner fa-pulse"></i></div></button>
+		</div>
+		<div class="ETCPOWRepay2" id="ETCPOWRepay2">
+		<button class="submit" id="ETCPOWRepaySubmit">Submit</button>
+		</div>
+	</div>
+
 
 	</div>
 </div>

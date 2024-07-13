@@ -349,7 +349,7 @@ body {
 
 .supplytextright {
   float: right;
-  margin-right: 10%;
+  margin-right: 5%;
   margin-left: 0%;
   margin-bottom: 2%;
   width: 35%;
@@ -393,7 +393,8 @@ body {
   }
 
   .Markets {
-    display: block;
+    display: flex;
+    flex-direction: column;
     background-color:#1D2833;
     border-radius: 5px;
     width: 100%;
@@ -415,17 +416,73 @@ body {
     font-size: 80%;
   }
 
+
+  .Collateral {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    text-align: center;
+  }
+
+  .ColText {
+    color: #7a8a99;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    width: 100%;
+    height: 25%;
+    justify-content: center;
+  }
+
+  .Colswitch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25%;
+    font-weight: 500;
+    font-size: 17px;
+    color: #7a8a99;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    width: 100%;
+  }
+  
+  
+  .tooltip .tooltiptext {
+    display: none;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    display: block;
+  }
+
   .Supplied{
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: #1D2833;
     border-radius: 5px;
-    width: 95%;
+    width: 90%;
     height:60%;
-    margin-right: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
     margin-left: 0%;
+
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   }
+
 
 .borrowshell {
 float: right;
@@ -613,11 +670,13 @@ float: right;
       margin-right: 5%;
       margin-left: 0%;
       margin-bottom: 2%;
+      margin-top: 2%;
       width: 35%;
     }    
     .supplytextleft {
       width: 50%;
       font-size: 80%;
+      margin-top: 2%;
     }    
 
     .MarketDetails {
@@ -644,7 +703,8 @@ float: right;
   
 
     .UserDetails {
-      flex-wrap: wrap;
+      display: flex;
+      flex-direction: column;
       height: 66%;
       margin-top: 0%;
       min-width: 300px;}
@@ -663,10 +723,11 @@ float: right;
         font-size: 80%;
       }
       .Supplied{
-        display: inline-block;
+        display: flex;
+        flex-direction: row;
         background-color: #1D2833;
         border-radius: 5px;
-        width: 100%;
+        width: 90%;
         height:60%;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
@@ -689,25 +750,7 @@ float: right;
       }
   }
 
-  .borrowtable tr:first-child {
-    color: #7a8a99;
-    font-size: 90%;
-    font-weight: 600;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
-    width: 100%;
-    height: 2%;
-  
-  }
 
-  .UserSupplyTable tr:first-child {
-    color: #7a8a99;
-    font-size: 90%;
-    font-weight: 600;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
-    width: 100%;
-    height: 2%;
-  
-  }
 
   .WrongNetwork{
     display: none;
@@ -868,22 +911,32 @@ margin-right: 25px;
     }
   
 table {
-  width: 90%;
+  width: 94%;
  border-collapse: collapse;
   border-radius: 25px;
   color: #D8D7DB;
   text-align: left;
-  height: 95%;
-  margin-bottom: 2%;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 0%;
+  height: 100%;
+  margin-left: 3%;
+  margin-right: 3%;
+
   font-size: 100%;
 }
 
 .UserSupplyTable {
-  margin-left: 5%;
-  width: 95%;
+  width: 85%;
+  height: 100%;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+tr:first-child {
+  color: #7a8a99;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+  text-align: center;
+  width: 100%;
 }
 
 .borrowtable {
@@ -896,6 +949,7 @@ tr div {
   border: none;
 }
 
+
 tr:not(:first-child){
   height: 5%;
   font-weight: 500;
@@ -903,26 +957,31 @@ tr:not(:first-child){
 }
 
 td:first-child {
-  width: 20px;
-  text-align: right;
+  width: 30px;
+  text-align: left;
 }
 
 
 td:not(:first-child) {
   text-align: center;
   max-width: 100px;
-  font-size: 14px;
-  font-weight: 500;
 }
 
-.Supply tr:first-child {
+tr:not(:first-child){
+  height: 25%;
+  font-weight: 400;
+  font-size: 12px;
+  justify-content: center;
+}
+
+tr:first-child {
   color: #7a8a99;
-  font-size: 90%;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   width: 100%;
-  height: 2%;
-
+  height: 25%;
+  justify-content: center;
 }
  
 tr:not(:first-child):hover {
@@ -1242,13 +1301,12 @@ tr:not(:first-child):hover div{
     }
 
     .Supplied{
-      display: inline-block;
+      display: flex;
+      flex-direction: row;
       background-color: #1D2833;
       border-radius: 5px;
-      width: 100%;
+      width: 90%;
       height:60%;
-      margin-right: 5%;
-      margin-left: 0%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   
     }
@@ -1329,6 +1387,7 @@ tr:not(:first-child):hover div{
   }
 
 /*Enter and Exit Market Switches */
+
 .switch {
   position: relative;
   display: inline-block;
@@ -1836,4 +1895,13 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ; }
       display: none;
     }
 
+    .ETCPOWRepay2 Button {
+      background-color: #0cfa07;
+      color: #000000;
+      border-color: #0cfa07;
+    }
 
+    .tdmobile {
+      text-align: left;
+      padding-left: 10px;
+    }
