@@ -17,15 +17,12 @@
                     Chain();
                  };
 
-                 window.addEventListener('click', function() {
-                    if (window.ethereum) {
+               
                     window.ethereum.on('networkChanged', function (networkId) {
-                        ChainSwitch;});
-                    }
-                       else {
-                        console.log('MetaMask is not available');  
-                       }      
-                 })
+                        ChainSwitch();
+            
+                    });      
+                 
 
                   
 
