@@ -861,7 +861,7 @@
                             console.log("Clicked Send Tx")
                             document.getElementById('ETCPOWApproveSpin').style.display = 'block';
                             let ETCPOWAmount = document.getElementById('ETCPOWRepay').value;
-                            ETCPOWAmount = ETCPOWAmount * (10 ** 18);
+                            ETCPOWAmount =  (ETCPOWAmount * (10 ** 18)).toLocaleString('fullwide', {useGrouping:false});
                             let account = document.getElementById('connectbutton').innerHTML;
                                 ETCPOWContractMM.methods.approve('0x3f1a86FeD9cBF8866D55F21dfd880C0a4065285d',`${ETCPOWAmount}`).send({from:`${account}`}).then((tx) => {
                                     if (tx = true) {
@@ -878,7 +878,7 @@
                                 const RepayETCPOW = async () => {
                                 console.log("Clicked Send Tx")
                                 let ETCPOWAmount = document.getElementById('ETCPOWRepay').value;
-                                ETCPOWAmount = ETCPOWAmount * (10 ** 18);
+                                ETCPOWAmount =  (ETCPOWAmount * (10 ** 18)).toLocaleString('fullwide', {useGrouping:false});
                                 let account = document.getElementById('connectbutton').innerHTML;
                                 await nETCPOWContractMM.methods.repayBorrow(`${ETCPOWAmount}`).send({from:`${account}`}).then((tx) => {
                                 if (tx = true) {
@@ -895,7 +895,7 @@
                             console.log("Clicked Send Tx")
                             document.getElementById('ETCPOWApproveSpin1').style.display = 'block';
                             let ETCPOWAmount = document.getElementById('ETCPOWDeposit').value;
-                            ETCPOWAmount = ETCPOWAmount * (10 ** 18);
+                            ETCPOWAmount = (ETCPOWAmount * (10 ** 18)).toLocaleString('fullwide', {useGrouping:false});
                             let account = document.getElementById('connectbutton').innerHTML;
                             await ETCPOWContractMM.methods.approve('0x3f1a86FeD9cBF8866D55F21dfd880C0a4065285d',`${ETCPOWAmount}`).send({from:`${account}`}).then((tx) => {
                             if (tx = true) {
@@ -914,7 +914,7 @@
                             const ETCPOWMint = async () => {
                                 console.log("Clicked Send Tx")
                                 let ETCPOWAmount = document.getElementById('ETCPOWDeposit').value;
-                                ETCPOWAmount = ETCPOWAmount * (10 ** 18);
+                                ETCPOWAmount =  (ETCPOWAmount * (10 ** 18)).toLocaleString('fullwide', {useGrouping:false});
                                 let account = document.getElementById('connectbutton').innerHTML;
                                 await nETCPOWContractMM.methods.mint(`${ETCPOWAmount}`).send({from:`${account}`}).then((tx) => {
                                 if (tx = true) {
