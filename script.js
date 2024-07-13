@@ -17,12 +17,18 @@
                     Chain();
                  };
 
-               
-                    window.ethereum.on('networkChanged', function (networkId) {
-                        ChainSwitch();
-            
-                    });      
-                 
+
+
+        window.addEventListener('click', function() {
+        if (window.ethereum) {
+		window.ethereum.on('networkChanged', function (networkId) {
+                ChainSwitch();
+        }
+           else {
+            console.log('MetaMask is not available');  
+           }      
+     });
+
 
                   
 
@@ -395,7 +401,7 @@
 
                        //ETCPOW SUPPLY & ETCPOW NYKE SUPPLY
                        const ETCPOWSupplyRate = ((_ETCPOWSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
-                       let NykeETCPOWSupplyRate = (((NYKEPrice * 5000 * 365)/((ETCPOWtotalSupply/ (10 ** 20) *(_ETCPOWPrice / (10 ** 18))) * 100)));
+                       let NykeETCPOWSupplyRate = (((NYKEPrice * 5000 * 365)/((ETCPOWtotalSupply/ (10 ** 22) *(_ETCPOWPrice / (10 ** 18))) * 100)));
                        console.log(NykeETCPOWSupplyRate);
                        console.log(NYKEPrice);
                        console.log(ETCPOWtotalSupply);
@@ -541,6 +547,8 @@
                                 nUSCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}).then(USCBorrow => {
                                     USCBorrow = USCBorrow / (10 ** 6);
                                     document.getElementById('USCBorrowedUser').innerText = `${USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+					document.getElementById('USCBorrowBalanceModal').innerText = `${USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+                                    document.getElementById('USCBorrowBalance').innerText = `${USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let _UserBorrowETCPOW;
                                     nETCPOWContractMM.methods.borrowBalanceStored(`${account}`).call().then(result => {
                                         _UserBorrowETCPOW = result;
@@ -567,6 +575,7 @@
                                 USCSup = (USCSup / (10 ** 4))*USCExchangeMantissa;
                                 USCSup = USCSup;
                                 document.getElementById('YourUSCSupplied').innerText = `${USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+				      document.getElementById('UserUSCSupply').innerText = `${USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                 //ETC Supplied
                               nETCContract.methods.balanceOf(accounts[0]).call({from: account}, function(err,ETCSupplied){
                                 nETCContract.methods.exchangeRateStored().call({from: account}).then(ETCExchangeMantissa => {
