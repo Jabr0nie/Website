@@ -354,7 +354,7 @@
                       ETCBorrowed.innerText = `${ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
 
                       //ETC BORROW & ETC NYKE SUPPLY
-                      let NykeETCBorrowRate = (((NYKEPrice * 20000 * 365)/(ETCBorrow*(_ETCPrice / (10 ** 18))) * 100));
+                      let NykeETCBorrowRate = (((NYKEPrice * 10000 * 365)/(ETCBorrow*(_ETCPrice / (10 ** 18))) * 100));
                      const ETCBorrowRate = ((-_ETCBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
                      let ETCBorrowRewardRate = NykeETCBorrowRate + ETCBorrowRate;
                      ETCBorrowRateOutput.innerText = `${ETCBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
@@ -371,7 +371,7 @@
 
                       //USC SUPPLY & USC NYKE SUPPLY
                       const USCSupplyRate = ((_USCSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
-                      let NykeUSCSupplyRate = (((NYKEPrice * 5000 * 365)/(USCtotalSupply*(_USCPrice / (10 ** 18))) * 100));
+                      let NykeUSCSupplyRate = (((NYKEPrice * 10000 * 365)/(USCtotalSupply*(_USCPrice / (10 ** 18))) * 100));
                       let USCSupplyRewardRate = NykeUSCSupplyRate + USCSupplyRate;
                       USCSupplyRateOutput.innerText = `${USCSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       USCSupplyRateOutputSupply.innerText = `${USCSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
@@ -384,7 +384,7 @@
 
                     //USC BORROW & USC NYKE BORROW
                       const USCBorrowRate = ((-_USCBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
-                      let NykeUSCBorrowRate = (((NYKEPrice * 20000 * 365)/(USCBorrow*(_USCPrice / (10 ** 18))) * 100));
+                      let NykeUSCBorrowRate = (((NYKEPrice * 10000 * 365)/(USCBorrow*(_USCPrice / (10 ** 18))) * 100));
                       let USCBorrowRewardRate = NykeUSCBorrowRate + USCBorrowRate;
                       USCBorrowRateOutput.innerText = `${USCBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       USCBorrowedRate1.innerText = `${USCBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
@@ -397,7 +397,7 @@
 
                        //ETCPOW SUPPLY & ETCPOW NYKE SUPPLY
                        const ETCPOWSupplyRate = ((_ETCPOWSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
-                       let NykeETCPOWSupplyRate = (((NYKEPrice * 0 * 365)/(ETCPOWtotalSupply*(_ETCPOWPrice / (10 ** 18))) * 100));
+                       let NykeETCPOWSupplyRate = (((NYKEPrice * 5000 * 365)/(ETCPOWtotalSupply*(_ETCPOWPrice / (10 ** 18))) * 100));
                        let ETCPOWSupplyRewardRate = NykeETCPOWSupplyRate + ETCPOWSupplyRate;
                        document.getElementById('ETCPOWSupplyRateOutputSupply').innerText = `${ETCPOWSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                        document.getElementById('ETCPOWSupplyRateOutput').innerText = `${ETCPOWSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
@@ -410,7 +410,7 @@
  
                      //ETCPOW BORROW & ETCPOW NYKE BORROW
                        const ETCPOWBorrowRate = ((-_ETCPOWBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
-                       let NykeETCPOWBorrowRate = (((NYKEPrice * 0 * 365)/(ETCPOWBorrow*(_ETCPOWPrice / (10 ** 18))) * 100));
+                       let NykeETCPOWBorrowRate = (((NYKEPrice * 10000 * 365)/(ETCPOWBorrow*(_ETCPOWPrice / (10 ** 18))) * 100));
                        let ETCPOWBorrowRewardRate = NykeETCPOWBorrowRate + ETCPOWBorrowRate;
                        document.getElementById('ETCPOWBorrowRateOutput').innerText = `${ETCPOWBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                        document.getElementById('ETCPOWBorrowRate1').innerText = `${ETCPOWBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
