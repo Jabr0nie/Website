@@ -323,7 +323,7 @@
                       const _ETCPOWBorrowRate = await nETCPOWContract.methods.borrowRatePerBlock().call();
                       const _ETCPOWBorrowed = await nETCPOWContract.methods.totalBorrows().call();
                       const _ETCPOWExMant = await nETCPOWContract.methods.exchangeRateStored().call();
-                      const _ETCPOWPrice = await OracleContract.methods.GetUnderlyingPrice('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call();
+                      const _ETCPOWPrice = await OracleContract.methods.GetUnderlyingPrice('0x3f1a86FeD9cBF8866D55F21dfd880C0a4065285d').call();
                       
 
 
@@ -383,6 +383,7 @@
                       const USCBorrowRate = ((-_USCBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
                       let NykeUSCBorrowRate = (((NYKEPrice * 10000 * 365)/(USCBorrow*(_USCPrice / (10 ** 18))) * 100));
                       let USCBorrowRewardRate = NykeUSCBorrowRate + USCBorrowRate;
+                     
                       USCBorrowRateOutput.innerText = `${USCBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       USCBorrowedRate1.innerText = `${USCBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       document.getElementById('USCBorrowRateModal').innerText = `${USCBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
@@ -394,10 +395,14 @@
 
                        //ETCPOW SUPPLY & ETCPOW NYKE SUPPLY
                        const ETCPOWSupplyRate = ((_ETCPOWSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
-                       let NykeETCPOWSupplyRate = (((NYKEPrice * 5000 * 365)/(ETCPOWtotalSupply*(_ETCPOWPrice / (10 ** 18))) * 100));
+                       let NykeETCPOWSupplyRate = (((NYKEPrice * 5000 * 365)/((ETCPOWtotalSupply/ (10 ** 20) *(_ETCPOWPrice / (10 ** 18))) * 100)));
+                       console.log(NykeETCPOWSupplyRate);
+                       console.log(NYKEPrice);
+                       console.log(ETCPOWtotalSupply);
+                       console.log(_ETCPOWPrice);
                        let ETCPOWSupplyRewardRate = NykeETCPOWSupplyRate + ETCPOWSupplyRate;
-                       document.getElementById('ETCPOWSupplyRateOutputSupply').innerText = `${ETCPOWSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
-                       document.getElementById('ETCPOWSupplyRateOutput').innerText = `${ETCPOWSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                       document.getElementById('ETCPOWSupplyRateOutputSupply').innerText = `${ETCPOWSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                       document.getElementById('ETCPOWSupplyRateOutput').innerText = `${ETCPOWSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                      document.getElementById('ETCPOWUSCSupplyRateOutputSupply1').innerText = `${NykeETCPOWSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                        document.getElementById('ETCPOWSupplyRateModal1').innerText = `${ETCPOWSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                      document.getElementById('ETCPOWSupplyRateModal2').innerText = `${ETCPOWSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
