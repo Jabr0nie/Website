@@ -937,13 +937,13 @@
                 
                             function WithdrawlETCPOW() {
                             let ETCPOWAmount = document.getElementById('ETCPOWWithdrawl').value;
-                            ETCPOWAmount = ETCPOWAmount * (10 ** 18);
+                            ETCPOWAmount = (ETCPOWAmount * (10 ** 18)).toLocaleString('fullwide', {useGrouping:false});
                             let account = document.getElementById('connectbutton').innerHTML;
                             nETCPOWContractMM.methods.redeemUnderlying(`${ETCPOWAmount}`).send({from:`${account}`});}
                 
                             function BorrowETCPOW() {
                             let ETCPOWAmount = document.getElementById('ETCPOWBorrow').value;
-                            ETCPOWAmount = ETCPOWAmount * (10 ** 18);
+                            ETCPOWAmount = (ETCPOWAmount * (10 ** 18)).toLocaleString('fullwide', {useGrouping:false});
                             let account = document.getElementById('connectbutton').innerHTML;
                             nETCPOWContractMM.methods.borrow(`${ETCPOWAmount}`).send({from:`${account}`});}
 
