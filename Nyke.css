@@ -1903,5 +1903,9 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ; }
 
     .tdmobile {
       text-align: left;
+
+    }
+
+    .tdmobilemarkets {
       padding-left: 10px;
     }
