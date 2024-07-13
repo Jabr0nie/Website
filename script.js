@@ -1,7 +1,8 @@
 
 
               // Setting getblock node as HTTP provider
-              const provider = new Web3.providers.HttpProvider("https://etc.rivet.link/12cdcb57f43048b6940f5c797db87088");
+            //  const provider = new Web3.providers.HttpProvider("https://go.getblock.io/bf14708a4a4f476b99a3c6db485c6634");
+		 const provider = new Web3.providers.HttpProvider("https://etc.rivet.link/12cdcb57f43048b6940f5c797db87088");
               // Creating web3 instance with given provider
                   const web3 = new Web3(provider);
               // Initializing web3.eth method
@@ -12,14 +13,9 @@
                   //connect to MetaMask
   
                   window.onload = async function() {
-                    if (window.ethereum) {
-                        isConnected();
-                        Chain();
-                    }
-                    else {
-                        console.log('MetaMask is not available');
-                    }
-               
+                    
+                    isConnected();
+                    Chain();
                  };
 
                  window.addEventListener('click', function() {
@@ -91,7 +87,105 @@
          
            const accounts = await ethereum.request({method: 'eth_accounts'});       
            if (accounts.length) {
-             ConnectWallet();
+              let account;
+              const BlocksPerYear = 2425790;
+              console.log(`You're connected to: ${accounts[0]}`)
+              account = accounts[0];
+              document.getElementById('connectbutton').innerHTML = account;
+              ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] }).then(result => {
+                
+                console.log(result);
+                let wei = parseInt(result, 16);
+                let balance = wei / (10 ** 18);
+                balance = balance.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                console.log(balance + "ETC");
+                const ETCBalance = document.getElementById('ETCBalance');
+                ETCBalance.innerText = `${balance}`;});
+
+		                       //rewards accrued
+                    ComptrollerContract.methods.compAccrued(`${account}`).call().then(accruedRewards => {
+                    accruedRewards = accruedRewards / (10 ** 18);
+                    accruedRewards = accruedRewards.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                        document.getElementById('accruedRewards').innerText = `${accruedRewards} NYKE`;
+                    })
+
+
+                          //In market?
+                          ComptrollerContract.methods.checkMembership(`${account}`,'0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(result => {
+                            document.getElementById("ETCCheckbox").checked = result;});
+                            ComptrollerContract.methods.checkMembership(`${account}`,'0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(result => {
+                                document.getElementById("USCCheckbox").checked = result;});
+                            //ETC Borrowed
+                                nETCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}, function(err,ETCBorrow){
+                                ETCBorrow = ETCBorrow / (10 ** 18);
+                                document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} ETC`;
+                            //USC Borrowed Amount
+                            nUSCContract.methods.borrowBalanceCurrent(accounts[0]).call({from: account}).then(USCBorrow => {
+                                USCBorrow = USCBorrow / (10 ** 6);
+                                document.getElementById('USCBorrowedUser').innerText = `${USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} USC`;
+
+                            // Oracle Price Update
+                            OracleContract.methods.GetUnderlyingPrice('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call().then(USCPrice => {
+                                USCPrice = USCPrice / (10 ** 18);
+                             //USC Supplied Amount
+                          nUSCContract.methods.balanceOf(accounts[0]).call({from: account}).then(USCSup => {
+                            nUSCContract.methods.exchangeRateStored().call({from: account}).then(USCExchangeMantissa => {
+                                USCExchangeMantissa = USCExchangeMantissa / (10 ** 20);
+                                console.log(USCExchangeMantissa);
+                            USCSup = (USCSup / (10 ** 4))*USCExchangeMantissa;
+                            USCSup = USCSup;
+                            document.getElementById('YourUSCSupplied').innerText = `${USCSup.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} USC`;
+                            //ETC Supplied
+                          nETCContract.methods.balanceOf(accounts[0]).call({from: account}, function(err,ETCSupplied){
+                           nETCContract.methods.exchangeRateStored().call({from: account}).then(ETCExchangeMantissa => {
+                                ETCExchangeMantissa = ETCExchangeMantissa / (10 ** 18);
+                                console.log(ETCExchangeMantissa);
+                            console.log(ETCSupplied);
+                           ETCSupplied = (ETCSupplied / (10 ** 18))*ETCExchangeMantissa;
+                           ETCSupplied = ETCSupplied.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                           document.getElementById('YourETCSupplied').innerText = `${ETCSupplied} ETC`;
+                            OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(ETCPrice => {
+                                ETCPrice = ETCPrice / (10 ** 18);
+                                ETCPrice = (ETCPrice.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
+                                let ETCAsset = (ETCPrice * ETCSupplied);
+                                let USCAsset = (USCPrice * USCSup);
+                                let Assets = (USCAsset + ETCAsset);
+                                document.getElementById('UserAssetBalance').innerText = `$${Assets.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+                                let ETCLiability = (ETCPrice * ETCBorrow);
+                                let USCLiability = (USCPrice * USCBorrow);
+                                let Liabilities = ((USCLiability + ETCLiability));
+                                document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+                            //User APR
+                            const BlocksPerYear = 2425790;
+                            nETCContract.methods.supplyRatePerBlock().call().then(ETCSupplyRate1 => {
+                                ETCSupplyRate1 = ((ETCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
+                            nETCContract.methods.borrowRatePerBlock().call().then(ETCBorrowRate1 => { 
+                                ETCBorrowRate1 = ((ETCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
+                            nUSCContract.methods.supplyRatePerBlock().call().then(USCSupplyRate1 => {
+                                USCSupplyRate1 = ((USCSupplyRate1 / (10 ** 18)) * BlocksPerYear);
+                            nUSCContract.methods.borrowRatePerBlock().call().then(USCBorrowRate1 => {
+                                USCBorrowRate1 = ((USCBorrowRate1 / (10 ** 18)) * BlocksPerYear);
+                            const UserRate = document.getElementById('UserAPR');
+                            let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100);
+                        
+                                if (Assets > 0){
+                                    document.getElementById('UserAPR').innerText = `${Weight.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                                } 
+                                });});});});
+                            //Collateral Factor
+                                const USCStatus = document.getElementById("USCCheckbox");
+                                const ETCStatus = document.getElementById("ETCCheckbox");
+                                    let borrowlimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked));
+                                    let MaxBorrow =((Liabilities/(borrowlimit))*100);
+                                    if (Liabilities > 0){
+                                        document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;   
+                                    } 
+                                                                                     
+                            });
+                            });});
+                        });});
+                    });
+                });});
               
            } else {
               console.log("Metamask is not connected");
