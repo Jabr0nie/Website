@@ -406,7 +406,7 @@
                      document.getElementById('ETCPOWSupplyRateModal2').innerText = `${ETCPOWSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
  
                        const ETCPOWBorrow = _ETCPOWBorrowed / (10 ** 18);
-                       document.getElementById('ETCPOWBorrowBalance').innerText = `${ETCPOWBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+                       document.getElementById('ETCPOWBorrowed').innerText = `${ETCPOWBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
  
                      //ETCPOW BORROW & ETCPOW NYKE BORROW
                        const ETCPOWBorrowRate = ((-_ETCPOWBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
