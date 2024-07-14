@@ -310,6 +310,7 @@
                   // When the user clicks anywhere outside of the modal, close it
                   window.onclick = function(event) {
                   if (event.target == modal) {
+                    main();
                       modal.style.display = "none";}}
 
   
@@ -457,11 +458,9 @@
 					const Status = document.getElementById("ETCCheckbox");
                     const To = '0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0';
 					if (Status.checked == true){
-                        closeModal();
 						ComptrollerContractMM.methods.enterMarkets(["0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0"]).send({from:account});
 					} else {
 						ComptrollerContractMM.methods.exitMarket("0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0").send({from:account});
-                        closeModal();
 					}
 					}
   
@@ -982,6 +981,7 @@
   
                   function CloseModal() {
                       document.getElementById('ETCModal').style.display = "none";
+
                   }
   
                   function SupplyModal() {
@@ -1337,5 +1337,6 @@
                           document.getElementById('USCmodal-withdrawl').style.display = "none";
                           document.getElementById('USCmodal-borrow').style.display = "none";
                           document.getElementById('USCmodal-repay').style.display = "none";
+                          main();
                       }
                     
