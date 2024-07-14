@@ -188,6 +188,10 @@
                                     console.log(ETCPOWLiability);
                                     let Liabilities = ((USCLiability + ETCLiability + ETCPOWLiability));
                                     console.log(Liabilities);
+                                    if (Liabilities == 0) {
+                                        document.getElementById('UserBorrowLimit').innerText = `0.00%`;
+                                    }
+         
                                     document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                 //User APR
                                 const BlocksPerYear = 2425790;
@@ -217,6 +221,9 @@
                                     let borrowlimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)+ (ETCPOWAsset * 0.50 * ETCPOWStatus.checked));
                                     let MaxBorrow =((Liabilities/((borrowlimit)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
                                         document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow}%`;
+                                        if (Liabilities == 0) {
+                                            document.getElementById('UserBorrowLimit').innerText = `0.00%`;
+                                        }
                                 });
                                 });});})})
                             });
@@ -596,6 +603,9 @@
                                     let USCLiability = (USCPrice * USCBorrow);
                                     let ETCPOWLiability = (ETCPOWPrice * UserBorrowETCPOW);
                                     let Liabilities = ((USCLiability + ETCLiability + ETCPOWLiability));
+                                    if (Liabilities == 0) {
+                                        document.getElementById('UserBorrowLimit').innerText = `0.00%`;
+                                    }
                                     document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
     //Collateral Factor
         const USCStatus = document.getElementById("USCCheckbox");
@@ -686,6 +696,9 @@
         let USCLiability = (USCPrice * USCBorrow);
         let ETCPOWLiability = (ETCPOWPrice * UserBorrowETCPOW);
         let Liabilities = (USCLiability + ETCLiability + ETCPOWLiability);
+        if (Liabilities == 0) {
+            document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+        }
         console.log(Liabilities);
         document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
     //Utilization
