@@ -784,7 +784,7 @@
             let USCAmount = document.getElementById('USCRepay').value;
             USCAmount = USCAmount * (10 ** 6);
             let account = document.getElementById('connectbutton').innerHTML;
-                USCContractMM.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${USCAmount}`).send({from:`${account}`}).then((tx) => {
+                USCContractMM.methods.approve('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${USCAmount}`).send({from:`${account}`}).then((tx => {
                     if (tx = true) {
                         console.log("Approval Successful!");
                         document.getElementById('USCRepay1').style.display = 'none';
@@ -793,7 +793,7 @@
                     }
                         else {
                             console.log("Approval Failed!");
-                            document.getElementById('USCApproveSpin').style.display = 'none'; }})}
+                            document.getElementById('USCApproveSpin').style.display = 'none'; }}))}
 
 
                 const RepayUSC = async () => {
