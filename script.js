@@ -735,40 +735,40 @@
 
             console.log(SafeWithdrawlETCPOW);
             if (SafeWithdrawlETC > 0) {
-            document.getElementById('ETCWithdrawl').value = SafeWithdrawlETC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:18});
-            document.getElementById('ETCBorrow').value = SafeBorrowETC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:18});
+            document.getElementById('ETCWithdrawl').value = SafeWithdrawlETC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            document.getElementById('ETCBorrow').value = SafeBorrowETC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
         }
             else {document.getElementById('ETCWithdrawl').value = 'Safe Borrow Limit Exceeded';
                 document.getElementById('ETCBorrow').value = 'Safe Borrow Limit Exceeded';
             }
             if (SafeWithdrawlUSC > 0) {
-                document.getElementById('USCWithdrawl').value = SafeWithdrawlUSC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:6});
-                document.getElementById('USCBorrow').value = SafeBorrowUSC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:6});
+                document.getElementById('USCWithdrawl').value = SafeWithdrawlUSC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                document.getElementById('USCBorrow').value = SafeBorrowUSC.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             }
                 else {document.getElementById('USCWithdrawl').value = 'Safe Borrow Limit Exceeded';
                     document.getElementById('USCBorrow').value = 'Safe Borrow Limit Exceeded';
                 }
             if (SafeWithdrawlETCPOW > 0) {
-                document.getElementById('ETCPOWWithdrawl').value = SafeWithdrawlETCPOW.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:6});
-                document.getElementById('ETCPOWBorrow').value = SafeBorrowETCPOW.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:6});
+                document.getElementById('ETCPOWWithdrawl').value = SafeWithdrawlETCPOW.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                document.getElementById('ETCPOWBorrow').value = SafeBorrowETCPOW.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             }
                 else {document.getElementById('ETCPOWWithdrawl').value = 'Safe Borrow Limit Exceeded';
                     document.getElementById('ETCPOWBorrow').value = 'Safe Borrow Limit Exceeded';
                 }
             if (ETCWallet > ETCBorrow) {
-                document.getElementById('ETCRepay').value = ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:18});
+                document.getElementById('ETCRepay').value = ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             }
-                else {document.getElementById('ETCRepay').value = ETCWallet.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:18});
+                else {document.getElementById('ETCRepay').value = ETCWallet.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
                 }
             if (USCWallet > USCBorrow) {
-                document.getElementById('USCRepay').value = USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:6});
+                document.getElementById('USCRepay').value = USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             }
-                else {document.getElementById('USCRepay').value = USCWallet.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:6});
+                else {document.getElementById('USCRepay').value = USCWallet.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
                 }
             if (ETCPOWWallet > ETCPOWBorrow) {
-                document.getElementById('ETCPOWRepay').value = ETCPOWBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:6});
+                document.getElementById('ETCPOWRepay').value = ETCPOWBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             }
-                else {document.getElementById('ETCPOWRepay').value = ETCPOWWallet.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:6});
+                else {document.getElementById('ETCPOWRepay').value = ETCPOWWallet.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
                 }
 });});
     });});
