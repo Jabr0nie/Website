@@ -642,17 +642,17 @@
     let account = document.getElementById('connectbutton').innerHTML;
     //ETC Borrowed
         nETCContract.methods.borrowBalanceCurrent(account).call({from: account}, function(err,ETCBorrow){
-        ETCBorrow = ETCBorrow / (10 ** 18);
+        ETCBorrow = (ETCBorrow / (10 ** 18)-0.00001);
         document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
     //USC Borrowed Amount
     nUSCContract.methods.borrowBalanceCurrent(account).call({from: account}).then(USCBorrow => {
-        USCBorrow = USCBorrow / (10 ** 6);
+        USCBorrow = (USCBorrow / (10 ** 6)-0.001);
         document.getElementById('USCBorrowedUser').innerText = `${USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
     //ETCPOW Borrowed Amount
     let _UserBorrowETCPOW;
     nETCPOWContractMM.methods.borrowBalanceStored(`${account}`).call().then(result => {
         _UserBorrowETCPOW = result;
-        let UserBorrowETCPOW = _UserBorrowETCPOW / (10 ** 18);
+        let UserBorrowETCPOW = (_UserBorrowETCPOW / (10 ** 18)-0.01);
         console.log(result);
         document.getElementById('ETCPOWBorrowedUser').innerText = `${UserBorrowETCPOW.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;	
 
