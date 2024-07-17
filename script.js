@@ -208,8 +208,8 @@
                                 nETCPOWContract.methods.borrowRatePerBlock().call().then(ETCPOWBorrowRate1 => {
                                     ETCPOWBorrowRate1 = ((ETCPOWBorrowRate1 / (10 ** 18)) * BlocksPerYear);
                         
-                                let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)+(ETCPOWAsset * ETCPOWSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100);
-
+                                let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)+(ETCPOWAsset * ETCPOWSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1)-(ETCPOWLiability * ETCPOWBorrowRate1)/(ETCAsset+USCAsset+ETCPOWAsset-ETCLiability-USCLiability-ETCPOWLiability))*100);
+// let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)+(ETCPOWAsset * ETCPOWSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100);
                                 if (Assets > 0){
                                     document.getElementById('UserAPR').innerText = `${Weight.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                                 } 
