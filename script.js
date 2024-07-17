@@ -642,11 +642,11 @@
     let account = document.getElementById('connectbutton').innerHTML;
     //ETC Borrowed
         nETCContract.methods.borrowBalanceCurrent(account).call({from: account}, function(err,ETCBorrow){
-        ETCBorrow = (ETCBorrow / (10 ** 18)-0.00001);
+        ETCBorrow = (ETCBorrow / (10 ** 18)-0.01);
         document.getElementById('UserETCBorrowed').innerText = `${ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
     //USC Borrowed Amount
     nUSCContract.methods.borrowBalanceCurrent(account).call({from: account}).then(USCBorrow => {
-        USCBorrow = (USCBorrow / (10 ** 6)-0.001);
+        USCBorrow = (USCBorrow / (10 ** 6)-0.01);
         document.getElementById('USCBorrowedUser').innerText = `${USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
     //ETCPOW Borrowed Amount
     let _UserBorrowETCPOW;
@@ -709,13 +709,13 @@
         //ETC Wallet Balance
         ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] }).then(result => {
             let wei = parseInt(result, 16);
-            let ETCWallet = wei / (10 ** 18);
+            let ETCWallet = (wei / (10 ** 18)-0.01);
         //USC Wallet Balance
         USCContract.methods.balanceOf(`${account}`).call().then(result => {
-            USCWallet = (result / (10 ** 6));
+            USCWallet = (result / (10 ** 6)-0.01);
             //ETCPOW Wallet Balance
             ETCPOWContract.methods.balanceOf(`${account}`).call().then(result => {
-                let ETCPOWWallet = (result / (10 ** 18));
+                let ETCPOWWallet = (result / (10 ** 18)-0.01);
                 
             let BorrowLimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked) + (ETCPOWAsset * 0.50 * ETCPOWStatus.checked));
             console.log(BorrowLimit);
