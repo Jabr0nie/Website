@@ -218,7 +218,7 @@
                                     const USCStatus = document.getElementById("USCCheckbox");
                                     const ETCStatus = document.getElementById("ETCCheckbox");
                                     const ETCPOWStatus = document.getElementById("ETCPOWCheckbox");
-                                    let borrowlimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)+ (ETCPOWAsset * 0.50 * ETCPOWStatus.checked));
+                                    let borrowlimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.80 * USCStatus.checked)+ (ETCPOWAsset * 0.50 * ETCPOWStatus.checked));
                                     let MaxBorrow =((Liabilities/((borrowlimit)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
                                         document.getElementById('UserBorrowLimit').innerText = `${MaxBorrow}%`;
                                         if (Liabilities == 0) {
@@ -610,7 +610,7 @@
         const USCStatus = document.getElementById("USCCheckbox");
         const ETCStatus = document.getElementById("ETCCheckbox");
         const ETCPOWStatus = document.getElementById("ETCPOWCheckbox");
-            let BorrowLimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked)+ (ETCPOWAsset * 0.50 * ETCPOWStatus.checked)).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            let BorrowLimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.80 * USCStatus.checked)+ (ETCPOWAsset * 0.50 * ETCPOWStatus.checked)).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             document.getElementById('BorrowLimit1').innerText = `$${BorrowLimit}`;
             document.getElementById('BorrowLimit2').innerText = `$${BorrowLimit}`;
             document.getElementById('BorrowLimit3').innerText = `$${BorrowLimit}`;
@@ -620,7 +620,7 @@
             document.getElementById('BorrowLimit7').innerText = `$${BorrowLimit}`;
             document.getElementById('BorrowLimit8').innerText = `$${BorrowLimit}`;
             document.getElementById('BorrowLimit9').innerText = `$${BorrowLimit}`;
-            let MaxBorrow =((Liabilities/((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked) + (ETCPOWAsset * 0.50 * ETCPOWStatus.checked)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            let MaxBorrow =((Liabilities/((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.80 * USCStatus.checked) + (ETCPOWAsset * 0.50 * ETCPOWStatus.checked)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             document.getElementById('BorrowLimitUsed1').innerText = `${MaxBorrow}%`;
             document.getElementById('BorrowLimitUsed2').innerText = `${MaxBorrow}%`;
             document.getElementById('BorrowLimitUsed3').innerText = `${MaxBorrow}%`;
@@ -717,7 +717,7 @@
             ETCPOWContract.methods.balanceOf(`${account}`).call().then(result => {
                 let ETCPOWWallet = (result / (10 ** 18)-0.01);
                 
-            let BorrowLimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.75 * USCStatus.checked) + (ETCPOWAsset * 0.50 * ETCPOWStatus.checked));
+            let BorrowLimit = ((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.80 * USCStatus.checked) + (ETCPOWAsset * 0.50 * ETCPOWStatus.checked));
             console.log(BorrowLimit);
             document.getElementById('BorrowLimit1').innerText = `$${BorrowLimit.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
             document.getElementById('BorrowLimit2').innerText = `$${BorrowLimit.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
@@ -729,7 +729,7 @@
             console.log(SafeBorrowETC);
             let SafeWithdrawlETC = (SafeBorrowETC / 0.75);
             let SafeBorrowUSC = (((((BorrowLimit * 0.90) - Liabilities)))/USCPrice);
-            let SafeWithdrawlUSC = (SafeBorrowUSC / 0.75);
+            let SafeWithdrawlUSC = (SafeBorrowUSC / 0.80);
             let SafeBorrowETCPOW = (((((BorrowLimit * 0.90) - Liabilities)))/ETCPOWPrice);
             let SafeWithdrawlETCPOW = (SafeBorrowETCPOW / 0.5);
 
