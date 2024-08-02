@@ -98,6 +98,7 @@
 
                  // document.getElementById('connectbutton').addEventListener('click', event => {
                     async function ConnectWallet() {
+                     
                       let account;
                       ethereum.request({ method: 'eth_requestAccounts' }).then(accounts => {
                           account = accounts[0];
@@ -113,11 +114,13 @@
                               ETCBalance.innerText = `${balance}`;});
                              
 			                          //rewards accrued
-                    ComptrollerContract.methods.compAccrued(`${account}`).call().then(accruedRewards => {
-                    accruedRewards = accruedRewards / (10 ** 18);
-                    accruedRewards = accruedRewards.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                        document.getElementById('accruedRewards').innerText = `${accruedRewards} NYKE`;
-                    })
+                //    ComptrollerContract.methods.compAccrued(`${account}`).call().then(accruedRewards => {
+                 //   accruedRewards = accruedRewards / (10 ** 18);
+                 //   accruedRewards = accruedRewards.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+                //        document.getElementById('accruedRewards').innerText = `${accruedRewards} NYKE`;
+               //     })
+
+                    AccruedNYKE();
 
 
                                //In market?
@@ -1339,4 +1342,85 @@
                           document.getElementById('USCmodal-repay').style.display = "none";
                           main();
                       }
+
+        //Calculate accrued NYKE
+
+        const AccruedNYKE = async () => {
+            let account = document.getElementById('connectbutton').innerHTML;
+            const currentblock = await web3.eth.getBlockNumber();
+            //USC Borrow
+            const USCBorrowerIndex = await ComptrollerContractMM.methods.compBorrowerIndex('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${account}`).call();  
+            const USCBorrowMarket = await ComptrollerContractMM.methods.compBorrowState('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call();
+            const {0: USCBorrowIndex, 1: USCBorrowBlock} = USCBorrowMarket;
+            const USCBorrowSpeeds = await ComptrollerContractMM.methods.compBorrowSpeeds('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call();
+            const USCBorrowed1 = await nUSCContractMM.methods.totalBorrows().call();
+            let USCBorrowed = (USCBorrowed1/(10 ** 6));
+            const USCUserBorrow1 = await nUSCContractMM.methods.borrowBalanceStored(`${account}`).call();
+            let USCUserBorrow = (USCUserBorrow1/(10 ** 6));
+            let accruedUSCBorrow = ((((USCBorrowed-(USCBorrowIndex-USCBorrowerIndex))/(10 ** 36))*USCUserBorrow)/(10 ** 18))+((((currentblock-USCBorrowBlock)*USCBorrowSpeeds)*(USCUserBorrow/USCBorrowed))/(10 ** 18));
+            console.log(accruedUSCBorrow);
+            //USC Supply
+            const USCSupplierIndex = await ComptrollerContractMM.methods.compSupplierIndex('0xA11d739365d469c87F3daBd922a82cfF21b71c9B',`${account}`).call();  
+            const USCSupplyMarket = await ComptrollerContractMM.methods.compSupplyState('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call();
+            const {0: USCSupplyIndex, 1: USCSupplyBlock} = USCSupplyMarket;
+            const USCSupplySpeeds = await ComptrollerContractMM.methods.compSupplySpeeds('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call();
+            const USCSupplied1 = await nUSCContractMM.methods.totalSupply().call();
+            let USCSupplied = (USCSupplied1/(10 ** 6));
+            const USCUserSupplied1 = await nUSCContractMM.methods.balanceOf(`${account}`).call();
+            let USCUserSupplied = (USCUserSupplied1/(10 ** 6));
+            let accruedUSCSupply = ((((USCSupplied-(USCSupplyIndex-USCSupplierIndex))/(10 ** 36))*USCUserSupplied)/(10 ** 18))+((((currentblock-USCSupplyBlock)*USCSupplySpeeds)*(USCUserSupplied/USCSupplied))/(10 ** 18));
+            console.log(accruedUSCSupply);
+            //ETC Borrow
+            const ETCBorrowerIndex = await ComptrollerContractMM.methods.compBorrowerIndex('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0',`${account}`).call();  
+            const ETCBorrowMarket = await ComptrollerContractMM.methods.compBorrowState('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call();
+            const {0: ETCBorrowIndex, 1: ETCBorrowBlock} = ETCBorrowMarket;
+            const ETCBorrowSpeeds = await ComptrollerContractMM.methods.compBorrowSpeeds('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call();
+            const ETCBorrowed1 = await nETCContractMM.methods.totalBorrows().call();
+            let ETCBorrowed = (ETCBorrowed1/(10 ** 18));
+            const ETCUserBorrow1 = await nETCContractMM.methods.borrowBalanceStored(`${account}`).call();
+            let ETCUserBorrow = (ETCUserBorrow1/(10 ** 18));
+            let accruedETCBorrow = ((((ETCBorrowed-(ETCBorrowIndex-ETCBorrowerIndex))/(10 ** 36))*ETCUserBorrow)/(10 ** 18))+((((currentblock-ETCBorrowBlock)*ETCBorrowSpeeds)*(ETCUserBorrow/ETCBorrowed))/(10 ** 18));
+            console.log(accruedETCBorrow);
+
+            //ETC Supply
+            const ETCSupplierIndex = await ComptrollerContractMM.methods.compSupplierIndex('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0',`${account}`).call();  
+            const ETCSupplyMarket = await ComptrollerContractMM.methods.compSupplyState('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call();
+            const {0: ETCSupplyIndex, 1: ETCSupplyBlock} = ETCSupplyMarket;
+            const ETCSupplySpeeds = await ComptrollerContractMM.methods.compSupplySpeeds('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call();
+            const ETCSupplied1 = await nETCContractMM.methods.totalSupply().call();
+            let ETCSupplied = (ETCSupplied1/(10 ** 18));
+            const ETCUserSupplied1 = await nETCContractMM.methods.balanceOf(`${account}`).call();
+            let ETCUserSupplied = (ETCUserSupplied1/(10 ** 18));
+            let accruedETCSupply = ((((ETCSupplied-(ETCSupplyIndex-ETCSupplierIndex))/(10 ** 36))*ETCUserSupplied)/(10 ** 18))+((((currentblock-ETCSupplyBlock)*ETCSupplySpeeds)*(ETCUserSupplied/ETCSupplied))/(10 ** 18));
+            console.log(accruedETCSupply);
+
+            //ETCPOW Borrow
+            const ETCPOWBorrowerIndex = await ComptrollerContractMM.methods.compBorrowerIndex('0x3f1a86FeD9cBF8866D55F21dfd880C0a4065285d',`${account}`).call();  
+            const ETCPOWBorrowMarket = await ComptrollerContractMM.methods.compBorrowState('0x3f1a86FeD9cBF8866D55F21dfd880C0a4065285d').call();
+            const {0: ETCPOWBorrowIndex, 1: ETCPOWBorrowBlock} = ETCPOWBorrowMarket;
+            const ETCPOWBorrowSpeeds = await ComptrollerContractMM.methods.compBorrowSpeeds('0x3f1a86FeD9cBF8866D55F21dfd880C0a4065285d').call();
+            const ETCPOWBorrowed1 = await nETCPOWContractMM.methods.totalBorrows().call();
+            let ETCPOWBorrowed = (ETCPOWBorrowed1/(10 ** 18));
+            const ETCPOWUserBorrow1 = await nETCPOWContractMM.methods.borrowBalanceStored(`${account}`).call();
+            let ETCPOWUserBorrow = (ETCPOWUserBorrow1/(10 ** 18));
+            let accruedETCPOWBorrow = ((((ETCPOWBorrowed-(ETCPOWBorrowIndex-ETCPOWBorrowerIndex))/(10 ** 36))*ETCPOWUserBorrow)/(10 ** 18))+((((currentblock-ETCPOWBorrowBlock)*ETCPOWBorrowSpeeds)*(ETCPOWUserBorrow/ETCPOWBorrowed))/(10 ** 18));
+            console.log(accruedETCPOWBorrow);
+            //ETCPOW Supply
+            const ETCPOWSupplierIndex = await ComptrollerContractMM.methods.compSupplierIndex('0x3f1a86FeD9cBF8866D55F21dfd880C0a4065285d',`${account}`).call();  
+            const ETCPOWSupplyMarket = await ComptrollerContractMM.methods.compSupplyState('0x3f1a86FeD9cBF8866D55F21dfd880C0a4065285d').call();
+            const {0: ETCPOWSupplyIndex, 1: ETCPOWSupplyBlock} = ETCPOWSupplyMarket;
+            const ETCPOWSupplySpeeds = await ComptrollerContractMM.methods.compSupplySpeeds('0x3f1a86FeD9cBF8866D55F21dfd880C0a4065285d').call();
+            const ETCPOWSupplied1 = await nETCPOWContractMM.methods.totalSupply().call();
+            let ETCPOWSupplied = (ETCPOWSupplied1/(10 ** 18));
+            const ETCPOWUserSupplied1 = await nETCPOWContractMM.methods.balanceOf(`${account}`).call();
+            let ETCPOWUserSupplied = (ETCPOWUserSupplied1/(10 ** 18));
+            let accruedETCPOWSupply = ((((ETCPOWSupplied-(ETCPOWSupplyIndex-ETCPOWSupplierIndex))/(10 ** 36))*ETCPOWUserSupplied)/(10 ** 18))+((((currentblock-ETCPOWSupplyBlock)*ETCPOWSupplySpeeds)*(ETCPOWUserSupplied/ETCPOWSupplied))/(10 ** 18));
+            console.log(accruedETCPOWSupply);
+
+            //Calculate Accrued NYKE
+            const CurrentAccruedNYKE = await ComptrollerContractMM.methods.compAccrued(`${account}`).call();
+            let accruedRewards = ((CurrentAccruedNYKE / (10**18)) + accruedETCPOWSupply + accruedETCPOWBorrow + accruedETCBorrow + accruedETCSupply + accruedUSCBorrow + accruedUSCSupply); 
+            accruedRewards = accruedRewards.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            document.getElementById('accruedRewards').innerText = `${accruedRewards} NYKE`;
+            }
                     
