@@ -733,7 +733,7 @@
             let SafeWithdrawlETC = (SafeBorrowETC / 0.75);
             let SafeBorrowUSC = (((((BorrowLimit * 0.90) - Liabilities)))/USCPrice);
             let SafeWithdrawlUSC = (SafeBorrowUSC / 0.80);
-            let SafeBorrowETCPOW = (((((BorrowLimit * 0.90) - Liabilities)))/ETCPOWPrice);
+            let SafeBorrowETCPOW = (((((BorrowLimit * 0.80) - Liabilities)))/ETCPOWPrice);
             let SafeWithdrawlETCPOW = (SafeBorrowETCPOW / 0.5);
 
             console.log(SafeWithdrawlETCPOW);
