@@ -1365,9 +1365,9 @@
             const {0: USCSupplyIndex, 1: USCSupplyBlock} = USCSupplyMarket;
             const USCSupplySpeeds = await ComptrollerContractMM.methods.compSupplySpeeds('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call();
             const USCSupplied1 = await nUSCContractMM.methods.totalSupply().call();
-            let USCSupplied = (USCSupplied1/(10 ** 6));
+            let USCSupplied = (USCSupplied1/(10 ** 4));
             const USCUserSupplied1 = await nUSCContractMM.methods.balanceOf(`${account}`).call();
-            let USCUserSupplied = (USCUserSupplied1/(10 ** 6));
+            let USCUserSupplied = (USCUserSupplied1/(10 ** 4));
             let accruedUSCSupply = ((((USCSupplied-(USCSupplyIndex-USCSupplierIndex))/(10 ** 36))*USCUserSupplied)/(10 ** 18))+((((currentblock-USCSupplyBlock)*USCSupplySpeeds)*(USCUserSupplied/USCSupplied))/(10 ** 18));
             console.log(accruedUSCSupply);
             //ETC Borrow
