@@ -213,10 +213,10 @@
                                     ETCPOWBorrowRate1 = ((ETCPOWBorrowRate1 / (10 ** 18)) * BlocksPerYear);
                         
                                 let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)+(ETCPOWAsset * ETCPOWSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1)-(ETCPOWLiability * ETCPOWBorrowRate1))/(ETCAsset+USCAsset+ETCPOWAsset-ETCLiability-USCLiability-ETCPOWLiability))*100);
-// let Weight = ((((ETCAsset * ETCSupplyRate1)+(USCAsset * USCSupplyRate1)+(ETCPOWAsset * ETCPOWSupplyRate1)-(ETCLiability * ETCBorrowRate1)-(USCLiability * USCBorrowRate1))/(ETCAsset+USCAsset-ETCLiability-USCLiability))*100);
                                 if (Assets > 0){
                                     document.getElementById('UserAPR').innerText = `${Weight.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                                 } 
+                                document.getElementById('UserAPR').innerText = `0.00%`;
                                     });});});});
                                 //Collateral Factor
                                     const USCStatus = document.getElementById("USCCheckbox");
@@ -731,11 +731,11 @@
             document.getElementById('BorrowLimitUsed2').innerText = `${MaxBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
             let SafeBorrowETC = (((((BorrowLimit * 0.90) - Liabilities)))/ETCPrice);
             console.log(SafeBorrowETC);
-            let SafeWithdrawlETC = (SafeBorrowETC / 0.75);
+            let SafeWithdrawlETC = ((SafeBorrowETC / 0.75)-0.01);
             let SafeBorrowUSC = (((((BorrowLimit * 0.90) - Liabilities)))/USCPrice);
-            let SafeWithdrawlUSC = (SafeBorrowUSC / 0.80);
+            let SafeWithdrawlUSC = ((SafeBorrowUSC / 0.80)-0.01);
             let SafeBorrowETCPOW = (((((BorrowLimit * 0.80) - Liabilities)))/ETCPOWPrice);
-            let SafeWithdrawlETCPOW = (SafeBorrowETCPOW / 0.5);
+            let SafeWithdrawlETCPOW = ((SafeBorrowETCPOW / 0.5)-0.01);
 
             console.log(SafeWithdrawlETCPOW);
             if (SafeWithdrawlETC > 0) {
