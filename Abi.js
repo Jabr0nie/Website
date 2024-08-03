@@ -7217,3 +7217,487 @@ const ETCPOWabi =[
         "type": "function"
     }
 ]
+
+const USCAdminabi = [
+	{
+	"name": "DistributorV3",
+	"address": "0xabcde72909f1958e53c5c481c4428bde372d3d57",
+	"abi": [
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "amountApprove",
+			"type": "uint256"
+		  }
+		],
+		"name": "_approveUSC",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "cToken",
+			"type": "address"
+		  }
+		],
+		"name": "acceptCTokenAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "addAmount",
+			"type": "uint256"
+		  }
+		],
+		"name": "addreserves",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "BurnAmount",
+			"type": "uint256"
+		  }
+		],
+		"name": "burnNYKE",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "collectRevenue",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "NewComptroller",
+			"type": "address"
+		  }
+		],
+		"name": "setCTokenComptroller",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "NewInterestRateModel",
+			"type": "address"
+		  }
+		],
+		"name": "setCTokenInterestRateModel",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "newReserveFactorMantissa",
+			"type": "uint256"
+		  }
+		],
+		"name": "setCTokenReserveFactor",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "newDistributorAdmin",
+			"type": "address"
+		  }
+		],
+		"name": "SetDistributorAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "amountApprove",
+			"type": "uint256"
+		  }
+		],
+		"name": "transferUSC",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "_pool",
+			"type": "address"
+		  },
+		  {
+			"internalType": "address",
+			"name": "_token0",
+			"type": "address"
+		  },
+		  {
+			"internalType": "address",
+			"name": "_token1",
+			"type": "address"
+		  }
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "int256",
+			"name": "amount0Delta",
+			"type": "int256"
+		  },
+		  {
+			"internalType": "int256",
+			"name": "amount1Delta",
+			"type": "int256"
+		  },
+		  {
+			"internalType": "bytes",
+			"name": "data",
+			"type": "bytes"
+		  }
+		],
+		"name": "uniswapV3SwapCallback",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "cToken",
+			"type": "address"
+		  },
+		  {
+			"internalType": "address payable",
+			"name": "newCTokenAdmin",
+			"type": "address"
+		  }
+		],
+		"name": "updateCTokenAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"stateMutability": "payable",
+		"type": "receive"
+	  },
+	  {
+		"inputs": [],
+		"name": "pool",
+		"outputs": [
+		  {
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "token0",
+		"outputs": [
+		  {
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "token1",
+		"outputs": [
+		  {
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  }
+	],
+	"filePath": "null/NYKE PROTOCOL - Comptroller with Oracle/contracts/DistributorV3.sol",
+	"pinnedAt": 1722655201367
+  }
+]
+
+const ETCAdminabi = [{
+	"name": "DistributorV3",
+	"address": "0xcb088a795aeb40d0bd6f867f5318cc072d3e8f1c",
+	"abi": [
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "cToken",
+			"type": "address"
+		  }
+		],
+		"name": "acceptCTokenAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "addAmount",
+			"type": "uint256"
+		  }
+		],
+		"name": "addreserves",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "amountApprove",
+			"type": "uint256"
+		  }
+		],
+		"name": "approveWETC",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "BurnAmount",
+			"type": "uint256"
+		  }
+		],
+		"name": "burnNYKE",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "collectRevenue",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address payable",
+			"name": "recipient",
+			"type": "address"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "amount",
+			"type": "uint256"
+		  }
+		],
+		"name": "sendETC",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "NewComptroller",
+			"type": "address"
+		  }
+		],
+		"name": "setCTokenComptroller",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "NewInterestRateModel",
+			"type": "address"
+		  }
+		],
+		"name": "setCTokenInterestRateModel",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "newReserveFactorMantissa",
+			"type": "uint256"
+		  }
+		],
+		"name": "setCTokenReserveFactor",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "newDistributorAdmin",
+			"type": "address"
+		  }
+		],
+		"name": "SetDistributorAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "_pool",
+			"type": "address"
+		  },
+		  {
+			"internalType": "address",
+			"name": "_token0",
+			"type": "address"
+		  },
+		  {
+			"internalType": "address",
+			"name": "_token1",
+			"type": "address"
+		  }
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "int256",
+			"name": "amount0Delta",
+			"type": "int256"
+		  },
+		  {
+			"internalType": "int256",
+			"name": "amount1Delta",
+			"type": "int256"
+		  },
+		  {
+			"internalType": "bytes",
+			"name": "data",
+			"type": "bytes"
+		  }
+		],
+		"name": "uniswapV3SwapCallback",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "cToken",
+			"type": "address"
+		  },
+		  {
+			"internalType": "address payable",
+			"name": "newCTokenAdmin",
+			"type": "address"
+		  }
+		],
+		"name": "updateCTokenAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"stateMutability": "payable",
+		"type": "receive"
+	  },
+	  {
+		"inputs": [],
+		"name": "pool",
+		"outputs": [
+		  {
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "token0",
+		"outputs": [
+		  {
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "token1",
+		"outputs": [
+		  {
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  }
+	],
+	"filePath": "null/NYKE PROTOCOL - Comptroller with Oracle/contracts/DistributorV3.sol",
+	"pinnedAt": 1722655713630
+  }
+]
