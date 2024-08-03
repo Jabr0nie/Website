@@ -216,7 +216,6 @@
                                 if (Assets > 0){
                                     document.getElementById('UserAPR').innerText = `${Weight.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                                 } 
-                                document.getElementById('UserAPR').innerText = `0.00%`;
                                     });});});});
                                 //Collateral Factor
                                     const USCStatus = document.getElementById("USCCheckbox");
