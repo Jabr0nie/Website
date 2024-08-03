@@ -121,6 +121,7 @@
                //     })
 
                     AccruedNYKE();
+                    UpdateBorrowLimit();
 
 
                                //In market?
