@@ -75,7 +75,7 @@
       window.addEventListener('click', function() {
         if (window.ethereum) {
             window.ethereum.on('accountsChanged', function (accounts) {
-                isConnected();});
+                ConnectWallet();});
         }
            else {
             console.log('MetaMask is not available');  
