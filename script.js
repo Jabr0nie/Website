@@ -384,7 +384,7 @@
 
                       //USC SUPPLY & USC NYKE SUPPLY
                       const USCSupplyRate = ((_USCSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
-                      let NykeUSCSupplyRate = (((NYKEPrice * 10000 * 365)/(USCtotalSupply*(_USCPrice / (10 ** 18))) * 100));
+                      let NykeUSCSupplyRate = (((NYKEPrice * 20000 * 365)/(USCtotalSupply*(_USCPrice / (10 ** 18))) * 100));
                       let USCSupplyRewardRate = NykeUSCSupplyRate + USCSupplyRate;
                       USCSupplyRateOutput.innerText = `${USCSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       USCSupplyRateOutputSupply.innerText = `${USCSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
