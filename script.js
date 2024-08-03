@@ -624,6 +624,7 @@
             document.getElementById('BorrowLimit8').innerText = `$${BorrowLimit}`;
             document.getElementById('BorrowLimit9').innerText = `$${BorrowLimit}`;
             let MaxBorrow =((Liabilities/((ETCAsset * 0.75 * ETCStatus.checked) + (USCAsset * 0.80 * USCStatus.checked) + (ETCPOWAsset * 0.50 * ETCPOWStatus.checked)))*100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+
             document.getElementById('BorrowLimitUsed1').innerText = `${MaxBorrow}%`;
             document.getElementById('BorrowLimitUsed2').innerText = `${MaxBorrow}%`;
             document.getElementById('BorrowLimitUsed3').innerText = `${MaxBorrow}%`;
@@ -633,6 +634,18 @@
             document.getElementById('BorrowLimitUsed7').innerText = `${MaxBorrow}%`;
             document.getElementById('BorrowLimitUsed8').innerText = `${MaxBorrow}%`;
             document.getElementById('BorrowLimitUsed9').innerText = `${MaxBorrow}%`;
+            if (Liabilities == 0) {
+                document.getElementById('UserBorrowLimit').innerText = `0.00%`;
+                document.getElementById('BorrowLimitUsed1').innerText = `0.00%`;
+                document.getElementById('BorrowLimitUsed2').innerText = `0.00%`;
+                document.getElementById('BorrowLimitUsed3').innerText = `0.00%`;
+                document.getElementById('BorrowLimitUsed4').innerText = `0.00%`;
+                document.getElementById('BorrowLimitUsed5').innerText = `0.00%`;
+                document.getElementById('BorrowLimitUsed6').innerText = `0.00%`;
+                document.getElementById('BorrowLimitUsed7').innerText = `0.00%`;
+                document.getElementById('BorrowLimitUsed8').innerText = `0.00%`;
+                document.getElementById('BorrowLimitUsed9').innerText = `0.00%`;
+            }
     });
     });});
 });});})})});});
