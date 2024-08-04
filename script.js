@@ -427,8 +427,8 @@
 
                        //ETCPOW SUPPLY & ETCPOW NYKE SUPPLY
                        const ETCPOWSupplyRate = ((_ETCPOWSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
-                       let NykeETCPOWSupplyRate = (((NYKEPrice * 5000 * 365)/((ETCPOWtotalSupply/ (10 ** 22) *(_ETCPOWPrice / (10 ** 18))) * 100)));
-                       let ETCPOWMarketSupply = (ETCPOWtotalSupply/ (10 ** 22))*(_ETCPOWPrice / (10 ** 18));
+                       let NykeETCPOWSupplyRate = ((((NYKEPrice * 5000 * 365)/((ETCPOWtotalSupply/ (10 ** 18) *(_ETCPOWPrice / (10 ** 18)))) * 100)));
+                       let ETCPOWMarketSupply = (ETCPOWtotalSupply/ (10 ** 18))*(_ETCPOWPrice / (10 ** 18));
                        console.log(NykeETCPOWSupplyRate);
                        console.log(NYKEPrice);
                        console.log(ETCPOWtotalSupply);
