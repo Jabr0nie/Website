@@ -174,22 +174,26 @@
                                 console.log(ETCSupplied);
                                ETCSupplied = (ETCSupplied / (10 ** 18))*ETCExchangeMantissa;
                                ETCSupplied = ETCSupplied.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                               document.getElementById('YourETCSupplied').innerText = `${ETCSupplied}`;
+                               document.getElementById('YourETCSupplied').innerText = `$${ETCSupplied}`;
                                 OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(ETCPrice => {
                                     ETCPrice = ETCPrice / (10 ** 18);
                                     ETCPrice = (ETCPrice.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
                                     let ETCAsset = (ETCPrice * ETCSupplied);
+                                    document.getElementById('YourETCSuppliedUSD').innerText = `$${ETCAsset.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let USCAsset = (USCPrice * USCSup);
+                                    document.getElementById('YourUSCSuppliedUSD').innerText = `$${USCAsset.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let ETCPOWAsset = (ETCPOWPrice * ETCPOWSup);
+                                    document.getElementById('YourETCPOWSuppliedUSD').innerText = `$${ETCPOWAsset.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let Assets = (USCAsset + ETCAsset + ETCPOWAsset);
                                     console.log(Assets);
                                     document.getElementById('UserAssetBalance').innerText = `$${Assets.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let ETCLiability = (ETCPrice * ETCBorrow);
+                                    document.getElementById('UserETCBorrowedUSD').innerText = `$${ETCLiability.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     console.log(ETCLiability);
                                     let USCLiability = (USCPrice * USCBorrow);
-                                    console.log(USCLiability);
-                                    let ETCPOWLiability = (ETCPOWPrice * UserBorrowETCPOW);
-                                    console.log(ETCPOWLiability);
+                                    document.getElementById('USCBorrowedUserUSD').innerText = `$${USCLiability.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+        let ETCPOWLiability = (ETCPOWPrice * UserBorrowETCPOW);
+        document.getElementById('ETCPOWBorrowedUserUSD').innerText = `$${ETCPOWLiability.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let Liabilities = ((USCLiability + ETCLiability + ETCPOWLiability));
                                     console.log(Liabilities);
                                     if (Liabilities == 0) {
@@ -355,26 +359,32 @@
                       
                       //ETC SUPPLY & ETC NYKE SUPPLY
                       let NykeETCSupplyRate = (((NYKEPrice * 5000 * 365)/(totalSupply*(_ETCPrice / (10 ** 18))) * 100));
+                      let ETCSupplyMarket = (totalSupply*(_ETCPrice / (10 ** 18)));
                       const ETCSupplyRate = ((_ETCSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
                       let RewardRate = NykeETCSupplyRate + ETCSupplyRate;
-                      ETCSupplyRateOutput.innerText = `${RewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                      ETCSupplyRateOutput.innerText = `${ETCSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       ETCSupplyRateModal.innerText = `${RewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       ETCSupplyRateModal2.innerText = `${RewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       ETCSupplierSupplyRate.innerText = `${ETCSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       document.getElementById('ETCSupplyRateOutputSupply1').innerText = `${NykeETCSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                      document.getElementById('ETCSupplyRate5').innerText = `${NykeETCSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                      document.getElementById('ETCSuppliedUSD').innerText = `$${ETCSupplyMarket.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
 
                       const ETCBorrow = _ETCBorrowed / (10 ** 18);
-                      ETCBorrowed.innerText = `${ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+                      let ETCBorrowMarket = (ETCBorrow*(_ETCPrice / (10 ** 18)));
+                      document.getElementById('ETCBorrowedUSD').innerText = `$${ETCBorrowMarket.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+                    ETCBorrowed.innerText = `${ETCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
 
                       //ETC BORROW & ETC NYKE SUPPLY
                       let NykeETCBorrowRate = (((NYKEPrice * 10000 * 365)/(ETCBorrow*(_ETCPrice / (10 ** 18))) * 100));
                      const ETCBorrowRate = ((-_ETCBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
                      let ETCBorrowRewardRate = NykeETCBorrowRate + ETCBorrowRate;
-                     ETCBorrowRateOutput.innerText = `${ETCBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                     ETCBorrowRateOutput.innerText = `${ETCBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                      ETCBorrowRateModal.innerText = `${ETCBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                      document.getElementById('ETCBorrowRateModal1').innerText = `${ETCBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                      ETCBorrowedRate1.innerText = `${ETCBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                      document.getElementById('ETCBorrowedRate2').innerText = `${NykeETCBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                     document.getElementById('ETCBorrowedRate5').innerText = `${NykeETCBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
 
                       const ETCUtil = (ETCBorrow /totalSupply) * 100;
                       ETCUtilization.innerText = `${ETCUtil.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
@@ -385,56 +395,68 @@
                       //USC SUPPLY & USC NYKE SUPPLY
                       const USCSupplyRate = ((_USCSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
                       let NykeUSCSupplyRate = (((NYKEPrice * 20000 * 365)/(USCtotalSupply*(_USCPrice / (10 ** 18))) * 100));
+                      let USCMarketSupply = (USCtotalSupply*(_USCPrice / (10 ** 18)));
                       let USCSupplyRewardRate = NykeUSCSupplyRate + USCSupplyRate;
-                      USCSupplyRateOutput.innerText = `${USCSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                      USCSupplyRateOutput.innerText = `${USCSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       USCSupplyRateOutputSupply.innerText = `${USCSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       document.getElementById('USCSupplyRateOutputSupply1').innerText = `${NykeUSCSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       document.getElementById('USCSupplyRateModal1').innerText = `${USCSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                     document.getElementById('USCSupplyRateModal2').innerText = `${USCSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                    document.getElementById('USCSupplyRate5').innerText = `${NykeUSCSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                    document.getElementById('USCSuppliedUSD').innerText = `$${USCMarketSupply.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
 
                       const USCBorrow = _USCBorrowed / (10 ** 6);
+                      let USCMarketBorrow = (USCBorrow*(_USCPrice / (10 ** 18)));
                       USCBorrowed.innerText = `${USCBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+                      document.getElementById('USCBorrowedUSD').innerText = `$${USCMarketBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
 
                     //USC BORROW & USC NYKE BORROW
                       const USCBorrowRate = ((-_USCBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
                       let NykeUSCBorrowRate = (((NYKEPrice * 10000 * 365)/(USCBorrow*(_USCPrice / (10 ** 18))) * 100));
                       let USCBorrowRewardRate = NykeUSCBorrowRate + USCBorrowRate;
                      
-                      USCBorrowRateOutput.innerText = `${USCBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                      USCBorrowRateOutput.innerText = `${USCBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       USCBorrowedRate1.innerText = `${USCBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       document.getElementById('USCBorrowRateModal').innerText = `${USCBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       document.getElementById('USCBorrowRateModal2').innerText = `${USCBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                       document.getElementById('USCBorrowRate2').innerText = `${NykeUSCBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
-  
+                      document.getElementById('USCBorrowedRate5').innerText = `${NykeUSCBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+
                       const USCUtil = (USCBorrow /USCtotalSupply) * 100;
                       USCUtilization.innerText = `${USCUtil.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
 
                        //ETCPOW SUPPLY & ETCPOW NYKE SUPPLY
                        const ETCPOWSupplyRate = ((_ETCPOWSupplyRate / (10 ** 18)) * BlocksPerYear) * 100;
-                       let NykeETCPOWSupplyRate = (((NYKEPrice * 5000 * 365)/((ETCPOWtotalSupply/ (10 ** 22) *(_ETCPOWPrice / (10 ** 18))) * 100)));
+                       let NykeETCPOWSupplyRate = (((NYKEPrice * 5000 * 365)/((ETCPOWtotalSupply/ (10 ** 18) *(_ETCPOWPrice / (10 ** 18))) * 100)));
+                       let ETCPOWMarketSupply = (ETCPOWtotalSupply/ (10 ** 18))*(_ETCPOWPrice / (10 ** 18));
                        console.log(NykeETCPOWSupplyRate);
                        console.log(NYKEPrice);
                        console.log(ETCPOWtotalSupply);
                        console.log(_ETCPOWPrice);
                        let ETCPOWSupplyRewardRate = NykeETCPOWSupplyRate + ETCPOWSupplyRate;
                        document.getElementById('ETCPOWSupplyRateOutputSupply').innerText = `${ETCPOWSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
-                       document.getElementById('ETCPOWSupplyRateOutput').innerText = `${ETCPOWSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                       document.getElementById('ETCPOWSupplyRateOutput').innerText = `${ETCPOWSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                      document.getElementById('ETCPOWUSCSupplyRateOutputSupply1').innerText = `${NykeETCPOWSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                        document.getElementById('ETCPOWSupplyRateModal1').innerText = `${ETCPOWSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                      document.getElementById('ETCPOWSupplyRateModal2').innerText = `${ETCPOWSupplyRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
- 
+                     document.getElementById('ETCPOWSupplyRate5').innerText = `${NykeETCPOWSupplyRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                     document.getElementById('ETCPOWSuppliedUSD').innerText = `$${ETCPOWMarketSupply.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+
                        const ETCPOWBorrow = _ETCPOWBorrowed / (10 ** 18);
+                       let ETCPOWMarketBorrow = (ETCPOWBorrow*(_ETCPOWPrice / (10 ** 18)));
                        document.getElementById('ETCPOWBorrowed').innerText = `${ETCPOWBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
- 
+                       document.getElementById('ETCPOWBorrowedUSD').innerText = `$${ETCPOWMarketBorrow.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+
                      //ETCPOW BORROW & ETCPOW NYKE BORROW
                        const ETCPOWBorrowRate = ((-_ETCPOWBorrowRate / (10 ** 18)) * BlocksPerYear) * 100;
                        let NykeETCPOWBorrowRate = (((NYKEPrice * 10000 * 365)/(ETCPOWBorrow*(_ETCPOWPrice / (10 ** 18))) * 100));
                        let ETCPOWBorrowRewardRate = NykeETCPOWBorrowRate + ETCPOWBorrowRate;
-                       document.getElementById('ETCPOWBorrowRateOutput').innerText = `${ETCPOWBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                       document.getElementById('ETCPOWBorrowRateOutput').innerText = `${ETCPOWBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                        document.getElementById('ETCPOWBorrowRate1').innerText = `${ETCPOWBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                        document.getElementById('ETCPOWBorrowRateModal').innerText = `${ETCPOWBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                        document.getElementById('ETCPOWBorrowRateModal2').innerText = `${ETCPOWBorrowRewardRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
                        document.getElementById('ETCPOWBorrowRate2').innerText = `${NykeETCPOWBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+                       document.getElementById('ETCPOWBorrowedRate5').innerText = `${NykeETCPOWBorrowRate.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
    
                        let ETCPOWtotalSupply1 = (ETCPOWtotalSupply / (10 ** 18))*(_ETCPOWExMant / (10 ** 18));
                        document.getElementById('ETCPOWSupply').innerText = `${ETCPOWtotalSupply1.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
@@ -597,13 +619,19 @@
                                     ETCPrice = ETCPrice / (10 ** 18);
                                     ETCPrice = (ETCPrice.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
                                     let ETCAsset = (ETCPrice * ETCSupplied);
+                                    document.getElementById('YourETCSuppliedUSD').innerText = `$${ETCAsset.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let USCAsset = (USCPrice * USCSup);
+                                    document.getElementById('YourUSCSuppliedUSD').innerText = `$${USCAsset.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let ETCPOWAsset = (ETCPOWPrice * ETCPOWSup);
+                                    document.getElementById('YourETCPOWSuppliedUSD').innerText = `$${ETCPOWAsset.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let Assets = (USCAsset + ETCAsset + ETCPOWAsset);
                                     document.getElementById('UserAssetBalance').innerText = `$${Assets.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let ETCLiability = (ETCPrice * ETCBorrow);
+                                    document.getElementById('UserETCBorrowedUSD').innerText = `$${ETCLiability.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let USCLiability = (USCPrice * USCBorrow);
+                                    document.getElementById('USCBorrowedUserUSD').innerText = `$${USCLiability.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let ETCPOWLiability = (ETCPOWPrice * UserBorrowETCPOW);
+                                    document.getElementById('ETCPOWBorrowedUserUSD').innerText = `$${ETCPOWLiability.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                     let Liabilities = ((USCLiability + ETCLiability + ETCPOWLiability));
                                     if (Liabilities == 0) {
                                         document.getElementById('UserBorrowLimit').innerText = `0.00%`;
@@ -702,14 +730,20 @@
     OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(ETCPrice => {
         ETCPrice = ETCPrice / (10 ** 18);
         let ETCAsset = (ETCPrice * ETCSupplied);
+        document.getElementById('YourETCSuppliedUSD').innerText = `$${ETCAsset.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
         let USCAsset = (USCPrice * USCSup);
+        document.getElementById('YourUSCSuppliedUSD').innerText = `$${USCAsset.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
         let ETCPOWAsset = (ETCPOWPrice * ETCPOWSup);
+        document.getElementById('YourETCPOWSuppliedUSD').innerText = `$${ETCPOWAsset.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
         let Assets = (USCAsset + ETCAsset + ETCPOWAsset);
         console.log(Assets);
         document.getElementById('UserAssetBalance').innerText = `$${Assets.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
         let ETCLiability = (ETCPrice * ETCBorrow);
+        document.getElementById('UserETCBorrowedUSD').innerText = `$${ETCLiability.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
         let USCLiability = (USCPrice * USCBorrow);
+        document.getElementById('USCBorrowedUserUSD').innerText = `$${USCLiability.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
         let ETCPOWLiability = (ETCPOWPrice * UserBorrowETCPOW);
+        document.getElementById('ETCPOWBorrowedUserUSD').innerText = `$${ETCPOWLiability.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
         let Liabilities = (USCLiability + ETCLiability + ETCPOWLiability);
         if (Liabilities == 0) {
             document.getElementById('UserLiabilityBalance').innerText = `$${Liabilities.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
@@ -1294,6 +1328,63 @@
                           document.getElementById('ETCPOWmodal-repay').style.display = "none";
                         SupplyModal();
                       }
+
+                      function ETCWithdrawRow() {
+
+                        document.getElementById('modal-container').style.display = "block";
+                        document.getElementById('modal-supply').style.display = "none";
+                        document.getElementById('modal-withdrawl').style.display = "block";
+                        document.getElementById('modal-borrow').style.display = "none";
+                        document.getElementById('modal-repay').style.display = "none";
+                        document.getElementById('USCmodal-supply').style.display = "none";
+                        document.getElementById('USCmodal-withdrawl').style.display = "none";
+                        document.getElementById('USCmodal-borrow').style.display = "none";
+                        document.getElementById('USCmodal-repay').style.display = "none";
+                        document.getElementById('ETCPOWmodal-supply').style.display = "none";
+                        document.getElementById('ETCPOWmodal-withdrawl').style.display = "none";
+                        document.getElementById('ETCPOWmodal-borrow').style.display = "none";
+                        document.getElementById('ETCPOWmodal-repay').style.display = "none";
+                        WithdrawlModal();
+                    }
+
+                    function ETCBorrowRow() {
+
+                        document.getElementById('modal-container').style.display = "block";
+                        document.getElementById('modal-supply').style.display = "none";
+                        document.getElementById('modal-withdrawl').style.display = "none";
+                        document.getElementById('modal-borrow').style.display = "block";
+                        document.getElementById('modal-repay').style.display = "none";
+                        document.getElementById('USCmodal-supply').style.display = "none";
+                        document.getElementById('USCmodal-withdrawl').style.display = "none";
+                        document.getElementById('USCmodal-borrow').style.display = "none";
+                        document.getElementById('USCmodal-repay').style.display = "none";
+                        document.getElementById('ETCPOWmodal-supply').style.display = "none";
+                        document.getElementById('ETCPOWmodal-withdrawl').style.display = "none";
+                        document.getElementById('ETCPOWmodal-borrow').style.display = "none";
+                        document.getElementById('ETCPOWmodal-repay').style.display = "none";
+                        BorrowModal();
+                    }
+
+                    function ETCRepayRow() {
+
+                        document.getElementById('modal-container').style.display = "block";
+                        document.getElementById('modal-supply').style.display = "none";
+                        document.getElementById('modal-withdrawl').style.display = "none";
+                        document.getElementById('modal-borrow').style.display = "none";
+                        document.getElementById('modal-repay').style.display = "block";
+                        document.getElementById('USCmodal-supply').style.display = "none";
+                        document.getElementById('USCmodal-withdrawl').style.display = "none";
+                        document.getElementById('USCmodal-borrow').style.display = "none";
+                        document.getElementById('USCmodal-repay').style.display = "none";
+                        document.getElementById('ETCPOWmodal-supply').style.display = "none";
+                        document.getElementById('ETCPOWmodal-withdrawl').style.display = "none";
+                        document.getElementById('ETCPOWmodal-borrow').style.display = "none";
+                        document.getElementById('ETCPOWmodal-repay').style.display = "none";
+                        RepayModal();
+                    }
+
+
+
                       function USCrow() {
                           document.getElementById('modal-container').style.display = "block";
                           document.getElementById('modal-supply').style.display = "none";
@@ -1310,6 +1401,57 @@
                           document.getElementById('ETCPOWmodal-repay').style.display = "none";
                           USCSupplyModal();
                       }
+
+                      function USCWithdrawRow() {
+                        document.getElementById('modal-container').style.display = "block";
+                        document.getElementById('modal-supply').style.display = "none";
+                        document.getElementById('modal-withdrawl').style.display = "none";
+                        document.getElementById('modal-borrow').style.display = "none";
+                        document.getElementById('modal-repay').style.display = "none";
+                        document.getElementById('USCmodal-supply').style.display = "none";
+                        document.getElementById('USCmodal-withdrawl').style.display = "block";
+                        document.getElementById('USCmodal-borrow').style.display = "none";
+                        document.getElementById('USCmodal-repay').style.display = "none";
+                        document.getElementById('ETCPOWmodal-supply').style.display = "none";
+                        document.getElementById('ETCPOWmodal-withdrawl').style.display = "none";
+                        document.getElementById('ETCPOWmodal-borrow').style.display = "none";
+                        document.getElementById('ETCPOWmodal-repay').style.display = "none";
+                        USCWithdrawlModal();
+                    }
+
+                    function USCBorrowRow() {
+                        document.getElementById('modal-container').style.display = "block";
+                        document.getElementById('modal-supply').style.display = "none";
+                        document.getElementById('modal-withdrawl').style.display = "none";
+                        document.getElementById('modal-borrow').style.display = "none";
+                        document.getElementById('modal-repay').style.display = "none";
+                        document.getElementById('USCmodal-supply').style.display = "none";
+                        document.getElementById('USCmodal-withdrawl').style.display = "none";
+                        document.getElementById('USCmodal-borrow').style.display = "block";
+                        document.getElementById('USCmodal-repay').style.display = "none";
+                        document.getElementById('ETCPOWmodal-supply').style.display = "none";
+                        document.getElementById('ETCPOWmodal-withdrawl').style.display = "none";
+                        document.getElementById('ETCPOWmodal-borrow').style.display = "none";
+                        document.getElementById('ETCPOWmodal-repay').style.display = "none";
+                        USCBorrowModal();
+                    }
+
+                    function USCRepayRow() {
+                        document.getElementById('modal-container').style.display = "block";
+                        document.getElementById('modal-supply').style.display = "none";
+                        document.getElementById('modal-withdrawl').style.display = "none";
+                        document.getElementById('modal-borrow').style.display = "none";
+                        document.getElementById('modal-repay').style.display = "none";
+                        document.getElementById('USCmodal-supply').style.display = "none";
+                        document.getElementById('USCmodal-withdrawl').style.display = "none";
+                        document.getElementById('USCmodal-borrow').style.display = "none";
+                        document.getElementById('USCmodal-repay').style.display = "block";
+                        document.getElementById('ETCPOWmodal-supply').style.display = "none";
+                        document.getElementById('ETCPOWmodal-withdrawl').style.display = "none";
+                        document.getElementById('ETCPOWmodal-borrow').style.display = "none";
+                        document.getElementById('ETCPOWmodal-repay').style.display = "none";
+                        USCRepayModal();
+                    }
 
                       function ETCPOWrow() {
                         document.getElementById('modal-container').style.display = "block";
@@ -1329,17 +1471,84 @@
                         ETCPOWSupplyModal();
                     }
 
+                    function ETCPOWWithdrawrow() {
+                        document.getElementById('modal-container').style.display = "block";
+                        document.getElementById('modal-supply').style.display = "none";
+                        document.getElementById('modal-withdrawl').style.display = "none";
+                        document.getElementById('modal-borrow').style.display = "none";
+                        document.getElementById('modal-repay').style.display = "none";
+                        document.getElementById('USCmodal-supply').style.display = "none";
+                        document.getElementById('USCmodal-withdrawl').style.display = "none";
+                        document.getElementById('USCmodal-borrow').style.display = "none";
+                        document.getElementById('USCmodal-repay').style.display = "none";
+                        document.getElementById('ETCPOWmodal-supply').style.display = "none";
+                        document.getElementById('ETCPOWmodal-withdrawl').style.display = "block";
+                        document.getElementById('ETCPOWmodal-borrow').style.display = "none";
+                        document.getElementById('ETCPOWmodal-repay').style.display = "none";
+                        ETCPOWSupplyModal();
+                        ETCPOWWithdrawlModal();
+                    }
 
+                    function ETCPOWBorrowRow() {
+                        document.getElementById('modal-container').style.display = "block";
+                        document.getElementById('modal-supply').style.display = "none";
+                        document.getElementById('modal-withdrawl').style.display = "none";
+                        document.getElementById('modal-borrow').style.display = "none";
+                        document.getElementById('modal-repay').style.display = "none";
+                        document.getElementById('USCmodal-supply').style.display = "none";
+                        document.getElementById('USCmodal-withdrawl').style.display = "none";
+                        document.getElementById('USCmodal-borrow').style.display = "none";
+                        document.getElementById('USCmodal-repay').style.display = "none";
+                        document.getElementById('ETCPOWmodal-supply').style.display = "none";
+                        document.getElementById('ETCPOWmodal-withdrawl').style.display = "none";
+                        document.getElementById('ETCPOWmodal-borrow').style.display = "block";
+                        document.getElementById('ETCPOWmodal-repay').style.display = "none";
+
+                        ETCPOWBorrowModal();
+                    }
+
+                    function ETCPOWRepayRow() {
+                        document.getElementById('modal-container').style.display = "block";
+                        document.getElementById('modal-supply').style.display = "none";
+                        document.getElementById('modal-withdrawl').style.display = "none";
+                        document.getElementById('modal-borrow').style.display = "none";
+                        document.getElementById('modal-repay').style.display = "none";
+                        document.getElementById('USCmodal-supply').style.display = "none";
+                        document.getElementById('USCmodal-withdrawl').style.display = "none";
+                        document.getElementById('USCmodal-borrow').style.display = "none";
+                        document.getElementById('USCmodal-repay').style.display = "none";
+                        document.getElementById('ETCPOWmodal-supply').style.display = "none";
+                        document.getElementById('ETCPOWmodal-withdrawl').style.display = "none";
+                        document.getElementById('ETCPOWmodal-borrow').style.display = "block";
+                        document.getElementById('ETCPOWmodal-repay').style.display = "none";
+
+                        ETCPOWRepayModal();
+                    }
+
+                    document.getElementById("ETCDepositButtonModal").onclick = ETCrow;
+                    document.getElementById("ETCWithdrawButtonModal").onclick = ETCWithdrawRow;
+                    document.getElementById("ETCBorrowButtonModal").onclick = ETCBorrowRow;
+                    document.getElementById("ETCRepayButtonModal").onclick = ETCRepayRow;
+
+                    document.getElementById("USCDepositButtonModal").onclick = USCrow;
+                    document.getElementById("USCWithdrawButtonModal").onclick = USCWithdrawRow;
+                    document.getElementById("USCBorrowButtonModal").onclick = USCBorrowRow;
+                    document.getElementById("USCRepayButtonModal").onclick = USCRepayRow;
+
+                    document.getElementById("ETCPOWDepositButtonModal").onclick = ETCPOWrow;
+                    document.getElementById("ETCPOWWithdrawButtonModal").onclick = ETCPOWWithdrawrow;
+                    document.getElementById("ETCPOWBorrowButtonModal").onclick = ETCPOWBorrowRow;
+                    document.getElementById("ETCPOWRepayButtonModal").onclick = ETCPOWRepayRow;
       
-                      table.rows[1].onclick = ETCrow;    
-                      table.rows[2].onclick = USCrow;
-                      table.rows[3].onclick = ETCPOWrow;
-                      table1.rows[1].onclick = ETCrow;
-                      table1.rows[2].onclick = USCrow;
-                      table1.rows[3].onclick = ETCPOWrow;
-                      table2.rows[1].onclick = ETCrow;
-                      table2.rows[2].onclick = USCrow;
-                      table2.rows[3].onclick = ETCPOWrow;
+                     table.rows[1].onclick = ETCrow;    
+                     table.rows[2].onclick = USCrow;
+                     table.rows[3].onclick = ETCPOWrow;
+                   //   table1.rows[1].onclick = ETCrow;
+                   //   table1.rows[2].onclick = USCrow;
+                  //    table1.rows[3].onclick = ETCPOWrow;
+                   //   table2.rows[1].onclick = ETCrow;
+                    //  table2.rows[2].onclick = USCrow;
+                   //   table2.rows[3].onclick = ETCPOWrow;
                   
 
 

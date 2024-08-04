@@ -17,7 +17,7 @@ body {
     width:100%;
     height: 100%;
     background-color: #10171f;
-    overflow-x: hidden;
+  
     margin: 0px;
   }
 
@@ -95,8 +95,8 @@ body {
     
 
   .footer {
-
-    position: absolute;
+    display: inline-block;
+    position: sticky;
     position: -webkit-sticky;
     bottom: 0;
     background-color: #10171f;
@@ -146,12 +146,11 @@ body {
 
 
   .maincontent {
-    display: flexbox;
+    display: block;
     background-color:  #10171f;
     width: 100%;
-    height: 600px;
+    height: 800px;
     align-items: center;
-    overflow: hidden;
     float: right;
   }
 
@@ -283,13 +282,14 @@ body {
   }
 
 .UseBalanceText {
-  color: #D8D7DB;
+  color: #7a8a99;
   display: inline-block;
   font-size: 100%;
 }
 
 .UserBalanceTextB {
   display: inline-block;
+  color: #7a8a99;
   font-size: 100%;
 }
 
@@ -315,7 +315,7 @@ body {
 }
 
 .UserMaxBorrowText {
-  color: #D8D7DB;
+  color: #7a8a99;
   text-align: right;
   font-size: 100%;
 }
@@ -357,7 +357,7 @@ body {
 
   .UserDetails {
     display: inline-flex;
-    height: 50%;
+    height: 40%;
     width: 100%;
     margin-top: 2%;
   }
@@ -398,7 +398,7 @@ body {
     background-color:#1D2833;
     border-radius: 5px;
     width: 100%;
-    height:60%;
+    height:50%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
@@ -420,7 +420,7 @@ body {
   .Collateral {
     display: flex;
     flex-direction: column;
-    width: 15%;
+    width: 20%;
     text-align: center;
   }
 
@@ -474,7 +474,7 @@ body {
     background-color: #1D2833;
     border-radius: 5px;
     width: 90%;
-    height:60%;
+    height:70%;
     padding-right: 5%;
     padding-left: 5%;
     margin-left: 0%;
@@ -515,7 +515,7 @@ float: right;
     width: 95%;
     margin-right: 0%;
     margin-left: 5%;
-    height:60%;
+    height:70%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
@@ -547,10 +547,10 @@ float: right;
     top: 0;
   }
   .maincontent {
-    display: flexbox;
+    display: block;
     background-color:  #10171f;
     width: 100%;
-    height: 600px;
+    height: 800px;
     margin-top: 1%;
     align-items: center;
     overflow: hidden;
@@ -623,7 +623,7 @@ float: right;
       display: flexbox;
       background-color:  #10171f;
       width: 100%;
-      height: 800px;
+      height: 1000px;
       margin-top: 1%;
       justify-items: center;
       align-items: center;
@@ -718,7 +718,6 @@ float: right;
       .supplyshell {
         width: 100%;
         height: 50%;
-
         min-width: 300px;
         font-size: 80%;
       }
@@ -768,14 +767,21 @@ float: right;
   margin-right: 0px;
   width: 40%; height: 40px; 
   min-width: 120px;
-  border: 2px solid #1eeadb;
+  border: 2px solid #D8D7DB;
   overflow: hidden;
   background-color:#1D2833;
-  color: #1eeadb; 
+  color: #D8D7DB; 
   font-size: 13px; 
   font-weight: 500;
   align-items: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+  }
+
+  .MetaMask:hover {
+    cursor: pointer;
+
+    color:#1eeadb;
+    border-color: #1eeadb;
   }
 
   .topNavRight {
@@ -851,8 +857,8 @@ margin-right: 25px;
 
   .MetaMask:hover {
     cursor: pointer;
-    background-color:  #1eeadb;
-    color: #1D2833;
+    color:#1eeadb;
+    border-color: #1eeadb;
   }
 
   .claimRewards {
@@ -924,7 +930,7 @@ table {
 }
 
 .UserSupplyTable {
-  width: 85%;
+  width: 100%;
   height: 100%;
   margin-left: 0%;
   margin-right: 0%;
@@ -968,7 +974,7 @@ td:not(:first-child) {
 }
 
 tr:not(:first-child){
-  height: 25%;
+  height: 30%;
   font-weight: 400;
   font-size: 12px;
   justify-content: center;
@@ -980,45 +986,21 @@ tr:first-child {
   font-weight: 500;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
   width: 100%;
-  height: 25%;
+  height: 10%;
   justify-content: center;
 }
  
-tr:not(:first-child):hover {
+.Supply tr:not(:first-child):hover {
 
   color: #1eeadb;
   cursor: pointer;
 }
-tr:not(:first-child):hover div{
 
-  color: #1eeadb;
-  border: none;
-  border-radius: 25px;
-}
 
-.UserSupplyTable tr:not(:first-child):hover {
 
-  color: #1eeadb;
-  cursor: pointer;
-}
-.UserSupplyTable tr:not(:first-child):hover div{
 
-  color: #1eeadb;
-  border: none;
-  border-radius: 25px;
-}
 
-.borrowtable tr:not(:first-child):hover {
 
-  color: #1eeadb;
-  cursor: pointer;
-}
-.borrowtable tr:not(:first-child):hover div{
-
-  color: #1eeadb;
-  border: none;
-  border-radius: 25px;
-}
 
 
 
@@ -1239,19 +1221,19 @@ tr:not(:first-child):hover div{
 
     .UserBalanceOutput {
       font-size: 150%;
-      font-weight: 700;
+      font-weight: 600;
     }
     .UserBalanceOutputB {
       font-size: 150%;
-      font-weight: 700;
+      font-weight: 600;
     }
     .UserBorrowLimit {
       font-size: 150%;
-      font-weight: 700;
+      font-weight: 600;
     }
     .UserBorrowLimit{
       font-size: 150%;
-      font-weight: 700;
+      font-weight: 600;
     }
     .borrowtextleft {
       font-size: 80%;
@@ -1306,10 +1288,38 @@ tr:not(:first-child):hover div{
       background-color: #1D2833;
       border-radius: 5px;
       width: 90%;
-      height:60%;
+      height:70%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   
     }
+
+    .DepositwithdrawButtonContainer {
+      display: flex;
+      flex-direction: column;
+     float: right;
+     align-content: center;
+     width: 100%;
+     height: 100%;
+
+   }
+
+    .DepositwithdrawButton {
+      float: right;
+      border-radius: 10px; 
+      width: 100%; height: 40%;
+      max-width: 80px; 
+      border: 2px solid #7a8a99;
+      overflow: hidden;
+      background-color:#10171f;
+      color: #D8D7DB;
+      font-size: 11px; 
+      text-align: center;
+      font-weight: 500;
+      margin-top: 2%;
+      margin-bottom: 2%;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+      }
     .Borrowed{
       display: flexbox;
       background-color: #1D2833;
@@ -1318,7 +1328,7 @@ tr:not(:first-child):hover div{
       width: 100%;
       margin-right: 0%;
       margin-left: 5%;
-      height:60%;
+      height:70%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
@@ -1909,3 +1919,104 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ; }
     .tdmobilemarkets {
       padding-left: 10px;
     }
+
+    .USD {
+      color: #7a8a99;
+    }
+
+    .native {
+      font-weight: 500;
+    }
+
+    .RewardAPR {
+      display: flex;
+      justify-content: center;
+      color: #1eeadb;
+    }
+
+    .DepositwithdrawButtonContainer {
+       display: flex;
+       flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-content: center;
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+    .DepositwithdrawButton {
+      border-radius: 10px; 
+      width: 100%; height: 40%;
+      max-width: 100px; 
+      border: 2px solid #7a8a99;
+      overflow: hidden;
+      background-color:#10171f;
+      color: #D8D7DB;
+      font-size: 11px; 
+      text-align: center;
+      font-weight: 500;
+      margin-top: 2%;
+      margin-bottom: 2%;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+      }
+
+      .DepositwithdrawButton:hover {
+        cursor: pointer;
+        background-color:  #1eeadb;
+        color: #1D2833;
+      }
+
+      
+      .MetaMask:hover {
+        cursor: pointer;
+        color:#1eeadb;
+        border-color: #1eeadb;
+      }
+
+      tr { 
+        border: solid;
+        border-color: #7a8a99;
+        border-width: 1px 0;
+      }
+
+      tr:first-child {
+        border-top: none;
+      }
+      tr:last-child {
+        border-bottom: none;
+      }
+
+      .footer {
+        display: inline-block;
+        position: sticky;
+        position: -webkit-sticky;
+        bottom: 0;
+        background-color: #10171f;
+        padding-top: 1%;
+        width: 100%;
+        text-align: center;
+      }
+
+      .UserBorrowLimit {
+        color: #D8D7DB;
+        font-weight: 400;
+        font-size: 30px;
+        text-align: right;
+      }
+      
+      .UserBalanceOutput {
+      
+        color: #D8D7DB;
+        font-weight: 400;
+        font-size: 30px;
+      }
+      
+      .UserBalanceOutputB {
+      
+        color: #D8D7DB;
+        font-weight: 400;
+        font-size: 30px;
+      }
+      
