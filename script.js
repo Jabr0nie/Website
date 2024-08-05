@@ -174,7 +174,7 @@
                                 console.log(ETCSupplied);
                                ETCSupplied = (ETCSupplied / (10 ** 18))*ETCExchangeMantissa;
                                ETCSupplied = ETCSupplied.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-                               document.getElementById('YourETCSupplied').innerText = `$${ETCSupplied}`;
+                               document.getElementById('YourETCSupplied').innerText = `${ETCSupplied}`;
                                 OracleContract.methods.GetUnderlyingPrice('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call().then(ETCPrice => {
                                     ETCPrice = ETCPrice / (10 ** 18);
                                     ETCPrice = (ETCPrice.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
