@@ -1576,9 +1576,9 @@
             const {0: USCBorrowIndex, 1: USCBorrowBlock} = USCBorrowMarket;
             const USCBorrowSpeeds = await ComptrollerContractMM.methods.compBorrowSpeeds('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call();
             const USCBorrowed1 = await nUSCContractMM.methods.totalBorrows().call();
-            let USCBorrowed = (USCBorrowed1/(10 ** 6));
+            let USCBorrowed = (USCBorrowed1/(10 ** 4));
             const USCUserBorrow1 = await nUSCContractMM.methods.borrowBalanceStored(`${account}`).call();
-            let USCUserBorrow = (USCUserBorrow1/(10 ** 6));
+            let USCUserBorrow = (USCUserBorrow1/(10 ** 4));
             let accruedUSCBorrow = ((((USCBorrowed-(USCBorrowIndex-USCBorrowerIndex))/(10 ** 36))*USCUserBorrow)/(10 ** 18))+((((currentblock-USCBorrowBlock)*USCBorrowSpeeds)*(USCUserBorrow/USCBorrowed))/(10 ** 18));
             console.log(accruedUSCBorrow);
             //USC Supply
@@ -1597,12 +1597,15 @@
             const ETCBorrowMarket = await ComptrollerContractMM.methods.compBorrowState('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call();
             const {0: ETCBorrowIndex, 1: ETCBorrowBlock} = ETCBorrowMarket;
             const ETCBorrowSpeeds = await ComptrollerContractMM.methods.compBorrowSpeeds('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call();
+            console.log(ETCBorrowSpeeds + 'ETCBorrowed');
             const ETCBorrowed1 = await nETCContractMM.methods.totalBorrows().call();
             let ETCBorrowed = (ETCBorrowed1/(10 ** 18));
+            console.log(ETCBorrowed + 'ETCBorrowed');
             const ETCUserBorrow1 = await nETCContractMM.methods.borrowBalanceStored(`${account}`).call();
             let ETCUserBorrow = (ETCUserBorrow1/(10 ** 18));
+            console.log(ETCUserBorrow + 'ETCUserBorrow');
             let accruedETCBorrow = ((((ETCBorrowed-(ETCBorrowIndex-ETCBorrowerIndex))/(10 ** 36))*ETCUserBorrow)/(10 ** 18))+((((currentblock-ETCBorrowBlock)*ETCBorrowSpeeds)*(ETCUserBorrow/ETCBorrowed))/(10 ** 18));
-            console.log(accruedETCBorrow);
+            console.log(accruedETCBorrow + 'Accrued ETC Borrow');
 
             //ETC Supply
             const ETCSupplierIndex = await ComptrollerContractMM.methods.compSupplierIndex('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0',`${account}`).call();  
