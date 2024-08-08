@@ -1576,9 +1576,9 @@
             const {0: USCBorrowIndex, 1: USCBorrowBlock} = USCBorrowMarket;
             const USCBorrowSpeeds = await ComptrollerContractMM.methods.compBorrowSpeeds('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call();
             const USCBorrowed1 = await nUSCContractMM.methods.totalBorrows().call();
-            let USCBorrowed = (USCBorrowed1/(10 ** 4));
+            let USCBorrowed = (USCBorrowed1/(10 ** 18));
             const USCUserBorrow1 = await nUSCContractMM.methods.borrowBalanceStored(`${account}`).call();
-            let USCUserBorrow = (USCUserBorrow1/(10 ** 4));
+            let USCUserBorrow = (USCUserBorrow1/(10 ** 16));
             let accruedUSCBorrow = ((((USCBorrowed-(USCBorrowIndex-USCBorrowerIndex))/(10 ** 36))*USCUserBorrow)/(10 ** 18))+((((currentblock-USCBorrowBlock)*USCBorrowSpeeds)*(USCUserBorrow/USCBorrowed))/(10 ** 18));
             console.log(accruedUSCBorrow);
             //USC Supply
@@ -1587,17 +1587,17 @@
             const {0: USCSupplyIndex, 1: USCSupplyBlock} = USCSupplyMarket;
             const USCSupplySpeeds = await ComptrollerContractMM.methods.compSupplySpeeds('0xA11d739365d469c87F3daBd922a82cfF21b71c9B').call();
             const USCSupplied1 = await nUSCContractMM.methods.totalSupply().call();
-            let USCSupplied = (USCSupplied1/(10 ** 4));
+            let USCSupplied = (USCSupplied1/(10 ** 18));
             const USCUserSupplied1 = await nUSCContractMM.methods.balanceOf(`${account}`).call();
-            let USCUserSupplied = (USCUserSupplied1/(10 ** 4));
+            let USCUserSupplied = (USCUserSupplied1/(10 ** 16));
             let accruedUSCSupply = ((((USCSupplied-(USCSupplyIndex-USCSupplierIndex))/(10 ** 36))*USCUserSupplied)/(10 ** 18))+((((currentblock-USCSupplyBlock)*USCSupplySpeeds)*(USCUserSupplied/USCSupplied))/(10 ** 18));
-            console.log(accruedUSCSupply);
+            console.log(accruedUSCSupply + 'USC Supplied');
             //ETC Borrow
             const ETCBorrowerIndex = await ComptrollerContractMM.methods.compBorrowerIndex('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0',`${account}`).call();  
             const ETCBorrowMarket = await ComptrollerContractMM.methods.compBorrowState('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call();
             const {0: ETCBorrowIndex, 1: ETCBorrowBlock} = ETCBorrowMarket;
             const ETCBorrowSpeeds = await ComptrollerContractMM.methods.compBorrowSpeeds('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call();
-            console.log(ETCBorrowSpeeds + 'ETCBorrowed');
+            console.log(ETCBorrowSpeeds + 'ETCBorrowSpeed');
             const ETCBorrowed1 = await nETCContractMM.methods.totalBorrows().call();
             let ETCBorrowed = (ETCBorrowed1/(10 ** 18));
             console.log(ETCBorrowed + 'ETCBorrowed');
@@ -1612,12 +1612,14 @@
             const ETCSupplyMarket = await ComptrollerContractMM.methods.compSupplyState('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call();
             const {0: ETCSupplyIndex, 1: ETCSupplyBlock} = ETCSupplyMarket;
             const ETCSupplySpeeds = await ComptrollerContractMM.methods.compSupplySpeeds('0x2896c67c0cea9D4954d6d8f695b6680fCfa7C0e0').call();
+            console.log(ETCSupplySpeeds + 'ETCSupplySpeed');
             const ETCSupplied1 = await nETCContractMM.methods.totalSupply().call();
             let ETCSupplied = (ETCSupplied1/(10 ** 18));
             const ETCUserSupplied1 = await nETCContractMM.methods.balanceOf(`${account}`).call();
             let ETCUserSupplied = (ETCUserSupplied1/(10 ** 18));
+            console.log(ETCUserSupplied);
             let accruedETCSupply = ((((ETCSupplied-(ETCSupplyIndex-ETCSupplierIndex))/(10 ** 36))*ETCUserSupplied)/(10 ** 18))+((((currentblock-ETCSupplyBlock)*ETCSupplySpeeds)*(ETCUserSupplied/ETCSupplied))/(10 ** 18));
-            console.log(accruedETCSupply);
+            console.log(accruedETCSupply + 'Accrued ETC Supply');
 
             //ETCPOW Borrow
             const ETCPOWBorrowerIndex = await ComptrollerContractMM.methods.compBorrowerIndex('0x3f1a86FeD9cBF8866D55F21dfd880C0a4065285d',`${account}`).call();  
@@ -1644,7 +1646,10 @@
 
             //Calculate Accrued NYKE
             const CurrentAccruedNYKE = await ComptrollerContractMM.methods.compAccrued(`${account}`).call();
-            let accruedRewards = ((CurrentAccruedNYKE / (10**18)) + accruedETCPOWSupply + accruedETCPOWBorrow + accruedETCBorrow + accruedETCSupply + accruedUSCBorrow + accruedUSCSupply); 
+            console.log(CurrentAccruedNYKE + 'AccruedNYKE');
+            let CurrentNyke = (CurrentAccruedNYKE / (10**18));
+            console.log(CurrentNyke + 'AccruedNYKE');
+            let accruedRewards = (CurrentNyke + accruedETCPOWSupply + accruedETCPOWBorrow + accruedETCBorrow + accruedETCSupply + accruedUSCBorrow + accruedUSCSupply); 
             accruedRewards = accruedRewards.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
             document.getElementById('accruedRewards').innerText = `${accruedRewards} NYKE`;
             }
