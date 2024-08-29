@@ -1,9 +1,9 @@
 {
 	"shared": {
-		"etc": {
+		"scroll": {
 			"mainnet": {
 				"jsonRpc": [
-					"12cdcb57f43048b6940f5c797db87088"
+					"a3b1b7fe65d94349a7faaa1750972fcc"
 				]
 			}
 		}
